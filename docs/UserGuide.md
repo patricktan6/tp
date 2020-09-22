@@ -148,6 +148,42 @@ Exits the program.
 
 Format: `exit`
 
+### Create new routine : `routine create`
+
+Creates a new routine by the given routine name.
+
+Format: `routine create r/ROUTINE_NAME`
+
+Examples:
+* `routine create r/Leg Day Session` Creates new routine with the name "Leg Day Session".
+
+### Delete routine : `routine delete`
+
+Deletes an existing routine corresponding to the given index.
+
+Format: `routine delete INDEX`
+
+Examples:
+* `routine delete 10` Deletes routine with the index 10.
+
+### Add exercise to routine : `exercise add`
+
+Add a new exercise to a specific routine.
+
+Format: `exercise add r/NAME_OF_TARGET_ROUTINE e/EXERCISE_NAME`
+
+Examples:
+* `exercise add r/Leg Day Session e/Squats` Adds an exercise named "Squats" to the routine "Leg Day Session".
+
+### Delete exercise from routine : `exercise delete`
+
+Add a new exercise to a specific routine.
+
+Format: `exercise delete r/NAME_OF_TARGET_ROUTINE e/EXERCISE_NAME`
+
+Examples:
+* `exercise delete r/Leg Day Session e/Squats` Delete the exercise "Squats" from the routine "Leg Day Session".
+
 ### Saving the data
 
 AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
