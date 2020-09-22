@@ -286,6 +286,108 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. AddressBook shows an error message.
 
       Use case resumes at step 2.
+      
+**Use case: Create a new routine**
+
+**MSS**
+
+1.  User requests for the current list of routines
+2.  fitNUS shows the list of routines
+3.  User requests to create a new routine
+4.  fitNUS adds that routine to its list of routines
+
+    Use case ends.
+
+**Extensions**
+
+* 3a. The given routine name already exists.
+
+    * 3a1. fitNUS shows an error message.
+
+      Use case resumes at step 2.
+      
+**Use case: Delete a routine**
+
+**MSS**
+
+1.  User requests to list routines
+2.  fitNUS shows a list of routines
+3.  User requests to delete a specific routine in the list
+4.  fitNUS deletes the routine
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. fitNUS shows an error message.
+
+      Use case resumes at step 2.
+
+**Use case: Add exercise to routine**
+
+**MSS**
+
+1.  User requests to list routines
+2.  fitNUS shows a list of routines
+3.  User requests to view exercises in a specific routine
+4.  fitNUS shows a list exercises in that specific routine
+5.  User adds the exercise
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. fitNUS shows an error message.
+
+      Use case resumes at step 2.
+      
+* 5a. The given exercise name already exists.
+
+    * 5a1. fitNUS shows an error message.
+
+      Use case resumes at step 4.
+      
+**Use case: Delete exercise from routine**
+
+**MSS**
+
+1.  User requests to list routines
+2.  fitNUS shows a list of routines
+3.  User requests to view exercises in a specific routine
+4.  fitNUS shows a list exercises in that specific routine
+5.  fitNUS deletes the exercise
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. fitNUS shows an error message.
+
+      Use case resumes at step 2.
+      
+* 5a. The given index of exercise to delete is invalid.
+
+    * 5a1. fitNUS shows an error message.
+
+      Use case resumes at step 4.
 
 *{More to be added}*
 
