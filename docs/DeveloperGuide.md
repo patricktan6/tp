@@ -241,8 +241,11 @@ _{Explain here how the data archiving feature will be implemented}_
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
+* interested in fitness, or aspiring to start
+* is an NUS student
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: provide a platform for NUS students of any fitness experience to conveniently plan their workout
+around their classes.
 
 
 ### User stories
@@ -257,6 +260,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
 | `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
 | `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
+| `* * *` |student who has no knowledge of working out|view what exercise routines the application has|choose the right one for me
 
 *{More to be added}*
 
@@ -389,6 +393,32 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 4.
 
+**Use case: List all routines in fitNUS**
+
+**MSS**
+
+1.  User requests for all the routines available.
+2.  fitNUS displays all the routines that are available, if there are any.
+
+**Use case: View details of a certain routine**
+
+**MSS**
+
+1.  User requests to view a certain routine.
+2.  fitNUS displays all information of the specified routine.
+
+**Extensions**
+
+* 1a.   Index given by user is invalid.
+    * 1a1.  fitNUS shows an error message.
+    
+      Use case ends.
+      
+* 1b.   No routine exists within fitNUS.
+    * 1b1.  fitNUS informs the user that there are no routines to view.
+    
+      Use case ends.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
@@ -396,6 +426,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4.  The system should respond under a second.
+5.  The system should be able to be used by a fitness novice, in the sense that the fitness terms used in fitNUS should not
+confuse anyone.
+6. The system should remember the details entered by the user during the session, and be carried forward to the next time.
+7. Schedule should be clear and easy to read for the user, and not display too much information at once.
 
 *{More to be added}*
 

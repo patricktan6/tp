@@ -184,6 +184,21 @@ Format: `exercise delete r/NAME_OF_TARGET_ROUTINE e/EXERCISE_NAME`
 Examples:
 * `exercise delete r/Leg Day Session e/Squats` Delete the exercise "Squats" from the routine "Leg Day Session".
 
+### View routine details : `routine view`
+
+View the details of a certain routine.
+
+Format: `routine view INDEX`
+
+Examples:
+* `routine view 2` Views routine with the index 2.
+
+### List routines : `routine list`
+
+Lists out all the routines in fitNUS.
+
+Format: `routine list`
+
 ### Saving the data
 
 AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
