@@ -389,6 +389,32 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 4.
 
+**Use case: List all routines in fitNUS**
+
+**MSS**
+
+1.  User requests for all the routines available.
+2.  fitNUS displays all the routines that are available, if there are any.
+
+**Use case: View details of a certain routine**
+
+**MSS**
+
+1.  User requests to view a certain routine.
+2.  fitNUS displays all information of the specified routine.
+
+**Extensions**
+
+* 1a.   Index given by user is invalid.
+    * 1a1.  fitNUS shows an error message.
+    
+      Use case ends.
+      
+* 1b.   No routine exists within fitNUS.
+    * 1b1.  fitNUS informs the user that there are no routines to view.
+    
+      Use case ends.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
