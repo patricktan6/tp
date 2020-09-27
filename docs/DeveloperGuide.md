@@ -419,6 +419,57 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     
       Use case ends.
 
+**Use case: Add completed routine to schedule**
+
+**MSS**
+
+1.  User requests to view current schedule.
+2.  fitNUS shows the user's schedule for the day.
+3.  User requests to add a specific routine to a specific slot in schedule.
+4.  fitNUS adds the routine to schedule.
+
+    Use case ends.
+
+**Extensions**
+
+* 3a. Routine requested by user does not exist.
+    * 3a1. fitNUS shows an error message.
+    
+    Use case ends.
+
+* 3b. The slot to add the routine is invalid.
+    * 3b1. fitNUS shows an error message.
+    
+    Use case ends.
+
+* 3c. The slot to add the routine is already in use.
+    * 3c1. fitNUS informs the user to input another slot.
+    
+    Use case resumes at step 3.
+
+**Use case: Delete routine from schedule**
+
+**MSS**
+
+1.  User requests to view current schedule.
+2.  fitNUS shows the user's schedule for the day.
+3.  User requests to delete a routine from a specific slot in schedule.
+4.  fitNUS deletes the routine from schedule.
+
+    Use case ends.
+
+**Extensions**
+
+* 3a. The slot requested is not assigned to any routine.
+    * 3a1. fitNUS informs the user that the slot is empty.
+    
+    Use case resumes at step 3.
+
+* 3b. The slot requested is invalid.
+    * 3b1. fitNUS shows an error message.
+    
+    Use case ends.
+
 *{More to be added}*
 
 ### Non-Functional Requirements
