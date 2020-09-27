@@ -217,6 +217,15 @@ Format: `schedule delete d/DAY_OF_THE_WEEK t/TIMING`
 Examples:
 * `schedule delete d/Monday t/1600-1800` Deletes the routine scheduled on Monday, 1600-1800.
 
+### View timetable : `timetable view`
+
+View the user's timetable.
+
+Format: `timetable view`
+
+Examples:
+* `timetable view` Views timetable.
+
 ### Saving the data
 
 AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.

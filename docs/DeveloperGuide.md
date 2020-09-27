@@ -263,6 +263,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | student who has no knowledge of working out|view what exercise routines the application has|choose the right one for me
 | `* * *`  | busy student                               | add workout routines into my schedule | have the time to exercise
 | `* * *`  | student                                    | delete a workout routine       | keep my schedule up-to-date
+| `* * *`  | NUS student                                | see my timetable               | slot in my workout sessions with ease 
 
 *{More to be added}*
 
@@ -471,6 +472,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3b1. fitNUS shows an error message.
     
     Use case ends.
+    
+**Use case: View timetable**
+
+**MSS**
+
+1.  User requests to view their timetable.
+2.  fitNUS displays their timetable.
+
+**Extensions**
+      
+* 1a.   No timetable exists within fitNUS.
+    * 1a1.  fitNUS informs the user that there is no timetable to view yet.
+    
+      Use case ends.
 
 *{More to be added}*
 
