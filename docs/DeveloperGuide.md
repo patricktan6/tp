@@ -236,7 +236,7 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* has a need to manage their busy schedule
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
@@ -260,7 +260,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
 | `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
 | `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-| `* * *` |student who has no knowledge of working out|view what exercise routines the application has|choose the right one for me
+| `* * *`  | student who has no knowledge of working out|view what exercise routines the application has|choose the right one for me
+| `* * *`  | busy student                               | add workout routines into my schedule | have the time to exercise
+| `* * *`  | student                                    | delete a workout routine       | keep my schedule up-to-date
 
 *{More to be added}*
 
