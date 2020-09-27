@@ -199,6 +199,24 @@ Lists out all the routines in fitNUS.
 
 Format: `routine list`
 
+### Add routine to schedule : `schedule add`
+
+Adds a complete routine into the application's schedule.
+
+Format: `schedule add r/ROUTINE_NAME d/DAY_OF_THE_WEEK t/TIMING`
+
+Examples:
+* `schedule add r/Leg Day Session d/Monday t/1600-1800` Adds routine "Leg Day Session" to schedule on Monday, 1600-1800.
+
+### Delete routine from schedule : `schedule delete`
+
+Deletes a routine from the application's schedule.
+
+Format: `schedule delete d/DAY_OF_THE_WEEK t/TIMING`
+
+Examples:
+* `schedule delete d/Monday t/1600-1800` Deletes the routine scheduled on Monday, 1600-1800.
+
 ### Saving the data
 
 AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
