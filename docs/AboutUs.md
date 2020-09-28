@@ -48,12 +48,12 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Testing
 
-### James Doe
+### Nicholas Yeo
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/nicholasyeo.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/nicholasyeo)]
+[[portfolio](team/nicholasyeo.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Code Quality
