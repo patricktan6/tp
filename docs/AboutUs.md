@@ -57,3 +57,13 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 * Responsibilities: Documentation
+
+### Nicholas Yeo
+
+<img src="images/nicholasyeo.png" width="200px">
+
+[[github](http://github.com/nicholasyeo)]
+[[portfolio](team/nicholasyeo.md)]
+
+* Role: Developer
+* Responsibilities: Code Quality
