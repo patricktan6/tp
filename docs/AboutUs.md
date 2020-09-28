@@ -48,6 +48,16 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Testing
 
+### Iqbal Imran
+
+<img src="images/iqbal.png" width="200px">
+
+[[github](http://github.com/iqbxl)]
+[[portfolio](team/iqbal.md)]
+
+* Role: Developer
+* Responsibilities: Documentation
+
 ### Nicholas Yeo
 
 <img src="images/nicholasyeo.png" width="200px">
