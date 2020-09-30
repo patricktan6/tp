@@ -113,6 +113,33 @@ Format: `schedule delete d/DAY_OF_THE_WEEK t/TIMING`
 Examples:
 * `schedule delete d/Monday t/1600-1800` Deletes the routine scheduled on Monday, 1600-1800.
 
+### Add or edit height : `height`
+
+Adds height in centimetres.
+
+Format: `height h/HEIGHT`
+
+Examples:
+* `height h/170` Adds or edits the height of the user, which is 170cm.
+
+### Add or edit weight : `weight`
+
+Adds weight in kilograms.
+
+Format: `weight w/WEIGHT`
+
+Examples:
+* `weight w/70` Adds or edits the weight of the user, which is 70kg. 
+
+### View BMI : `bmi`
+
+Calculates and views the user's BMI based on his/her height and weight.
+
+Format: `bmi`
+
+Examples:
+* `bmi` Views BMI.
+
 ### View timetable : `timetable view`
 
 View the user's timetable.
