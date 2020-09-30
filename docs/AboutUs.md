@@ -50,10 +50,10 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Iqbal Imran
 
-<img src="images/iqbal.png" width="200px">
+<img src="images/iqbxl.png" width="200px">
 
 [[github](http://github.com/iqbxl)]
-[[portfolio](team/iqbal.md)]
+[[portfolio](team/iqbxl.md)]
 
 * Role: Developer
 * Responsibilities: Documentation
