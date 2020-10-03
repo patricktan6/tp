@@ -5,7 +5,9 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.UniqueExerciseList;
 import seedu.address.model.person.UniquePersonList;
 
 /**
@@ -15,6 +17,7 @@ import seedu.address.model.person.UniquePersonList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
+    private final UniqueExerciseList exercises;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -25,6 +28,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
+        exercises = new UniqueExerciseList();
     }
 
     public AddressBook() {}
@@ -64,6 +68,22 @@ public class AddressBook implements ReadOnlyAddressBook {
     public boolean hasPerson(Person person) {
         requireNonNull(person);
         return persons.contains(person);
+    }
+
+    /**
+     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     */
+    public boolean hasExercise(Exercise exercise) {
+        requireNonNull(exercise);
+        return exercises.contains(exercise);
+    }
+
+    /**
+     * Adds an exercise to the fitNUS.
+     * The exercise must not already exist in fitNUS.
+     */
+    public void addExercise(Exercise e) {
+        exercises.add(e);
     }
 
     /**

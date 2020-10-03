@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Person;
 
 /**
@@ -84,4 +85,15 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    /**
+     * Returns true if a exercise with the same details as {@code exercise} exists in fitNUS.
+     */
+    boolean hasExercise(Exercise exercise);
+
+    /**
+     * Adds the given exercise.
+     * {@code exercise} must not already exist in fitNUS.
+     */
+    void addExercise(Exercise exercise);
 }
