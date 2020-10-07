@@ -7,37 +7,37 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.ExerciseAddCommand;
+import seedu.address.logic.commands.LessonAddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Exercise;
+import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Name;
 import seedu.address.model.tag.Tag;
 
 /**
- * Parses input arguments and creates a new ExerciseAddCommand object
+ * Parses input arguments and creates a new LessonAddCommand object
  */
-public class ExerciseAddCommandParser implements Parser<ExerciseAddCommand> {
+public class LessonAddCommandParser implements Parser<LessonAddCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the ExerciseAddCommand
-     * and returns an ExerciseAddCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the LessonAddCommand
+     * and returns a LessonAddCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
-    public ExerciseAddCommand parse(String args) throws ParseException {
+    public LessonAddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TAG);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExerciseAddCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, LessonAddCommand.MESSAGE_USAGE));
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        Exercise exercise = new Exercise(name, tagList);
+        Lesson lesson = new Lesson(name, tagList);
 
-        return new ExerciseAddCommand(exercise);
+        return new LessonAddCommand(lesson);
     }
 
     /**
