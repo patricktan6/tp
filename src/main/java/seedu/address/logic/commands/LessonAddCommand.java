@@ -22,7 +22,8 @@ public class LessonAddCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "CS2103T "
             + PREFIX_TAG + "Monday "
-            + PREFIX_TAG + "1000-1200";
+            + PREFIX_TAG + "1000 "
+            + PREFIX_TAG + "2hours";
 
     public static final String MESSAGE_SUCCESS = "New lesson added: %1$s";
     public static final String MESSAGE_DUPLICATE_LESSON = "This lesson already exists in your timetable";
