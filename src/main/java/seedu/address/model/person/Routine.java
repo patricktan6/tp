@@ -1,13 +1,10 @@
 package seedu.address.model.person;
 
-import seedu.address.model.tag.Tag;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
-
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 public class Routine {
 
@@ -83,6 +80,10 @@ public class Routine {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName());
+        for (Exercise exercise : exercises) {
+            builder.append("\n");
+            builder.append(exercise.toString());
+        }
         return builder.toString();
     }
 

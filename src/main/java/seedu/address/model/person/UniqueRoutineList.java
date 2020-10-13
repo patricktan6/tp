@@ -50,6 +50,11 @@ public class UniqueRoutineList implements Iterable<Routine> {
         internalList.add(toAdd);
     }
 
+    /**
+     * Adds an existing Exercise within fitNUS into an existing Routine within fitNUS.
+     * @param r Existing Routine.
+     * @param exercise Existing Exercise.
+     */
     public void addExercise(Routine r, Exercise exercise) {
 
         if (!internalList.contains(r)) {
@@ -64,10 +69,19 @@ public class UniqueRoutineList implements Iterable<Routine> {
         }
     }
 
+    /**
+     * Returns the toString method of the Routine that the user wants to view.
+     * @param index Index of the Routine that the user wants to view.
+     * @return The toString method of the Routine that the user wants to see.
+     */
     public String viewRoutine(int index) {
         return internalList.get(index - 1).toString();
     }
 
+    /**
+     * Lists out all the Routine objects in UniqueRoutineList.
+     * @return String containing all the Routine object toString method.
+     */
     public String listRoutines() {
         String result = "";
         for (Routine routine : internalList) {
@@ -109,6 +123,10 @@ public class UniqueRoutineList implements Iterable<Routine> {
         }
     }
 
+    /**
+     * Returns the size of the UniqueRoutineList.
+     * @return Integer of the size of the UniqueRoutineList.
+     */
     public int checkSize() {
         return this.internalList.size();
     }
@@ -169,6 +187,11 @@ public class UniqueRoutineList implements Iterable<Routine> {
         return true;
     }
 
+    /**
+     * Retrieves the Routine object from UniqueRoutineList that the user specified.
+     * @param r Routine object that the user wants.
+     * @return Routine object that exists within fitNUS that the user is looking for.
+     */
     public Routine retrieveRoutine(Routine r) {
         for (Routine routine : internalList) {
             if (routine.isSameRoutine(r)) {

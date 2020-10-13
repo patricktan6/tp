@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Exercise;
+import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 
@@ -160,6 +161,22 @@ public class ModelManager implements Model {
     public String listRoutines() {
         return addressBook.listRoutines();
     }
+
+    /**
+     * Adds a Lesson into fitNUS.
+     * @param lesson Lesson object that is to be added to fitNUS.
+     */
+    public void addLesson(Lesson lesson) {
+        addressBook.addLesson(lesson);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    }
+
+    @Override
+    public boolean hasLesson(Lesson lesson) {
+        requireNonNull(lesson);
+        return addressBook.hasLesson(lesson);
+    }
+
 
     //=========== Filtered Person List Accessors =============================================================
 

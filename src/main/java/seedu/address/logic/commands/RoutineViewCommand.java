@@ -2,11 +2,8 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ROUTINE;
-
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Routine;
 
 /**
  * Adds an Routine to fitNUS.
@@ -17,7 +14,7 @@ public class RoutineViewCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Views a routine in fitNUS. "
             + "Parameters: "
-            +"INDEX "
+            + "INDEX "
             + "\n"
             + "Example: " + COMMAND_WORD + " "
             + "3 ";
@@ -50,8 +47,7 @@ public class RoutineViewCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof RoutineViewCommand // instanceof handles nulls
-        );
+                || (other instanceof RoutineViewCommand); // instanceof handles nulls
     }
 }
 

@@ -1,7 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ROUTINE;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -30,7 +31,8 @@ public class RoutineAddExerciseCommandParser implements Parser<RoutineAddExercis
 
         if (!arePrefixesPresent(argMultimap, PREFIX_ROUTINE, PREFIX_EMAIL)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RoutineAddExerciseCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    RoutineAddExerciseCommand.MESSAGE_USAGE));
         }
 
         Name routineName = ParserUtil.parseName(argMultimap.getValue(PREFIX_ROUTINE).get());

@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Exercise;
+import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 
@@ -105,4 +106,14 @@ public interface Model {
     boolean checkBounds(int toView);
     String listRoutines();
 
+    /**
+     * Returns true if a lesson with the same details as {@code lesson} exists in timetable.
+     */
+    boolean hasLesson(Lesson lesson);
+
+    /**
+     * Adds the given lesson.
+     * {@code lesson} must not already exist in timetable.
+     */
+    void addLesson(Lesson lesson);
 }
