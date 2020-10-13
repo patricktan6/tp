@@ -136,4 +136,13 @@ public class UniqueExerciseList implements Iterable<Exercise> {
         }
         return true;
     }
+
+    public Exercise retrieveExercise(Exercise e) {
+        for (Exercise exercise : internalList) {
+            if (e.isSameExercise(exercise)) {
+                return exercise;
+            }
+        }
+        return e;
+    }
 }

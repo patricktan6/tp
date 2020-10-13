@@ -13,6 +13,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Routine;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -120,11 +121,45 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void addRoutine(Routine routine) {
+        addressBook.addRoutine(routine);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    }
+
+    @Override
+    public boolean hasRoutine(Routine r) {
+        requireNonNull(r);
+        return addressBook.hasRoutine(r);
+    }
+
+    @Override
+    public void addExerciseToRoutine(Routine r, Exercise e) {
+        addressBook.addExerciseToRoutine(r, e);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    }
+
+    @Override
     public boolean hasExercise(Exercise exercise) {
         requireNonNull(exercise);
         return addressBook.hasExercise(exercise);
     }
 
+    @Override
+    public String viewRoutine(int index) {
+        requireNonNull(index);
+        return addressBook.viewRoutine(index);
+    }
+
+    @Override
+    public boolean checkBounds(int index) {
+        requireNonNull(index);
+        return addressBook.checkBounds(index);
+    }
+
+    @Override
+    public String listRoutines() {
+        return addressBook.listRoutines();
+    }
 
     //=========== Filtered Person List Accessors =============================================================
 

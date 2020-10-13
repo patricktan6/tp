@@ -5,10 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.person.Exercise;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.UniqueExerciseList;
-import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.person.*;
 
 /**
  * Wraps all data at the address-book level
@@ -18,6 +15,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
     private final UniqueExerciseList exercises;
+    private final UniqueRoutineList routines;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -29,6 +27,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     {
         persons = new UniquePersonList();
         exercises = new UniqueExerciseList();
+        routines = new UniqueRoutineList();
     }
 
     public AddressBook() {}
@@ -78,6 +77,11 @@ public class AddressBook implements ReadOnlyAddressBook {
         return exercises.contains(exercise);
     }
 
+    public boolean hasRoutine(Routine r) {
+        requireNonNull(r);
+        return routines.contains(r);
+    }
+
     /**
      * Adds an exercise to the fitNUS.
      * The exercise must not already exist in fitNUS.
@@ -94,6 +98,13 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.add(p);
     }
 
+    public void addRoutine(Routine routine) {
+        routines.add(routine);
+    }
+
+    public String viewRoutine(int index) {
+        return routines.viewRoutine(index);
+    }
     /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
      * {@code target} must exist in the address book.
@@ -136,5 +147,23 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public int hashCode() {
         return persons.hashCode();
+    }
+
+    public boolean checkBounds(int index) {
+        requireNonNull(index);
+        return index > 0 && index <= routines.checkSize();
+    }
+
+    public String listRoutines() {
+        return routines.listRoutines();
+    }
+
+    public void addExerciseToRoutine(Routine r, Exercise e) {
+        requireNonNull(r);
+        requireNonNull(e);
+
+        Exercise retrievedExercise = exercises.retrieveExercise(e);
+        Routine retrievedRoutine = routines.retrieveRoutine(r);
+        routines.addExercise(retrievedRoutine, retrievedExercise);
     }
 }
