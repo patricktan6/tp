@@ -12,6 +12,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Exercise;
+import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 
 /**
@@ -123,6 +124,18 @@ public class ModelManager implements Model {
     public boolean hasExercise(Exercise exercise) {
         requireNonNull(exercise);
         return addressBook.hasExercise(exercise);
+    }
+
+    @Override
+    public void addLesson(Lesson lesson) {
+        addressBook.addLesson(lesson);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    }
+
+    @Override
+    public boolean hasLesson(Lesson lesson) {
+        requireNonNull(lesson);
+        return addressBook.hasLesson(lesson);
     }
 
 
