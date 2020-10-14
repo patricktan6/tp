@@ -19,6 +19,7 @@ public class ListExercisesCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
+        model.updateFilteredPersonList(unused -> false);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
