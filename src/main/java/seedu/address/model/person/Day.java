@@ -63,4 +63,9 @@ public enum Day {
     public static boolean isUnknownDay(Day day) {
         return day.equals(UNKNOWN);
     }
+
+    @Override
+    public String toString() {
+        return day;
+    }
 }

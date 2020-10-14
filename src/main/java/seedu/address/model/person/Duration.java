@@ -72,11 +72,13 @@ public class Duration {
         LocalTime otherStartTime = otherDuration.getStartTime();
         LocalTime otherEndTime = otherDuration.getEndTime();
 
+        boolean hasSameStartTime = startTime.equals(otherStartTime);
+        boolean hasSameEndTime = endTime.equals(otherEndTime);
         boolean isStartTimeOverlap = startTime.isAfter(otherStartTime) && startTime.isBefore(otherEndTime);
         boolean isEndTimeOverlap = endTime.isAfter(otherStartTime) && endTime.isBefore(otherEndTime);
         boolean isCompletelyOverlap = startTime.isBefore(otherStartTime) && endTime.isAfter(otherEndTime);
 
-        return isStartTimeOverlap || isEndTimeOverlap || isCompletelyOverlap;
+        return hasSameStartTime || hasSameEndTime || isStartTimeOverlap || isEndTimeOverlap || isCompletelyOverlap;
     }
 
     @Override

@@ -24,6 +24,7 @@ public class TimetableAddSlotCommand extends Command {
             + PREFIX_TIME + "1600-1800";
 
     public static final String MESSAGE_SUCCESS = "Slot added to Timetable: %1$s";
+    public static final String MESSAGE_MISSING_ROUTINE = "This routine does not exist in fitNUS";
     public static final String MESSAGE_DUPLICATE_SLOT = "This slot already exists in your timetable";
     public static final String MESSAGE_OVERLAP_SLOT = "This slot overlaps with another slot in your timetable";
 
@@ -41,7 +42,9 @@ public class TimetableAddSlotCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (model.hasSlot(slotToAdd)) {
+        if (!model.hasRoutine(slotToAdd.getRoutine())) {
+            throw new CommandException(MESSAGE_MISSING_ROUTINE);
+        } else if (model.hasSlot(slotToAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_SLOT);
         } else if (model.hasOverlappingSlot(slotToAdd)) {
             throw new CommandException(MESSAGE_OVERLAP_SLOT);
