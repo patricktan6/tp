@@ -46,6 +46,11 @@ public enum Day {
         return dayEnum;
     }
 
+    /**
+     * Returns true if this day is the same as the other day.
+     * @param otherDay The other day to be checked.
+     * @return true if this day is the same as the other day.
+     */
     public boolean isSameDay(Day otherDay) {
         if (otherDay == this) {
             return true;

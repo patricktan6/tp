@@ -2,24 +2,18 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROUTINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 
-import java.util.HashSet;
-import java.util.Set;
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.RoutineAddExerciseCommand;
 import seedu.address.logic.commands.TimetableAddSlotCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Day;
 import seedu.address.model.person.Duration;
-import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
-import seedu.address.model.tag.Tag;
 
 /**
  * Parses input arguments and creates a new TimetableAddSlotCommand object

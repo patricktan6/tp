@@ -20,6 +20,11 @@ public class Duration {
 
     private final LocalTime endTime;
 
+    /**
+     * Constructs a Duration object with a start and end time.
+     * @param startTime The start time.
+     * @param endTime The end time.
+     */
     public Duration(LocalTime startTime, LocalTime endTime) {
         requireAllNonNull(startTime, endTime);
         this.startTime = startTime;
@@ -42,6 +47,11 @@ public class Duration {
         return startTime.isBefore(endTime);
     }
 
+    /**
+     * Returns true if this duration is the same as the other duration.
+     * @param otherDuration The other duration to be checked.
+     * @return true if this duration is the same as the other duration.
+     */
     public boolean isSameDuration(Duration otherDuration) {
         if (otherDuration == this) {
             return true;
@@ -52,6 +62,11 @@ public class Duration {
                 && otherDuration.getEndTime().equals(endTime);
     }
 
+    /**
+     * Returns true if this duration has overlapping duration as the other duration.
+     * @param otherDuration The other duration to be checked.
+     * @return true if this duration has overlapping duration as the other duration.
+     */
     public boolean hasOverlapDuration(Duration otherDuration) {
         requireNonNull(otherDuration);
         LocalTime otherStartTime = otherDuration.getStartTime();

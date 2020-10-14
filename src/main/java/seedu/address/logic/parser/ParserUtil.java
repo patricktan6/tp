@@ -53,6 +53,12 @@ public class ParserUtil {
         return new Name(trimmedName);
     }
 
+    /**
+     * Parses a {@code String day} into a {@code Day}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code day} is invalid.
+     */
     public static Day parseDay(String day) throws ParseException {
         requireNonNull(day);
         Day dayEnum = Day.getDayEnum(day.trim().toLowerCase());
@@ -62,12 +68,18 @@ public class ParserUtil {
         return dayEnum;
     }
 
+    /**
+     * Parses a {@code String duration} into a {@code Duration}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code duration} is invalid.
+     */
     public static Duration parseDuration(String duration) throws ParseException {
         requireNonNull(duration);
         String trimmedDuration = duration.trim();
-//        if (!Duration.isValidDuration(trimmedDuration)) {
-//            throw new ParseException(Duration.MESSAGE_CONSTRAINTS_FORMAT);
-//        }
+        //        if (!Duration.isValidDuration(trimmedDuration)) {
+        //            throw new ParseException(Duration.MESSAGE_CONSTRAINTS_FORMAT);
+        //        }
 
         String[] timeSplit = trimmedDuration.split("-");
 

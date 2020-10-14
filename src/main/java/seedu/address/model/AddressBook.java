@@ -106,11 +106,21 @@ public class AddressBook implements ReadOnlyAddressBook {
         return lessons.contains(lesson);
     }
 
+    /**
+     * Returns true if the slot is already occupied in the timetable.
+     * @param slot The slot to be checked.
+     * @return true if the slot is already occupied in the timetable.
+     */
     public boolean hasSlot(Slot slot) {
         requireNonNull(slot);
         return timetable.hasSlot(slot);
     }
 
+    /**
+     * Returns true if the slot has overlapping duration with another slot in the timetable.
+     * @param slot The slot to be checked.
+     * @return true if the slot has overlapping duration with another slot in the timetable.
+     */
     public boolean hasOverlappingDurationInSlot(Slot slot) {
         requireNonNull(slot);
         return timetable.hasOverlapDuration(slot);

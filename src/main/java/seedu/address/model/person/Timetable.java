@@ -2,9 +2,6 @@ package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Timetable {
 
     private final UniqueSlotList slots;
@@ -13,11 +10,21 @@ public class Timetable {
         slots = new UniqueSlotList();
     }
 
+    /**
+     * Returns true if this Slot is already in use in the Timetable.
+     * @param slot The slot to be checked.
+     * @return true if this Slot is already in use in the Timetable.
+     */
     public boolean hasSlot(Slot slot) {
         requireNonNull(slot);
         return slots.contains(slot);
     }
 
+    /**
+     * Returns true if this slot has overlapping duration with the other slots in timetable.
+     * @param slot The slot to be checked.
+     * @return true if this slot has overlapping duration with the other slots in timetable.
+     */
     public boolean hasOverlapDuration(Slot slot) {
         requireNonNull(slot);
         return slots.hasOverlapDuration(slot);

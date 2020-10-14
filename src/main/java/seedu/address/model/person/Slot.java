@@ -12,6 +12,12 @@ public class Slot {
 
     private final Duration duration;
 
+    /**
+     * Constructs a new Slot object.
+     * @param routine The routine to be added to timetable.
+     * @param day The day to add to.
+     * @param duration The duration to input in the timetable.
+     */
     public Slot(Routine routine, Day day, Duration duration) {
         requireAllNonNull(routine, day, duration);
         this.routine = routine;
@@ -31,6 +37,11 @@ public class Slot {
         return duration;
     }
 
+    /**
+     * Returns true if this slot has overlapping duration with the other slot.
+     * @param otherSlot The other slot to be checked.
+     * @return true if this slot has overlapping duration with the other slot.
+     */
     public boolean hasOverlapDuration(Slot otherSlot) {
         return day.isSameDay(otherSlot.getDay())
                 && duration.hasOverlapDuration(otherSlot.getDuration());
