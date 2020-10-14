@@ -1,10 +1,10 @@
 package seedu.address.logic.commands;
 
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.Model;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HEIGHT;
+
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
 
 public class AddHeightCommand extends Command {
     public static final String COMMAND_WORD = "height";
@@ -18,7 +18,7 @@ public class AddHeightCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Height added: %d cm";
     public static final String MESSAGE_INVALID_HEIGHT = "This is not a valid height";
-    
+
     private final int height;
 
     /**
@@ -36,7 +36,7 @@ public class AddHeightCommand extends Command {
         if (height < 0) {
             throw new CommandException(MESSAGE_INVALID_HEIGHT);
         }
-        
+
         model.addHeight(height);
         return new CommandResult(String.format(MESSAGE_SUCCESS, height));
     }

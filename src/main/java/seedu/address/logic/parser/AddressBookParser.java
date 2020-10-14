@@ -7,6 +7,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddHeightCommand;
+import seedu.address.logic.commands.AddWeightCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
@@ -22,8 +24,6 @@ import seedu.address.logic.commands.RoutineAddExerciseCommand;
 import seedu.address.logic.commands.RoutineCreateCommand;
 import seedu.address.logic.commands.RoutineListCommand;
 import seedu.address.logic.commands.RoutineViewCommand;
-import seedu.address.logic.commands.AddHeightCommand;
-import seedu.address.logic.commands.AddWeightCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -97,10 +97,10 @@ public class AddressBookParser {
 
         case LessonAddCommand.COMMAND_WORD:
             return new LessonAddCommandParser().parse(arguments);
-            
+
         case AddHeightCommand.COMMAND_WORD:
             return new AddHeightCommandParser().parse(arguments);
-            
+
         case AddWeightCommand.COMMAND_WORD:
             return new AddWeightCommandParser().parse(arguments);
 

@@ -1,17 +1,19 @@
 package seedu.address.logic.parser;
 
-import seedu.address.logic.commands.AddHeightCommand;
-import seedu.address.logic.parser.exceptions.ParseException;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_HEIGHT;
+
 import java.util.stream.Stream;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import seedu.address.logic.commands.AddHeightCommand;
+import seedu.address.logic.parser.exceptions.ParseException;
 
 public class AddHeightCommandParser implements Parser<AddHeightCommand> {
-    
+
     /**
      * Parses the given {@code String} of arguments in the context of the AddHeightCommand
      * and returns an AddHeightCommand object for execution.
+     *
      * @throws ParseException if the user input does not conform the expected format
      */
     public AddHeightCommand parse(String args) throws ParseException {
@@ -22,7 +24,7 @@ public class AddHeightCommandParser implements Parser<AddHeightCommand> {
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHeightCommand.MESSAGE_USAGE));
         }
-        
+
         int height = ParserUtil.parseHeight(argMultimap.getValue(PREFIX_HEIGHT).get());
 
         return new AddHeightCommand(height);
@@ -35,5 +37,5 @@ public class AddHeightCommandParser implements Parser<AddHeightCommand> {
     private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
-    
+
 }
