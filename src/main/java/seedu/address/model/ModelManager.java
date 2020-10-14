@@ -161,6 +161,16 @@ public class ModelManager implements Model {
     public String listRoutines() {
         return addressBook.listRoutines();
     }
+    
+    @Override
+    public void addHeight(int height) {
+        addressBook.addHeight(height);
+    }
+    
+    @Override
+    public void addWeight(int weight) {
+        addressBook.addWeight(weight);
+    }
 
     /**
      * Adds a Lesson into fitNUS.

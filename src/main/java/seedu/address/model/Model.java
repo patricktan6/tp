@@ -105,6 +105,9 @@ public interface Model {
     String viewRoutine(int index);
     boolean checkBounds(int toView);
     String listRoutines();
+    
+    void addHeight(int height);
+    void addWeight(int weight);
 
     /**
      * Returns true if a lesson with the same details as {@code lesson} exists in timetable.

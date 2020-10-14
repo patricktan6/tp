@@ -24,6 +24,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniqueExerciseList exercises;
     private final UniqueRoutineList routines;
     private final UniqueLessonList lessons;
+    private int height;
+    private int weight;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -47,6 +49,20 @@ public class AddressBook implements ReadOnlyAddressBook {
     public AddressBook(ReadOnlyAddressBook toBeCopied) {
         this();
         resetData(toBeCopied);
+    }
+    
+    //// user-level operations
+    
+    public void addHeight(int height) {
+        this.height = height;
+    }
+    
+    public void addWeight(int weight) {
+        this.weight = weight;
+    }
+    
+    public double getBMI() {
+        return weight / Math.pow(((double) (height / 100)), 2);
     }
 
     //// list overwrite operations
