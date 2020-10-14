@@ -76,12 +76,21 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the contents of exercise list with {@code exercises}.
+     * {@code exercises} must not contain duplicate exercises.
+     */
+    public void setExercises(List<Exercise> exercises) {
+        this.exercises.setExercises(exercises);
+    }
+
+    /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
 
         setPersons(newData.getPersonList());
+        setExercises(newData.getExerciseList());
     }
 
     //// person-level operations
@@ -179,6 +188,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Person> getPersonList() {
         return persons.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Exercise> getExerciseList() {
+        return exercises.asUnmodifiableObservableList();
     }
 
     @Override

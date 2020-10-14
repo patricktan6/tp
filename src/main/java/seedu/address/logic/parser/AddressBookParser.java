@@ -6,7 +6,24 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.*;
+import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.ExerciseAddCommand;
+import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.LessonAddCommand;
+import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ListExercisesCommand;
+import seedu.address.logic.commands.RoutineAddExerciseCommand;
+import seedu.address.logic.commands.RoutineCreateCommand;
+import seedu.address.logic.commands.RoutineListCommand;
+import seedu.address.logic.commands.RoutineViewCommand;
+import seedu.address.logic.commands.AddHeightCommand;
+import seedu.address.logic.commands.AddWeightCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -62,6 +79,9 @@ public class AddressBookParser {
 
         case ExerciseAddCommand.COMMAND_WORD:
             return new ExerciseAddCommandParser().parse(arguments);
+
+        case ListExercisesCommand.COMMAND_WORD:
+            return new ListExercisesCommand();
 
         case RoutineCreateCommand.COMMAND_WORD:
             return new RoutineCreateCommandParser().parse(arguments);
