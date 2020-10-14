@@ -9,6 +9,8 @@ import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
+import seedu.address.model.person.Slot;
+import seedu.address.model.person.Timetable;
 import seedu.address.model.person.UniqueExerciseList;
 import seedu.address.model.person.UniqueLessonList;
 import seedu.address.model.person.UniquePersonList;
@@ -24,6 +26,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniqueExerciseList exercises;
     private final UniqueRoutineList routines;
     private final UniqueLessonList lessons;
+    private final Timetable timetable;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -37,6 +40,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         exercises = new UniqueExerciseList();
         routines = new UniqueRoutineList();
         lessons = new UniqueLessonList();
+        timetable = new Timetable();
     }
 
     public AddressBook() {}
@@ -95,19 +99,29 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Adds an exercise to fitNUS.
-     * The exercise must not already exist in fitNUS.
-     */
-    public void addExercise(Exercise e) {
-        exercises.add(e);
-    }
-
-    /**
      * Returns true if a lesson with the same identity as {@code lesson} exists in the timetable.
      */
     public boolean hasLesson(Lesson lesson) {
         requireNonNull(lesson);
         return lessons.contains(lesson);
+    }
+
+    public boolean hasSlot(Slot slot) {
+        requireNonNull(slot);
+        return timetable.hasSlot(slot);
+    }
+
+    public boolean hasOverlappingDurationInSlot(Slot slot) {
+        requireNonNull(slot);
+        return timetable.hasOverlapDuration(slot);
+    }
+
+    /**
+     * Adds an exercise to fitNUS.
+     * The exercise must not already exist in fitNUS.
+     */
+    public void addExercise(Exercise e) {
+        exercises.add(e);
     }
 
     /**
@@ -128,6 +142,10 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     public void addRoutine(Routine routine) {
         routines.add(routine);
+    }
+
+    public void addSlotToTimetable(Slot slot) {
+        timetable.addSlot(slot);
     }
 
     public String viewRoutine(int index) {

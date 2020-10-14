@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalTime;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,6 +11,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Day;
+import seedu.address.model.person.Duration;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
@@ -48,6 +51,39 @@ public class ParserUtil {
             throw new ParseException(Name.MESSAGE_CONSTRAINTS);
         }
         return new Name(trimmedName);
+    }
+
+    public static Day parseDay(String day) throws ParseException {
+        requireNonNull(day);
+        Day dayEnum = Day.getDayEnum(day.trim().toLowerCase());
+        if (Day.isUnknownDay(dayEnum)) {
+            throw new ParseException(Day.MESSAGE_CONSTRAINTS);
+        }
+        return dayEnum;
+    }
+
+    public static Duration parseDuration(String duration) throws ParseException {
+        requireNonNull(duration);
+        String trimmedDuration = duration.trim();
+//        if (!Duration.isValidDuration(trimmedDuration)) {
+//            throw new ParseException(Duration.MESSAGE_CONSTRAINTS_FORMAT);
+//        }
+
+        String[] timeSplit = trimmedDuration.split("-");
+
+        int startHour = Integer.parseInt(timeSplit[0].substring(0, 2));
+        int startMinute = Integer.parseInt(timeSplit[0].substring(2, 4));
+        LocalTime startTime = LocalTime.of(startHour, startMinute);
+
+        int endHour = Integer.parseInt(timeSplit[1].substring(0, 2));
+        int endMinute = Integer.parseInt(timeSplit[1].substring(2, 4));
+        LocalTime endTime = LocalTime.of(endHour, endMinute);
+
+        if (!Duration.isValidDuration(startTime, endTime)) {
+            throw new ParseException(Duration.MESSAGE_CONSTRAINTS_ORDER);
+        }
+
+        return new Duration(startTime, endTime);
     }
 
     /**
