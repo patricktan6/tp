@@ -6,9 +6,13 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Exercise;
+import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Routine;
 import seedu.address.model.person.UniqueExerciseList;
+import seedu.address.model.person.UniqueLessonList;
 import seedu.address.model.person.UniquePersonList;
+import seedu.address.model.person.UniqueRoutineList;
 
 /**
  * Wraps all data at the address-book level
@@ -18,6 +22,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
     private final UniqueExerciseList exercises;
+    private final UniqueRoutineList routines;
+    private final UniqueLessonList lessons;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -29,6 +35,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     {
         persons = new UniquePersonList();
         exercises = new UniqueExerciseList();
+        routines = new UniqueRoutineList();
+        lessons = new UniqueLessonList();
     }
 
     public AddressBook() {}
@@ -71,7 +79,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
+     * Returns true if an exercise with the same identity as {@code exercise} exists in fitNUS.
      */
     public boolean hasExercise(Exercise exercise) {
         requireNonNull(exercise);
@@ -79,11 +87,35 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Adds an exercise to the fitNUS.
+     * Returns true if a routine with the same identity as {@code routine} exists in fitNUS.
+     */
+    public boolean hasRoutine(Routine r) {
+        requireNonNull(r);
+        return routines.contains(r);
+    }
+
+    /**
+     * Adds an exercise to fitNUS.
      * The exercise must not already exist in fitNUS.
      */
     public void addExercise(Exercise e) {
         exercises.add(e);
+    }
+
+    /**
+     * Returns true if a lesson with the same identity as {@code lesson} exists in the timetable.
+     */
+    public boolean hasLesson(Lesson lesson) {
+        requireNonNull(lesson);
+        return lessons.contains(lesson);
+    }
+
+    /**
+     * Adds a lesson to the timetable.
+     * The lesson must not already exist in the timetable.
+     */
+    public void addLesson(Lesson e) {
+        lessons.add(e);
     }
 
     /**
@@ -94,6 +126,13 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.add(p);
     }
 
+    public void addRoutine(Routine routine) {
+        routines.add(routine);
+    }
+
+    public String viewRoutine(int index) {
+        return routines.viewRoutine(index);
+    }
     /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
      * {@code target} must exist in the address book.
@@ -136,5 +175,37 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public int hashCode() {
         return persons.hashCode();
+    }
+
+    /**
+     * Checks the index given is within the bounds of Routine.
+     * @param index index that is input by user.
+     * @return False if out of bounds.
+     */
+    public boolean checkBounds(int index) {
+        requireNonNull(index);
+        return index > 0 && index <= routines.checkSize();
+    }
+
+    /**
+     * Lists out all of the Routines that fitNUS has.
+     * @return String containing all the Routines.
+     */
+    public String listRoutines() {
+        return routines.listRoutines();
+    }
+
+    /**
+     * Adds an existing Exercise in fitNUS to an existing Routine.
+     * @param r Existing Routine.
+     * @param e Existing Exercise.
+     */
+    public void addExerciseToRoutine(Routine r, Exercise e) {
+        requireNonNull(r);
+        requireNonNull(e);
+
+        Exercise retrievedExercise = exercises.retrieveExercise(e);
+        Routine retrievedRoutine = routines.retrieveRoutine(r);
+        routines.addExercise(retrievedRoutine, retrievedExercise);
     }
 }
