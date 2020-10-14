@@ -14,7 +14,7 @@ public class Duration {
     public static final String MESSAGE_CONSTRAINTS_ORDER =
             "Start time has to be before end time";
 
-    public static final String VALIDATION_REGEX = "/^([0-1][0-9]|2[0-3])[0-5][0-9]-([0-1][0-9]|2[0-3])[0-5][0-9]$/";
+    public static final String VALIDATION_REGEX = "^(([0-1][0-9])|2[0-3])[0-5][0-9]-(([0-1][0-9])|2[0-3])[0-5][0-9]$";
 
     private final LocalTime startTime;
 

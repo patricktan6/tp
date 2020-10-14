@@ -77,9 +77,9 @@ public class ParserUtil {
     public static Duration parseDuration(String duration) throws ParseException {
         requireNonNull(duration);
         String trimmedDuration = duration.trim();
-        //        if (!Duration.isValidDuration(trimmedDuration)) {
-        //            throw new ParseException(Duration.MESSAGE_CONSTRAINTS_FORMAT);
-        //        }
+        if (!Duration.isValidDuration(trimmedDuration)) {
+            throw new ParseException(Duration.MESSAGE_CONSTRAINTS_FORMAT);
+        }
 
         String[] timeSplit = trimmedDuration.split("-");
 
