@@ -15,6 +15,7 @@ import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
+import seedu.address.model.person.Slot;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -182,6 +183,24 @@ public class ModelManager implements Model {
     public boolean hasLesson(Lesson lesson) {
         requireNonNull(lesson);
         return addressBook.hasLesson(lesson);
+    }
+
+    @Override
+    public boolean hasSlot(Slot slot) {
+        requireNonNull(slot);
+        return addressBook.hasSlot(slot);
+    }
+
+    @Override
+    public boolean hasOverlappingSlot(Slot slot) {
+        requireNonNull(slot);
+        return addressBook.hasOverlappingDurationInSlot(slot);
+    }
+
+    @Override
+    public void addSlotToTimetable(Slot slot) {
+        addressBook.addSlotToTimetable(slot);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
 

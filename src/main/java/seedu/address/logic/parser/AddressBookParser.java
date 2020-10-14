@@ -23,6 +23,7 @@ import seedu.address.logic.commands.RoutineAddExerciseCommand;
 import seedu.address.logic.commands.RoutineCreateCommand;
 import seedu.address.logic.commands.RoutineListCommand;
 import seedu.address.logic.commands.RoutineViewCommand;
+import seedu.address.logic.commands.TimetableAddSlotCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -100,6 +101,8 @@ public class AddressBookParser {
         case LessonAddCommand.COMMAND_WORD:
             return new LessonAddCommandParser().parse(arguments);
 
+        case TimetableAddSlotCommand.COMMAND_WORD:
+            return new TimetableAddSlotCommandParser().parse(arguments);
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }

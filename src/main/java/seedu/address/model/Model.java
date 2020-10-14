@@ -9,6 +9,7 @@ import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
+import seedu.address.model.person.Slot;
 
 /**
  * The API of the Model component.
@@ -123,6 +124,9 @@ public interface Model {
     String viewRoutine(int index);
     boolean checkBounds(int toView);
     String listRoutines();
+    boolean hasSlot(Slot slot);
+    boolean hasOverlappingSlot(Slot slot);
+    void addSlotToTimetable(Slot slot);
 
     /**
      * Returns true if a lesson with the same details as {@code lesson} exists in timetable.
