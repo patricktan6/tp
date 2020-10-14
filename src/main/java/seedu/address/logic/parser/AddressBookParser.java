@@ -15,8 +15,13 @@ import seedu.address.logic.commands.ExerciseAddCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.LessonAddCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ListExercisesCommand;
+import seedu.address.logic.commands.RoutineAddExerciseCommand;
+import seedu.address.logic.commands.RoutineCreateCommand;
+import seedu.address.logic.commands.RoutineListCommand;
+import seedu.address.logic.commands.RoutineViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -75,6 +80,21 @@ public class AddressBookParser {
 
         case ListExercisesCommand.COMMAND_WORD:
             return new ListExercisesCommand();
+
+        case RoutineCreateCommand.COMMAND_WORD:
+            return new RoutineCreateCommandParser().parse(arguments);
+
+        case RoutineViewCommand.COMMAND_WORD:
+            return new RoutineViewCommandParser().parse(arguments);
+
+        case RoutineListCommand.COMMAND_WORD:
+            return new RoutineListCommand();
+
+        case RoutineAddExerciseCommand.COMMAND_WORD:
+            return new RoutineAddExerciseCommandParser().parse(arguments);
+
+        case LessonAddCommand.COMMAND_WORD:
+            return new LessonAddCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

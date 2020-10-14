@@ -6,7 +6,9 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Exercise;
+import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Routine;
 
 /**
  * The API of the Model component.
@@ -108,4 +110,22 @@ public interface Model {
      * {@code exercise} must not already exist in fitNUS.
      */
     void addExercise(Exercise exercise);
+
+    void addRoutine(Routine routine);
+    boolean hasRoutine(Routine r);
+    void addExerciseToRoutine(Routine r, Exercise e);
+    String viewRoutine(int index);
+    boolean checkBounds(int toView);
+    String listRoutines();
+
+    /**
+     * Returns true if a lesson with the same details as {@code lesson} exists in timetable.
+     */
+    boolean hasLesson(Lesson lesson);
+
+    /**
+     * Adds the given lesson.
+     * {@code lesson} must not already exist in timetable.
+     */
+    void addLesson(Lesson lesson);
 }
