@@ -161,6 +161,14 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.remove(key);
     }
 
+    /**
+     * Removes {@code key} from {@code fitNUS}.
+     * {@code key} must exist in fitNUS.
+     */
+    public void removeExercise(Exercise key) {
+        exercises.remove(key);
+    }
+
     //// util methods
 
     @Override

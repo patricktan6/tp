@@ -70,6 +70,12 @@ public interface Model {
     void deletePerson(Person target);
 
     /**
+     * Deletes the given exercise.
+     * The exercise must exist in fitNUS.
+     */
+    void deleteExercise(Exercise target);
+
+    /**
      * Adds the given person.
      * {@code person} must not already exist in the address book.
      */
