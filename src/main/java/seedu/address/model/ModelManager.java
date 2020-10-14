@@ -23,6 +23,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
+    private final FilteredList<Exercise> filteredExercises;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -36,6 +37,7 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        filteredExercises = new FilteredList<>(this.addressBook.getExerciseList());
     }
 
     public ModelManager() {
@@ -116,7 +118,7 @@ public class ModelManager implements Model {
     @Override
     public void addExercise(Exercise exercise) {
         addressBook.addExercise(exercise);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
     }
 
     @Override
@@ -137,10 +139,25 @@ public class ModelManager implements Model {
         return filteredPersons;
     }
 
+    /**
+     * Returns an unmodifiable view of the list of {@code Exercise} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Exercise> getFilteredExerciseList() {
+        return filteredExercises;
+    }
+
     @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateFilteredExerciseList(Predicate<Exercise> predicate) {
+        requireNonNull(predicate);
+        filteredExercises.setPredicate(predicate);
     }
 
     @Override

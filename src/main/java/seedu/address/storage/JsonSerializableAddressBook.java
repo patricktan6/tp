@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Person;
 
 /**
@@ -22,13 +23,16 @@ class JsonSerializableAddressBook {
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
+    private final List<JsonAdaptedExercise> exercises = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons) {
+    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
+                                       @JsonProperty("exercises") List<JsonAdaptedExercise> exercises) {
         this.persons.addAll(persons);
+        this.exercises.addAll(exercises);
     }
 
     /**
@@ -38,6 +42,7 @@ class JsonSerializableAddressBook {
      */
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
+        exercises.addAll(source.getExerciseList().stream().map(JsonAdaptedExercise::new).collect(Collectors.toList()));
     }
 
     /**
@@ -53,6 +58,13 @@ class JsonSerializableAddressBook {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             }
             addressBook.addPerson(person);
+        }
+        for (JsonAdaptedExercise jsonAdaptedExercise : exercises) {
+            Exercise exercise = jsonAdaptedExercise.toModelType();
+            if (addressBook.hasExercise(exercise)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+            }
+            addressBook.addExercise(exercise);
         }
         return addressBook;
     }
