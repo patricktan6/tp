@@ -23,6 +23,7 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Routine;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddCommandTest {
@@ -117,6 +118,36 @@ public class AddCommandTest {
 
         @Override
         public void addExercise(Exercise exercise) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addRoutine(Routine routine) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasRoutine(Routine r) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addExerciseToRoutine(Routine r, Exercise e) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public String viewRoutine(int index) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean checkBounds(int toView) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public String listRoutines() {
             throw new AssertionError("This method should not be called.");
         }
 

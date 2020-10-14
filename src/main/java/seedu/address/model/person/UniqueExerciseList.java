@@ -136,4 +136,18 @@ public class UniqueExerciseList implements Iterable<Exercise> {
         }
         return true;
     }
+
+    /**
+     * Retrieves the Exercise within UniqueExerciseList with the same name.
+     * @param e Exercise that is specified by the user.
+     * @return Exercise that is within fitNUS.
+     */
+    public Exercise retrieveExercise(Exercise e) {
+        for (Exercise exercise : internalList) {
+            if (e.isSameExercise(exercise)) {
+                return exercise;
+            }
+        }
+        return e;
+    }
 }
