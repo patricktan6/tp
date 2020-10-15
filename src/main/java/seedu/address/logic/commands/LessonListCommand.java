@@ -20,6 +20,7 @@ public class LessonListCommand extends Command {
         requireNonNull(model);
         model.updateFilteredLessonList(PREDICATE_SHOW_ALL_LESSONS);
         model.updateFilteredPersonList(unused -> false);
+        model.updateFilteredExerciseList(unused -> false);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
