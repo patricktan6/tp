@@ -8,5 +8,9 @@
   "exercises" : [ {
     "name" : "bench",
     "tagged" : [ ]
+  } ],
+  "lessons" : [ {
+    "name" : "CS2103T",
+    "tagged" : [ ]
   } ]
 }
