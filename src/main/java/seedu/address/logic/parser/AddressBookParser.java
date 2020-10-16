@@ -109,12 +109,13 @@ public class AddressBookParser {
 
         case AddWeightCommand.COMMAND_WORD:
             return new AddWeightCommandParser().parse(arguments);
-            
+
         case LessonListCommand.COMMAND_WORD:
             return new LessonListCommand();
 
         case TimetableAddSlotCommand.COMMAND_WORD:
             return new TimetableAddSlotCommandParser().parse(arguments);
+
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
