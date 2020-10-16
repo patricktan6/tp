@@ -15,6 +15,7 @@ import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
+import seedu.address.model.person.Slot;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -26,6 +27,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Exercise> filteredExercises;
+    private final FilteredList<Lesson> filteredLessons;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -40,6 +42,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredExercises = new FilteredList<>(this.addressBook.getExerciseList());
+        filteredLessons = new FilteredList<>(this.addressBook.getLessonList());
     }
 
     public ModelManager() {
@@ -102,6 +105,11 @@ public class ModelManager implements Model {
     @Override
     public void deletePerson(Person target) {
         addressBook.removePerson(target);
+    }
+
+    @Override
+    public void deleteExercise(Exercise target) {
+        addressBook.removeExercise(target);
     }
 
     @Override
@@ -181,13 +189,31 @@ public class ModelManager implements Model {
      */
     public void addLesson(Lesson lesson) {
         addressBook.addLesson(lesson);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredLessonList(PREDICATE_SHOW_ALL_LESSONS);
     }
 
     @Override
     public boolean hasLesson(Lesson lesson) {
         requireNonNull(lesson);
         return addressBook.hasLesson(lesson);
+    }
+
+    @Override
+    public boolean hasSlot(Slot slot) {
+        requireNonNull(slot);
+        return addressBook.hasSlot(slot);
+    }
+
+    @Override
+    public boolean hasOverlappingSlot(Slot slot) {
+        requireNonNull(slot);
+        return addressBook.hasOverlappingDurationInSlot(slot);
+    }
+
+    @Override
+    public void addSlotToTimetable(Slot slot) {
+        addressBook.addSlotToTimetable(slot);
+        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
 
@@ -211,6 +237,15 @@ public class ModelManager implements Model {
         return filteredExercises;
     }
 
+    /**
+     * Returns an unmodifiable view of the list of {@code Lesson} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Lesson> getFilteredLessonList() {
+        return filteredLessons;
+    }
+
     @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
@@ -221,6 +256,12 @@ public class ModelManager implements Model {
     public void updateFilteredExerciseList(Predicate<Exercise> predicate) {
         requireNonNull(predicate);
         filteredExercises.setPredicate(predicate);
+    }
+
+    @Override
+    public void updateFilteredLessonList(Predicate<Lesson> predicate) {
+        requireNonNull(predicate);
+        filteredLessons.setPredicate(predicate);
     }
 
     @Override

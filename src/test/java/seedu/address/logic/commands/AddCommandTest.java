@@ -24,6 +24,7 @@ import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
+import seedu.address.model.person.Slot;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddCommandTest {
@@ -192,7 +193,27 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean hasSlot(Slot slot) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasOverlappingSlot(Slot slot) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addSlotToTimetable(Slot slot) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deletePerson(Person target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteExercise(Exercise target) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -212,12 +233,22 @@ public class AddCommandTest {
         }
 
         @Override
+        public ObservableList<Lesson> getFilteredLessonList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void updateFilteredPersonList(Predicate<Person> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void updateFilteredExerciseList(Predicate<Exercise> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredLessonList(Predicate<Lesson> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }

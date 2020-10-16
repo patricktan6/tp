@@ -9,6 +9,7 @@ import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
+import seedu.address.model.person.Slot;
 
 /**
  * The API of the Model component.
@@ -23,6 +24,9 @@ public interface Model {
      * {@code Predicate} that always evaluate to true
      */
     Predicate<Exercise> PREDICATE_SHOW_ALL_EXERCISES = unused -> true;
+
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Lesson> PREDICATE_SHOW_ALL_LESSONS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -76,6 +80,12 @@ public interface Model {
     void deletePerson(Person target);
 
     /**
+     * Deletes the given exercise.
+     * The exercise must exist in fitNUS.
+     */
+    void deleteExercise(Exercise target);
+
+    /**
      * Adds the given person.
      * {@code person} must not already exist in the address book.
      */
@@ -98,6 +108,9 @@ public interface Model {
      */
     ObservableList<Exercise> getFilteredExerciseList();
 
+    /** Returns an unmodifiable view of the filtered lesson list */
+    ObservableList<Lesson> getFilteredLessonList();
+
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      *
@@ -111,6 +124,12 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredExerciseList(Predicate<Exercise> predicate);
+
+    /**
+     * Updates the filter of the filtered lesson list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredLessonList(Predicate<Lesson> predicate);
 
     /**
      * Returns true if a exercise with the same details as {@code exercise} exists in fitNUS.
@@ -134,6 +153,9 @@ public interface Model {
     boolean checkBounds(int toView);
 
     String listRoutines();
+    boolean hasSlot(Slot slot);
+    boolean hasOverlappingSlot(Slot slot);
+    void addSlotToTimetable(Slot slot);
 
     void addHeight(int height);
 

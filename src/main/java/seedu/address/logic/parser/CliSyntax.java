@@ -14,5 +14,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_ROUTINE = new Prefix("r/");
     public static final Prefix PREFIX_HEIGHT = new Prefix("h/");
     public static final Prefix PREFIX_WEIGHT = new Prefix("w/");
+    public static final Prefix PREFIX_DAY = new Prefix("d/");
+    public static final Prefix PREFIX_TIME = new Prefix("T/");
 
 }
