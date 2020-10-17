@@ -67,7 +67,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     public double getBmi() {
-        return weight / Math.pow(((double) (height / 100)), 2);
+        return weight / Math.pow((height / 100.0), 2);
     }
 
     //// list overwrite operations
