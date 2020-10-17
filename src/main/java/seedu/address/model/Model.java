@@ -15,10 +15,14 @@ import seedu.address.model.person.Slot;
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
 
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Exercise> PREDICATE_SHOW_ALL_EXERCISES = unused -> true;
 
     /** {@code Predicate} that always evaluate to true */
@@ -59,7 +63,9 @@ public interface Model {
      */
     void setAddressBook(ReadOnlyAddressBook addressBook);
 
-    /** Returns the AddressBook */
+    /**
+     * Returns the AddressBook
+     */
     ReadOnlyAddressBook getAddressBook();
 
     /**
@@ -92,10 +98,14 @@ public interface Model {
      */
     void setPerson(Person target, Person editedPerson);
 
-    /** Returns an unmodifiable view of the filtered person list */
+    /**
+     * Returns an unmodifiable view of the filtered person list
+     */
     ObservableList<Person> getFilteredPersonList();
 
-    /** Returns an unmodifiable view of the filtered exercise list */
+    /**
+     * Returns an unmodifiable view of the filtered exercise list
+     */
     ObservableList<Exercise> getFilteredExerciseList();
 
     /** Returns an unmodifiable view of the filtered lesson list */
@@ -103,12 +113,14 @@ public interface Model {
 
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
     /**
      * Updates the filter of the filtered exercise list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredExerciseList(Predicate<Exercise> predicate);
@@ -131,14 +143,23 @@ public interface Model {
     void addExercise(Exercise exercise);
 
     void addRoutine(Routine routine);
+
     boolean hasRoutine(Routine r);
+
     void addExerciseToRoutine(Routine r, Exercise e);
+
     String viewRoutine(int index);
+
     boolean checkBounds(int toView);
+
     String listRoutines();
     boolean hasSlot(Slot slot);
     boolean hasOverlappingSlot(Slot slot);
     void addSlotToTimetable(Slot slot);
+
+    void addHeight(int height);
+
+    void addWeight(int weight);
 
     /**
      * Returns true if a lesson with the same details as {@code lesson} exists in timetable.

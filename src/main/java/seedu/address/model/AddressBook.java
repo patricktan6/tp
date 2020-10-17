@@ -26,6 +26,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniqueExerciseList exercises;
     private final UniqueRoutineList routines;
     private final UniqueLessonList lessons;
+    private int height;
+    private int weight;
     private final Timetable timetable;
 
     /*
@@ -33,7 +35,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
      *
      * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
-     *   among constructors.
+     * among constructors.
      */
     {
         persons = new UniquePersonList();
@@ -43,7 +45,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         timetable = new Timetable();
     }
 
-    public AddressBook() {}
+    public AddressBook() {
+    }
 
     /**
      * Creates an AddressBook using the Persons in the {@code toBeCopied}
@@ -51,6 +54,20 @@ public class AddressBook implements ReadOnlyAddressBook {
     public AddressBook(ReadOnlyAddressBook toBeCopied) {
         this();
         resetData(toBeCopied);
+    }
+
+    //// user-level operations
+
+    public void addHeight(int height) {
+        this.height = height;
+    }
+
+    public void addWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public double getBmi() {
+        return weight / Math.pow(((double) (height / 100)), 2);
     }
 
     //// list overwrite operations
@@ -179,6 +196,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public String viewRoutine(int index) {
         return routines.viewRoutine(index);
     }
+
     /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
      * {@code target} must exist in the address book.
@@ -243,6 +261,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Checks the index given is within the bounds of Routine.
+     *
      * @param index index that is input by user.
      * @return False if out of bounds.
      */
@@ -253,6 +272,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Lists out all of the Routines that fitNUS has.
+     *
      * @return String containing all the Routines.
      */
     public String listRoutines() {
@@ -261,6 +281,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Adds an existing Exercise in fitNUS to an existing Routine.
+     *
      * @param r Existing Routine.
      * @param e Existing Exercise.
      */
