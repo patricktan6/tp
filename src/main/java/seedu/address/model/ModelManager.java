@@ -177,8 +177,19 @@ public class ModelManager implements Model {
         return addressBook.listRoutines();
     }
 
+    @Override
+    public void addHeight(int height) {
+        addressBook.addHeight(height);
+    }
+
+    @Override
+    public void addWeight(int weight) {
+        addressBook.addWeight(weight);
+    }
+
     /**
      * Adds a Lesson into fitNUS.
+     *
      * @param lesson Lesson object that is to be added to fitNUS.
      */
     public void addLesson(Lesson lesson) {
