@@ -1,7 +1,5 @@
 package seedu.address.model.person;
 
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
-
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -15,7 +13,7 @@ public class Routine extends Activity {
      */
     public Routine(Name name) {
         super(name);
-        this.exercises = new HashSet<Exercise>();
+        this.exercises = new HashSet<>();
     }
 
     public Set<Exercise> getExercises() {

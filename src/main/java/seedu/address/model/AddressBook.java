@@ -8,7 +8,6 @@ import javafx.collections.ObservableList;
 import seedu.address.model.person.Activity;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
-import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
@@ -322,6 +321,10 @@ public class AddressBook implements ReadOnlyAddressBook {
         routines.addExercise(retrievedRoutine, retrievedExercise);
     }
 
+    /**
+     * Adds a Slot to the Timetable in fitNUS.
+     * @param slot The slot to be added.
+     */
     public void addSlotToTimetable(Slot slot) {
         Activity activity = slot.getActivity();
         if (activity instanceof Routine) {

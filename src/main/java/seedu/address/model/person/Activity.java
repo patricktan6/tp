@@ -6,6 +6,10 @@ public abstract class Activity {
 
     protected final Name name;
 
+    /**
+     * Constructs an Activity object.
+     * @param name The name of the activity.
+     */
     public Activity(Name name) {
         requireNonNull(name);
         this.name = name;
