@@ -7,7 +7,7 @@ import seedu.address.logic.commands.ExerciseDeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new DeleteCommand object
+ * Parses input arguments and creates a new ExerciseDeleteCommand object
  */
 public class ExerciseDeleteCommandParser implements Parser<ExerciseDeleteCommand> {
 

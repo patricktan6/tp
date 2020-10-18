@@ -10,14 +10,14 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.Exercise;
+import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Name;
 import seedu.address.model.tag.Tag;
 
 /**
- * Jackson-friendly version of {@link Exercise}.
+ * Jackson-friendly version of {@link Lesson}.
  */
-class JsonAdaptedExercise {
+class JsonAdaptedLesson {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Exercise's %s field is missing!";
 
@@ -25,11 +25,11 @@ class JsonAdaptedExercise {
     private final List<JsonAdaptedTag> tagged = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonAdaptedExercise} with the given person details.
+     * Constructs a {@code JsonAdaptedLesson} with the given person details.
      */
     @JsonCreator
-    public JsonAdaptedExercise(@JsonProperty("name") String name,
-                             @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
+    public JsonAdaptedLesson(@JsonProperty("name") String name,
+                               @JsonProperty("tagged") List<JsonAdaptedTag> tagged) {
         this.name = name;
         if (tagged != null) {
             this.tagged.addAll(tagged);
@@ -37,9 +37,9 @@ class JsonAdaptedExercise {
     }
 
     /**
-     * Converts a given {@code Exercise} into this class for Jackson use.
+     * Converts a given {@code Lesson} into this class for Jackson use.
      */
-    public JsonAdaptedExercise(Exercise source) {
+    public JsonAdaptedLesson(Lesson source) {
         name = source.getName().fullName;
         tagged.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
@@ -47,14 +47,14 @@ class JsonAdaptedExercise {
     }
 
     /**
-     * Converts this Jackson-friendly adapted exercise object into the model's {@code Exercise} object.
+     * Converts this Jackson-friendly adapted lesson object into the model's {@code Lesson} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted exercise.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted lesson.
      */
-    public Exercise toModelType() throws IllegalValueException {
-        final List<Tag> exerciseTags = new ArrayList<>();
+    public Lesson toModelType() throws IllegalValueException {
+        final List<Tag> lessonTags = new ArrayList<>();
         for (JsonAdaptedTag tag : tagged) {
-            exerciseTags.add(tag.toModelType());
+            lessonTags.add(tag.toModelType());
         }
 
         if (name == null) {
@@ -65,8 +65,8 @@ class JsonAdaptedExercise {
         }
         final Name modelName = new Name(name);
 
-        final Set<Tag> modelTags = new HashSet<>(exerciseTags);
-        return new Exercise(modelName, modelTags);
+        final Set<Tag> modelTags = new HashSet<>(lessonTags);
+        return new Lesson(modelName, modelTags);
     }
 
 }
