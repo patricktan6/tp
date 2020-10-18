@@ -5,8 +5,10 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.person.Activity;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
+import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
@@ -198,10 +200,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         routines.add(routine);
     }
 
-    public void addSlotToTimetable(Slot slot) {
-        timetable.addSlot(slot);
-    }
-
     public String viewRoutine(int index) {
         return routines.viewRoutine(index);
     }
@@ -323,4 +321,20 @@ public class AddressBook implements ReadOnlyAddressBook {
         Routine retrievedRoutine = routines.retrieveRoutine(r);
         routines.addExercise(retrievedRoutine, retrievedExercise);
     }
+
+    public void addSlotToTimetable(Slot slot) {
+        Activity activity = slot.getActivity();
+        if (activity instanceof Routine) {
+            Routine r = (Routine) activity;
+            Routine retrievedRoutine = routines.retrieveRoutine(r);
+            Slot slotToAdd = new Slot(retrievedRoutine, slot.getDay(), slot.getDuration());
+            timetable.addSlot(slotToAdd);
+        } else {
+            Lesson l = (Lesson) activity;
+            Lesson retrievedLesson = lessons.retrieveLesson(l);
+            Slot slotToAdd = new Slot(retrievedLesson, slot.getDay(), slot.getDuration());
+            timetable.addSlot(slotToAdd);
+        }
+    }
+
 }

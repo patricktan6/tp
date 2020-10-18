@@ -1,18 +1,22 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROUTINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Day;
+import seedu.address.model.person.Duration;
+import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
 
-public class TimetableAddSlotCommand extends Command {
-    public static final String COMMAND_WORD = "timetable_add";
+public class TimetableAddRoutineCommand extends Command {
+    public static final String COMMAND_WORD = "timetable_add_routine";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a Slot to the timetable in fitNUS. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a Routine to the timetable in fitNUS. "
             + "Parameters: "
             + PREFIX_ROUTINE + "ROUTINE_NAME "
             + PREFIX_DAY + "DAY"
@@ -28,36 +32,47 @@ public class TimetableAddSlotCommand extends Command {
     public static final String MESSAGE_DUPLICATE_SLOT = "This slot already exists in your timetable";
     public static final String MESSAGE_OVERLAP_SLOT = "This slot overlaps with another slot in your timetable";
 
-    private final Slot slotToAdd;
+    private final Routine routine;
+
+    private final Day day;
+
+    private final Duration duration;
 
     /**
      * Creates an RoutineAddCommand to add the specified {@code Routine}
      */
-    public TimetableAddSlotCommand(Slot slot) {
-        requireNonNull(slot);
-        slotToAdd = slot;
+    public TimetableAddRoutineCommand(Routine routine, Day day, Duration duration) {
+        requireAllNonNull(routine, day, duration);
+        this.routine = routine;
+        this.day = day;
+        this.duration = duration;
     }
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (!model.hasRoutine(slotToAdd.getRoutine())) {
+        if (!model.hasRoutine(routine)) {
             throw new CommandException(MESSAGE_MISSING_ROUTINE);
-        } else if (model.hasSlot(slotToAdd)) {
+        }
+
+        Slot slot = new Slot(routine, day, duration);
+        if (model.hasSlot(slot)) {
             throw new CommandException(MESSAGE_DUPLICATE_SLOT);
-        } else if (model.hasOverlappingSlot(slotToAdd)) {
+        } else if (model.hasOverlappingSlot(slot)) {
             throw new CommandException(MESSAGE_OVERLAP_SLOT);
         }
 
-        model.addSlotToTimetable(slotToAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, slotToAdd));
+        model.addSlotToTimetable(slot);
+        return new CommandResult(String.format(MESSAGE_SUCCESS, slot));
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof TimetableAddSlotCommand // instanceof handles nulls
-                && slotToAdd.equals(((TimetableAddSlotCommand) other).slotToAdd));
+                || (other instanceof TimetableAddRoutineCommand // instanceof handles nulls
+                && routine.equals(((TimetableAddRoutineCommand) other).routine)
+                && day.equals(((TimetableAddRoutineCommand) other).day)
+                && duration.equals(((TimetableAddRoutineCommand) other).duration));
     }
 }

@@ -13,16 +13,16 @@ import seedu.address.model.person.exceptions.RoutineNotFoundException;
 
 /**
  * A list of routines that enforces uniqueness between its elements and does not allow nulls.
- * A routine is considered unique by comparing using {@code Routine#isSameRoutine(Routine)}.
+ * A routine is considered unique by comparing using {@code Routine#isSameActivity(Activity)}.
  * As such, adding and updating of
- * routines uses Routine#isSameRoutine(Routine) for equality
+ * routines uses Routine#isSameActivity(Activity) for equality
  * so as to ensure that the routine being added or updated is unique in terms of identity in the UniqueRoutineList.
  * However, the removal of an routine uses Routine#equals(Object) so
  * as to ensure that the routine with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
- * @see Routine#isSameRoutine(Routine)
+ * @see Routine#isSameActivity(Activity)
  */
 public class UniqueRoutineList implements Iterable<Routine> {
 
@@ -35,7 +35,7 @@ public class UniqueRoutineList implements Iterable<Routine> {
      */
     public boolean contains(Routine toCheck) {
         requireNonNull(toCheck);
-        return internalList.stream().anyMatch(toCheck::isSameRoutine);
+        return internalList.stream().anyMatch(toCheck::isSameActivity);
     }
 
     /**
@@ -61,7 +61,7 @@ public class UniqueRoutineList implements Iterable<Routine> {
             throw new RoutineNotFoundException();
         } else {
             for (Routine routine : internalList) {
-                if (routine.isSameRoutine(r)) {
+                if (routine.isSameActivity(r)) {
                     routine.addExercise(exercise);
                     break;
                 }
@@ -105,7 +105,7 @@ public class UniqueRoutineList implements Iterable<Routine> {
             throw new RoutineNotFoundException();
         }
 
-        if (!target.isSameRoutine(editedRoutine) && contains(editedRoutine)) {
+        if (!target.isSameActivity(editedRoutine) && contains(editedRoutine)) {
             throw new DuplicateRoutineException();
         }
 
@@ -180,7 +180,7 @@ public class UniqueRoutineList implements Iterable<Routine> {
     private boolean routinesAreUnique(List<Routine> routines) {
         for (int i = 0; i < routines.size() - 1; i++) {
             for (int j = i + 1; j < routines.size(); j++) {
-                if (routines.get(i).isSameRoutine(routines.get(j))) {
+                if (routines.get(i).isSameActivity(routines.get(j))) {
                     return false;
                 }
             }
@@ -195,7 +195,7 @@ public class UniqueRoutineList implements Iterable<Routine> {
      */
     public Routine retrieveRoutine(Routine r) {
         for (Routine routine : internalList) {
-            if (routine.isSameRoutine(r)) {
+            if (routine.isSameActivity(r)) {
                 return routine;
             }
         }

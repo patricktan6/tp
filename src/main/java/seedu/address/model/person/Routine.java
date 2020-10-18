@@ -6,24 +6,16 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class Routine {
+public class Routine extends Activity {
 
-
-    // Identity fields
-    private final Name name;
     private final Set<Exercise> exercises;
 
     /**
      * Every field must be present and not null.
      */
     public Routine(Name name) {
-        requireAllNonNull(name);
-        this.name = name;
+        super(name);
         this.exercises = new HashSet<Exercise>();
-    }
-
-    public Name getName() {
-        return name;
     }
 
     public Set<Exercise> getExercises() {
@@ -40,21 +32,26 @@ public class Routine {
 
     /**
      * Returns true if both routines of the same name have at least one other identity field that is the same.
-     * This defines a weaker notion of equality between two persons.
+     * This defines a weaker notion of equality between two routines.
      */
-    public boolean isSameRoutine(Routine otherRoutine) {
-        if (otherRoutine == this) {
+    @Override
+    public boolean isSameActivity(Activity otherActivity) {
+        if (otherActivity == this) {
             return true;
         }
 
-        return otherRoutine != null
-                && otherRoutine.getName().equals(getName());
+        if (!(otherActivity instanceof Routine)) {
+            return false;
+        }
+
+        Routine otherRoutine = (Routine) otherActivity;
+        return otherRoutine.getName().equals(getName());
     }
 
 
     /**
-     * Returns true if both persons have the same identity and data fields.
-     * This defines a stronger notion of equality between two persons.
+     * Returns true if both routines have the same identity and data fields.
+     * This defines a stronger notion of equality between two routines.
      */
     @Override
     public boolean equals(Object other) {

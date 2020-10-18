@@ -13,6 +13,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
+import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
@@ -219,7 +220,6 @@ public class ModelManager implements Model {
         addressBook.addSlotToTimetable(slot);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
-
 
     //=========== Filtered Person List Accessors =============================================================
     /**

@@ -6,7 +6,7 @@ import java.util.Objects;
 
 public class Slot {
 
-    private final Routine routine;
+    private final Activity activity;
 
     private final Day day;
 
@@ -14,19 +14,19 @@ public class Slot {
 
     /**
      * Constructs a new Slot object.
-     * @param routine The routine to be added to timetable.
+     * @param activity The activity to be added to timetable.
      * @param day The day to add to.
      * @param duration The duration to input in the timetable.
      */
-    public Slot(Routine routine, Day day, Duration duration) {
-        requireAllNonNull(routine, day, duration);
-        this.routine = routine;
+    public Slot(Activity activity, Day day, Duration duration) {
+        requireAllNonNull(activity, day, duration);
+        this.activity = activity;
         this.day = day;
         this.duration = duration;
     }
 
-    public Routine getRoutine() {
-        return routine;
+    public Activity getActivity() {
+        return activity;
     }
 
     public Day getDay() {
@@ -76,7 +76,7 @@ public class Slot {
         }
 
         Slot otherSlot = (Slot) other;
-        return otherSlot.getRoutine().equals(routine)
+        return otherSlot.getActivity().equals(activity)
                 && otherSlot.getDay().equals(day)
                 && otherSlot.getDuration().isSameDuration(duration);
     }
@@ -84,11 +84,11 @@ public class Slot {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(routine, day, duration);
+        return Objects.hash(activity, day, duration);
     }
 
     @Override
     public String toString() {
-        return routine.getName() + " on " + day.toString() + " from " + duration.toString();
+        return activity.getName() + " on " + day.toString() + " from " + duration.toString();
     }
 }
