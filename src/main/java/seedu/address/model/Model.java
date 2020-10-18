@@ -150,19 +150,41 @@ public interface Model {
      */
     void addExercise(Exercise exercise);
 
+    /**
+     * Adds the given routine.
+     * {@code routine} must not already exist in fitNUS.
+     */
     void addRoutine(Routine routine);
 
+    /**
+     * Returns true if a routine with the same identity as {@code routine} exists in fitNUS.
+     */
     boolean hasRoutine(Routine r);
 
+    /**
+     * Adds the given exercise to the given routine.
+     * {@code r} must already exist in fitNUS.
+     * {@code e} must already exist in fitNUS.
+     */
     void addExerciseToRoutine(Routine r, Exercise e);
 
-    String viewRoutine(int index);
-
-    boolean checkBounds(int toView);
-
+    /**
+     * List out all the routines in fitNUS.
+     */
     String listRoutines();
 
+    /**
+     * Updates the filter of the filtered routine list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
     void updateFilteredRoutineList(Predicate<Routine> predicate);
+
+    /**
+     * Deletes the given person.
+     * The person must exist in the address book.
+     */
+    void deleteRoutine(Routine target);
 
     boolean hasSlot(Slot slot);
     boolean hasOverlappingSlot(Slot slot);
@@ -171,7 +193,6 @@ public interface Model {
     void addHeight(int height);
 
     void addWeight(int weight);
-
 
     /**
      * Returns true if a lesson with the same details as {@code lesson} exists in timetable.
@@ -184,5 +205,8 @@ public interface Model {
      */
     void addLesson(Lesson lesson);
 
+    /**
+     * Returns an unmodifiable view of the filtered person list
+     */
     ObservableList<Routine> getFilteredRoutineList();
 }

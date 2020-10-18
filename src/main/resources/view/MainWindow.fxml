@@ -60,6 +60,13 @@
           <StackPane fx:id="exerciseListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
         </VBox>
 
+        <VBox fx:id="routineList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
+          <padding>
+            <Insets top="10" right="10" bottom="10" left="10" />
+          </padding>
+          <StackPane fx:id="routineListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+        </VBox>
+
         <VBox fx:id="lessonList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
           <padding>
             <Insets top="10" right="10" bottom="10" left="10" />

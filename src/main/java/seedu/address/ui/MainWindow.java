@@ -34,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     private PersonListPanel personListPanel;
     private ExerciseListPanel exerciseListPanel;
     private LessonListPanel lessonListPanel;
+    private RoutineListPanel routineListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -45,6 +46,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane personListPanelPlaceholder;
+
+    @FXML
+    private StackPane routineListPanelPlaceholder;
 
     @FXML
     private StackPane exerciseListPanelPlaceholder;
@@ -135,6 +139,9 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        routineListPanel = new RoutineListPanel(logic.getFilteredRoutineList());
+        routineListPanelPlaceholder.getChildren().add(routineListPanel.getRoot());
     }
 
     /**

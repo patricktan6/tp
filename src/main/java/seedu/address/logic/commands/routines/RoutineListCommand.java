@@ -1,8 +1,10 @@
-package seedu.address.logic.commands;
-
-import seedu.address.model.Model;
+package seedu.address.logic.commands.routines;
 
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ROUTINES;
+
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
+import seedu.address.model.Model;
 
 /**
  * Format full help instructions for every command for display.
