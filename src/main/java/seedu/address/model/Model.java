@@ -86,6 +86,12 @@ public interface Model {
     void deleteExercise(Exercise target);
 
     /**
+     * Deletes the given lesson.
+     * The lesson must exist in fitNUS.
+     */
+    void deleteLesson(Lesson target);
+
+    /**
      * Adds the given person.
      * {@code person} must not already exist in the address book.
      */

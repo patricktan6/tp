@@ -67,7 +67,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     public double getBmi() {
-        return weight / Math.pow(((double) (height / 100)), 2);
+        return weight / Math.pow((height / 100.0), 2);
     }
 
     //// list overwrite operations
@@ -222,6 +222,14 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removeExercise(Exercise key) {
         exercises.remove(key);
+    }
+
+    /**
+     * Removes {@code key} from {@code fitNUS}.
+     * {@code key} must exist in fitNUS.
+     */
+    public void removeLesson(Lesson key) {
+        lessons.remove(key);
     }
 
     //// util methods
