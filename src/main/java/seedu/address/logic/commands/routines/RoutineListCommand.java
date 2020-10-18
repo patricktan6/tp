@@ -1,5 +1,9 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.routines;
 
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ROUTINES;
+
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
 
 /**
@@ -18,6 +22,9 @@ public class RoutineListCommand extends Command {
     public CommandResult execute(Model model) {
 
         String routineList = model.listRoutines();
+        model.updateFilteredExerciseList(unused -> false);
+        model.updateFilteredPersonList(unused -> false);
+        model.updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
         return new CommandResult(SHOWING_LIST_MESSAGE + "\n" + routineList);
     }
 }

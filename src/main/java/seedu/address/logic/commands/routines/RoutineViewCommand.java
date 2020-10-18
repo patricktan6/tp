@@ -1,9 +1,15 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.routines;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.List;
+
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Routine;
 
 /**
  * Adds an Routine to fitNUS.
@@ -22,12 +28,12 @@ public class RoutineViewCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Routine requested: %1$s";
     public static final String MESSAGE_OUT_OF_BOUNDS_ROUTINE = "This routine index is out of bounds!";
 
-    private final int toView;
+    private final Index toView;
 
     /**
      * Creates an RoutineAddCommand to add the specified {@code Routine}
      */
-    public RoutineViewCommand(int index) {
+    public RoutineViewCommand(Index index) {
         requireNonNull(index);
         toView = index;
     }
@@ -35,13 +41,14 @@ public class RoutineViewCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        List<Routine> lastShownList = model.getFilteredRoutineList();
 
-        if (!model.checkBounds(toView)) {
+        if (toView.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(MESSAGE_OUT_OF_BOUNDS_ROUTINE);
-        } else {
-            String routineMessage = model.viewRoutine(toView);
-            return new CommandResult(String.format(MESSAGE_SUCCESS, routineMessage));
         }
+
+        Routine routineToView = lastShownList.get(toView.getZeroBased());
+        return new CommandResult(String.format(MESSAGE_SUCCESS, routineToView));
     }
 
     @Override

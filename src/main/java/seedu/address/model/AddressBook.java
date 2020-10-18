@@ -26,6 +26,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniqueExerciseList exercises;
     private final UniqueRoutineList routines;
     private final UniqueLessonList lessons;
+    private int height;
+    private int weight;
     private final Timetable timetable;
 
     /*
@@ -33,7 +35,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * between constructors. See https://docs.oracle.com/javase/tutorial/java/javaOO/initial.html
      *
      * Note that non-static init blocks are not recommended to use. There are other ways to avoid duplication
-     *   among constructors.
+     * among constructors.
      */
     {
         persons = new UniquePersonList();
@@ -43,7 +45,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         timetable = new Timetable();
     }
 
-    public AddressBook() {}
+    public AddressBook() {
+    }
 
     /**
      * Creates an AddressBook using the Persons in the {@code toBeCopied}
@@ -51,6 +54,20 @@ public class AddressBook implements ReadOnlyAddressBook {
     public AddressBook(ReadOnlyAddressBook toBeCopied) {
         this();
         resetData(toBeCopied);
+    }
+
+    //// user-level operations
+
+    public void addHeight(int height) {
+        this.height = height;
+    }
+
+    public void addWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public double getBmi() {
+        return weight / Math.pow((height / 100.0), 2);
     }
 
     //// list overwrite operations
@@ -72,6 +89,22 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the contents of routines list with {@code routines}.
+     * {@code routines} must not contain duplicate routines.
+     */
+    public void setRoutines(List<Routine> routines) {
+        this.routines.setRoutines(routines);
+    }
+
+    /**
+     * Replaces the contents of lesson list with {@code lessons}.
+     * {@code lessons} must not contain duplicate lessons.
+     */
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons.setLessons(lessons);
+    }
+
+    /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
     public void resetData(ReadOnlyAddressBook newData) {
@@ -79,6 +112,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
         setPersons(newData.getPersonList());
         setExercises(newData.getExerciseList());
+        setLessons(newData.getLessonList());
+        setRoutines(newData.getRoutineList());
     }
 
     //// person-level operations
@@ -170,6 +205,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public String viewRoutine(int index) {
         return routines.viewRoutine(index);
     }
+
     /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
      * {@code target} must exist in the address book.
@@ -197,12 +233,33 @@ public class AddressBook implements ReadOnlyAddressBook {
         exercises.remove(key);
     }
 
+    /**
+     * Removes {@code key} from {@code fitNUS}.
+     * {@code key} must exist in fitNUS.
+     */
+    public void removeLesson(Lesson key) {
+        lessons.remove(key);
+    }
+
+    /**
+     * Removes {@code key} from {@code fitNUS}.
+     * {@code key} must exist in fitNUS.
+     */
+    public void removeRoutine(Routine key) {
+        routines.remove(key);
+    }
+
     //// util methods
 
     @Override
     public String toString() {
         return persons.asUnmodifiableObservableList().size() + " persons";
         // TODO: refine later
+    }
+
+    @Override
+    public ObservableList<Routine> getRoutineList() {
+        return routines.asUnmodifiableObservableList();
     }
 
     @Override
@@ -213,6 +270,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Exercise> getExerciseList() {
         return exercises.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Lesson> getLessonList() {
+        return lessons.asUnmodifiableObservableList();
     }
 
     @Override
@@ -229,6 +291,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Checks the index given is within the bounds of Routine.
+     *
      * @param index index that is input by user.
      * @return False if out of bounds.
      */
@@ -239,6 +302,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Lists out all of the Routines that fitNUS has.
+     *
      * @return String containing all the Routines.
      */
     public String listRoutines() {
@@ -247,6 +311,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Adds an existing Exercise in fitNUS to an existing Routine.
+     *
      * @param r Existing Routine.
      * @param e Existing Exercise.
      */

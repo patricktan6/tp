@@ -9,7 +9,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.person.Exercise;
+import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Routine;
 
 /**
  * API of the Logic component
@@ -36,6 +38,12 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of exercises */
     ObservableList<Exercise> getFilteredExerciseList();
+
+    /** Returns an unmodifiable view of the filtered list of routines */
+    ObservableList<Routine> getFilteredRoutineList();
+
+    /** Returns an unmodifiable view of the filtered list of lessons */
+    ObservableList<Lesson> getFilteredLessonList();
 
     /**
      * Returns the user prefs' address book file path.

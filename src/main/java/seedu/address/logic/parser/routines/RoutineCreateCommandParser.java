@@ -1,11 +1,16 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.routines;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROUTINE;
 
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.RoutineCreateCommand;
+import seedu.address.logic.commands.routines.RoutineCreateCommand;
+import seedu.address.logic.parser.ArgumentMultimap;
+import seedu.address.logic.parser.ArgumentTokenizer;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Routine;
@@ -30,9 +35,7 @@ public class RoutineCreateCommandParser implements Parser<RoutineCreateCommand> 
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_ROUTINE).get());
-
         Routine routine = new Routine(name);
-
         return new RoutineCreateCommand(routine);
     }
 

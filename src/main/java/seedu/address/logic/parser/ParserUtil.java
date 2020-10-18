@@ -170,4 +170,22 @@ public class ParserUtil {
         return tagSet;
     }
 
+    /**
+     * Parses {@code String height} into a {@code int}.
+     */
+    public static int parseHeight(String height) {
+        requireNonNull(height);
+        String trimmedHeight = height.trim();
+        return Integer.parseInt(trimmedHeight);
+    }
+
+    /**
+     * Parses {@code String weight} into a {@code int}.
+     */
+    public static int parseWeight(String weight) {
+        requireNonNull(weight);
+        String trimmedWeight = weight.trim();
+        return Integer.parseInt(trimmedWeight);
+    }
+
 }

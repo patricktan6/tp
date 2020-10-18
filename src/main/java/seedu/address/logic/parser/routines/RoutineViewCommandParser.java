@@ -1,10 +1,15 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.routines;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.RoutineViewCommand;
+import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.routines.RoutineViewCommand;
+import seedu.address.logic.parser.ArgumentMultimap;
+import seedu.address.logic.parser.Parser;
+import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -20,11 +25,12 @@ public class RoutineViewCommandParser implements Parser<RoutineViewCommand> {
     public RoutineViewCommand parse(String args) throws ParseException {
 
         try {
-            int index = Integer.parseInt(args.substring(1));
+            Index index = ParserUtil.parseIndex(args);
             return new RoutineViewCommand(index);
         } catch (NumberFormatException e) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RoutineViewCommand.MESSAGE_USAGE));
         }
+
     }
 
     /**
