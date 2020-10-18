@@ -138,17 +138,17 @@ public class AddCommandTest {
         }
 
         @Override
-        public String viewRoutine(int index) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public boolean checkBounds(int toView) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public String listRoutines() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredRoutineList(Predicate<Routine> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteRoutine(Routine target) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -165,6 +165,11 @@ public class AddCommandTest {
         @Override
         public void addLesson(Lesson lesson) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Routine> getFilteredRoutineList() {
+            return null;
         }
 
         @Override

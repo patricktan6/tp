@@ -39,7 +39,7 @@ public class Routine {
     }
 
     /**
-     * Returns true if both persons of the same name have at least one other identity field that is the same.
+     * Returns true if both routines of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two persons.
      */
     public boolean isSameRoutine(Routine otherRoutine) {
@@ -50,6 +50,7 @@ public class Routine {
         return otherRoutine != null
                 && otherRoutine.getName().equals(getName());
     }
+
 
     /**
      * Returns true if both persons have the same identity and data fields.

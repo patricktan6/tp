@@ -121,6 +121,7 @@ public class UniqueRoutineList implements Iterable<Routine> {
         if (!internalList.remove(toRemove)) {
             throw new RoutineNotFoundException();
         }
+        internalList.remove(toRemove);
     }
 
     /**

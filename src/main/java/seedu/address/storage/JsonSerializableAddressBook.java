@@ -14,6 +14,7 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Routine;
 
 /**
  * An Immutable AddressBook that is serializable to JSON format.
@@ -22,10 +23,12 @@ import seedu.address.model.person.Person;
 class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
+    private static final String MESSAGE_DUPLICATE_ROUTINE = "Routines list contains duplicate routine(s).";
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedExercise> exercises = new ArrayList<>();
     private final List<JsonAdaptedLesson> lessons = new ArrayList<>();
+    private final List<JsonAdaptedRoutine> routines = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
@@ -33,10 +36,12 @@ class JsonSerializableAddressBook {
     @JsonCreator
     public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
                                        @JsonProperty("exercises") List<JsonAdaptedExercise> exercises,
-                                       @JsonProperty("lessons") List<JsonAdaptedLesson> lessons) {
+                                       @JsonProperty("lessons") List<JsonAdaptedLesson> lessons,
+                                       @JsonProperty("routines") List<JsonAdaptedRoutine> routines) {
         this.persons.addAll(persons);
         this.exercises.addAll(exercises);
         this.lessons.addAll(lessons);
+        this.routines.addAll(routines);
     }
 
     /**
@@ -48,6 +53,7 @@ class JsonSerializableAddressBook {
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
         exercises.addAll(source.getExerciseList().stream().map(JsonAdaptedExercise::new).collect(Collectors.toList()));
         lessons.addAll(source.getLessonList().stream().map(JsonAdaptedLesson::new).collect(Collectors.toList()));
+        routines.addAll(source.getRoutineList().stream().map(JsonAdaptedRoutine::new).collect(Collectors.toList()));
     }
 
     /**
@@ -77,6 +83,13 @@ class JsonSerializableAddressBook {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             }
             addressBook.addLesson(lesson);
+        }
+        for (JsonAdaptedRoutine jsonAdaptedRoutine : routines) {
+            Routine routine = jsonAdaptedRoutine.toModelType();
+            if (addressBook.hasRoutine(routine)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_ROUTINE);
+            }
+            addressBook.addRoutine(routine);
         }
         return addressBook;
     }

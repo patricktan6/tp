@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Routine;
 
 /**
  * Unmodifiable view of an address book
@@ -23,9 +24,14 @@ public interface ReadOnlyAddressBook {
     ObservableList<Exercise> getExerciseList();
 
     /**
+     * Returns an unmodifiable view of the routines list.
+     * This list will not contain any duplicate routines.
+     */
+    ObservableList<Routine> getRoutineList();
+
+    /**
      * Returns an unmodifiable view of the lessons list.
      * This list will not contain any duplicate lessons.
      */
     ObservableList<Lesson> getLessonList();
-
 }

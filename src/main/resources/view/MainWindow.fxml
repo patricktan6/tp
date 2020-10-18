@@ -57,12 +57,19 @@
                 <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
               </VBox>
 
-              <VBox fx:id="lessonList" minWidth="200" prefWidth="340" styleClass="pane-with-border">
-                <padding>
-                  <Insets bottom="10" left="10" right="10" top="10" />
-                </padding>
-                <StackPane fx:id="lessonListPanelPlaceholder" VBox.vgrow="ALWAYS" />
-              </VBox>
+        <VBox fx:id="routineList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
+          <padding>
+            <Insets top="10" right="10" bottom="10" left="10" />
+          </padding>
+          <StackPane fx:id="routineListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+        </VBox>
+
+        <VBox fx:id="lessonList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
+          <padding>
+            <Insets top="10" right="10" bottom="10" left="10" />
+          </padding>
+          <StackPane fx:id="lessonListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+        </VBox>
                </children>
             </HBox>
 

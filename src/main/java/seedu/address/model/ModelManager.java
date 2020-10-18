@@ -27,6 +27,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Exercise> filteredExercises;
+    private final FilteredList<Routine> filteredRoutine;
     private final FilteredList<Lesson> filteredLessons;
 
     /**
@@ -42,6 +43,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredExercises = new FilteredList<>(this.addressBook.getExerciseList());
+        filteredRoutine = new FilteredList<>(this.addressBook.getRoutineList());
         filteredLessons = new FilteredList<>(this.addressBook.getLessonList());
     }
 
@@ -118,6 +120,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void deleteRoutine(Routine target) {
+        addressBook.removeRoutine(target);
+    }
+
+    @Override
     public void addPerson(Person person) {
         addressBook.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
@@ -139,7 +146,8 @@ public class ModelManager implements Model {
     @Override
     public void addRoutine(Routine routine) {
         addressBook.addRoutine(routine);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
+        updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
     }
 
     @Override
@@ -151,7 +159,8 @@ public class ModelManager implements Model {
     @Override
     public void addExerciseToRoutine(Routine r, Exercise e) {
         addressBook.addExerciseToRoutine(r, e);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
+        updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
     }
 
     @Override
@@ -161,19 +170,9 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public String viewRoutine(int index) {
-        requireNonNull(index);
-        return addressBook.viewRoutine(index);
-    }
-
-    @Override
-    public boolean checkBounds(int index) {
-        requireNonNull(index);
-        return addressBook.checkBounds(index);
-    }
-
-    @Override
     public String listRoutines() {
+        updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
+        updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
         return addressBook.listRoutines();
     }
 
@@ -223,7 +222,14 @@ public class ModelManager implements Model {
 
 
     //=========== Filtered Person List Accessors =============================================================
-
+    /**
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Routine> getFilteredRoutineList() {
+        return filteredRoutine;
+    }
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
      * {@code versionedAddressBook}
@@ -240,6 +246,11 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Exercise> getFilteredExerciseList() {
         return filteredExercises;
+    }
+    @Override
+    public void updateFilteredRoutineList(Predicate<Routine> predicate) {
+        requireNonNull(predicate);
+        filteredRoutine.setPredicate(predicate);
     }
 
     /**

@@ -50,5 +50,10 @@
   "lessons" : [ {
     "name" : "CS2103T",
     "tagged" : [ ]
-  } ]
+  } ],
+  "routines" : [
+    {
+      "routineName" : "Knee Workout"
+    }
+  ]
 }

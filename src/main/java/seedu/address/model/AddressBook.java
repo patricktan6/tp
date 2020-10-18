@@ -89,6 +89,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the contents of routines list with {@code routines}.
+     * {@code routines} must not contain duplicate routines.
+     */
+    public void setRoutines(List<Routine> routines) {
+        this.routines.setRoutines(routines);
+    }
+
+    /**
      * Replaces the contents of lesson list with {@code lessons}.
      * {@code lessons} must not contain duplicate lessons.
      */
@@ -105,6 +113,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setPersons(newData.getPersonList());
         setExercises(newData.getExerciseList());
         setLessons(newData.getLessonList());
+        setRoutines(newData.getRoutineList());
     }
 
     //// person-level operations
@@ -232,12 +241,25 @@ public class AddressBook implements ReadOnlyAddressBook {
         lessons.remove(key);
     }
 
+    /**
+     * Removes {@code key} from {@code fitNUS}.
+     * {@code key} must exist in fitNUS.
+     */
+    public void removeRoutine(Routine key) {
+        routines.remove(key);
+    }
+
     //// util methods
 
     @Override
     public String toString() {
         return persons.asUnmodifiableObservableList().size() + " persons";
         // TODO: refine later
+    }
+
+    @Override
+    public ObservableList<Routine> getRoutineList() {
+        return routines.asUnmodifiableObservableList();
     }
 
     @Override

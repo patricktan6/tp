@@ -26,6 +26,8 @@ public interface Model {
     Predicate<Exercise> PREDICATE_SHOW_ALL_EXERCISES = unused -> true;
 
     /** {@code Predicate} that always evaluate to true */
+    Predicate<Routine> PREDICATE_SHOW_ALL_ROUTINES = unused -> true;
+
     Predicate<Lesson> PREDICATE_SHOW_ALL_LESSONS = unused -> true;
 
     /**
@@ -148,17 +150,42 @@ public interface Model {
      */
     void addExercise(Exercise exercise);
 
+    /**
+     * Adds the given routine.
+     * {@code routine} must not already exist in fitNUS.
+     */
     void addRoutine(Routine routine);
 
+    /**
+     * Returns true if a routine with the same identity as {@code routine} exists in fitNUS.
+     */
     boolean hasRoutine(Routine r);
 
+    /**
+     * Adds the given exercise to the given routine.
+     * {@code r} must already exist in fitNUS.
+     * {@code e} must already exist in fitNUS.
+     */
     void addExerciseToRoutine(Routine r, Exercise e);
 
-    String viewRoutine(int index);
-
-    boolean checkBounds(int toView);
-
+    /**
+     * List out all the routines in fitNUS.
+     */
     String listRoutines();
+
+    /**
+     * Updates the filter of the filtered routine list to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredRoutineList(Predicate<Routine> predicate);
+
+    /**
+     * Deletes the given person.
+     * The person must exist in the address book.
+     */
+    void deleteRoutine(Routine target);
+
     boolean hasSlot(Slot slot);
     boolean hasOverlappingSlot(Slot slot);
     void addSlotToTimetable(Slot slot);
@@ -177,4 +204,9 @@ public interface Model {
      * {@code lesson} must not already exist in timetable.
      */
     void addLesson(Lesson lesson);
+
+    /**
+     * Returns an unmodifiable view of the filtered person list
+     */
+    ObservableList<Routine> getFilteredRoutineList();
 }
