@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Exercise;
+import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 
@@ -28,4 +29,9 @@ public interface ReadOnlyAddressBook {
      */
     ObservableList<Routine> getRoutineList();
 
+    /**
+     * Returns an unmodifiable view of the lessons list.
+     * This list will not contain any duplicate lessons.
+     */
+    ObservableList<Lesson> getLessonList();
 }
