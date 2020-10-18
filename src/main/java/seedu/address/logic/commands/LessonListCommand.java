@@ -10,7 +10,7 @@ import seedu.address.model.Model;
  */
 public class LessonListCommand extends Command {
 
-    public static final String COMMAND_WORD = "lesson_list";
+    public static final String COMMAND_WORD = "list_lessons";
 
     public static final String MESSAGE_SUCCESS = "Listed all lessons";
 
@@ -19,8 +19,6 @@ public class LessonListCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredLessonList(PREDICATE_SHOW_ALL_LESSONS);
-        model.updateFilteredPersonList(unused -> false);
-        model.updateFilteredExerciseList(unused -> false);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
