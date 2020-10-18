@@ -20,6 +20,7 @@ public class ListCommand extends Command {
         requireNonNull(model);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         model.updateFilteredExerciseList(unused->false);
+        model.updateFilteredRoutineList(unused->false);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

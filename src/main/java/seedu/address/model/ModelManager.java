@@ -26,6 +26,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Exercise> filteredExercises;
+    private final FilteredList<Routine> filteredRoutine;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -40,6 +41,7 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredExercises = new FilteredList<>(this.addressBook.getExerciseList());
+        filteredRoutine = new FilteredList<>(this.addressBook.getRoutineList());
     }
 
     public ModelManager() {
@@ -126,7 +128,7 @@ public class ModelManager implements Model {
     @Override
     public void addRoutine(Routine routine) {
         addressBook.addRoutine(routine);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
     }
 
     @Override
@@ -181,7 +183,14 @@ public class ModelManager implements Model {
 
 
     //=========== Filtered Person List Accessors =============================================================
-
+    /**
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Routine> getFilteredRoutineList() {
+        return filteredRoutine;
+    }
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
      * {@code versionedAddressBook}
@@ -198,6 +207,11 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Exercise> getFilteredExerciseList() {
         return filteredExercises;
+    }
+    @Override
+    public void updateFilteredRoutineList(Predicate<Routine> predicate) {
+        requireNonNull(predicate);
+        filteredRoutine.setPredicate(predicate);
     }
 
     @Override

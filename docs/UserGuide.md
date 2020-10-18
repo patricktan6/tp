@@ -1,16 +1,22 @@
----
-layout: page
-title: User Guide
----
+#Introduction
 
-fitNUS is a **desktop app for managing your workout sessions and school timetable, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, fitNUS can get your scheduling tasks done faster than traditional GUI apps.
+fitNUS is tailored for **NUS students** that are interested in staying healthy and keeping fit. It is suitable for **all
+fitness levels** and is equipped with a **customisable timetable** for you to manage your time wisely and slot in your
+workout routines with ease.
+   
+fitNUS is  **optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, fitNUS can get your scheduling tasks done faster than traditional GUI apps.
 
-* Table of Contents
-{:toc}
+##Table of Contents
+
+<ol>
+<li> <a href="[Quick Start](#quick-start)">Quick Start</a> </li>
+<li>[Features](#features)</li>
+
+</ol>
 
 --------------------------------------------------------------------------------------------------------------------
-
-## Quick start
+<a name="quick-start"></a>
+## Quick start 
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
@@ -35,8 +41,8 @@ fitNUS is a **desktop app for managing your workout sessions and school timetabl
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
-
-## Features
+<a name="features"></a>
+## Features 
 
 ### Help: `help`
 

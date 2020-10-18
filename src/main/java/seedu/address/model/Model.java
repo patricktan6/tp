@@ -20,6 +20,9 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Exercise> PREDICATE_SHOW_ALL_EXERCISES = unused -> true;
 
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Routine> PREDICATE_SHOW_ALL_ROUTINES = unused -> true;
+
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -117,6 +120,7 @@ public interface Model {
     String viewRoutine(int index);
     boolean checkBounds(int toView);
     String listRoutines();
+    void updateFilteredRoutineList(Predicate<Routine> predicate);
 
     /**
      * Returns true if a lesson with the same details as {@code lesson} exists in timetable.
@@ -128,4 +132,6 @@ public interface Model {
      * {@code lesson} must not already exist in timetable.
      */
     void addLesson(Lesson lesson);
+
+    ObservableList<Routine> getFilteredRoutineList();
 }
