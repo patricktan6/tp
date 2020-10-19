@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.TimetableAddLessonCommand;
-import seedu.address.logic.commands.TimetableAddRoutineCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Day;
 import seedu.address.model.person.Duration;
