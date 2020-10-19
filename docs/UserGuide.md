@@ -16,7 +16,7 @@ fitNUS is  **optimized for use via a Command Line Interface** (CLI) while still 
 
 --------------------------------------------------------------------------------------------------------------------
 <a name="quick-start"></a>
-## Quick start 
+## Quick start
 
 1. Ensure you have Java `11` or above installed in your Computer.
 

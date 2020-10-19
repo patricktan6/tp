@@ -141,7 +141,7 @@ public class AddressBookParser {
 
         case AddWeightCommand.COMMAND_WORD:
             return new AddWeightCommandParser().parse(arguments);
-            
+
 
         case RoutineDeleteExerciseCommand.COMMAND_WORD:
             return new RoutineDeleteExerciseCommandParser().parse(arguments);
