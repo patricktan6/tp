@@ -4,6 +4,13 @@ import static java.util.Objects.requireNonNull;
 
 public abstract class Activity {
 
+    private static final Activity EMPTY_ACTIVITY = new Activity(new Name("Empty Activity")) {
+        @Override
+        public boolean isSameActivity(Activity otherActivity) {
+            return false;
+        }
+    };
+
     protected final Name name;
 
     /**
@@ -13,6 +20,10 @@ public abstract class Activity {
     public Activity(Name name) {
         requireNonNull(name);
         this.name = name;
+    }
+
+    public static Activity empty() {
+        return EMPTY_ACTIVITY;
     }
 
     public Name getName() {

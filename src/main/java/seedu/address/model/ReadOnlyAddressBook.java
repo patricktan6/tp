@@ -5,6 +5,7 @@ import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
+import seedu.address.model.person.Slot;
 
 /**
  * Unmodifiable view of an address book
@@ -34,4 +35,10 @@ public interface ReadOnlyAddressBook {
      * This list will not contain any duplicate lessons.
      */
     ObservableList<Lesson> getLessonList();
+
+    /**
+     * Returns an unmodifiable view of the slots list.
+     * This list will not contain any duplicate slots.
+     */
+    ObservableList<Slot> getSlotList();
 }

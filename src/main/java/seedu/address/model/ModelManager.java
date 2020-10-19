@@ -29,6 +29,7 @@ public class ModelManager implements Model {
     private final FilteredList<Exercise> filteredExercises;
     private final FilteredList<Routine> filteredRoutine;
     private final FilteredList<Lesson> filteredLessons;
+    private final FilteredList<Slot> filteredSlots;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -45,6 +46,7 @@ public class ModelManager implements Model {
         filteredExercises = new FilteredList<>(this.addressBook.getExerciseList());
         filteredRoutine = new FilteredList<>(this.addressBook.getRoutineList());
         filteredLessons = new FilteredList<>(this.addressBook.getLessonList());
+        filteredSlots = new FilteredList<>(this.addressBook.getSlotList());
     }
 
     public ModelManager() {
@@ -122,6 +124,11 @@ public class ModelManager implements Model {
     @Override
     public void deleteRoutine(Routine target) {
         addressBook.removeRoutine(target);
+    }
+
+    @Override
+    public void deleteSlotFromTimetable(Slot target) {
+        addressBook.removeSlotFromTimetable(target);
     }
 
     @Override
@@ -256,11 +263,7 @@ public class ModelManager implements Model {
     public ObservableList<Exercise> getFilteredExerciseList() {
         return filteredExercises;
     }
-    @Override
-    public void updateFilteredRoutineList(Predicate<Routine> predicate) {
-        requireNonNull(predicate);
-        filteredRoutine.setPredicate(predicate);
-    }
+
 
     /**
      * Returns an unmodifiable view of the list of {@code Lesson} backed by the internal list of
@@ -271,6 +274,16 @@ public class ModelManager implements Model {
         return filteredLessons;
     }
 
+    @Override
+    public ObservableList<Slot> getFilteredSlotList() {
+        return filteredSlots;
+    }
+
+    @Override
+    public void updateFilteredRoutineList(Predicate<Routine> predicate) {
+        requireNonNull(predicate);
+        filteredRoutine.setPredicate(predicate);
+    }
     @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);

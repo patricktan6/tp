@@ -2,6 +2,8 @@ package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 
+import javafx.collections.ObservableList;
+
 public class Timetable {
 
     private final UniqueSlotList slots;
@@ -36,5 +38,9 @@ public class Timetable {
 
     public void deleteSlot(Slot slot) {
         slots.remove(slot);
+    }
+
+    public ObservableList<Slot> getSlotList() {
+        return slots.asUnmodifiableObservableList();
     }
 }

@@ -13,6 +13,17 @@ public class Slot {
     private final Duration duration;
 
     /**
+     * Constructs a new Slot object with an empty Activity. This is used to identify the slot to delete in timetable.
+     * @param day The day of the slot.
+     * @param duration The timeslot.
+     */
+    public Slot(Day day, Duration duration) {
+        activity = Activity.empty();
+        this.day = day;
+        this.duration = duration;
+    }
+
+    /**
      * Constructs a new Slot object.
      * @param activity The activity to be added to timetable.
      * @param day The day to add to.

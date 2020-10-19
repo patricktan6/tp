@@ -25,6 +25,7 @@ import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ListExercisesCommand;
 import seedu.address.logic.commands.TimetableAddLessonCommand;
 import seedu.address.logic.commands.TimetableAddRoutineCommand;
+import seedu.address.logic.commands.TimetableDeleteSlotCommand;
 import seedu.address.logic.commands.routines.RoutineAddExerciseCommand;
 import seedu.address.logic.commands.routines.RoutineCreateCommand;
 import seedu.address.logic.commands.routines.RoutineDeleteCommand;
@@ -99,6 +100,9 @@ public class AddressBookParser {
         case RoutineCreateCommand.COMMAND_WORD:
             return new RoutineCreateCommandParser().parse(arguments);
 
+        case RoutineDeleteCommand.COMMAND_WORD:
+            return new RoutineDeleteCommandParser().parse(arguments);
+
         case RoutineViewCommand.COMMAND_WORD:
             return new RoutineViewCommandParser().parse(arguments);
 
@@ -123,14 +127,14 @@ public class AddressBookParser {
         case TimetableAddLessonCommand.COMMAND_WORD:
             return new TimetableAddLessonCommandParser().parse(arguments);
 
+        case TimetableDeleteSlotCommand.COMMAND_WORD:
+            return new TimetableDeleteSlotCommandParser().parse(arguments);
+
         case AddHeightCommand.COMMAND_WORD:
             return new AddHeightCommandParser().parse(arguments);
 
         case AddWeightCommand.COMMAND_WORD:
             return new AddWeightCommandParser().parse(arguments);
-
-        case RoutineDeleteCommand.COMMAND_WORD:
-            return new RoutineDeleteCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
