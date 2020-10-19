@@ -100,6 +100,6 @@ public class Slot {
 
     @Override
     public String toString() {
-        return activity.getName() + " on " + day.toString() + " from " + duration.toString();
+        return activity.getName() + " on " + day.toString() + " " + duration.toString();
     }
 }

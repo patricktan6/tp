@@ -18,6 +18,7 @@ import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
+import seedu.address.model.person.Slot;
 import seedu.address.storage.Storage;
 
 /**
@@ -77,8 +78,14 @@ public class LogicManager implements Logic {
         return model.getFilteredRoutineList();
     }
 
+    @Override
     public ObservableList<Lesson> getFilteredLessonList() {
         return model.getFilteredLessonList();
+    }
+
+    @Override
+    public ObservableList<Slot> getFilteredSlotList() {
+        return model.getFilteredSlotList();
     }
 
     @Override
