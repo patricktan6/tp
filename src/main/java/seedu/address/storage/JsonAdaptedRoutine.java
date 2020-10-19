@@ -72,7 +72,7 @@ class JsonAdaptedRoutine {
         for (Exercise exercise : modelExercise) {
             modelRoutine.addExercise(exercise);
         }
-        return new Routine(modelName);
+        return modelRoutine;
     }
 
 }
