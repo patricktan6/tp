@@ -220,6 +220,15 @@ public class ModelManager implements Model {
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
+    @Override
+    public Lesson retrieveLesson(Lesson lesson) {
+        return addressBook.retrieveLesson(lesson);
+    }
+
+    @Override
+    public Routine retrieveRoutine(Routine routine) {
+        return addressBook.retrieveRoutine(routine);
+    }
 
     //=========== Filtered Person List Accessors =============================================================
     /**

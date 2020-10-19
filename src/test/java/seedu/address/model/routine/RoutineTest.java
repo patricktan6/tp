@@ -20,19 +20,19 @@ public class RoutineTest {
     @Test
     public void isSameRoutine() {
         // same object -> returns true
-        assertTrue(UPPER_BODY.isSameRoutine(UPPER_BODY));
-        assertTrue(LEG_DAY.isSameRoutine(LEG_DAY));
+        assertTrue(UPPER_BODY.isSameActivity(UPPER_BODY));
+        assertTrue(LEG_DAY.isSameActivity(LEG_DAY));
 
         // null -> returns false
-        assertFalse(UPPER_BODY.isSameRoutine(null));
-        assertFalse(LEG_DAY.isSameRoutine(null));
+        assertFalse(UPPER_BODY.isSameActivity(null));
+        assertFalse(LEG_DAY.isSameActivity(null));
 
         // same Name, one has Exercise and the other does not -> returns true
         Routine editedRoutine = LEG_DAY;
         Name editedName = new Name("Leg Extensions");
         Exercise typicalExercise = new Exercise(editedName, new HashSet<>());
         editedRoutine.addExercise(typicalExercise);
-        assertTrue(LEG_DAY.isSameRoutine(editedRoutine));
+        assertTrue(LEG_DAY.isSameActivity(editedRoutine));
     }
 
     @Test

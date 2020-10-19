@@ -13,16 +13,16 @@ import seedu.address.model.person.exceptions.LessonNotFoundException;
 
 /**
  * A list of lessons that enforces uniqueness between its elements and does not allow nulls.
- * A lesson is considered unique by comparing using {@code Lesson#isSameLesson(Lesson)}.
+ * A lesson is considered unique by comparing using {@code Lesson#isSameActivity(Activity)}.
  * As such, adding and updating of
- * lessons uses Lesson#isSameLesson(Lesson) for equality
+ * lessons uses Lesson#isSameActivity(Activity) for equality
  * so as to ensure that the lesson being added or updated is unique in terms of identity in the UniqueLessonList.
  * However, the removal of a lesson uses Lesson#equals(Object) so
  * as to ensure that the lesson with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
- * @see Lesson#isSameLesson(Lesson)
+ * @see Lesson#isSameActivity(Activity)
  */
 public class UniqueLessonList implements Iterable<Lesson> {
 
@@ -35,7 +35,7 @@ public class UniqueLessonList implements Iterable<Lesson> {
      */
     public boolean contains(Lesson toCheck) {
         requireNonNull(toCheck);
-        return internalList.stream().anyMatch(toCheck::isSameLesson);
+        return internalList.stream().anyMatch(toCheck::isSameActivity);
     }
 
     /**
@@ -63,7 +63,7 @@ public class UniqueLessonList implements Iterable<Lesson> {
             throw new LessonNotFoundException();
         }
 
-        if (!target.isSameLesson(editedLesson) && contains(editedLesson)) {
+        if (!target.isSameActivity(editedLesson) && contains(editedLesson)) {
             throw new DuplicateLessonException();
         }
 
@@ -129,11 +129,25 @@ public class UniqueLessonList implements Iterable<Lesson> {
     private boolean lessonsAreUnique(List<Lesson> lessons) {
         for (int i = 0; i < lessons.size() - 1; i++) {
             for (int j = i + 1; j < lessons.size(); j++) {
-                if (lessons.get(i).isSameLesson(lessons.get(j))) {
+                if (lessons.get(i).isSameActivity(lessons.get(j))) {
                     return false;
                 }
             }
         }
         return true;
+    }
+
+    /**
+     * Retrieves the Lesson object from UniqueLessonList that the user specified.
+     * @param l Lesson object that the user wants.
+     * @return Lesson object that exists within fitNUS that the user is looking for.
+     */
+    public Lesson retrieveLesson(Lesson l) {
+        for (Lesson lesson : internalList) {
+            if (lesson.isSameActivity(l)) {
+                return lesson;
+            }
+        }
+        return l;
     }
 }

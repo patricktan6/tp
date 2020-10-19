@@ -23,7 +23,8 @@ import seedu.address.logic.commands.LessonDeleteCommand;
 import seedu.address.logic.commands.LessonListCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ListExercisesCommand;
-import seedu.address.logic.commands.TimetableAddSlotCommand;
+import seedu.address.logic.commands.TimetableAddLessonCommand;
+import seedu.address.logic.commands.TimetableAddRoutineCommand;
 import seedu.address.logic.commands.routines.RoutineAddExerciseCommand;
 import seedu.address.logic.commands.routines.RoutineCreateCommand;
 import seedu.address.logic.commands.routines.RoutineDeleteCommand;
@@ -116,8 +117,11 @@ public class AddressBookParser {
         case LessonListCommand.COMMAND_WORD:
             return new LessonListCommand();
 
-        case TimetableAddSlotCommand.COMMAND_WORD:
-            return new TimetableAddSlotCommandParser().parse(arguments);
+        case TimetableAddRoutineCommand.COMMAND_WORD:
+            return new TimetableAddRoutineCommandParser().parse(arguments);
+
+        case TimetableAddLessonCommand.COMMAND_WORD:
+            return new TimetableAddLessonCommandParser().parse(arguments);
 
         case AddHeightCommand.COMMAND_WORD:
             return new AddHeightCommandParser().parse(arguments);

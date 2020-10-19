@@ -198,10 +198,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         routines.add(routine);
     }
 
-    public void addSlotToTimetable(Slot slot) {
-        timetable.addSlot(slot);
-    }
-
     public String viewRoutine(int index) {
         return routines.viewRoutine(index);
     }
@@ -323,4 +319,31 @@ public class AddressBook implements ReadOnlyAddressBook {
         Routine retrievedRoutine = routines.retrieveRoutine(r);
         routines.addExercise(retrievedRoutine, retrievedExercise);
     }
+
+    /**
+     * Adds a Slot to the Timetable in fitNUS.
+     * @param slot The slot to be added.
+     */
+    public void addSlotToTimetable(Slot slot) {
+        timetable.addSlot(slot);
+    }
+
+    /**
+     * Retrieves the Lesson object from UniqueLessonList that the user specified.
+     * @param lesson Lesson object that the user wants.
+     * @return Lesson object that exists within fitNUS that the user is looking for.
+     */
+    public Lesson retrieveLesson(Lesson lesson) {
+        return lessons.retrieveLesson(lesson);
+    }
+
+    /**
+     * Retrieves the Routine object from UniqueRoutineList that the user specified.
+     * @param routine Routine object that the user wants.
+     * @return Routine object that exists within fitNUS that the user is looking for.
+     */
+    public Routine retrieveRoutine(Routine routine) {
+        return routines.retrieveRoutine(routine);
+    }
+
 }

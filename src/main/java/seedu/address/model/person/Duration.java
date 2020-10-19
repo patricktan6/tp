@@ -14,7 +14,7 @@ public class Duration {
     public static final String MESSAGE_CONSTRAINTS_ORDER =
             "Start time has to be before end time";
 
-    public static final String VALIDATION_REGEX = "/^([0-1][0-9]|2[0-3])[0-5][0-9]-([0-1][0-9]|2[0-3])[0-5][0-9]$/";
+    public static final String VALIDATION_REGEX = "^(([0-1][0-9])|2[0-3])[0-5][0-9]-(([0-1][0-9])|2[0-3])[0-5][0-9]$";
 
     private final LocalTime startTime;
 
@@ -72,11 +72,13 @@ public class Duration {
         LocalTime otherStartTime = otherDuration.getStartTime();
         LocalTime otherEndTime = otherDuration.getEndTime();
 
+        boolean hasSameStartTime = startTime.equals(otherStartTime);
+        boolean hasSameEndTime = endTime.equals(otherEndTime);
         boolean isStartTimeOverlap = startTime.isAfter(otherStartTime) && startTime.isBefore(otherEndTime);
         boolean isEndTimeOverlap = endTime.isAfter(otherStartTime) && endTime.isBefore(otherEndTime);
         boolean isCompletelyOverlap = startTime.isBefore(otherStartTime) && endTime.isAfter(otherEndTime);
 
-        return isStartTimeOverlap || isEndTimeOverlap || isCompletelyOverlap;
+        return hasSameStartTime || hasSameEndTime || isStartTimeOverlap || isEndTimeOverlap || isCompletelyOverlap;
     }
 
     @Override

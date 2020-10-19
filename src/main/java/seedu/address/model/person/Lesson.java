@@ -1,6 +1,6 @@
 package seedu.address.model.person;
 
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import static java.util.Objects.requireNonNull;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -13,10 +13,7 @@ import seedu.address.model.tag.Tag;
  * Represents a Lesson in user's timetable.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Lesson {
-
-    // Identity fields
-    private final Name name;
+public class Lesson extends Activity {
 
     // Data fields
     private final Set<Tag> tags = new HashSet<>();
@@ -25,13 +22,9 @@ public class Lesson {
      * Every field must be present and not null.
      */
     public Lesson(Name name, Set<Tag> tags) {
-        requireAllNonNull(name, tags);
-        this.name = name;
+        super(name);
+        requireNonNull(tags);
         this.tags.addAll(tags);
-    }
-
-    public Name getName() {
-        return name;
     }
 
     /**
@@ -46,13 +39,18 @@ public class Lesson {
      * Returns true if both lessons of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two lessons.
      */
-    public boolean isSameLesson(Lesson otherLesson) {
-        if (otherLesson == this) {
+    @Override
+    public boolean isSameActivity(Activity otherActivity) {
+        if (otherActivity == this) {
             return true;
         }
 
-        return otherLesson != null
-                && otherLesson.getName().equals(getName());
+        if (!(otherActivity instanceof Lesson)) {
+            return false;
+        }
+
+        Lesson otherLesson = (Lesson) otherActivity;
+        return otherLesson.getName().equals(getName());
     }
 
     /**
