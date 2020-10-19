@@ -213,6 +213,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void deleteSlotFromTimetable(Slot slot) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deletePerson(Person target) {
             throw new AssertionError("This method should not be called.");
         }
@@ -254,6 +259,11 @@ public class AddCommandTest {
 
         @Override
         public ObservableList<Lesson> getFilteredLessonList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Slot> getFilteredSlotList() {
             throw new AssertionError("This method should not be called.");
         }
 

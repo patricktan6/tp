@@ -22,6 +22,7 @@ import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
+import seedu.address.model.person.Slot;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.testutil.PersonBuilder;
 
@@ -94,7 +95,7 @@ public class AddressBookTest {
         private final ObservableList<Exercise> exercises = FXCollections.observableArrayList();
         private final ObservableList<Lesson> lessons = FXCollections.observableArrayList();
         private final ObservableList<Routine> routines = FXCollections.observableArrayList();
-
+        private final ObservableList<Slot> slots = FXCollections.observableArrayList();
 
         AddressBookStub(Collection<Person> persons) {
             this.persons.setAll(persons);
@@ -118,6 +119,11 @@ public class AddressBookTest {
         @Override
         public ObservableList<Lesson> getLessonList() {
             return lessons;
+        }
+
+        @Override
+        public ObservableList<Slot> getSlotList() {
+            return slots;
         }
     }
 
