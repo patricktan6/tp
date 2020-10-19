@@ -227,6 +227,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removeExercise(Exercise key) {
         exercises.remove(key);
+        routines.deleteExercise(key);
     }
 
     /**
@@ -359,4 +360,18 @@ public class AddressBook implements ReadOnlyAddressBook {
         return routines.retrieveRoutine(routine);
     }
 
+    /**
+     * Deletes an existing Exercise in fitNUS from an existing Routine.
+     *
+     * @param r Existing Routine.
+     * @param e Existing Exercise.
+     */
+    public void deleteExerciseToRoutine(Routine r, Exercise e) {
+        requireNonNull(r);
+        requireNonNull(e);
+
+        Exercise retrievedExercise = exercises.retrieveExercise(e);
+        Routine retrievedRoutine = routines.retrieveRoutine(r);
+        routines.deleteExerciseFromRoutine(retrievedRoutine, retrievedExercise);
+    }
 }
