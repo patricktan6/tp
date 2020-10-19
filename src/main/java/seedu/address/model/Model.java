@@ -209,4 +209,18 @@ public interface Model {
      * Returns an unmodifiable view of the filtered person list
      */
     ObservableList<Routine> getFilteredRoutineList();
+
+    /**
+     * Retrieves the Lesson object from UniqueLessonList that the user specified.
+     * @param lesson Lesson object that the user wants.
+     * @return Lesson object that exists within fitNUS that the user is looking for.
+     */
+    Lesson retrieveLesson(Lesson lesson);
+
+    /**
+     * Retrieves the Routine object from UniqueRoutineList that the user specified.
+     * @param routine Routine object that the user wants.
+     * @return Routine object that exists within fitNUS that the user is looking for.
+     */
+    Routine retrieveRoutine(Routine routine);
 }

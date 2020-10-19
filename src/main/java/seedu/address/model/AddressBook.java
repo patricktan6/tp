@@ -5,7 +5,6 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.person.Activity;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
@@ -326,18 +325,25 @@ public class AddressBook implements ReadOnlyAddressBook {
      * @param slot The slot to be added.
      */
     public void addSlotToTimetable(Slot slot) {
-        Activity activity = slot.getActivity();
-        if (activity instanceof Routine) {
-            Routine r = (Routine) activity;
-            Routine retrievedRoutine = routines.retrieveRoutine(r);
-            Slot slotToAdd = new Slot(retrievedRoutine, slot.getDay(), slot.getDuration());
-            timetable.addSlot(slotToAdd);
-        } else {
-            Lesson l = (Lesson) activity;
-            Lesson retrievedLesson = lessons.retrieveLesson(l);
-            Slot slotToAdd = new Slot(retrievedLesson, slot.getDay(), slot.getDuration());
-            timetable.addSlot(slotToAdd);
-        }
+        timetable.addSlot(slot);
+    }
+
+    /**
+     * Retrieves the Lesson object from UniqueLessonList that the user specified.
+     * @param lesson Lesson object that the user wants.
+     * @return Lesson object that exists within fitNUS that the user is looking for.
+     */
+    public Lesson retrieveLesson(Lesson lesson) {
+        return lessons.retrieveLesson(lesson);
+    }
+
+    /**
+     * Retrieves the Routine object from UniqueRoutineList that the user specified.
+     * @param routine Routine object that the user wants.
+     * @return Routine object that exists within fitNUS that the user is looking for.
+     */
+    public Routine retrieveRoutine(Routine routine) {
+        return routines.retrieveRoutine(routine);
     }
 
 }

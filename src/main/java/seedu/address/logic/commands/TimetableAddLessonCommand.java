@@ -57,7 +57,8 @@ public class TimetableAddLessonCommand extends Command {
             throw new CommandException(MESSAGE_MISSING_LESSON);
         }
 
-        Slot slot = new Slot(lesson, day, duration);
+        Lesson lessonToAdd = model.retrieveLesson(lesson);
+        Slot slot = new Slot(lessonToAdd, day, duration);
         if (model.hasSlot(slot)) {
             throw new CommandException(MESSAGE_DUPLICATE_SLOT);
         } else if (model.hasOverlappingSlot(slot)) {

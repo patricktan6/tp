@@ -56,7 +56,8 @@ public class TimetableAddRoutineCommand extends Command {
             throw new CommandException(MESSAGE_MISSING_ROUTINE);
         }
 
-        Slot slot = new Slot(routine, day, duration);
+        Routine routineToAdd = model.retrieveRoutine(routine);
+        Slot slot = new Slot(routineToAdd, day, duration);
         if (model.hasSlot(slot)) {
             throw new CommandException(MESSAGE_DUPLICATE_SLOT);
         } else if (model.hasOverlappingSlot(slot)) {
