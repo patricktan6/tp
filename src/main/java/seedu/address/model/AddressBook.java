@@ -246,6 +246,14 @@ public class AddressBook implements ReadOnlyAddressBook {
         routines.remove(key);
     }
 
+    /**
+     * Removes {@code key} from timetable in {@code fitNUS}.
+     * {@code key} must exist in timetable.
+     */
+    public void removeSlotFromTimetable(Slot key) {
+        timetable.deleteSlot(key);
+    }
+
     //// util methods
 
     @Override
@@ -272,6 +280,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Lesson> getLessonList() {
         return lessons.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Slot> getSlotList() {
+        return timetable.getSlotList();
     }
 
     @Override

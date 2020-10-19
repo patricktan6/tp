@@ -120,6 +120,11 @@ public interface Model {
     ObservableList<Lesson> getFilteredLessonList();
 
     /**
+     * Returns an unmodifiable view of the filtered slot list
+     */
+    ObservableList<Slot> getFilteredSlotList();
+
+    /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      *
      * @throws NullPointerException if {@code predicate} is null.
@@ -189,6 +194,7 @@ public interface Model {
     boolean hasSlot(Slot slot);
     boolean hasOverlappingSlot(Slot slot);
     void addSlotToTimetable(Slot slot);
+    void deleteSlotFromTimetable(Slot target);
 
     void addHeight(int height);
 
