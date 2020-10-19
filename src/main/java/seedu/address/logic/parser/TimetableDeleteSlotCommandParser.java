@@ -30,7 +30,7 @@ public class TimetableDeleteSlotCommandParser implements Parser<TimetableDeleteS
         if (!arePrefixesPresent(argMultimap, PREFIX_DAY, PREFIX_TIME)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    TimetableAddRoutineCommand.MESSAGE_USAGE));
+                    TimetableDeleteSlotCommand.MESSAGE_USAGE));
         }
 
         Day day = ParserUtil.parseDay(argMultimap.getValue(PREFIX_DAY).get());
