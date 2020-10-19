@@ -5,9 +5,11 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.person.exceptions.DuplicateExerciseException;
 import seedu.address.model.person.exceptions.DuplicateRoutineException;
 import seedu.address.model.person.exceptions.RoutineNotFoundException;
 
@@ -52,7 +54,8 @@ public class UniqueRoutineList implements Iterable<Routine> {
 
     /**
      * Adds an existing Exercise within fitNUS into an existing Routine within fitNUS.
-     * @param r Existing Routine.
+     *
+     * @param r        Existing Routine.
      * @param exercise Existing Exercise.
      */
     public void addExercise(Routine r, Exercise exercise) {
@@ -62,6 +65,10 @@ public class UniqueRoutineList implements Iterable<Routine> {
         } else {
             for (Routine routine : internalList) {
                 if (routine.isSameActivity(r)) {
+                    Set<Exercise> routineExercises = routine.getExercises();
+                    if (routineExercises.contains(exercise)) {
+                        throw new DuplicateExerciseException();
+                    }
                     routine.addExercise(exercise);
                     break;
                 }
@@ -71,6 +78,7 @@ public class UniqueRoutineList implements Iterable<Routine> {
 
     /**
      * Returns the toString method of the Routine that the user wants to view.
+     *
      * @param index Index of the Routine that the user wants to view.
      * @return The toString method of the Routine that the user wants to see.
      */
@@ -80,6 +88,7 @@ public class UniqueRoutineList implements Iterable<Routine> {
 
     /**
      * Lists out all the Routine objects in UniqueRoutineList.
+     *
      * @return String containing all the Routine object toString method.
      */
     public String listRoutines() {
@@ -126,6 +135,7 @@ public class UniqueRoutineList implements Iterable<Routine> {
 
     /**
      * Returns the size of the UniqueRoutineList.
+     *
      * @return Integer of the size of the UniqueRoutineList.
      */
     public int checkSize() {
@@ -190,6 +200,7 @@ public class UniqueRoutineList implements Iterable<Routine> {
 
     /**
      * Retrieves the Routine object from UniqueRoutineList that the user specified.
+     *
      * @param r Routine object that the user wants.
      * @return Routine object that exists within fitNUS that the user is looking for.
      */
@@ -200,5 +211,35 @@ public class UniqueRoutineList implements Iterable<Routine> {
             }
         }
         return r;
+    }
+
+    /**
+     * Deletes the specified Exercise from the specified Routine.
+     *
+     * @param retrievedRoutine  User-specified Routine.
+     * @param retrievedExercise User-specified Exercise.
+     */
+    public void deleteExerciseFromRoutine(Routine retrievedRoutine, Exercise retrievedExercise) {
+        if (!internalList.contains(retrievedRoutine)) {
+            throw new RoutineNotFoundException();
+        } else {
+            for (Routine routine : internalList) {
+                if (routine.isSameActivity(retrievedRoutine)) {
+                    routine.deleteExercise(retrievedExercise);
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * Deletes specified Exercise from all Routines.
+     * @param retrievedExercise User-specified Exercise to remove from all Routines.
+     */
+    public void deleteExercise(Exercise retrievedExercise) {
+        for (Routine routine : internalList) {
+            Set<Exercise> routineExercises = routine.getExercises();
+            routineExercises.remove(retrievedExercise);
+        }
     }
 }

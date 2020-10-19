@@ -10,6 +10,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Routine;
+import seedu.address.model.person.exceptions.DuplicateExerciseException;
 
 /**
  * Adds an Routine to fitNUS.
@@ -30,6 +31,8 @@ public class RoutineAddExerciseCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Exercise added to Routine: %1$s";
     public static final String MESSAGE_MISSING_ROUTINE = "This routine does not exist in fitNUS";
     public static final String MESSAGE_MISSING_EXERCISE = "This exercise does not exist in fitNUS";
+    public static final String MESSAGE_DUPLICATE_EXERCISE = "This exercise already exist in the routine!";
+
 
     private final Routine routineToAdd;
     private final Exercise exerciseToAdd;
@@ -53,8 +56,12 @@ public class RoutineAddExerciseCommand extends Command {
             throw new CommandException(MESSAGE_MISSING_EXERCISE);
         }
 
-        model.addExerciseToRoutine(routineToAdd, exerciseToAdd);
-        return new CommandResult(String.format(String.format(MESSAGE_SUCCESS, routineToAdd), exerciseToAdd));
+        try {
+            model.addExerciseToRoutine(routineToAdd, exerciseToAdd);
+            return new CommandResult(String.format(String.format(MESSAGE_SUCCESS, routineToAdd), exerciseToAdd));
+        } catch (DuplicateExerciseException error) {
+            throw new CommandException(MESSAGE_DUPLICATE_EXERCISE);
+        }
     }
 
     @Override

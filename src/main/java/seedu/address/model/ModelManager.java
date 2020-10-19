@@ -164,6 +164,13 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void deleteExerciseToRoutine(Routine r, Exercise e) {
+        addressBook.deleteExerciseToRoutine(r, e);
+        updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
+        updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
+    }
+
+    @Override
     public boolean hasExercise(Exercise exercise) {
         requireNonNull(exercise);
         return addressBook.hasExercise(exercise);

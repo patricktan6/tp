@@ -29,12 +29,14 @@ import seedu.address.logic.commands.TimetableAddRoutineCommand;
 import seedu.address.logic.commands.routines.RoutineAddExerciseCommand;
 import seedu.address.logic.commands.routines.RoutineCreateCommand;
 import seedu.address.logic.commands.routines.RoutineDeleteCommand;
+import seedu.address.logic.commands.routines.RoutineDeleteExerciseCommand;
 import seedu.address.logic.commands.routines.RoutineListCommand;
 import seedu.address.logic.commands.routines.RoutineViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.routines.RoutineAddExerciseCommandParser;
 import seedu.address.logic.parser.routines.RoutineCreateCommandParser;
 import seedu.address.logic.parser.routines.RoutineDeleteCommandParser;
+import seedu.address.logic.parser.routines.RoutineDeleteExerciseCommandParser;
 import seedu.address.logic.parser.routines.RoutineViewCommandParser;
 
 /**
@@ -135,6 +137,9 @@ public class AddressBookParser {
 
         case RoutineDeleteCommand.COMMAND_WORD:
             return new RoutineDeleteCommandParser().parse(arguments);
+
+        case RoutineDeleteExerciseCommand.COMMAND_WORD:
+            return new RoutineDeleteExerciseCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
