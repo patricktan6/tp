@@ -28,18 +28,31 @@
             <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
           </Menu>
         </MenuBar>
+        <HBox prefHeight="200" prefWidth="250" id="timetable">
 
-        <StackPane fx:id="commandBoxPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER">
-          <padding>
-            <Insets bottom="5" left="10" right="10" top="5" />
-          </padding>
-        </StackPane>
+        </HBox>
 
-        <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="100" styleClass="pane-with-border" VBox.vgrow="NEVER">
-          <padding>
-            <Insets bottom="5" left="10" right="10" top="5" />
-          </padding>
-        </StackPane>
+        <HBox>
+          <children>
+            <HBox prefHeight="200" prefWidth="610" id="calories">
+
+            </HBox>
+            <VBox prefHeight="200" prefWidth="610">
+              <HBox prefHeight="100" prefWidth="610" id="sideBox">
+
+              </HBox>
+              <HBox prefHeight="100" prefWidth="610">
+                <VBox prefHeight="100" prefWidth="305" id="bmi">
+
+                </VBox>
+                <VBox prefHeight="100" prefWidth="305" id = "logo" >
+
+                </VBox>
+              </HBox>
+            </VBox>
+          </children>
+        </HBox>
+
             <HBox prefHeight="350.0" prefWidth="200.0">
                <children>
 
@@ -72,6 +85,16 @@
         </VBox>
                </children>
             </HBox>
+        <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="100" styleClass="pane-with-border" VBox.vgrow="NEVER">
+          <padding>
+            <Insets bottom="5" left="10" right="10" top="5" />
+          </padding>
+        </StackPane>
+        <StackPane fx:id="commandBoxPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER">
+          <padding>
+            <Insets bottom="5" left="10" right="10" top="5" />
+          </padding>
+        </StackPane>
 
         <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER" />
       </VBox>
