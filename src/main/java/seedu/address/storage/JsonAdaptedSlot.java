@@ -16,9 +16,9 @@ import seedu.address.model.person.Day;
 import seedu.address.model.person.Duration;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
+import seedu.address.model.person.Name;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
-import seedu.address.model.person.Name;
 import seedu.address.model.tag.Tag;
 
 /**
