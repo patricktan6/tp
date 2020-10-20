@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LESSON_NAME_CS2106;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LESSON_TAG_LECTURE;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalLessons.GES1028;
 import static seedu.address.testutil.TypicalLessons.CS2106;
+import static seedu.address.testutil.TypicalLessons.GES1028;
 
 import org.junit.jupiter.api.Test;
 
@@ -29,19 +29,19 @@ public class LessonTest {
         assertFalse(GES1028.isSameLesson(null));
 
         // different name -> returns false
-        Lesson editedGES1028 = new LessonBuilder(GES1028).withName(VALID_LESSON_NAME_CS2106).build();
-        assertFalse(GES1028.isSameLesson(editedGES1028));
+        Lesson editedGes1028 = new LessonBuilder(GES1028).withName(VALID_LESSON_NAME_CS2106).build();
+        assertFalse(GES1028.isSameLesson(editedGes1028));
 
         // same name, different tags -> returns true
-        editedGES1028 = new LessonBuilder(GES1028).withTags(VALID_LESSON_TAG_LECTURE).build();
-        assertTrue(GES1028.isSameLesson(editedGES1028));
+        editedGes1028 = new LessonBuilder(GES1028).withTags(VALID_LESSON_TAG_LECTURE).build();
+        assertTrue(GES1028.isSameLesson(editedGes1028));
     }
 
     @Test
     public void equals() {
         // same values -> returns true
-        Lesson GES1028Copy = new LessonBuilder(GES1028).build();
-        assertTrue(GES1028.equals(GES1028Copy));
+        Lesson ges1028Copy = new LessonBuilder(GES1028).build();
+        assertTrue(GES1028.equals(ges1028Copy));
 
         // same object -> returns true
         assertTrue(GES1028.equals(GES1028));
@@ -56,11 +56,11 @@ public class LessonTest {
         assertFalse(GES1028.equals(CS2106));
 
         // different name -> returns false
-        Lesson editedGES1028 = new LessonBuilder(GES1028).withName(VALID_LESSON_NAME_CS2106).build();
-        assertFalse(GES1028.equals(editedGES1028));
+        Lesson editedGes1028 = new LessonBuilder(GES1028).withName(VALID_LESSON_NAME_CS2106).build();
+        assertFalse(GES1028.equals(editedGes1028));
 
         // different tags -> returns false
-        editedGES1028 = new LessonBuilder(GES1028).withTags(VALID_LESSON_TAG_LECTURE).build();
-        assertFalse(GES1028.equals(editedGES1028));
+        editedGes1028 = new LessonBuilder(GES1028).withTags(VALID_LESSON_TAG_LECTURE).build();
+        assertFalse(GES1028.equals(editedGes1028));
     }
 }
