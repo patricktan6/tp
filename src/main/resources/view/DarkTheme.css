@@ -116,6 +116,11 @@
     -fx-border-width: 1;
 }
 
+.list-cell:filled:selected #routineCardPane {
+    -fx-border-color: #4b7b91;
+    -fx-border-width: 1;
+}
+
 .list-cell .label {
     -fx-text-fill: white;
 }
@@ -310,6 +315,35 @@
 #cardPane {
     -fx-background-color: transparent;
     -fx-border-width: 0;
+}
+
+#routineCardPane {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+}
+
+#timetable {
+    -fx-background-color: #FFF000;
+}
+
+#calories {
+    -fx-background-color: #000FFF;
+}
+
+#sideBox {
+     -fx-background-color: #FF7F50;
+}
+
+#bmi {
+    -fx-background-color: #ADD8E6;
+}
+
+#logo {
+    -fx-background-color: #FFF123;
+}
+
+#routineListPanel {
+    -fx-background-color: #FFFFFF;
 }
 
 #commandTypeLabel {
