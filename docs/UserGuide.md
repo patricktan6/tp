@@ -1,4 +1,4 @@
-##Introduction
+## Introduction
 
 fitNUS is tailored for **NUS students** that are interested in staying healthy and keeping fit. It is suitable for **all
 fitness levels** and is equipped with a **customisable timetable** for you to manage your time wisely and slot in your
@@ -142,7 +142,7 @@ Examples:
 
 ![Timetable Delete](./images/timetable_delete.png)
 
-###BMI
+### BMI
 #### Add or edit height : `height`
 
 Add height in centimetres.
