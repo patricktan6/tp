@@ -1,14 +1,15 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.routines;
 
 import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.core.Messages;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
-import seedu.address.model.person.ExerciseNameContainsKeywordsPredicate;
 import seedu.address.model.person.RoutineNameContainsKeywordsPredicate;
 
 /**
- * Finds and lists all exercises in fitNUS whose name contains any of the argument keywords.
+ * Finds and lists all routines in fitNUS whose name contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
 public class FindRoutinesCommand extends Command {
@@ -31,7 +32,7 @@ public class FindRoutinesCommand extends Command {
         requireNonNull(model);
         model.updateFilteredRoutineList(predicate);
         return new CommandResult(
-                String.format(Messages.MESSAGE_EXERCISES_LISTED_OVERVIEW, model.getFilteredExerciseList().size()));
+                String.format(Messages.MESSAGE_ROUTINES_LISTED_OVERVIEW, model.getFilteredRoutineList().size()));
     }
 
     @Override

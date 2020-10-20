@@ -248,10 +248,10 @@ public class ModelManager implements Model {
 
     @Override
     public void viewRoutine(Routine r) {
-        String[] routineName = new String[1];
-        routineName[0] = r.getName().fullName;
+        String argument = r.getName().fullName;
+        String[] nameKeywords = argument.split("\\s+");
         filteredRoutine.setPredicate(
-                new RoutineNameContainsKeywordsPredicate(Arrays.asList(routineName)
+                new RoutineNameContainsKeywordsPredicate(Arrays.asList(nameKeywords)
         ));
     }
 

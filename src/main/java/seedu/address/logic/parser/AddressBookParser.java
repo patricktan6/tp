@@ -19,7 +19,7 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.FindExercisesCommand;
 import seedu.address.logic.commands.FindLessonsCommand;
-import seedu.address.logic.commands.FindRoutinesCommand;
+import seedu.address.logic.commands.routines.FindRoutinesCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.LessonAddCommand;
 import seedu.address.logic.commands.LessonDeleteCommand;
