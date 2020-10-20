@@ -19,7 +19,7 @@ public class TimetableAddRoutineCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a Routine to the timetable in fitNUS. "
             + "Parameters: "
             + PREFIX_ROUTINE + "ROUTINE_NAME "
-            + PREFIX_DAY + "DAY"
+            + PREFIX_DAY + "DAY "
             + PREFIX_TIME + "TIME"
             + "\n"
             + "Example: " + COMMAND_WORD + " "

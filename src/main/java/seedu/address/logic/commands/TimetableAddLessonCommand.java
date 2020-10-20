@@ -20,7 +20,7 @@ public class TimetableAddLessonCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a Lesson to the timetable in fitNUS. "
             + "Parameters: "
             + PREFIX_NAME + "LESSON_NAME "
-            + PREFIX_DAY + "DAY"
+            + PREFIX_DAY + "DAY "
             + PREFIX_TIME + "TIME"
             + "\n"
             + "Example: " + COMMAND_WORD + " "

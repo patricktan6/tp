@@ -1,0 +1,70 @@
+package seedu.address.logic.commands.routines;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ROUTINE;
+
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.Model;
+import seedu.address.model.person.Exercise;
+import seedu.address.model.person.Routine;
+
+/**
+ * Deletes a routine identified using it's displayed index from fitNUS.
+ */
+public class RoutineDeleteExerciseCommand extends Command {
+
+    public static final String COMMAND_WORD = "routine_delete_exercise";
+
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Deletes the mentioned Exercise used in the specified Routine.\n"
+            + "Parameters: "
+            + PREFIX_ROUTINE + "ROUTINE_NAME "
+            + PREFIX_EMAIL + "EXERCISE_NAME"
+            + "\n"
+            + "Example: " + COMMAND_WORD + " "
+            + PREFIX_ROUTINE + "Leg Day Session "
+            + PREFIX_EMAIL + "Squats ";
+
+    public static final String MESSAGE_DELETE_EXERCISE_SUCCESS = "Deleted Exercise from Routine: %1$s";
+    public static final String MESSAGE_MISSING_ROUTINE = "Deleted Exercise from Routine: %1$s";
+    public static final String MESSAGE_MISSING_EXERCISE = "Deleted Exercise from Routine: %1$s";
+
+    private final Routine routine;
+    private final Exercise exercise;
+
+    /**
+     * Creates a RoutineDeleteExericseCommand object.
+     * @param routine Specified Routine that the user wants to delete an Exercise from.
+     * @param exercise Specified Exercise that the user wants to delete.
+     */
+    public RoutineDeleteExerciseCommand(Routine routine, Exercise exercise) {
+        this.routine = routine;
+        this.exercise = exercise;
+    }
+
+    @Override
+    public CommandResult execute(Model model) throws CommandException {
+        requireNonNull(model);
+
+        if (!model.hasRoutine(routine)) {
+            throw new CommandException(MESSAGE_MISSING_ROUTINE);
+        } else if (!model.hasExercise(exercise)) {
+            throw new CommandException(MESSAGE_MISSING_EXERCISE);
+        }
+
+        model.deleteExerciseToRoutine(routine, exercise);
+        return new CommandResult(String.format(String.format(MESSAGE_DELETE_EXERCISE_SUCCESS,
+                routine), exercise));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof RoutineDeleteExerciseCommand // instanceof handles nulls
+                && exercise.equals(((RoutineDeleteExerciseCommand) other).exercise) // state check
+                && routine.equals(((RoutineDeleteExerciseCommand) other).routine)); // state check
+    }
+}

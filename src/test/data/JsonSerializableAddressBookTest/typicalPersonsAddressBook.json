@@ -55,5 +55,13 @@
     {
       "routineName" : "Knee Workout"
     }
-  ]
+  ],
+  "slots" : [ {
+    "activityName" : "cs2103t",
+    "type" : "lesson",
+    "day" : "monday",
+    "duration" : "1600-1800",
+    "tagsForLesson" : [  ],
+    "exercisesForRoutine" : [ ]
+  } ]
 }

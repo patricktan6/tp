@@ -105,6 +105,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the contents of slot list with {@code slots}.
+     * {@code slots} must not contain duplicate slots or overlapping slots.
+     */
+    public void setSlots(List<Slot> slots) {
+        timetable.setSlots(slots);
+    }
+
+    /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
     public void resetData(ReadOnlyAddressBook newData) {
@@ -114,6 +122,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setExercises(newData.getExerciseList());
         setLessons(newData.getLessonList());
         setRoutines(newData.getRoutineList());
+        setSlots(newData.getSlotList());
     }
 
     //// person-level operations
@@ -227,6 +236,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removeExercise(Exercise key) {
         exercises.remove(key);
+        routines.deleteExercise(key);
     }
 
     /**
@@ -359,4 +369,18 @@ public class AddressBook implements ReadOnlyAddressBook {
         return routines.retrieveRoutine(routine);
     }
 
+    /**
+     * Deletes an existing Exercise in fitNUS from an existing Routine.
+     *
+     * @param r Existing Routine.
+     * @param e Existing Exercise.
+     */
+    public void deleteExerciseToRoutine(Routine r, Exercise e) {
+        requireNonNull(r);
+        requireNonNull(e);
+
+        Exercise retrievedExercise = exercises.retrieveExercise(e);
+        Routine retrievedRoutine = routines.retrieveRoutine(r);
+        routines.deleteExerciseFromRoutine(retrievedRoutine, retrievedExercise);
+    }
 }
