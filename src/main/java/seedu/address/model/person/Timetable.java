@@ -2,6 +2,8 @@ package seedu.address.model.person;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.List;
+
 import javafx.collections.ObservableList;
 
 public class Timetable {
@@ -38,6 +40,10 @@ public class Timetable {
 
     public void deleteSlot(Slot slot) {
         slots.remove(slot);
+    }
+
+    public void setSlots(List<Slot> slots) {
+        this.slots.setSlots(slots);
     }
 
     public ObservableList<Slot> getSlotList() {

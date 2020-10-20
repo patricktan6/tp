@@ -12,6 +12,7 @@ import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
+import seedu.address.model.person.Slot;
 
 /**
  * API of the Logic component
@@ -44,6 +45,9 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of lessons */
     ObservableList<Lesson> getFilteredLessonList();
+
+    /** Returns an unmodifiable view of the filtered list of slots */
+    ObservableList<Slot> getFilteredSlotList();
 
     /**
      * Returns the user prefs' address book file path.

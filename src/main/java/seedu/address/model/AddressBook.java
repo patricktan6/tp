@@ -105,6 +105,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the contents of slot list with {@code slots}.
+     * {@code slots} must not contain duplicate slots or overlapping slots.
+     */
+    public void setSlots(List<Slot> slots) {
+        timetable.setSlots(slots);
+    }
+
+    /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
     public void resetData(ReadOnlyAddressBook newData) {
@@ -114,6 +122,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setExercises(newData.getExerciseList());
         setLessons(newData.getLessonList());
         setRoutines(newData.getRoutineList());
+        setSlots(newData.getSlotList());
     }
 
     //// person-level operations

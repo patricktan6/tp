@@ -15,6 +15,7 @@ import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
+import seedu.address.model.person.Slot;
 
 /**
  * An Immutable AddressBook that is serializable to JSON format.
@@ -24,11 +25,13 @@ class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
     private static final String MESSAGE_DUPLICATE_ROUTINE = "Routines list contains duplicate routine(s).";
+    private static final String MESSAGE_DUPLICATE_SLOT = "Slot list contains duplicate slot(s).";
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedExercise> exercises = new ArrayList<>();
     private final List<JsonAdaptedLesson> lessons = new ArrayList<>();
     private final List<JsonAdaptedRoutine> routines = new ArrayList<>();
+    private final List<JsonAdaptedSlot> slots = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
@@ -37,11 +40,13 @@ class JsonSerializableAddressBook {
     public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
                                        @JsonProperty("exercises") List<JsonAdaptedExercise> exercises,
                                        @JsonProperty("lessons") List<JsonAdaptedLesson> lessons,
-                                       @JsonProperty("routines") List<JsonAdaptedRoutine> routines) {
+                                       @JsonProperty("routines") List<JsonAdaptedRoutine> routines,
+                                       @JsonProperty("slots") List<JsonAdaptedSlot> slots) {
         this.persons.addAll(persons);
         this.exercises.addAll(exercises);
         this.lessons.addAll(lessons);
         this.routines.addAll(routines);
+        this.slots.addAll(slots);
     }
 
     /**
@@ -54,6 +59,7 @@ class JsonSerializableAddressBook {
         exercises.addAll(source.getExerciseList().stream().map(JsonAdaptedExercise::new).collect(Collectors.toList()));
         lessons.addAll(source.getLessonList().stream().map(JsonAdaptedLesson::new).collect(Collectors.toList()));
         routines.addAll(source.getRoutineList().stream().map(JsonAdaptedRoutine::new).collect(Collectors.toList()));
+        slots.addAll(source.getSlotList().stream().map(JsonAdaptedSlot::new).collect(Collectors.toList()));
     }
 
     /**
@@ -90,6 +96,13 @@ class JsonSerializableAddressBook {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_ROUTINE);
             }
             addressBook.addRoutine(routine);
+        }
+        for (JsonAdaptedSlot jsonAdaptedSlot : slots) {
+            Slot slot = jsonAdaptedSlot.toModelType();
+            if (addressBook.hasSlot(slot)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_SLOT);
+            }
+            addressBook.addSlotToTimetable(slot);
         }
         return addressBook;
     }

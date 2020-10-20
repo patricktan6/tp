@@ -66,7 +66,7 @@ class JsonAdaptedRoutine {
         }
         final Name modelName = new Name(routineName);
 
-        final Set<Exercise> modelExercise = new HashSet<Exercise>(routineExercises);
+        final Set<Exercise> modelExercise = new HashSet<>(routineExercises);
 
         Routine modelRoutine = new Routine(modelName);
         for (Exercise exercise : modelExercise) {
