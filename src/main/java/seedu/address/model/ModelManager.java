@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -15,6 +16,7 @@ import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
+import seedu.address.model.person.RoutineNameContainsKeywordsPredicate;
 import seedu.address.model.person.Slot;
 
 /**
@@ -242,6 +244,15 @@ public class ModelManager implements Model {
     @Override
     public Routine retrieveRoutine(Routine routine) {
         return addressBook.retrieveRoutine(routine);
+    }
+
+    @Override
+    public void viewRoutine(Routine r) {
+        String[] routineName = new String[1];
+        routineName[0] = r.getName().fullName;
+        filteredRoutine.setPredicate(
+                new RoutineNameContainsKeywordsPredicate(Arrays.asList(routineName)
+        ));
     }
 
     //=========== Filtered Person List Accessors =============================================================
