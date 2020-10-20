@@ -7,6 +7,7 @@ title: User Guide
 * Table of Contents
 {:toc}
 
+------------------------------------------------------------------------------------------------------------------------
 ## 1. Introduction
 
 fitNUS is tailored for **NUS students** that are interested in staying healthy and keeping fit. It is suitable for **all
