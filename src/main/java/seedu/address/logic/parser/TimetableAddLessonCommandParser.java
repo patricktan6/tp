@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.TimetableAddLessonCommand;
-import seedu.address.logic.commands.TimetableAddRoutineCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Day;
 import seedu.address.model.person.Duration;
@@ -32,7 +31,7 @@ public class TimetableAddLessonCommandParser implements Parser<TimetableAddLesso
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_DAY, PREFIX_TIME)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    TimetableAddRoutineCommand.MESSAGE_USAGE));
+                    TimetableAddLessonCommand.MESSAGE_USAGE));
         }
 
         Name lessonName = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
