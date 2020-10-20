@@ -39,6 +39,19 @@ public class Lesson extends Activity {
      * Returns true if both lessons of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two lessons.
      */
+    public boolean isSameLesson(Lesson otherLesson) {
+        if (otherLesson == this) {
+            return true;
+        }
+
+        return otherLesson != null
+                && otherLesson.getName().equals(getName());
+    }
+
+    /**
+     * Returns true if both lessons of the same name have at least one other identity field that is the same.
+     * This defines a weaker notion of equality between two lessons.
+     */
     @Override
     public boolean isSameActivity(Activity otherActivity) {
         if (otherActivity == this) {

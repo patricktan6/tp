@@ -116,7 +116,9 @@ public interface Model {
      */
     ObservableList<Exercise> getFilteredExerciseList();
 
-    /** Returns an unmodifiable view of the filtered lesson list */
+    /**
+     * Returns an unmodifiable view of the filtered lesson list
+     */
     ObservableList<Lesson> getFilteredLessonList();
 
     /**
@@ -210,6 +212,13 @@ public interface Model {
      * {@code lesson} must not already exist in timetable.
      */
     void addLesson(Lesson lesson);
+
+    /**
+     * Replaces the given person {@code target} with {@code editedLesson}.
+     * {@code target} must exist in FitNUS.
+     * The lesson identity of {@code editedLesson} must not be the same as another existing lesson in FitNUS.
+     */
+    void setLesson(Lesson target, Lesson editedLesson);
 
     /**
      * Returns an unmodifiable view of the filtered person list

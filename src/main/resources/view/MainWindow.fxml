@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.stage.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.stage.Stage?>
 
-<fx:root minHeight="600" minWidth="450" onCloseRequest="#handleExit" title="FitNUS" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root minHeight="600" minWidth="450" onCloseRequest="#handleExit" title="FitNUS" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <icons>
     <Image url="@/images/address_book_32.png" />
   </icons>
@@ -40,7 +44,7 @@
             <Insets bottom="5" left="10" right="10" top="5" />
           </padding>
         </StackPane>
-            <HBox prefHeight="350.0" prefWidth="200.0">
+            <HBox VBox.vgrow="ALWAYS">
                <children>
 
               <VBox fx:id="exerciseList" minWidth="200" prefWidth="340" styleClass="pane-with-border">
@@ -57,18 +61,18 @@
                 <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
               </VBox>
 
-        <VBox fx:id="routineList" styleClass="pane-with-border" minWidth="200" prefWidth="340" VBox.vgrow="ALWAYS">
+        <VBox fx:id="routineList" minWidth="200" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
           <padding>
-            <Insets top="10" right="10" bottom="10" left="10" />
+            <Insets bottom="10" left="10" right="10" top="10" />
           </padding>
-          <StackPane fx:id="routineListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+          <StackPane fx:id="routineListPanelPlaceholder" VBox.vgrow="ALWAYS" />
         </VBox>
 
-        <VBox fx:id="lessonList" styleClass="pane-with-border" minWidth="340" prefWidth="340" VBox.vgrow="ALWAYS">
+        <VBox fx:id="lessonList" minWidth="340" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
           <padding>
-            <Insets top="10" right="10" bottom="10" left="10" />
+            <Insets bottom="10" left="10" right="10" top="10" />
           </padding>
-          <StackPane fx:id="lessonListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+          <StackPane fx:id="lessonListPanelPlaceholder" VBox.vgrow="ALWAYS" />
         </VBox>
                </children>
             </HBox>
