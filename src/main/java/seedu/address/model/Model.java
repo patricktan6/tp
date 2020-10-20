@@ -245,4 +245,6 @@ public interface Model {
      * {@code exercise} must already exist within fitNUS.
      */
     void deleteExerciseToRoutine(Routine routine, Exercise exercise);
+
+    void viewRoutine(Routine routineToView);
 }
