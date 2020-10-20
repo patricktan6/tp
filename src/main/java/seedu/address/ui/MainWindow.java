@@ -145,7 +145,8 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
-        routineListPanelPlaceholder.setBackground(new Background(new BackgroundFill(Color.YELLOW, CornerRadii.EMPTY, Insets.EMPTY)));
+        routineListPanelPlaceholder.setBackground(new Background(new BackgroundFill(Color.YELLOW, CornerRadii.EMPTY,
+                Insets.EMPTY)));
         routineListPanel = new RoutineListPanel(logic.getFilteredRoutineList());
         routineListPanelPlaceholder.getChildren().add(routineListPanel.getRoot());
     }
