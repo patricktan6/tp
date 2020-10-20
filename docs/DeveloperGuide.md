@@ -217,6 +217,20 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
+### Find exercises 
+
+The find exercises feature is implemented using `FindExercisesCommandParser`, as well as the following command:
+* `FindExercisesCommand`, to be executed when the user inputs the command into fitNUS
+
+`FindExercisesCommandParser` takes in the user input and parses them to return a FindExercisesCommand containing the 
+corresponding predicate for finding the exercises. When executed, `FindExercisesCommand` will set the predicate of 
+the respective `FilteredList` for exercises in `ModelManager` such that only exercises matching the predicate will be 
+displayed in the list.
+
+Given below is the Sequence Diagram for interactions within the Logic component for the execute("find_exercises bench") 
+API call.
+![FindExercisesSequenceDiagram](images/FindExercisesSequenceDiagram.png)
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -263,7 +277,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | student who has no knowledge of working out|view what exercise routines the application has|choose the right one for me
 | `* * *`  | busy student                               | add workout routines into my schedule | have the time to exercise
 | `* * *`  | student                                    | delete a workout routine       | keep my schedule up-to-date
-| `* * *`  | NUS student                                | see my timetable               | slot in my workout sessions with ease 
+| `* * *`  | NUS student                                | see my timetable               | slot in my workout sessions with ease
 
 *{More to be added}*
 
@@ -293,7 +307,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. AddressBook shows an error message.
 
       Use case resumes at step 2.
-      
+     
 **Use case: Create a new routine**
 
 **MSS**
@@ -312,7 +326,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. fitNUS shows an error message.
 
       Use case resumes at step 2.
-      
+     
 **Use case: Delete a routine**
 
 **MSS**

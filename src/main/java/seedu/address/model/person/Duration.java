@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Duration {
@@ -89,6 +90,7 @@ public class Duration {
 
     @Override
     public String toString() {
-        return startTime.toString() + " to " + endTime.toString();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HHmm");
+        return startTime.format(formatter) + "-" + endTime.format(formatter);
     }
 }

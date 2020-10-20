@@ -3,6 +3,7 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 
 import java.util.Iterator;
+import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -70,6 +71,56 @@ public class UniqueSlotList implements Iterable<Slot> {
         if (!internalList.remove(toRemove)) {
             throw new SlotNotFoundException();
         }
+    }
+
+    public void setSlots(UniqueSlotList replacement) {
+        requireNonNull(replacement);
+        internalList.setAll(replacement.internalList);
+    }
+
+    /**
+     * Replaces the contents of this list with {@code slots}.
+     * {@code slots} must not contain duplicate slots.
+     */
+    public void setSlots(List<Slot> slots) {
+        requireNonNull(slots);
+        if (!areSlotsUnique(slots)) {
+            throw new DuplicateSlotException();
+        }
+
+        if (areSlotsOverlapping(slots)) {
+            throw new SlotOverlapDurationException();
+        }
+
+        internalList.setAll(slots);
+    }
+
+    /**
+     * Returns true if {@code slots} contains only unique slots.
+     */
+    public boolean areSlotsUnique(List<Slot> slots) {
+        for (int i = 0; i < slots.size() - 1; i++) {
+            for (int j = i + 1; j < slots.size(); j++) {
+                if (slots.get(i).isSameSlot(slots.get(j))) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Returns true if {@code slots} contains no overlapping slots.
+     */
+    public boolean areSlotsOverlapping(List<Slot> slots) {
+        for (int i = 0; i < slots.size() - 1; i++) {
+            for (int j = i + 1; j < slots.size(); j++) {
+                if (slots.get(i).hasOverlapDuration(slots.get(j))) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**

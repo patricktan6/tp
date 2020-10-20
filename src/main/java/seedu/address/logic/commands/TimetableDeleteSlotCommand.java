@@ -19,7 +19,7 @@ public class TimetableDeleteSlotCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes the slot identified by its day and time.\n"
             + "Parameters: "
-            + PREFIX_DAY + "DAY"
+            + PREFIX_DAY + "DAY "
             + PREFIX_TIME + "TIME"
             + "\n"
             + "Example: " + COMMAND_WORD + " "

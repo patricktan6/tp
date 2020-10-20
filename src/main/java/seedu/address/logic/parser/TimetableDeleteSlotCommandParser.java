@@ -6,7 +6,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.TimetableAddRoutineCommand;
 import seedu.address.logic.commands.TimetableDeleteSlotCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Day;
@@ -30,7 +29,7 @@ public class TimetableDeleteSlotCommandParser implements Parser<TimetableDeleteS
         if (!arePrefixesPresent(argMultimap, PREFIX_DAY, PREFIX_TIME)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                    TimetableAddRoutineCommand.MESSAGE_USAGE));
+                    TimetableDeleteSlotCommand.MESSAGE_USAGE));
         }
 
         Day day = ParserUtil.parseDay(argMultimap.getValue(PREFIX_DAY).get());

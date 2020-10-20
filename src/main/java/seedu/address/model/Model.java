@@ -238,4 +238,11 @@ public interface Model {
      * @return Routine object that exists within fitNUS that the user is looking for.
      */
     Routine retrieveRoutine(Routine routine);
+
+    /**
+     * Deletes the specified exercise from an existing routine.
+     * {@code routine} must already exist within fitNUS.
+     * {@code exercise} must already exist within fitNUS.
+     */
+    void deleteExerciseToRoutine(Routine routine, Exercise exercise);
 }
