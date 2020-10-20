@@ -1,3 +1,12 @@
+---
+layout: page
+title: User Guide
+---
+
+
+* Table of Contents
+{:toc}
+
 ## 1. Introduction
 
 fitNUS is tailored for **NUS students** that are interested in staying healthy and keeping fit. It is suitable for **all
@@ -137,11 +146,38 @@ Format: `routine_view INDEX`
 Examples:
 * `routine_view 2` Views routine with the index 2.
 
+##### Before input:
+
+![Routine View](./images/routine_view.png)
+
+
+#### After input:
+
+![Routine View After](./images/routine_view_after.png)
+
 #### 3.2.6 List routines : `routine_list`
 
 Lists out all the routines in fitNUS.
 
 Format: `routine_list`
+
+![Routine List](./images/routine_list.png)
+
+#### 3.2.7 Find routines : `find_routines`
+
+Finds all routines with matching keyword given.
+
+Format: `find_routines KEYWORD`
+
+Example:
+* `find_routines upper` Finds all routines with the keyword "upper" in its name, regardless of uppercase or lowercase.
+
+##### Input:
+![Find Routines](./images/routine_find.png)
+
+##### Result:
+
+![Find Routines Result](./images/routine_find_after.png)
 
 ### 3.3 Lesson
 
@@ -225,6 +261,10 @@ Deletes the routine or lesson scheduled on Monday, 1600-1800.
 
 ![Timetable Delete](./images/timetable_delete.png)
 
+### BMI
+
+#### Add or edit height : `height`
+
 #### 3.4.4 View timetable : `timetable_view`
 
 Views the timetable in fitNUS.
@@ -297,27 +337,50 @@ _{explain the feature here}_
 
 ## 4. Command summary
 
+### 4.1 Miscellaneous
+
+Action | Format |
+--------|-------|
+**Link to User Guide** | `help` 
+**Save and exit fitNUS** | `exit`
+
+### 4.2 Exercise 
 Action | Format | Examples
 --------|-------|-----------
-**Link to User Guide** | `help`
 **Create Exercise** | `exercise_add n/EXERCISE_NAME [t/TAG]` | `exercise_add n/Bench Press t/Upper`
 **Delete Exercise** | `exercise_delete INDEX` | `exercise_delete 1`
-**List Exercises** | `list_exercises`
 **Find Exercises** | `find_exercises KEYWORD [MORE_KEYWORDS]` | `find_exercises Bench Press`
+**List Exercises** | `list_exercises`
+
+### 4.3 Routine 
+Action | Format | Examples
+--------|-------|-----------
 **Create Routine** | `routine_create r/ROUTINE_NAME` | `routine_create r/Leg Day Session`
 **Delete Routine** | `routine_delete INDEX` | `routine delete 10`
+**View Routine details** | `routine view INDEX` | `routine view 2`
 **Add Exercise to Routine** | `routine_add r/NAME_OF_TARGET_ROUTINE e/EXERCISE_NAME` | `routine_add r/Leg Day Session e/Squats`
 **Delete Exercise from Routine** | `routine_delete_exercise r/NAME_OF_TARGET_ROUTINE e/EXERCISE_NAME` | `routine_delete_exercise r/Leg Day Session e/Squats`
-**View Routine details** | `routine view INDEX` | `routine view 2`
 **List Routines** | `routine list`
+
+### 4.4 Lesson
+Action | Format | Examples
+--------|-------|-----------
 **Create Lesson** | `lesson_add n/EXERCISE_NAME [t/TAG]` | `lesson_add n/CS2100 t/Thursday t/0900 t/1hours`
 **Delete Lesson** | `lesson_delete INDEX` | `lesson_delete 1`
 **List Lessons** | `list_lessons`
 **Find Lessons** | `find_lessons KEYWORD [MORE_KEYWORDS]` | `find_lessons CS2103T`
+
+### 4.5 Timetable
+Action | Format | Examples
+--------|-------|-----------
 **Add Routine to Timetable** | `timetable_add_routine r/ROUTINE_NAME d/DAY_OF_THE_WEEK T/TIMING` | `timetable_add_routine add r/Leg Day Session d/Monday T/1600-1800`
 **Add Lesson to Timetable** | `timetable_add_lesson n/LESSON_NAME d/DAY_OF_THE_WEEK T/TIMING` | `timetable_add_lesson n/CS2103T d/Monday T/1200-1400` 
 **Delete Routine or Lesson from Timetable** | `timetable_delete d/DAY_OF_THE_WEEK T/TIMING` | `timetable_delete d/Monday T/1600-1800`
 **View timetable** | `timetable view`
+
+### 4.6 BMI
+Action | Format | Examples
+--------|-------|-----------
 **Add or edit Height** | `height h/HEIGHT` | `height h/170`
 **Add or edit Weight** | `weight w/WEIGHT` | `weight w/70`
 **View BMI** | `bmi`

@@ -25,7 +25,7 @@ public class RoutineViewCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + "3 ";
 
-    public static final String MESSAGE_SUCCESS = "Routine requested: %1$s";
+    public static final String MESSAGE_SUCCESS = "Routine requested:";
     public static final String MESSAGE_OUT_OF_BOUNDS_ROUTINE = "This routine index is out of bounds!";
 
     private final Index toView;
@@ -48,7 +48,8 @@ public class RoutineViewCommand extends Command {
         }
 
         Routine routineToView = lastShownList.get(toView.getZeroBased());
-        return new CommandResult(String.format(MESSAGE_SUCCESS, routineToView));
+        model.viewRoutine(routineToView);
+        return new CommandResult(String.format(MESSAGE_SUCCESS));
     }
 
     @Override
