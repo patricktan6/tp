@@ -1,4 +1,4 @@
-#Introduction
+##Introduction
 
 fitNUS is tailored for **NUS students** that are interested in staying healthy and keeping fit. It is suitable for **all
 fitness levels** and is equipped with a **customisable timetable** for you to manage your time wisely and slot in your
@@ -6,16 +6,9 @@ workout routines with ease.
    
 fitNUS is  **optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, fitNUS can get your scheduling tasks done faster than traditional GUI apps.
 
-##Table of Contents
-
-<ol>
-<li> <a href="[Quick Start](#quick-start)">Quick Start</a> </li>
-<li>[Features](#features)</li>
-
-</ol>
+   ![Ui](images/Ui.png)
 
 --------------------------------------------------------------------------------------------------------------------
-<a name="quick-start"></a>
 ## Quick start
 
 1. Ensure you have Java `11` or above installed in your Computer.
@@ -25,68 +18,84 @@ fitNUS is  **optimized for use via a Command Line Interface** (CLI) while still 
 1. Copy the file to the folder you want to use as the _home folder_ for your fitNUS.
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
-   
+
 1. Type the command in the command box and press Enter to execute it. Here are some sample commands you can try:
+   
+   * **`exercise_add`**`n/Curls t/Upper` : Creates an Exercise named "Curls" with a "Upper" tag.
 
-   * **`routine list`** : Lists all routines within fitNUS.
+   * **`routine_create`**`r/Upper Body Session` : Creates a routine names "Upper Body Session"
 
-   * **`routine create`**`r/Upper Body Session` : Creates a routine names "Upper Body Session"
+   * **`routine_add `**`r/Upper Body Session e/Curls` : Adds an exercise named "Curls" to a routine named "Upper Body Session"
 
-   * **`exercise add `**`r/Upper Body Session e/Curls` : Adds an exercise named "Curls" to a routine named "Upper Body Session"
-
-   * **`schedule add`**`r/Upper Body Session d/Monday t/1600-1800` : Adds the routine "Upper Body Session" to your
+   * **`timetable_add_routine`**`r/Upper Body Session d/Monday t/1600-1800` : Adds the routine "Upper Body Session" to your
    timetable on Monday at 1600HRS - 1800HRS.
    
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
-<a name="features"></a>
 ## Features 
 
-### Help: `help`
+### Miscellaneous
 
-Lists out all useful commands and their functions.
+#### Help: `help`
+
+Links you to the User Guide where there is comprehensive summary of all command in fitNUS. The link will appear in a
+pop-up.
 
 Format: `help`
 
-### Create new routine : `routine create`
+![Help](./images/help.png)
+
+#### Exit: `exit`
+
+Save fitNUS data and closes the application.
+
+Format: `exit`
+
+### Exercise
+
+### Routine
+#### Create new routine : `routine create`
 
 Creates a new routine by the given routine name.
 
-Format: `routine create r/ROUTINE_NAME`
+Format: `routine_create r/ROUTINE_NAME`
 
 Examples:
-* `routine create r/Leg Day Session` Creates new routine with the name "Leg Day Session".
+* `routine_create r/Leg Workout` Creates new routine with the name "Leg Workout".
 
-### Delete routine : `routine delete`
+![Routine Create](./images/routine_create.png)
+#### Delete routine : `routine delete`
 
 Deletes an existing routine corresponding to the given index.
 
 Format: `routine delete INDEX`
 
 Examples:
-* `routine delete 10` Deletes routine with the index 10.
+* `routine delete 3` Deletes routine with the index 3.
 
-### Add exercise to routine : `exercise add`
-
-Add a new exercise to a specific routine.
-
-Format: `exercise add r/NAME_OF_TARGET_ROUTINE e/EXERCISE_NAME`
-
-Examples:
-* `exercise add r/Leg Day Session e/Squats` Adds an exercise named "Squats" to the routine "Leg Day Session".
-
-### Delete exercise from routine : `exercise delete`
+![Routine Delete](./images/routine_delete.png)
+#### Add exercise to routine : `routine_add`
 
 Add a new exercise to a specific routine.
 
-Format: `exercise delete r/NAME_OF_TARGET_ROUTINE e/EXERCISE_NAME`
+Format: `routine_add r/NAME_OF_TARGET_ROUTINE e/EXERCISE_NAME`
 
 Examples:
-* `exercise delete r/Leg Day Session e/Squats` Delete the exercise "Squats" from the routine "Leg Day Session".
+* `routine_add r/Leg Workout e/Squat` Adds an exercise named "Squat" to the routine "Leg Workout".
 
-### View routine details : `routine view`
+![Routine Add Exercise](./images/routine_add.png)
+#### Delete exercise from routine : `routine_delete_exercise`
+
+Add a new exercise to a specific routine.
+
+Format: `routine_delete_exercise r/NAME_OF_TARGET_ROUTINE e/EXERCISE_NAME`
+
+Examples:
+* `routine_delete_exercise r/Full Workout e/Squat` Delete the exercise "Squat" from the routine "Full Workout".
+
+![Routine Delete Exercise](./images/routine_delete_exercise.png)
+#### View routine details : `routine view`
 
 View the details of a certain routine.
 
@@ -95,58 +104,15 @@ Format: `routine view INDEX`
 Examples:
 * `routine view 2` Views routine with the index 2.
 
-### List routines : `routine list`
+#### List routines : `routine list`
 
-Lists out all the routines in fitNUS.
+List out all the routines in fitNUS.
 
 Format: `routine list`
 
-### Add routine to schedule : `schedule add`
+### Timetable
 
-Adds a complete routine into the application's schedule.
-
-Format: `schedule add r/ROUTINE_NAME d/DAY_OF_THE_WEEK t/TIMING`
-
-Examples:
-* `schedule add r/Leg Day Session d/Monday t/1600-1800` Adds routine "Leg Day Session" to schedule on Monday, 1600-1800.
-
-### Delete routine from schedule : `schedule delete`
-
-Deletes a routine from the application's schedule.
-
-Format: `schedule delete d/DAY_OF_THE_WEEK t/TIMING`
-
-Examples:
-* `schedule delete d/Monday t/1600-1800` Deletes the routine scheduled on Monday, 1600-1800.
-
-### Add or edit height : `height`
-
-Adds height in centimetres.
-
-Format: `height h/HEIGHT`
-
-Examples:
-* `height h/170` Adds or edits the height of the user, which is 170cm.
-
-### Add or edit weight : `weight`
-
-Adds weight in kilograms.
-
-Format: `weight w/WEIGHT`
-
-Examples:
-* `weight w/70` Adds or edits the weight of the user, which is 70kg. 
-
-### View BMI : `bmi`
-
-Calculates and views the user's BMI based on his/her height and weight.
-
-Format: `bmi`
-
-Examples:
-* `bmi` Views BMI.
-
-### View timetable : `timetable view`
+#### View timetable : `timetable view`
 
 View the user's timetable.
 
@@ -154,6 +120,58 @@ Format: `timetable view`
 
 Examples:
 * `timetable view` Views timetable.
+
+#### Add routine to timetable : `timetable_add_routine`
+
+Add a complete routine into the application's schedule.
+
+Format: `timetable_add_routine r/ROUTINE_NAME d/DAY_OF_THE_WEEK t/TIMING`
+
+Examples:
+* `timetable_add_routine r/Leg Workout d/Monday t/1600-1800` Adds routine "Leg Workout" to schedule on Monday, 1600-1800.
+
+![Timetable Add Routine](./images/timetable_add_routine.png)
+#### Delete routine or lesson from schedule : `timetable_delete`
+
+Delete a routine or lesson from the application's schedule.
+
+Format: `timetable_delete d/DAY_OF_THE_WEEK t/TIMING`
+
+Examples:
+* `timetable_delete d/Monday t/1600-1800` Deletes the routine or lesson scheduled on Monday, 1600-1800.
+
+![Timetable Delete](./images/timetable_delete.png)
+
+###BMI
+#### Add or edit height : `height`
+
+Add height in centimetres.
+
+Format: `height h/HEIGHT`
+
+Examples:
+* `height h/170` Adds or edits the height of the user, which is 170cm.
+
+![Add height](./images/height.png)
+#### Add or edit weight : `weight`
+
+Add weight in kilograms.
+
+Format: `weight w/WEIGHT`
+
+Examples:
+* `weight w/70` Adds or edits the weight of the user, which is 70kg. 
+
+![Add weight](./images/weight.png)
+
+#### View BMI : `bmi`
+
+Calculate and view the user's BMI based on his/her height and weight.
+
+Format: `bmi`
+
+Examples:
+* `bmi` Views BMI.
 
 ### Saving the data
 
@@ -176,14 +194,14 @@ _{explain the feature here}_
 
 Action | Format, Examples
 --------|------------------
-**List commands** | `help`
-**Create routine** | `routine create r/ROUTINE_NAME​` <br> e.g., `routine create r/Leg Day Session`
+**Link to User Guide** | `help`
+**Create routine** | `routine_create r/ROUTINE_NAME​` <br> e.g., `routine_create r/Leg Day Session`
 **Delete routine** | `routine delete INDEX` <br> e.g., `routine delete 10`
-**Add exercise to routine** | `exercise add r/NAME_OF_TARGET_ROUTINE e/EXERCISE_NAME`<br> e.g., `exercise add r/Leg Day Session e/Squats`
-**Delete exercise from routine** | `exercise delete r/NAME_OF_TARGET_ROUTINE e/EXERCISE_NAME​`<br> e.g.,`exercise delete r/Leg Day Session e/Squats`
+**Add exercise to routine** | `routine_add r/NAME_OF_TARGET_ROUTINE e/EXERCISE_NAME`<br> e.g., `routine_add r/Leg Day Session e/Squats`
+**Delete exercise from routine** | `routine_delete_exercise r/NAME_OF_TARGET_ROUTINE e/EXERCISE_NAME​`<br> e.g.,`routine_delete_exercise r/Leg Day Session e/Squats`
 **View routine details** | `routine view INDEX`<br> e.g., `routine view 2`
 **List routines** | `routine list`
-**Add routine to schedule** | `schedule add r/ROUTINE_NAME d/DAY_OF_THE_WEEK t/TIMING` <br> e.g., `schedule add r/Leg Day Session d/Monday t/1600-1800`
-**Delete routine from schedule** | `schedule delete d/DAY_OF_THE_WEEK t/TIMING` <br> e.g., `schedule delete d/Monday t/1600-1800`
+**Add routine to schedule** | `timetable_add_routine r/ROUTINE_NAME d/DAY_OF_THE_WEEK t/TIMING` <br> e.g., `timetable_add_routine add r/Leg Day Session d/Monday t/1600-1800`
+**Delete routine from schedule** | `timetable_delete d/DAY_OF_THE_WEEK t/TIMING` <br> e.g., `timetable_delete d/Monday t/1600-1800`
 **View timetable** | `timetable view`
 

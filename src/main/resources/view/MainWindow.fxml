@@ -28,25 +28,25 @@
             <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
           </Menu>
         </MenuBar>
-        <HBox prefHeight="200" prefWidth="250" id="timetable">
-
+        <HBox prefHeight="200" prefWidth="250" id="timetable" alignment="CENTER">
+          <Label text="Timetable" textAlignment="CENTER"/>
         </HBox>
 
         <HBox>
           <children>
-            <HBox prefHeight="200" prefWidth="610" id="calories">
-
+            <HBox prefHeight="200" prefWidth="610" id="calories" alignment="CENTER">
+              <Label text="Calories"/>
             </HBox>
             <VBox prefHeight="200" prefWidth="610">
-              <HBox prefHeight="100" prefWidth="610" id="sideBox">
-
+              <HBox prefHeight="100" prefWidth="610" id="sideBox" alignment="CENTER">
+                <Label text="${'There is no excuse for not trying.\n-Barack Obama'}"/>
               </HBox>
               <HBox prefHeight="100" prefWidth="610">
-                <VBox prefHeight="100" prefWidth="305" id="bmi">
-
+                <VBox prefHeight="100" prefWidth="305" id="bmi" alignment="CENTER">
+                  <Label wrapText="" text="${'HEIGHT: 170CM\nWEIGHT: 70KG\nBMI: 24.2'}"/>
                 </VBox>
-                <VBox prefHeight="100" prefWidth="305" id = "logo" >
-
+                <VBox prefHeight="100" prefWidth="305" id = "logo" alignment="CENTER">
+                  <Label text="Logo"/>
                 </VBox>
               </HBox>
             </VBox>
