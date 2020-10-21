@@ -3,7 +3,7 @@
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
-participant ":AddressBookParser" as AddressBookParser LOGIC_COLOR
+participant ":FitNusParser" as FitNusParser LOGIC_COLOR
 participant ":FindExercisesCommandParser" as FindExercisesCommandParser LOGIC_COLOR
 participant "f:FindExercisesCommand" as FindExercisesCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
@@ -16,17 +16,17 @@ end box
 [-> LogicManager : execute("find_exercises bench")
 activate LogicManager
 
-LogicManager -> AddressBookParser : parseCommand("find_exercises bench")
-activate AddressBookParser
+LogicManager -> FitNusParser : parseCommand("find_exercises bench")
+activate FitNusParser
 
 create FindExercisesCommandParser
-AddressBookParser -> FindExercisesCommandParser
+FitNusParser -> FindExercisesCommandParser
 activate FindExercisesCommandParser
 
-FindExercisesCommandParser --> AddressBookParser
+FindExercisesCommandParser --> FitNusParser
 deactivate FindExercisesCommandParser
 
-AddressBookParser -> FindExercisesCommandParser : parse("bench")
+FitNusParser -> FindExercisesCommandParser : parse("bench")
 activate FindExercisesCommandParser
 
 create FindExercisesCommand
@@ -36,14 +36,14 @@ activate FindExercisesCommand
 FindExercisesCommand --> FindExercisesCommandParser : f
 deactivate FindExercisesCommand
 
-FindExercisesCommandParser --> AddressBookParser : f
+FindExercisesCommandParser --> FitNusParser : f
 deactivate FindExercisesCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar.
-FindExercisesCommandParser -[hidden]-> AddressBookParser
+FindExercisesCommandParser -[hidden]-> FitNusParser
 destroy FindExercisesCommandParser
 
-AddressBookParser --> LogicManager : f
-deactivate AddressBookParser
+FitNusParser --> LogicManager : f
+deactivate FitNusParser
 
 LogicManager -> FindExercisesCommand : execute()
 activate FindExercisesCommand
