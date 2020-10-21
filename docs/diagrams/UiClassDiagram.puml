@@ -11,8 +11,12 @@ Class UiManager
 Class MainWindow
 Class HelpWindow
 Class ResultDisplay
-Class PersonListPanel
-Class PersonCard
+Class ExerciseListPanel
+Class RoutineListPanel
+Class LessonListPanel
+Class RoutineCard
+Class ExerciseCard
+Class LessonCard
 Class StatusBarFooter
 Class CommandBox
 }
@@ -38,13 +42,15 @@ MainWindow *-down-> RoutineListPanel
 MainWindow *-down-> LessonListPanel
 MainWindow *-down-> StatusBarFooter
 
-PersonListPanel -down-> PersonCard
+ExerciseListPanel -down-> ExerciseCard
+RoutineListPanel -down-> RoutineCard
+LessonListPanel -down-> LessonCard
+
 
 MainWindow -left-|> UiPart
 
 ResultDisplay --|> UiPart
 CommandBox --|> UiPart
-PersonListPanel --|> UiPart
 ExerciseCard --|> UiPart
 RoutineCard --|> UiPart
 LessonCard --|> UiPart
@@ -57,7 +63,9 @@ LessonCard ..> Model
 UiManager -right-> Logic
 MainWindow -left-> Logic
 
-PersonListPanel -[hidden]left- HelpWindow
+ExerciseListPanel -[hidden]left- HelpWindow
+RoutineListPanel -[hidden]left- HelpWindow
+LessonListPanel -[hidden]left- HelpWindow
 HelpWindow -[hidden]left- CommandBox
 CommandBox -[hidden]left- ResultDisplay
 ResultDisplay -[hidden]left- StatusBarFooter

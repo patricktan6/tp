@@ -202,9 +202,15 @@ Deletes an existing lesson in fitNUS corresponding to the given index.
 Format: `lesson_delete INDEX`
 
 Example:
-* `lesson_delete 1` Deletes the lesson at index 1 in the list.
+* `lesson_delete 2` Deletes the lesson at index 2 in the list.
 
-![Lesson Delete](./images/lesson_delete.png)
+**Before**
+
+![Lesson Delete Before](./images/lesson_delete_before.png)
+
+**After**
+
+![Lesson Delete After](./images/lesson_delete_after.png)
 
 #### 3.3.3 List lessons : `list_lessons`
 
