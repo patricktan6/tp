@@ -1,9 +1,9 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-
-import static java.util.Objects.requireNonNull;
 
 public class BmiCommand extends Command {
     public static final String COMMAND_WORD = "bmi";
@@ -13,10 +13,11 @@ public class BmiCommand extends Command {
             + "Example: " + COMMAND_WORD;
 
     public static final String MESSAGE_SUCCESS = "Your BMI is %.2f.";
-    public static final String MESSAGE_INVALID_BMI = "Your BMI is not available. Please make sure that you have updated your height and weight.";
+    public static final String MESSAGE_INVALID_BMI = "Your BMI is not available. "
+            + "Please make sure that you have updated your height and weight.";
 
     /**
-     * Creates an ExerciseAddCommand to add the specified {@code Exercise}
+     * Creates a BmiCommand to get the BMI Index.
      */
     public BmiCommand() {
     }
@@ -24,7 +25,7 @@ public class BmiCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        
+
         double bmi = model.getBmi();
         if (Double.isNaN(bmi)) {
             throw new CommandException(MESSAGE_INVALID_BMI);
@@ -36,5 +37,5 @@ public class BmiCommand extends Command {
     public boolean equals(Object other) {
         return other == this; // short circuit if same object
     }
-    
+
 }

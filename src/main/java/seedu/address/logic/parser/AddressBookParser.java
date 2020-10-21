@@ -6,7 +6,29 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.*;
+import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.AddHeightCommand;
+import seedu.address.logic.commands.AddWeightCommand;
+import seedu.address.logic.commands.BmiCommand;
+import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.ExerciseAddCommand;
+import seedu.address.logic.commands.ExerciseDeleteCommand;
+import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.FindExercisesCommand;
+import seedu.address.logic.commands.FindLessonsCommand;
+import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.LessonAddCommand;
+import seedu.address.logic.commands.LessonDeleteCommand;
+import seedu.address.logic.commands.LessonListCommand;
+import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.ListExercisesCommand;
+import seedu.address.logic.commands.TimetableAddLessonCommand;
+import seedu.address.logic.commands.TimetableAddRoutineCommand;
+import seedu.address.logic.commands.TimetableDeleteSlotCommand;
 import seedu.address.logic.commands.routines.RoutineAddExerciseCommand;
 import seedu.address.logic.commands.routines.RoutineCreateCommand;
 import seedu.address.logic.commands.routines.RoutineDeleteCommand;
@@ -124,7 +146,7 @@ public class AddressBookParser {
 
         case AddWeightCommand.COMMAND_WORD:
             return new AddWeightCommandParser().parse(arguments);
-            
+
         case BmiCommand.COMMAND_WORD:
             return new BmiCommand();
 
