@@ -13,7 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.stage.Stage?>
 
-<fx:root minHeight="600" minWidth="450" onCloseRequest="#handleExit" title="FitNUS" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<fx:root minHeight="600" minWidth="450" onCloseRequest="#handleExit" title="FitNUS" type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <icons>
     <Image url="@/images/address_book_32.png" />
   </icons>
@@ -33,63 +35,24 @@
             <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
           </Menu>
         </MenuBar>
-        <HBox prefHeight="200" prefWidth="250" id="timetable" alignment="CENTER">
-          <Label text="Timetable" textAlignment="CENTER"/>
+
+        <HBox fx:id="tabsContainer" VBox.vgrow="ALWAYS" >
+          <VBox id="tabsVBox" HBox.hgrow="ALWAYS">
+            <TabPane fx:id="tabPanePlaceHolder"
+                     VBox.vgrow="ALWAYS"
+                     tabClosingPolicy="UNAVAILABLE"
+                     stylesheets="@css/Tab.css">
+
+              <Tab text="HOME">
+                <StackPane fx:id="homeContentPlaceholder" VBox.vgrow="ALWAYS"/>
+              </Tab>
+              <Tab text="TIMETABLE">
+                <StackPane fx:id="timetableContentPlaceholder" VBox.vgrow="ALWAYS"/>
+              </Tab>
+            </TabPane>
+          </VBox>
         </HBox>
 
-        <HBox>
-          <children>
-            <HBox prefHeight="200" prefWidth="610" id="calories" alignment="CENTER">
-              <Label text="Calories"/>
-            </HBox>
-            <VBox prefHeight="200" prefWidth="610">
-              <HBox prefHeight="100" prefWidth="610" id="sideBox" alignment="CENTER">
-                <Label text="${'There is no excuse for not trying.\n-Barack Obama'}"/>
-              </HBox>
-              <HBox prefHeight="100" prefWidth="610">
-                <VBox prefHeight="100" prefWidth="305" id="bmi" alignment="CENTER">
-                  <Label wrapText="" text="${'HEIGHT: 170CM\nWEIGHT: 70KG\nBMI: 24.2'}"/>
-                </VBox>
-                <VBox prefHeight="100" prefWidth="305" id = "logo" alignment="CENTER">
-                  <Label text="Logo"/>
-                </VBox>
-              </HBox>
-            </VBox>
-          </children>
-        </HBox>
-
-            <HBox prefHeight="350.0" prefWidth="200.0">
-               <children>
-
-              <VBox fx:id="exerciseList" minWidth="200" prefWidth="340" styleClass="pane-with-border">
-                <padding>
-                  <Insets bottom="10" left="10" right="10" top="10" />
-                </padding>
-                <StackPane fx:id="exerciseListPanelPlaceholder" VBox.vgrow="ALWAYS" />
-              </VBox>
-
-              <VBox fx:id="personList" minWidth="200" prefWidth="340" styleClass="pane-with-border">
-                <padding>
-                  <Insets bottom="10" left="10" right="10" top="10" />
-                </padding>
-                <StackPane fx:id="personListPanelPlaceholder" VBox.vgrow="ALWAYS" />
-              </VBox>
-
-        <VBox fx:id="routineList" minWidth="200" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
-          <padding>
-            <Insets bottom="10" left="10" right="10" top="10" />
-          </padding>
-          <StackPane fx:id="routineListPanelPlaceholder" VBox.vgrow="ALWAYS" />
-        </VBox>
-
-        <VBox fx:id="lessonList" minWidth="340" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
-          <padding>
-            <Insets bottom="10" left="10" right="10" top="10" />
-          </padding>
-          <StackPane fx:id="lessonListPanelPlaceholder" VBox.vgrow="ALWAYS" />
-        </VBox>
-               </children>
-            </HBox>
         <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100" prefHeight="100" styleClass="pane-with-border" VBox.vgrow="NEVER">
           <padding>
             <Insets bottom="5" left="10" right="10" top="5" />
