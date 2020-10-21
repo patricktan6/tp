@@ -70,4 +70,5 @@ deactivate TimetableAddRoutineCommand
 
 [<--LogicManager
 deactivate LogicManager
+
 @enduml

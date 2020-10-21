@@ -136,7 +136,7 @@ This section describes some noteworthy details on how certain features are imple
 
 ### Create routine
 
-The feature to create a routine in fitNUS is implemented using `RoutineCreateCommand` class, which inherits from 
+The feature to create a routine in fitNUS is implemented using `RoutineCreateCommand` class, which inherits from
 `Command` class. The argument is supplied after parsing the user input by the `RoutineCreateCommandParser` class.
 
 It is important to note that the Routine object in question must not already exist within fitNUS.
@@ -154,7 +154,7 @@ method of `FitNusParser`.
 
 **Step 3:**
 
-`parseCommand` identifies that this is a command to create a Routine, so it calls the `parse` method of 
+`parseCommand` identifies that this is a command to create a Routine, so it calls the `parse` method of
 `RoutineCreateCommandParser` on the input.
 
 **Step 4:**
@@ -179,7 +179,7 @@ Given below is the sequence diagram showing how the routine creation command is 
 The `TimetableAddRoutineCommandParser` and `TimetableAddRoutineCommand` classes parse and execute the user input
 to add a routine to the timetable in fitNUS.
 
-The `TimetableAddRoutineCommandParser` class takes in the user input and parses them to return a 
+The `TimetableAddRoutineCommandParser` class takes in the user input and parses them to return a
 `TimetableAddRoutineCommand` object that contains the routine, day and duration. The `TimetableAddRoutineCommand` class
 then executes the command by storing the slot in the timetable.
 
@@ -197,7 +197,7 @@ The user types into fitNUS `timetable_add_routine r/Leg workout d/Monday T/1600-
 
 **Step 3:**
 
-`parseCommand` identifies that this is a command add a Routine to Timetable, so it calls the `parse` method of 
+`parseCommand` identifies that this is a command add a Routine to Timetable, so it calls the `parse` method of
 `TimetableAddRoutineCommandParser` on the input.
 
 **Step 4:**
@@ -216,19 +216,19 @@ Note that the `execute` method retrieves the actual Routine object in fitNUS bef
 
 `LogicManager` then saves the updated fitNUS data to the storage.
 
-Given below is the Sequence Diagram for interactions within the Logic component for the 
+Given below is the Sequence Diagram for interactions within the Logic component for the
 execute("timetable_add_routine r/Leg Workout d/Monday T/1600-1700") API call.
 
 ![TimetableAddRoutineSequenceDiagram](images/TimetableAddRoutineSequenceDiagram.png)
 
-### Find exercises 
+### Find exercises
 
 The find exercises feature is implemented using `FindExercisesCommandParser`, as well as the following command:
 * `FindExercisesCommand`, to be executed when the user inputs the command into fitNUS.
 
-`FindExercisesCommandParser` takes in the user input and parses them to return a FindExercisesCommand containing the 
-corresponding predicate for finding the exercises. When executed, `FindExercisesCommand` will set the predicate of 
-the respective `FilteredList` for exercises in `ModelManager` such that only exercises matching the predicate will be 
+`FindExercisesCommandParser` takes in the user input and parses them to return a FindExercisesCommand containing the
+corresponding predicate for finding the exercises. When executed, `FindExercisesCommand` will set the predicate of
+the respective `FilteredList` for exercises in `ModelManager` such that only exercises matching the predicate will be
 displayed in the list.
 
 Given below is an example usage scenario and how the find exercise mechanism behaves at each step.
@@ -244,26 +244,26 @@ method of `FitNusParser`.
 
 **Step 3:**
 
-`parseCommand` identifies that this is a command to find exercises, so it calls the `parse` method of 
+`parseCommand` identifies that this is a command to find exercises, so it calls the `parse` method of
 `FindExercisesCommandParser` on the input.
 
 **Step 4:**
 
 Within `parse`, the keywords to match are added to a `List`, and an `ExerciseNameContainsKeywordsPredicate` object
-is created based on this list. A `FindExercisesCommand` object is created using this 
+is created based on this list. A `FindExercisesCommand` object is created using this
 `ExerciseNameContainsKeywordsPredicate` object.
 
 **Step 5:**
 
 `LogicManager` then calls the `execute` method of this returned `FindExercisesCommand`.
-Within `execute`, `ModelManager`'s `updateFilteredExerciseList` method is called with the 
+Within `execute`, `ModelManager`'s `updateFilteredExerciseList` method is called with the
 `ExerciseNameContainsKeywordsPredicate` object as its argument. This filters out the relevant exercises.
 
 **Step 6:**
 
 The GUI then lists the filtered exercises.
 
-Given below is the Sequence Diagram for interactions within the Logic component for the execute("find_exercises bench") 
+Given below is the Sequence Diagram for interactions within the Logic component for the execute("find_exercises bench")
 API call.
 ![FindExercisesSequenceDiagram](images/FindExercisesSequenceDiagram.png)
 
@@ -315,7 +315,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Use cases
 
 (For all use cases below, the **System** is the `fitNUS` and the **Actor** is the `user`, unless specified otherwise)
-  
+
 **Use case: Create a new routine**
 
 **MSS**
@@ -334,7 +334,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. fitNUS shows an error message.
 
       Use case resumes at step 2.
-     
+
 **Use case: Delete a routine**
 
 **MSS**
@@ -381,13 +381,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. fitNUS shows an error message.
 
       Use case resumes at step 2.
-      
+
 * 5a. The given exercise name already exists.
 
     * 5a1. fitNUS shows an error message.
 
       Use case resumes at step 4.
-      
+ 
 **Use case: Delete exercise from routine**
 
 **MSS**
@@ -411,7 +411,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 3a1. fitNUS shows an error message.
 
       Use case resumes at step 2.
-      
+
 * 5a. The given index of exercise to delete is invalid.
 
     * 5a1. fitNUS shows an error message.
@@ -436,12 +436,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a.   Index given by user is invalid.
     * 1a1.  fitNUS shows an error message.
-    
+
       Use case ends.
-      
+
 * 1b.   No routine exists within fitNUS.
     * 1b1.  fitNUS informs the user that there are no routines to view.
-    
+
       Use case ends.
 
 **Use case: Add completed routine to schedule**
@@ -459,17 +459,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. Routine requested by user does not exist.
     * 3a1. fitNUS shows an error message.
-    
+
     Use case ends.
 
 * 3b. The slot to add the routine is invalid.
     * 3b1. fitNUS shows an error message.
-    
+
     Use case ends.
 
 * 3c. The slot to add the routine is already in use.
     * 3c1. fitNUS informs the user to input another slot.
-    
+ 
     Use case resumes at step 3.
 
 **Use case: Delete routine from schedule**
@@ -487,14 +487,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The slot requested is not assigned to any routine.
     * 3a1. fitNUS informs the user that the slot is empty.
-    
+  
     Use case resumes at step 3.
 
 * 3b. The slot requested is invalid.
     * 3b1. fitNUS shows an error message.
-    
+
     Use case ends.
-    
+
 **Use case: View timetable**
 
 **MSS**
@@ -503,10 +503,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2.  fitNUS displays their timetable.
 
 **Extensions**
-      
+
 * 1a.   No timetable exists within fitNUS.
     * 1a1.  fitNUS informs the user that there is no timetable to view yet.
-    
+
       Use case ends.
 
 *{More to be added}*
