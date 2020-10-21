@@ -22,12 +22,14 @@ import seedu.address.logic.commands.FindLessonsCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.LessonAddCommand;
 import seedu.address.logic.commands.LessonDeleteCommand;
+import seedu.address.logic.commands.LessonEditCommand;
 import seedu.address.logic.commands.LessonListCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.ListExercisesCommand;
 import seedu.address.logic.commands.TimetableAddLessonCommand;
 import seedu.address.logic.commands.TimetableAddRoutineCommand;
 import seedu.address.logic.commands.TimetableDeleteSlotCommand;
+import seedu.address.logic.commands.routines.FindRoutinesCommand;
 import seedu.address.logic.commands.routines.RoutineAddExerciseCommand;
 import seedu.address.logic.commands.routines.RoutineCreateCommand;
 import seedu.address.logic.commands.routines.RoutineDeleteCommand;
@@ -35,6 +37,7 @@ import seedu.address.logic.commands.routines.RoutineDeleteExerciseCommand;
 import seedu.address.logic.commands.routines.RoutineListCommand;
 import seedu.address.logic.commands.routines.RoutineViewCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.routines.FindRoutinesCommandParser;
 import seedu.address.logic.parser.routines.RoutineAddExerciseCommandParser;
 import seedu.address.logic.parser.routines.RoutineCreateCommandParser;
 import seedu.address.logic.parser.routines.RoutineDeleteCommandParser;
@@ -131,6 +134,9 @@ public class AddressBookParser {
         case LessonListCommand.COMMAND_WORD:
             return new LessonListCommand();
 
+        case LessonEditCommand.COMMAND_WORD:
+            return new LessonEditCommandParser().parse(arguments);
+
         case TimetableAddRoutineCommand.COMMAND_WORD:
             return new TimetableAddRoutineCommandParser().parse(arguments);
 
@@ -149,6 +155,9 @@ public class AddressBookParser {
 
         case RoutineDeleteExerciseCommand.COMMAND_WORD:
             return new RoutineDeleteExerciseCommandParser().parse(arguments);
+
+        case FindRoutinesCommand.COMMAND_WORD:
+            return new FindRoutinesCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

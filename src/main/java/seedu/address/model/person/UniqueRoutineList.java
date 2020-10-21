@@ -66,10 +66,12 @@ public class UniqueRoutineList implements Iterable<Routine> {
             for (Routine routine : internalList) {
                 if (routine.isSameActivity(r)) {
                     Set<Exercise> routineExercises = routine.getExercises();
+                    internalList.remove(routine);
                     if (routineExercises.contains(exercise)) {
                         throw new DuplicateExerciseException();
                     }
                     routine.addExercise(exercise);
+                    internalList.add(routine);
                     break;
                 }
             }
@@ -225,7 +227,9 @@ public class UniqueRoutineList implements Iterable<Routine> {
         } else {
             for (Routine routine : internalList) {
                 if (routine.isSameActivity(retrievedRoutine)) {
+                    internalList.remove(routine);
                     routine.deleteExercise(retrievedExercise);
+                    internalList.add(routine);
                     break;
                 }
             }
