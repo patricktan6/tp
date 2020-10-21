@@ -1,15 +1,15 @@
 package seedu.address.testutil;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.person.Exercise;
-import seedu.address.model.person.Name;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-public class  TypicalExercises {
+import seedu.address.model.AddressBook;
+import seedu.address.model.person.Exercise;
+import seedu.address.model.person.Name;
+
+public class TypicalExercises {
 
     public static final Exercise BENCH_PRESS = new Exercise(new Name("Bench Press"), new HashSet<>());
     public static final Exercise SQUATS = new Exercise(new Name("Squats"), new HashSet<>());
