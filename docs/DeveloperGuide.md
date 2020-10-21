@@ -387,7 +387,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 5a1. fitNUS shows an error message.
 
       Use case resumes at step 4.
- 
+
 **Use case: Delete exercise from routine**
 
 **MSS**
@@ -469,7 +469,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3c. The slot to add the routine is already in use.
     * 3c1. fitNUS informs the user to input another slot.
- 
+
     Use case resumes at step 3.
 
 **Use case: Delete routine from schedule**
@@ -487,7 +487,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The slot requested is not assigned to any routine.
     * 3a1. fitNUS informs the user that the slot is empty.
-  
+
     Use case resumes at step 3.
 
 * 3b. The slot requested is invalid.
