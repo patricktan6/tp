@@ -153,6 +153,14 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setExercise(Exercise target, Exercise editedExercise) {
+        requireAllNonNull(target, editedExercise);
+
+        addressBook.setExercise(target, editedExercise);
+    }
+
+
+    @Override
     public void addRoutine(Routine routine) {
         addressBook.addRoutine(routine);
         updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);

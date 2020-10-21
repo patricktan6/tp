@@ -158,6 +158,13 @@ public interface Model {
     void addExercise(Exercise exercise);
 
     /**
+     * Replaces the given exercise {@code target} with {@code editedExercise}.
+     * {@code target} must exist in FitNUS.
+     * The exercise identity of {@code editedExercise} must not be the same as another existing exercise in FitNUS.
+     */
+    void setExercise(Exercise target, Exercise editedExercise);
+
+    /**
      * Adds the given routine.
      * {@code routine} must not already exist in fitNUS.
      */
