@@ -184,6 +184,38 @@ corresponding predicate for finding the exercises. When executed, `FindExercises
 the respective `FilteredList` for exercises in `ModelManager` such that only exercises matching the predicate will be 
 displayed in the list.
 
+Given below is an example usage scenario and how the find exercise mechanism behaves at each step.
+
+**Step 1:**
+
+The user types into fitNUS `find_exercises bench`.
+
+**Step 2:**
+
+This input is passed to `LogicManager` as a String and from there, the input is parsed by the `parseCommand`
+method of `FitNusParser`.
+
+**Step 3:**
+
+`parseCommand` identifies that this is a command to find exercises, so calls the `parse` method of 
+`FindExercisesCommandParser` on the input.
+
+**Step 4:**
+
+Within `parse`, the keywords to match are added to a `List`, and an `ExerciseNameContainsKeywordsPredicate` object
+is created based on this list. A `FindExercisesCommand` object is created using this 
+`ExerciseNameContainsKeywordsPredicate` object.
+
+**Step 5:**
+
+`LogicManager` then calls the `execute` method of this returned `FindExercisesCommand`.
+Within `execute`, `ModelManager`'s `updateFilteredExerciseList` method is called with the 
+`ExerciseNameContainsKeywordsPredicate` object as its argument. This filters out the relevant exercises.
+
+**Step 6:**
+
+The GUI then lists the filtered exercises.
+
 Given below is the Sequence Diagram for interactions within the Logic component for the execute("find_exercises bench") 
 API call.
 ![FindExercisesSequenceDiagram](images/FindExercisesSequenceDiagram.png)
