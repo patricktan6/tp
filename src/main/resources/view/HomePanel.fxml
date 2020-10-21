@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.stage.Stage?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <HBox>
+        <children>
+            <HBox prefHeight="200" prefWidth="610" id="calories" alignment="CENTER">
+                <Label text="Calories"/>
+            </HBox>
+            <VBox prefHeight="200" prefWidth="610">
+                <HBox prefHeight="100" prefWidth="610" id="sideBox" alignment="CENTER">
+                    <Label text="${'There is no excuse for not trying.\n-Barack Obama'}"/>
+                </HBox>
+                <HBox prefHeight="100" prefWidth="610">
+                    <VBox prefHeight="100" prefWidth="305" id="bmi" alignment="CENTER">
+                        <Label wrapText="" text="${'HEIGHT: 170CM\nWEIGHT: 70KG\nBMI: 24.2'}"/>
+                    </VBox>
+                    <VBox prefHeight="100" prefWidth="305" id = "logo" alignment="CENTER">
+                        <Label text="Logo"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </children>
+    </HBox>
+    <HBox prefHeight="350.0" prefWidth="200.0">
+        <children>
+
+            <VBox fx:id="exerciseList" minWidth="200" prefWidth="340" styleClass="pane-with-border">
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                </padding>
+                <StackPane fx:id="exerciseListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+            </VBox>
+
+            <VBox fx:id="routineList" minWidth="200" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                </padding>
+                <StackPane fx:id="routineListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+            </VBox>
+
+            <VBox fx:id="lessonList" minWidth="200" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                </padding>
+                <StackPane fx:id="lessonListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+            </VBox>
+        </children>
+    </HBox>
+
+</VBox>
