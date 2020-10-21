@@ -191,13 +191,18 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void addHeight(int height) {
+    public void addHeight(double height) {
         addressBook.addHeight(height);
     }
 
     @Override
-    public void addWeight(int weight) {
+    public void addWeight(double weight) {
         addressBook.addWeight(weight);
+    }
+    
+    @Override
+    public double getBmi() {
+        return addressBook.getBmi();
     }
 
     /**

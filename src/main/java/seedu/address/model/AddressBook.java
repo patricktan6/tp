@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
@@ -26,8 +27,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniqueExerciseList exercises;
     private final UniqueRoutineList routines;
     private final UniqueLessonList lessons;
-    private int height;
-    private int weight;
+    private double height = Double.NaN;
+    private double weight = Double.NaN;
     private final Timetable timetable;
 
     /*
@@ -58,11 +59,11 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     //// user-level operations
 
-    public void addHeight(int height) {
+    public void addHeight(double height) {
         this.height = height;
     }
 
-    public void addWeight(int weight) {
+    public void addWeight(double weight) {
         this.weight = weight;
     }
 

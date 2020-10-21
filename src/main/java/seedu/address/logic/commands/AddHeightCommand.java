@@ -12,19 +12,19 @@ public class AddHeightCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds user's height to fitNUS. "
             + "Parameters: "
             + PREFIX_HEIGHT + "HEIGHT "
-            + "...\n"
+            + "\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_HEIGHT + "170 ";
+            + PREFIX_HEIGHT + "170.50 ";
 
-    public static final String MESSAGE_SUCCESS = "Height added: %d cm";
+    public static final String MESSAGE_SUCCESS = "Height added: %.2f cm";
     public static final String MESSAGE_INVALID_HEIGHT = "This is not a valid height";
 
-    private final int height;
+    private final double height;
 
     /**
      * Creates an ExerciseAddCommand to add the specified {@code Exercise}
      */
-    public AddHeightCommand(int height) {
+    public AddHeightCommand(double height) {
         requireNonNull(height);
         this.height = height;
     }

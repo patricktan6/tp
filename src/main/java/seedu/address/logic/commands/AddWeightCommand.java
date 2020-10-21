@@ -12,19 +12,19 @@ public class AddWeightCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds user's weight to fitNUS. "
             + "Parameters: "
             + PREFIX_WEIGHT + "WEIGHT "
-            + "...\n"
+            + "\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_WEIGHT + "72 ";
+            + PREFIX_WEIGHT + "72.50 ";
 
-    public static final String MESSAGE_SUCCESS = "Weight added: %d kg";
+    public static final String MESSAGE_SUCCESS = "Weight added: %.wf kg";
     public static final String MESSAGE_INVALID_WEIGHT = "This is not a valid weight";
 
-    private final int weight;
+    private final double weight;
 
     /**
      * Creates an ExerciseAddCommand to add the specified {@code Exercise}
      */
-    public AddWeightCommand(int weight) {
+    public AddWeightCommand(double weight) {
         requireNonNull(weight);
         this.weight = weight;
     }

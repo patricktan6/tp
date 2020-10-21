@@ -196,9 +196,11 @@ public interface Model {
     void addSlotToTimetable(Slot slot);
     void deleteSlotFromTimetable(Slot target);
 
-    void addHeight(int height);
+    void addHeight(double height);
 
-    void addWeight(int weight);
+    void addWeight(double weight);
+    
+    double getBmi();
 
     /**
      * Returns true if a lesson with the same details as {@code lesson} exists in timetable.
