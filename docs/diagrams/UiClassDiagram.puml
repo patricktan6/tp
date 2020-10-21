@@ -33,7 +33,9 @@ UiManager -down-> MainWindow
 MainWindow --> HelpWindow
 MainWindow *-down-> CommandBox
 MainWindow *-down-> ResultDisplay
-MainWindow *-down-> PersonListPanel
+MainWindow *-down-> ExerciseListPanel
+MainWindow *-down-> RoutineListPanel
+MainWindow *-down-> LessonListPanel
 MainWindow *-down-> StatusBarFooter
 
 PersonListPanel -down-> PersonCard
@@ -43,11 +45,15 @@ MainWindow -left-|> UiPart
 ResultDisplay --|> UiPart
 CommandBox --|> UiPart
 PersonListPanel --|> UiPart
-PersonCard --|> UiPart
+ExerciseCard --|> UiPart
+RoutineCard --|> UiPart
+LessonCard --|> UiPart
 StatusBarFooter --|> UiPart
 HelpWindow -down-|> UiPart
 
-PersonCard ..> Model
+ExerciseCard ..> Model
+RoutineCard ..> Model
+LessonCard ..> Model
 UiManager -right-> Logic
 MainWindow -left-> Logic
 

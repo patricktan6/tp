@@ -20,11 +20,21 @@ public class Routine extends Activity {
         return this.exercises;
     }
 
+    /**
+     * Adds an Exercise into the Routine object.
+     * @param newExercise an existing Exercise in fitNUS.
+     */
     public void addExercise(Exercise newExercise) {
+        assert(!this.exercises.contains(newExercise));
         this.exercises.add(newExercise);
     }
 
+    /**
+     * Deletes an Exercise from the Routine object.
+     * @param oldExercise an existing Exercise in this particular Routine object.
+     */
     public void deleteExercise(Exercise oldExercise) {
+        assert(this.exercises.contains(oldExercise));
         this.exercises.remove(oldExercise);
     }
 
