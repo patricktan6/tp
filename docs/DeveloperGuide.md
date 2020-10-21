@@ -154,7 +154,7 @@ method of `FitNusParser`.
 
 **Step 3:**
 
-`parseCommand` identifies that this is a command to create a Routine, so calls the `parse` method of 
+`parseCommand` identifies that this is a command to create a Routine, so it calls the `parse` method of 
 `RoutineCreateCommandParser` on the input.
 
 **Step 4:**
@@ -168,16 +168,63 @@ the Routine object and returns it as an argument in the `RoutineCreateCommand`.
 
 **Step 6:**
 
-`LogicManager` then saves the updated fitNUS to the storage.
+`LogicManager` then saves the updated fitNUS data to the storage.
 
 Given below is the sequence diagram showing how the routine creation command is executed:
 
 ![Routine Create](./images/RoutineAddSequenceDiagram.png)
 
+### Add Routine to Timetable
+
+The `TimetableAddRoutineCommandParser` and `TimetableAddRoutineCommand` classes parse and execute the user input
+to add a routine to the timetable in fitNUS.
+
+The `TimetableAddRoutineCommandParser` class takes in the user input and parses them to return a 
+`TimetableAddRoutineCommand` object that contains the routine, day and duration. The `TimetableAddRoutineCommand` class
+then executes the command by storing the slot in the timetable.
+
+Note that for the command to be successful, the routine to be added has to exist in fitNUS.
+
+Given below is an example usage scenario and how the mechanism behaves at each step.
+
+**Step 1:**
+
+The user types into fitNUS `timetable_add_routine r/Leg workout d/Monday T/1600-1800`.
+
+**Step 2:**
+
+`LogicManager` takes in this input as a String and calls the `parseCommand` method of `FitNusParser` to parse this string.
+
+**Step 3:**
+
+`parseCommand` identifies that this is a command add a Routine to Timetable, so it calls the `parse` method of 
+`TimetableAddRoutineCommandParser` on the input.
+
+**Step 4:**
+
+The `parse` method calls the necessary methods of `ParserUtil` to parse the given argument and produce the name, day,
+and duration. It uses the name to create the Routine object and returns this object, the day, and the duration as an
+argument in `TimetableAddRoutineCommand`.<br>
+Note that this Routine object is a placeholder, the actual Routine object in fitNUS is yet to be found.
+
+**Step 5:**
+
+`LogicManager` calls the `execute` method of this returned `TimetableAddRoutineCommand` to add the Routine into the timetable.<br>
+Note that the `execute` method retrieves the actual Routine object in fitNUS before adding it to the timetable.
+
+**Step 6:**
+
+`LogicManager` then saves the updated fitNUS data to the storage.
+
+Given below is the Sequence Diagram for interactions within the Logic component for the 
+execute("timetable_add_routine r/Leg Workout d/Monday T/1600-1700") API call.
+
+![TimetableAddRoutineSequenceDiagram](images/TimetableAddRoutineSequenceDiagram.png)
+
 ### Find exercises 
 
 The find exercises feature is implemented using `FindExercisesCommandParser`, as well as the following command:
-* `FindExercisesCommand`, to be executed when the user inputs the command into fitNUS
+* `FindExercisesCommand`, to be executed when the user inputs the command into fitNUS.
 
 `FindExercisesCommandParser` takes in the user input and parses them to return a FindExercisesCommand containing the 
 corresponding predicate for finding the exercises. When executed, `FindExercisesCommand` will set the predicate of 
@@ -197,7 +244,7 @@ method of `FitNusParser`.
 
 **Step 3:**
 
-`parseCommand` identifies that this is a command to find exercises, so calls the `parse` method of 
+`parseCommand` identifies that this is a command to find exercises, so it calls the `parse` method of 
 `FindExercisesCommandParser` on the input.
 
 **Step 4:**

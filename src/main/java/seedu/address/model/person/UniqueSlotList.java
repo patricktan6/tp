@@ -68,6 +68,7 @@ public class UniqueSlotList implements Iterable<Slot> {
      */
     public void remove(Slot toRemove) {
         requireNonNull(toRemove);
+        assert(internalList.contains(toRemove));
         if (!internalList.remove(toRemove)) {
             throw new SlotNotFoundException();
         }
