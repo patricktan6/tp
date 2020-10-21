@@ -21,8 +21,8 @@ public class LessonAddCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "CS2103T "
-            + PREFIX_TAG + "Monday "
-            + PREFIX_TAG + "1000 "
+            + PREFIX_TAG + "webcasted "
+            + PREFIX_TAG + "consult "
             + PREFIX_TAG + "2hours";
 
     public static final String MESSAGE_SUCCESS = "New lesson added: %1$s";

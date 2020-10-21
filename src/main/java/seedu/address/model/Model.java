@@ -161,6 +161,13 @@ public interface Model {
     void addExercise(Exercise exercise);
 
     /**
+     * Replaces the given exercise {@code target} with {@code editedExercise}.
+     * {@code target} must exist in FitNUS.
+     * The exercise identity of {@code editedExercise} must not be the same as another existing exercise in FitNUS.
+     */
+    void setExercise(Exercise target, Exercise editedExercise);
+
+    /**
      * Adds the given routine.
      * {@code routine} must not already exist in fitNUS.
      */
@@ -222,6 +229,13 @@ public interface Model {
     void addLesson(Lesson lesson);
 
     /**
+     * Replaces the given person {@code target} with {@code editedLesson}.
+     * {@code target} must exist in FitNUS.
+     * The lesson identity of {@code editedLesson} must not be the same as another existing lesson in FitNUS.
+     */
+    void setLesson(Lesson target, Lesson editedLesson);
+
+    /**
      * Returns an unmodifiable view of the filtered person list
      */
     ObservableList<Routine> getFilteredRoutineList();
@@ -248,4 +262,6 @@ public interface Model {
      * {@code exercise} must already exist within fitNUS.
      */
     void deleteExerciseToRoutine(Routine routine, Exercise exercise);
+
+    void viewRoutine(Routine routineToView);
 }

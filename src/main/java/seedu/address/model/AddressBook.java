@@ -223,6 +223,28 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the given exercise {@code target} in the list with {@code editedExercise}.
+     * {@code target} must exist in FitNUS.
+     * The exercise identity of {@code editedExercise} must not be the same as another existing exercise in FitNUS.
+     */
+    public void setExercise(Exercise target, Exercise editedExercise) {
+        requireNonNull(editedExercise);
+
+        exercises.setExercise(target, editedExercise);
+    }
+
+    /**
+     * Replaces the given lesson {@code target} in the list with {@code editedLesson}.
+     * {@code target} must exist in FitNUS.
+     * The lesson identity of {@code editedLesson} must not be the same as another existing lesson in FitNUS.
+     */
+    public void setLesson(Lesson target, Lesson editedLesson) {
+        requireNonNull(editedLesson);
+
+        lessons.setLesson(target, editedLesson);
+    }
+
+    /**
      * Removes {@code key} from this {@code AddressBook}.
      * {@code key} must exist in the address book.
      */
