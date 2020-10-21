@@ -213,6 +213,13 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setLesson(Lesson target, Lesson editedLesson) {
+        requireAllNonNull(target, editedLesson);
+
+        addressBook.setLesson(target, editedLesson);
+    }
+
+    @Override
     public boolean hasLesson(Lesson lesson) {
         requireNonNull(lesson);
         return addressBook.hasLesson(lesson);
