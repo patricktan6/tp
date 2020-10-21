@@ -15,6 +15,7 @@ import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExerciseAddCommand;
 import seedu.address.logic.commands.ExerciseDeleteCommand;
+import seedu.address.logic.commands.ExerciseEditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.FindExercisesCommand;
@@ -107,6 +108,9 @@ public class AddressBookParser {
         case ExerciseDeleteCommand.COMMAND_WORD:
             return new ExerciseDeleteCommandParser().parse(arguments);
 
+        case ExerciseEditCommand.COMMAND_WORD:
+            return new ExerciseEditCommandParser().parse(arguments);
+
         case ListExercisesCommand.COMMAND_WORD:
             return new ListExercisesCommand();
 
@@ -151,7 +155,6 @@ public class AddressBookParser {
 
         case AddWeightCommand.COMMAND_WORD:
             return new AddWeightCommandParser().parse(arguments);
-
 
         case RoutineDeleteExerciseCommand.COMMAND_WORD:
             return new RoutineDeleteExerciseCommandParser().parse(arguments);
