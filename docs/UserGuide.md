@@ -147,12 +147,12 @@ Format: `routine_view INDEX`
 Examples:
 * `routine_view 2` Views routine with the index 2.
 
-##### Before input:
+**Before input:**
 
 ![Routine View](./images/routine_view.png)
 
 
-#### After input:
+**After input:**
 
 ![Routine View After](./images/routine_view_after.png)
 
@@ -173,10 +173,11 @@ Format: `find_routines KEYWORD`
 Example:
 * `find_routines upper` Finds all routines with the keyword "upper" in its name, regardless of uppercase or lowercase.
 
-##### Input:
+**Input:**
+
 ![Find Routines](./images/routine_find.png)
 
-##### Result:
+**Result:**
 
 ![Find Routines Result](./images/routine_find_after.png)
 
@@ -201,9 +202,15 @@ Deletes an existing lesson in fitNUS corresponding to the given index.
 Format: `lesson_delete INDEX`
 
 Example:
-* `lesson_delete 1` Deletes the lesson at index 1 in the list.
+* `lesson_delete 2` Deletes the lesson at index 2 in the list.
 
-![Lesson Delete](./images/lesson_delete.png)
+**Before**
+
+![Lesson Delete Before](./images/lesson_delete_before.png)
+
+**After**
+
+![Lesson Delete After](./images/lesson_delete_after.png)
 
 #### 3.3.3 List lessons : `list_lessons`
 
@@ -345,7 +352,8 @@ Action | Format |
 **Link to User Guide** | `help` 
 **Save and exit fitNUS** | `exit`
 
-### 4.2 Exercise 
+### 4.2 Exercise
+
 Action | Format | Examples
 --------|-------|-----------
 **Create Exercise** | `exercise_add n/EXERCISE_NAME [t/TAG]` | `exercise_add n/Bench Press t/Upper`
@@ -354,6 +362,7 @@ Action | Format | Examples
 **List Exercises** | `list_exercises`
 
 ### 4.3 Routine 
+
 Action | Format | Examples
 --------|-------|-----------
 **Create Routine** | `routine_create r/ROUTINE_NAME` | `routine_create r/Leg Day Session`
@@ -364,6 +373,7 @@ Action | Format | Examples
 **List Routines** | `routine list`
 
 ### 4.4 Lesson
+
 Action | Format | Examples
 --------|-------|-----------
 **Create Lesson** | `lesson_add n/EXERCISE_NAME [t/TAG]` | `lesson_add n/CS2100 t/Thursday t/0900 t/1hours`
@@ -372,6 +382,7 @@ Action | Format | Examples
 **Find Lessons** | `find_lessons KEYWORD [MORE_KEYWORDS]` | `find_lessons CS2103T`
 
 ### 4.5 Timetable
+
 Action | Format | Examples
 --------|-------|-----------
 **Add Routine to Timetable** | `timetable_add_routine r/ROUTINE_NAME d/DAY_OF_THE_WEEK T/TIMING` | `timetable_add_routine add r/Leg Day Session d/Monday T/1600-1800`
@@ -380,6 +391,7 @@ Action | Format | Examples
 **View timetable** | `timetable view`
 
 ### 4.6 BMI
+
 Action | Format | Examples
 --------|-------|-----------
 **Add or edit Height** | `height h/HEIGHT` | `height h/170`
