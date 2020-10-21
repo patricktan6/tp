@@ -4,16 +4,14 @@ import java.util.logging.Logger;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
@@ -36,10 +34,8 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private PersonListPanel personListPanel;
-    private ExerciseListPanel exerciseListPanel;
-    private LessonListPanel lessonListPanel;
-    private RoutineListPanel routineListPanel;
+    private HomePanel homePanel;
+    private TimetablePanel timetablePanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -50,22 +46,19 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane personListPanelPlaceholder;
+    private StackPane homeContentPlaceholder;
 
     @FXML
-    private StackPane routineListPanelPlaceholder;
-
-    @FXML
-    private StackPane exerciseListPanelPlaceholder;
-
-    @FXML
-    private StackPane lessonListPanelPlaceholder;
+    private StackPane timetableContentPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private TabPane tabPanePlaceHolder;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -127,14 +120,17 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+        //        exerciseListPanel = new ExerciseListPanel(logic.getFilteredExerciseList());
+        //        exerciseListPanelPlaceholder.getChildren().add(exerciseListPanel.getRoot());
+        //
+        //        lessonListPanel = new LessonListPanel(logic.getFilteredLessonList());
+        //        lessonListPanelPlaceholder.getChildren().add(lessonListPanel.getRoot());
 
-        exerciseListPanel = new ExerciseListPanel(logic.getFilteredExerciseList());
-        exerciseListPanelPlaceholder.getChildren().add(exerciseListPanel.getRoot());
+        homePanel = new HomePanel(logic);
+        homeContentPlaceholder.getChildren().add(homePanel.getRoot());
 
-        lessonListPanel = new LessonListPanel(logic.getFilteredLessonList());
-        lessonListPanelPlaceholder.getChildren().add(lessonListPanel.getRoot());
+        timetablePanel = new TimetablePanel(logic);
+        timetableContentPlaceholder.getChildren().add(timetablePanel.getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
@@ -145,10 +141,17 @@ public class MainWindow extends UiPart<Stage> {
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
 
-        routineListPanelPlaceholder.setBackground(new Background(new BackgroundFill(Color.YELLOW, CornerRadii.EMPTY,
-                Insets.EMPTY)));
-        routineListPanel = new RoutineListPanel(logic.getFilteredRoutineList());
-        routineListPanelPlaceholder.getChildren().add(routineListPanel.getRoot());
+        //        routineListPanelPlaceholder.setBackground
+        //        (new Background(new BackgroundFill(Color.YELLOW, CornerRadii.EMPTY,
+        //                Insets.EMPTY)));
+        //        routineListPanel = new RoutineListPanel(logic.getFilteredRoutineList());
+        //        routineListPanelPlaceholder.getChildren().add(routineListPanel.getRoot());
+
+        tabPanePlaceHolder.setMinWidth(530);
+        tabPanePlaceHolder.setMinHeight(50);
+
+        VBox.setVgrow(tabPanePlaceHolder, Priority.ALWAYS);
+
     }
 
     /**
@@ -189,10 +192,6 @@ public class MainWindow extends UiPart<Stage> {
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();
-    }
-
-    public PersonListPanel getPersonListPanel() {
-        return personListPanel;
     }
 
     /**
