@@ -8,7 +8,7 @@ title: User Guide
 {:toc}
 
 ------------------------------------------------------------------------------------------------------------------------
-## 1. Introduction
+## 1. Introduction (Licheng)
 
 fitNUS is tailored for **NUS students** that are interested in staying healthy and keeping fit. It is suitable for **all
 fitness levels** and is equipped with a **customisable timetable** for you to manage your time wisely and slot in your
@@ -48,7 +48,7 @@ Note how the app contains some sample data.<br>
 --------------------------------------------------------------------------------------------------------------------
 ## 3. Features
 
-### 3.1 Exercise
+### 3.1 Exercise (Licheng)
 
 #### 3.1.1 Create new exercise : `exercise_add`
 
@@ -92,7 +92,7 @@ Example:
 
 ![Find Exercises](./images/find_exercises.png);
 
-### 3.2 Routine
+### 3.2 Routine (Jing Qian)
 
 #### 3.2.1 Create new routine : `routine_create`
 
@@ -181,7 +181,7 @@ Example:
 
 ![Find Routines Result](./images/routine_find_after.png)
 
-### 3.3 Lesson
+### 3.3 Lesson (Nicholas)
 
 #### 3.3.1 Create new lesson : `lesson_add`
 
@@ -269,9 +269,6 @@ Deletes the routine or lesson scheduled on Monday, 1600-1800.
 
 ![Timetable Delete](./images/timetable_delete.png)
 
-### BMI
-
-#### Add or edit height : `height`
 
 #### 3.4.4 View timetable : `timetable_view`
 
@@ -282,7 +279,7 @@ Format: `timetable_view`
 Examples:
 * `timetable view` Views timetable.
 
-### 3.5 BMI
+### 3.5 BMI (Jing Qian)
 
 #### 3.5.1 Add or edit height : `height`
 
@@ -315,7 +312,7 @@ Format: `bmi`
 Examples:
 * `bmi` Views BMI.
 
-### 3.6 Miscellaneous
+### 3.6 Miscellaneous (Jing Qian)
 
 #### 3.6.1 Help: `help`
 
@@ -343,7 +340,7 @@ _{explain the feature here}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 4. Command summary
+## 4. Command summary (Nicholas)
 
 ### 4.1 Miscellaneous
 
