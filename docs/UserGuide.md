@@ -231,7 +231,7 @@ Example:
 
 ![Find Lessons](./images/find_lessons.png);
 
-### 3.4 Timetable
+### 3.4 Timetable (Nicholas)
 
 #### 3.4.1 Add routine to timetable : `timetable_add_routine`
 
