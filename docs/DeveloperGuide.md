@@ -265,7 +265,47 @@ The GUI then lists the filtered exercises.
 
 Given below is the Sequence Diagram for interactions within the Logic component for the execute("find_exercises bench")
 API call.
+
 ![FindExercisesSequenceDiagram](images/FindExercisesSequenceDiagram.png)
+
+### Delete lesson
+
+The delete lesson feature is implemented using `LessonDeleteCommandParser`, as well as the following command:
+* `LessonDeleteCommand`, to be executed when the user inputs the command into fitNUS.
+
+`LessonDeleteCommandParser` takes in the user input and parses them to return a `LessonDeleteCommand` object. The
+`LessonDeleteCommand` class then executes the command by deleting the lesson from the respective `FilteredList` for
+lessons in `ModelManager`.
+
+Given below is an example usage scenario and how the delete lesson mechanism behaves at each step.
+
+**Step 1:**
+
+The user types into fitNUS `lesson_delete 1`.
+
+**Step 2:**
+
+This input is passed to `LogicManager` as a String and from there, the input is parsed by the `parseCommand`
+method of `FitNusParser`.
+
+**Step 3:**
+
+`parseCommand` identifies that this is a command to delete lesson, so it calls the `parse` method of
+`LessonDeleteCommandParser` on the input.
+
+**Step 4:**
+
+Within `parse`, the name of the lesson is produced by `ParserUtil` parsing the given argument. This method then creates
+the Lesson object.
+
+**Step 5:**
+
+`LogicManager` then calls the `execute` method of this returned `LessonDeleteCommand`.
+Within `execute`, `ModelManager`'s `updateFilteredLessonList` method is called. This removes the unwanted lesson.
+
+**Step 6:**
+
+The GUI then lists the deleted lesson.
 
 
 
