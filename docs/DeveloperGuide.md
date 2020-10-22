@@ -15,7 +15,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 ## **Design**
 
-### Architecture
+### Architecture (Jing Qian)
 
 <img src="images/ArchitectureDiagram.png" width="450" />
 
@@ -57,7 +57,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 The sections below give more details of each component.
 
-### UI component
+### UI component (Jing Qian)
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
@@ -73,7 +73,7 @@ The `UI` component,
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
-### Logic component
+### Logic component (Jing Qian)
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
@@ -86,14 +86,14 @@ The `UI` component,
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("exercise_delete 1")` API call.
 
 ![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `ExerciseDeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
 
-### Model component
+### Model component (Jing Qian)
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
@@ -114,7 +114,7 @@ The `Model`,
 </div>
 
 
-### Storage component
+### Storage component (Jing Qian)
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
@@ -124,7 +124,7 @@ The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
 * can save the fitNUS data in json format and read it back.
 
-### Common classes
+### Common classes 
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
 
@@ -134,7 +134,7 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### Create routine
+### Create routine (Jing Qian)
 
 The feature to create a routine in fitNUS is implemented using `RoutineCreateCommand` class, which inherits from
 `Command` class. The argument is supplied after parsing the user input by the `RoutineCreateCommandParser` class.
@@ -174,7 +174,7 @@ Given below is the sequence diagram showing how the routine creation command is 
 
 ![Routine Create](./images/RoutineAddSequenceDiagram.png)
 
-### Add Routine to Timetable
+### Add Routine to Timetable (Nicholas)
 
 The `TimetableAddRoutineCommandParser` and `TimetableAddRoutineCommand` classes parse and execute the user input
 to add a routine to the timetable in fitNUS.
@@ -221,7 +221,7 @@ execute("timetable_add_routine r/Leg Workout d/Monday T/1600-1700") API call.
 
 ![TimetableAddRoutineSequenceDiagram](images/TimetableAddRoutineSequenceDiagram.png)
 
-### Find exercises
+### Find exercises (Licheng)
 
 The find exercises feature is implemented using `FindExercisesCommandParser`, as well as the following command:
 * `FindExercisesCommand`, to be executed when the user inputs the command into fitNUS.
@@ -268,7 +268,7 @@ API call.
 
 ![FindExercisesSequenceDiagram](images/FindExercisesSequenceDiagram.png)
 
-### Delete lesson
+### Delete lesson (Iqbal)
 
 The delete lesson feature is implemented using `LessonDeleteCommandParser`, as well as the following command:
 * `LessonDeleteCommand`, to be executed when the user inputs the command into fitNUS.
@@ -339,7 +339,7 @@ The GUI then lists the deleted lesson.
 around their classes.
 
 
-### User stories
+### User stories (Jing QIan)
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -352,7 +352,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | health-conscious individual                 | log my BMI              | keep better track of my health.
 
 
-### Use cases
+### Use cases (Licheng)
 
 (For all use cases below, the **System** is the `fitNUS` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -597,7 +597,7 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Deleting a Routine
+### Deleting a Routine (Jing Qian)
 
 1. Deleting a Routine
 
