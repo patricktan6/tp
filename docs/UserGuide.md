@@ -13,7 +13,7 @@ title: User Guide
 fitNUS is tailored for **NUS students** that are interested in staying healthy and keeping fit. It is suitable for **all
 fitness levels** and is equipped with a **customisable timetable** for you to manage your time wisely and slot in your
 workout routines with ease.
-   
+
 fitNUS is  **optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User
 Interface (GUI). If you can type fast, fitNUS can get your scheduling tasks done faster than traditional GUI apps.
 
@@ -32,7 +32,7 @@ Interface (GUI). If you can type fast, fitNUS can get your scheduling tasks done
 Note how the app contains some sample data.<br>
 
 1. Type the command in the command box and press Enter to execute it. Here are some sample commands you can try:
-   
+
    * **`exercise_add`**`n/Curls t/Upper` : Creates an Exercise named "Curls" with a "Upper" tag.
 
    * **`routine_create`**`r/Upper Body Session` : Creates a routine names "Upper Body Session"
@@ -42,11 +42,11 @@ Note how the app contains some sample data.<br>
 
    * **`timetable_add_routine`**`r/Upper Body Session d/Monday T/1600-1800` : Adds the routine "Upper Body Session"
    to your timetable on Monday at 1600HRS - 1800HRS.
-   
+
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
-## 3. Features 
+## 3. Features
 
 ### 3.1 Exercise
 
@@ -240,7 +240,7 @@ Adds a complete routine into the timetable in fitNUS.
 Format: `timetable_add_routine r/ROUTINE_NAME d/DAY_OF_THE_WEEK T/TIMING`
 
 Examples:
-* `timetable_add_routine r/Leg Workout d/Monday T/1600-1800` 
+* `timetable_add_routine r/Leg Workout d/Monday T/1600-1800`
 Adds routine "Leg Workout" to timetable on Monday, 1600-1800.
 
 ![Timetable Add Routine](./images/timetable_add_routine.png)
@@ -264,7 +264,7 @@ Deletes a routine or lesson from the timetable in fitNUS.
 Format: `timetable_delete d/DAY_OF_THE_WEEK t/TIMING`
 
 Examples:
-* `timetable_delete d/Monday t/1600-1800` 
+* `timetable_delete d/Monday t/1600-1800`
 Deletes the routine or lesson scheduled on Monday, 1600-1800.
 
 ![Timetable Delete](./images/timetable_delete.png)
@@ -302,7 +302,7 @@ Adds the specified weight in kilograms to fitNUS.
 Format: `weight w/WEIGHT`
 
 Examples:
-* `weight w/70` Adds or edits the weight of the user, which is 70 kg. 
+* `weight w/70` Adds or edits the weight of the user, which is 70 kg.
 
 ![Add weight](./images/weight.png)
 
@@ -334,7 +334,7 @@ Format: `exit`
 
 ### 3.7 Saving the data
 
-Data in fitNUS is saved in the hard disk automatically after any command that changes the data. 
+Data in fitNUS is saved in the hard disk automatically after any command that changes the data.
 There is no need to save manually.
 
 ### 3.8 Archiving data files `[coming in v2.0]`
@@ -349,7 +349,7 @@ _{explain the feature here}_
 
 Action | Format |
 --------|-------|
-**Link to User Guide** | `help` 
+**Link to User Guide** | `help`
 **Save and exit fitNUS** | `exit`
 
 ### 4.2 Exercise
@@ -361,7 +361,7 @@ Action | Format | Examples
 **Find Exercises** | `find_exercises KEYWORD [MORE_KEYWORDS]` | `find_exercises Bench Press`
 **List Exercises** | `list_exercises`
 
-### 4.3 Routine 
+### 4.3 Routine
 
 Action | Format | Examples
 --------|-------|-----------
@@ -386,7 +386,7 @@ Action | Format | Examples
 Action | Format | Examples
 --------|-------|-----------
 **Add Routine to Timetable** | `timetable_add_routine r/ROUTINE_NAME d/DAY_OF_THE_WEEK T/TIMING` | `timetable_add_routine add r/Leg Day Session d/Monday T/1600-1800`
-**Add Lesson to Timetable** | `timetable_add_lesson n/LESSON_NAME d/DAY_OF_THE_WEEK T/TIMING` | `timetable_add_lesson n/CS2103T d/Monday T/1200-1400` 
+**Add Lesson to Timetable** | `timetable_add_lesson n/LESSON_NAME d/DAY_OF_THE_WEEK T/TIMING` | `timetable_add_lesson n/CS2103T d/Monday T/1200-1400`
 **Delete Routine or Lesson from Timetable** | `timetable_delete d/DAY_OF_THE_WEEK T/TIMING` | `timetable_delete d/Monday T/1600-1800`
 **View timetable** | `timetable view`
 
