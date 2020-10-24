@@ -334,6 +334,10 @@
      -fx-background-color: #FF7F50;
 }
 
+#headers {
+    -fx-text-fill: #FFFFFF
+}
+
 #bmi {
     -fx-background-color: #ADD8E6;
 }

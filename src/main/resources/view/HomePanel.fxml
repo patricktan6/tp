@@ -36,9 +36,21 @@
             </VBox>
         </children>
     </HBox>
+    <HBox prefWidth="450" prefHeight="50">
+        <children>
+            <VBox prefWidth="340" alignment="BOTTOM_CENTER">
+                <Label text="Exercises:" id="headers"/>
+            </VBox>
+            <VBox prefWidth="340" alignment="BOTTOM_CENTER">
+                <Label text="Routines:" id="headers"/>
+            </VBox>
+            <VBox prefWidth="340" alignment="BOTTOM_CENTER">
+                <Label text="Lessons:" id="headers"/>
+            </VBox>
+        </children>
+    </HBox>
     <HBox prefHeight="350.0" prefWidth="200.0">
         <children>
-
             <VBox fx:id="exerciseList" minWidth="200" prefWidth="340" styleClass="pane-with-border">
                 <padding>
                     <Insets bottom="10" left="10" right="10" top="10" />

@@ -6,7 +6,15 @@ title: Developer Guide
 {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
+## **Introduction**
 
+fitNUS is tailored for **NUS students** that are interested in staying healthy and keeping fit. It is suitable for **all
+fitness levels** and is equipped with a **customisable timetable** for you to manage your time wisely and slot in your
+workout routines with ease.
+ 
+This developer guide is for users who are interested in our design philosophy and for future developers of fitNUS.
+
+--------------------------------------------------------------------------------------------------------------------
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
@@ -15,7 +23,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 ## **Design**
 
-### Architecture (Jing Qian)
+### Architecture
 
 <img src="images/ArchitectureDiagram.png" width="450" />
 
@@ -57,7 +65,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 The sections below give more details of each component.
 
-### UI component (Jing Qian)
+### UI component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
@@ -73,7 +81,7 @@ The `UI` component,
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
-### Logic component (Jing Qian)
+### Logic component
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
@@ -93,7 +101,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `ExerciseDeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
 
-### Model component (Jing Qian)
+### Model component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
@@ -114,7 +122,7 @@ The `Model`,
 </div>
 
 
-### Storage component (Jing Qian)
+### Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
@@ -134,7 +142,7 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 
 This section describes some noteworthy details on how certain features are implemented.
 
-### Create routine (Jing Qian)
+### Create routine
 
 The feature to create a routine in fitNUS is implemented using `RoutineCreateCommand` class, which inherits from
 `Command` class. The argument is supplied after parsing the user input by the `RoutineCreateCommandParser` class.
@@ -174,7 +182,7 @@ Given below is the sequence diagram showing how the routine creation command is 
 
 ![Routine Create](./images/RoutineAddSequenceDiagram.png)
 
-### Add Routine to Timetable (Nicholas)
+### Add Routine to Timetable
 
 The `TimetableAddRoutineCommandParser` and `TimetableAddRoutineCommand` classes parse and execute the user input
 to add a routine to the timetable in fitNUS.
@@ -221,7 +229,7 @@ execute("timetable_add_routine r/Leg Workout d/Monday T/1600-1700") API call.
 
 ![TimetableAddRoutineSequenceDiagram](images/TimetableAddRoutineSequenceDiagram.png)
 
-### Find exercises (Licheng)
+### Find exercises
 
 The find exercises feature is implemented using `FindExercisesCommandParser`, as well as the following command:
 * `FindExercisesCommand`, to be executed when the user inputs the command into fitNUS.
@@ -268,7 +276,7 @@ API call.
 
 ![FindExercisesSequenceDiagram](images/FindExercisesSequenceDiagram.png)
 
-### Delete lesson (Iqbal)
+### Delete lesson
 
 The delete lesson feature is implemented using `LessonDeleteCommandParser`, as well as the following command:
 * `LessonDeleteCommand`, to be executed when the user inputs the command into fitNUS.
@@ -339,7 +347,7 @@ The GUI then lists the deleted lesson.
 around their classes.
 
 
-### User stories (Jing QIan)
+### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -352,7 +360,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | health-conscious individual                 | log my BMI              | keep better track of my health.
 
 
-### Use cases (Licheng)
+### Use cases
 
 (For all use cases below, the **System** is the `fitNUS` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -597,7 +605,7 @@ testers are expected to do more *exploratory* testing.
 
 1. _{ more test cases …​ }_
 
-### Deleting a Routine (Jing Qian)
+### Deleting a Routine
 
 1. Deleting a Routine
 
