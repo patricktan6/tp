@@ -33,14 +33,14 @@ Note how the app contains some sample data.<br>
 
 1. Type the command in the command box and press Enter to execute it. Here are some sample commands you can try:
 
-   * **`exercise_add`**`n/Curls t/Upper` : Creates an Exercise named "Curls" with a "Upper" tag.
+   * **`exercise_add`**`n/Curls t/Upper` : Creates an Exercise named "Curls" with an "Upper" tag.
 
-   * **`routine_create`**`r/Upper Body Session` : Creates a routine names "Upper Body Session"
+   * **`routine_create`**`r/Upper Body Session` : Creates a Routine named "Upper Body Session".
 
-   * **`routine_add `**`r/Upper Body Session e/Curls` : Adds an exercise named "Curls"
-   to a routine named "Upper Body Session"
+   * **`routine_add `**`r/Upper Body Session e/Curls` : Adds an Exercise named "Curls"
+   to a Routine named "Upper Body Session".
 
-   * **`timetable_add_routine`**`r/Upper Body Session d/Monday T/1600-1800` : Adds the routine "Upper Body Session"
+   * **`timetable_add_routine`**`r/Upper Body Session d/Monday T/1600-1800` : Adds the Routine "Upper Body Session"
    to your timetable on Monday at 1600HRS - 1800HRS.
 
 1. Refer to the [Features](#features) below for details of each command.
@@ -71,7 +71,7 @@ Format: `exercise_add n/EXERCISE_NAME [t/TAG]`
 
 Example:
 * `exercise_add n/Bench Press t/Upper` Creates a new exercise with the name "Bench Press"
-and tags "Upper".
+and tag "Upper".
 
 **Successful outcome of adding an exercise "Bench Press":**
 
@@ -105,15 +105,15 @@ Format: `find_exercises KEYWORD [MORE_KEYWORDS]`
 Example:
 * `find_exercises bench` Lists all exercises with names matching "bench".
 
-**Before finding exercises with "bench"**
+**Before finding exercises with "bench":**
 
-Note how there are 3 exercises displayed. 
+Note that fitNUS currently displays 3 exercises. 
 
 ![Find Exercises before](./images/exercise_find_before.png)
 
-**After finding exercises with "bench"**
+**After finding exercises with "bench":**
 
-Note only 1 exercise is listed, and a success message is displayed for you.
+Note that fitNUS now lists only 1 exercise and displays a success message for you.
 
 ![Find Exercises](./images/exercise_find_afterpng.png)
 
@@ -123,22 +123,22 @@ Lists all existing exercises in fitNUS for you to view.
 
 Format: `list_exercises`
 
-**Before listing all exercises**
+**Before listing all exercises:**
 
-Note that there is only 1 exercise being viewed by you as of now.
+Note that you are viewing only 1 exercise as of now.
 
 ![List Exercises](./images/list_exercises.png)
 
-**After listing all exercises**
+**After listing all exercises:**
 
 ![List Exercises](./images/list_exercises_after.png)
 
 
 ### 3.2 Routine
 
-Routine is the next building block in fitNUS. It is essentially a collection of Exercise items and you can customise a
+Routine is the next building block in fitNUS. It is a collection of Exercise items, and you can customise a
 Routine however you want to, by adding or deleting Exercises from it. You will be able to add Routines to your
-Timetable, but more will be covered later.
+Timetable, but we will cover more of this later.
 
 #### 3.2.1 Create new routine : `routine_create`
 
@@ -148,6 +148,8 @@ Format: `routine_create r/ROUTINE_NAME`
 
 Examples:
 * `routine_create r/Leg Workout` Creates a new routine with the name "Leg Workout".
+
+**Successful outcome of creating a routine "Leg Workout":**
 
 ![Routine Create](./images/routine_create.png)
 
@@ -160,18 +162,17 @@ Format: `routine_delete INDEX`
 Examples:
 * `routine_delete 3` Deletes the routine with index 3 in the list.
 
-**Before deleting the third routine**
+**Before deleting the third routine:**
 
-Note that there are 3 routines currently listed.
+Note that fitNUS currently displays 3 routines.
 
 ![Routine Delete](./images/routine_delete.png)
 
-**After deleting the third routine**
+**After deleting the third routine:**
 
-Note that there are now only 2 routines listed, and the third routine "Full Body Workout" is now removed.
+Note that fitNUS now displays only 2 routines, and the third routine "Full Body Workout" is now removed.
 
 ![Routine Delete After](./images/routine_delete_after.png)
-
 
 #### 3.2.3 Add exercise to routine : `routine_add`
 
@@ -182,21 +183,21 @@ Format: `routine_add r/NAME_OF_TARGET_ROUTINE e/EXERCISE_NAME`
 Examples:
 * `routine_add r/Full Workout e/Squat` Adds an exercise named "Squat" to the routine "Full Workout".
 
-**Before adding "Squat" to "Full Workout"**
+**Before adding "Squat" to "Full Workout":**
 
 Note that "Squat" and "Full Workout" already exist in fitNUS.
 
 ![Routine Add Exercise](./images/routine_add.png)
 
-**After adding "Squat" to "Leg Workout"**
+**After adding "Squat" to "Full Workout"**
 
-Note that "Squat" now belongs under "Full Workout" as a tagging as well as a success message.
+Note that "Squat" now belongs to "Full Workout" as a tagging, and fitNUS displays a success message.
 
 ![Routine Add Exercise](./images/routine_add_after.png)
 
 #### 3.2.4 Delete exercise from routine : `routine_delete_exercise`
 
-Removes an exercise from a specific routine.
+Removes an exercise from a specific routine in fitNUS.
 
 Format: `routine_delete_exercise r/NAME_OF_TARGET_ROUTINE e/EXERCISE_NAME`
 
@@ -211,12 +212,12 @@ Note how "Squat" is no longer found under "Full Workout".
 
 #### 3.2.5 View routine details : `routine_view`
 
-Views the details of a certain routine.
+Views the details of a certain routine in fitNUS.
 
 Format: `routine_view INDEX`
 
 Examples:
-* `routine_view 2` Views routine with the index 2.
+* `routine_view 2` Views the routine with the index 2.
 
 **Before input:**
 
@@ -237,8 +238,10 @@ Lists out all the routines in fitNUS.
 
 Format: `routine_list`
 
-Following from the previous feature, you would want to list out all the routines in fitNUS after you are done viewing
+Following from the previous feature, you may want to list out all the routines in fitNUS after you are done viewing
 "Lower Body".
+
+**Result:**
 
 ![Routine List](./images/routine_list.png)
 
@@ -270,6 +273,8 @@ Example:
 * `lesson_add n/CS2100 t/Thursday t/0900 t/1hours` Creates a new lesson with the name "CS2100"
 and tags "Thursday", "0900" and "1hours".
 
+**Successful outcome of adding a lesson "CS2100":**
+
 ![Lesson Add](./images/lesson_add.png)
 
 #### 3.3.2 Delete lesson : `lesson_delete`
@@ -281,11 +286,11 @@ Format: `lesson_delete INDEX`
 Example:
 * `lesson_delete 2` Deletes the lesson at index 2 in the list.
 
-**Before**
+**Before deleting the lesson:**
 
 ![Lesson Delete Before](./images/lesson_delete_before.png)
 
-**After deleting lesson at the second index**
+**After deleting lesson at the second index:**
 
 Note that the lesson at the second index, "CS2101", is now removed from fitNUS.
 
@@ -300,11 +305,11 @@ Format: `find_lessons KEYWORD [MORE_KEYWORDS]`
 Example:
 * `find_lessons CS2103T` Lists all lessons with names matching "CS2103T".
 
-**Before finding "CS2103T"**
+**Before finding "CS2103T":**
 
 ![Find Lessons](./images/find_lessons.png)
 
-**After finding "CS2103T"**
+**After finding "CS2103T":**
 
 ![Find Lessons](./images/find_lessons_after.png)
 
@@ -312,17 +317,18 @@ Example:
 
 After finding a certain lesson, you may want to view all the lessons registered in fitNUS again.
 
-
 Format: `list_lessons`
 
-Following from the previous feature, after viewing "CS2103T", you would list out all lessons in fitNUS.
+Following from the previous feature, after viewing "CS2103T", you may list out all lessons in fitNUS.
+
+**Result:**
 
 ![List Lessons](./images/list_lessons.png)
 
 ### 3.4 Timetable
 
-You can add both Routines and Lessons to your timetable to get an overview of how your week will be like. You can switch
-between the Timetable tab and Homepage by clicking it on the interface.
+You can add both Routines and Lessons to your timetable to get an overview of your week. You can switch
+between the Timetable and Homepage tabs by clicking on the interface.
 
 #### 3.4.1 Add routine to timetable : `timetable_add_routine`
 
@@ -436,16 +442,11 @@ _{explain the feature here}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 4. Command summary (Nicholas)
+## 4. Command summary
 
-### 4.1 Miscellaneous
 
-Action | Format |
---------|-------|
-**Link to User Guide** | `help`
-**Save and exit fitNUS** | `exit`
 
-### 4.2 Exercise
+### 4.1 Exercise
 
 Action | Format | Examples
 --------|-------|-----------
@@ -454,7 +455,7 @@ Action | Format | Examples
 **Find Exercises** | `find_exercises KEYWORD [MORE_KEYWORDS]` | `find_exercises Bench Press`
 **List Exercises** | `list_exercises`
 
-### 4.3 Routine
+### 4.2 Routine
 
 Action | Format | Examples
 --------|-------|-----------
@@ -465,7 +466,7 @@ Action | Format | Examples
 **Delete Exercise from Routine** | `routine_delete_exercise r/NAME_OF_TARGET_ROUTINE e/EXERCISE_NAME` | `routine_delete_exercise r/Leg Day Session e/Squats`
 **List Routines** | `routine list`
 
-### 4.4 Lesson
+### 4.3 Lesson
 
 Action | Format | Examples
 --------|-------|-----------
@@ -474,7 +475,7 @@ Action | Format | Examples
 **List Lessons** | `list_lessons`
 **Find Lessons** | `find_lessons KEYWORD [MORE_KEYWORDS]` | `find_lessons CS2103T`
 
-### 4.5 Timetable
+### 4.4 Timetable
 
 Action | Format | Examples
 --------|-------|-----------
@@ -483,13 +484,20 @@ Action | Format | Examples
 **Delete Routine or Lesson from Timetable** | `timetable_delete d/DAY_OF_THE_WEEK T/TIMING` | `timetable_delete d/Monday T/1600-1800`
 **View timetable** | `timetable view`
 
-### 4.6 BMI
+### 4.5 BMI
 
 Action | Format | Examples
 --------|-------|-----------
 **Add or edit Height** | `height h/HEIGHT` | `height h/170`
 **Add or edit Weight** | `weight w/WEIGHT` | `weight w/70`
 **View BMI** | `bmi`
+
+### 4.6 Miscellaneous
+
+Action | Format |
+--------|-------|
+**Link to User Guide** | `help`
+**Save and exit fitNUS** | `exit`
 
 --------------------------------------------------------------------------------------------------------------------
 
