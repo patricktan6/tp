@@ -25,7 +25,7 @@ public class AddHeightCommandParser implements Parser<AddHeightCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHeightCommand.MESSAGE_USAGE));
         }
 
-        int height = ParserUtil.parseHeight(argMultimap.getValue(PREFIX_HEIGHT).get());
+        double height = ParserUtil.parseHeight(argMultimap.getValue(PREFIX_HEIGHT).get());
 
         return new AddHeightCommand(height);
     }

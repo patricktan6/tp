@@ -14,9 +14,9 @@ public class AddWeightCommand extends Command {
             + PREFIX_WEIGHT + "WEIGHT "
             + "\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_WEIGHT + "72.50 ";
+            + PREFIX_WEIGHT + "72 ";
 
-    public static final String MESSAGE_SUCCESS = "Weight added: %.wf kg";
+    public static final String MESSAGE_SUCCESS = "Weight added: %.2f kg";
     public static final String MESSAGE_INVALID_WEIGHT = "This is not a valid weight";
 
     private final double weight;

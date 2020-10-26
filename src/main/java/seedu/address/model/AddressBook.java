@@ -59,15 +59,17 @@ public class AddressBook implements ReadOnlyAddressBook {
     //// user-level operations
 
     public void addHeight(double height) {
+        System.out.println(String.format("add height %.2f", height));
         this.height = height;
     }
 
     public void addWeight(double weight) {
+        System.out.println(String.format("add weight %.2f", weight));
         this.weight = weight;
     }
 
     public double getBmi() {
-        return weight / Math.pow((height / 100.0), 2);
+        return this.weight / Math.pow((this.height / 100.0), 2);
     }
 
     //// list overwrite operations
@@ -123,6 +125,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         setLessons(newData.getLessonList());
         setRoutines(newData.getRoutineList());
         setSlots(newData.getSlotList());
+        addHeight(newData.getHeight());
+        addWeight(newData.getWeight());
     }
 
     //// person-level operations
@@ -294,6 +298,16 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Slot> getSlotList() {
         return timetable.getSlotList();
+    }
+    
+    @Override
+    public double getHeight() {
+        return height;
+    }
+    
+    @Override
+    public double getWeight() {
+        return weight;
     }
 
     @Override

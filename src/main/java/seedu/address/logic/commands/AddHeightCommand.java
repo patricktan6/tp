@@ -14,7 +14,7 @@ public class AddHeightCommand extends Command {
             + PREFIX_HEIGHT + "HEIGHT "
             + "\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_HEIGHT + "170.50 ";
+            + PREFIX_HEIGHT + "170 ";
 
     public static final String MESSAGE_SUCCESS = "Height added: %.2f cm";
     public static final String MESSAGE_INVALID_HEIGHT = "This is not a valid height";
