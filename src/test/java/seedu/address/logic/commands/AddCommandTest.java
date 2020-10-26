@@ -243,6 +243,16 @@ public class AddCommandTest {
         }
 
         @Override
+        public void setExercise(Exercise target, Exercise editedExercise) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setLesson(Lesson target, Lesson editedLesson) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public Lesson retrieveLesson(Lesson lesson) {
             throw new AssertionError("This method should not be called.");
         }
@@ -254,6 +264,11 @@ public class AddCommandTest {
 
         @Override
         public void deleteExerciseToRoutine(Routine routine, Exercise exercise) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void viewRoutine(Routine routineToView) {
             throw new AssertionError("This method should not be called.");
         }
 

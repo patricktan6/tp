@@ -1,0 +1,69 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":FitNusParser" as FitNusParser LOGIC_COLOR
+participant ":FindExercisesCommandParser" as FindExercisesCommandParser LOGIC_COLOR
+participant "f:FindExercisesCommand" as FindExercisesCommand LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":Model" as Model MODEL_COLOR
+end box
+
+[-> LogicManager : execute("find_exercises bench")
+activate LogicManager
+
+LogicManager -> FitNusParser : parseCommand("find_exercises bench")
+activate FitNusParser
+
+create FindExercisesCommandParser
+FitNusParser -> FindExercisesCommandParser
+activate FindExercisesCommandParser
+
+FindExercisesCommandParser --> FitNusParser
+deactivate FindExercisesCommandParser
+
+FitNusParser -> FindExercisesCommandParser : parse("bench")
+activate FindExercisesCommandParser
+
+create FindExercisesCommand
+FindExercisesCommandParser -> FindExercisesCommand
+activate FindExercisesCommand
+
+FindExercisesCommand --> FindExercisesCommandParser : f
+deactivate FindExercisesCommand
+
+FindExercisesCommandParser --> FitNusParser : f
+deactivate FindExercisesCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+FindExercisesCommandParser -[hidden]-> FitNusParser
+destroy FindExercisesCommandParser
+
+FitNusParser --> LogicManager : f
+deactivate FitNusParser
+
+LogicManager -> FindExercisesCommand : execute()
+activate FindExercisesCommand
+
+FindExercisesCommand-> Model : updateFilteredExerciseList(predicate)
+activate Model
+
+Model --> FindExercisesCommand
+deactivate Model
+
+create CommandResult
+FindExercisesCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> FindExercisesCommand
+deactivate CommandResult
+
+FindExercisesCommand --> LogicManager : result
+deactivate FindExercisesCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

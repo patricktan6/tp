@@ -11,7 +11,7 @@ import seedu.address.model.Model;
  */
 public class RoutineListCommand extends Command {
 
-    public static final String COMMAND_WORD = "routine_list";
+    public static final String COMMAND_WORD = "list_routines";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Shows all routines in fitNUS.\n"
             + "Example: " + COMMAND_WORD;
@@ -21,10 +21,7 @@ public class RoutineListCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
 
-        String routineList = model.listRoutines();
-        model.updateFilteredExerciseList(unused -> false);
-        model.updateFilteredPersonList(unused -> false);
         model.updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
-        return new CommandResult(SHOWING_LIST_MESSAGE + "\n" + routineList);
+        return new CommandResult(SHOWING_LIST_MESSAGE);
     }
 }
