@@ -114,7 +114,7 @@ class JsonSerializableAddressBook {
         }
         addressBook.addHeight(height);
         addressBook.addWeight(weight);
-        
+
         return addressBook;
     }
 

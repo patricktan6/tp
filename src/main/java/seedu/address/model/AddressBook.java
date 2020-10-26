@@ -58,11 +58,21 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     //// user-level operations
 
+    /**
+     * Adds the height of the user.
+     *
+     * @param height the height of the user.
+     */
     public void addHeight(double height) {
         System.out.println(String.format("add height %.2f", height));
         this.height = height;
     }
 
+    /**
+     * Adds the weight of the user.
+     *
+     * @param weight the weight of the user.
+     */
     public void addWeight(double weight) {
         System.out.println(String.format("add weight %.2f", weight));
         this.weight = weight;
@@ -165,6 +175,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Returns true if the slot is already occupied in the timetable.
+     *
      * @param slot The slot to be checked.
      * @return true if the slot is already occupied in the timetable.
      */
@@ -175,6 +186,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Returns true if the slot has overlapping duration with another slot in the timetable.
+     *
      * @param slot The slot to be checked.
      * @return true if the slot has overlapping duration with another slot in the timetable.
      */
@@ -321,12 +333,12 @@ public class AddressBook implements ReadOnlyAddressBook {
     public ObservableList<Slot> getSlotList() {
         return timetable.getSlotList();
     }
-    
+
     @Override
     public double getHeight() {
         return height;
     }
-    
+
     @Override
     public double getWeight() {
         return weight;
@@ -381,6 +393,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Adds a Slot to the Timetable in fitNUS.
+     *
      * @param slot The slot to be added.
      */
     public void addSlotToTimetable(Slot slot) {
@@ -389,6 +402,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Retrieves the Lesson object from UniqueLessonList that the user specified.
+     *
      * @param lesson Lesson object that the user wants.
      * @return Lesson object that exists within fitNUS that the user is looking for.
      */
@@ -398,6 +412,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Retrieves the Routine object from UniqueRoutineList that the user specified.
+     *
      * @param routine Routine object that the user wants.
      * @return Routine object that exists within fitNUS that the user is looking for.
      */
