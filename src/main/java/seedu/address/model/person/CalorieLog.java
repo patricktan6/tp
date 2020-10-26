@@ -13,13 +13,13 @@ import seedu.address.model.person.exceptions.DailyCalorieNotFoundException;
 import seedu.address.model.person.exceptions.DuplicateDailyCalorieException;
 
 /**
- * A list of routines that enforces uniqueness between its elements and does not allow nulls.
- * A routine is considered unique by comparing using {@code Routine#isSameDailyCalorie(Activity)}.
+ * A list of daily calorie entries that enforces uniqueness between its elements and does not allow nulls.
+ * A daily calorie entry is considered unique by comparing using {@code DailyCalorie#isSameDailyCalorie(DailyCalorie)}.
  * As such, adding and updating of
- * routines uses Routine#isSameDailyCalorie(Activity) for equality
- * so as to ensure that the routine being added or updated is unique in terms of identity in the CalorieLog.
- * However, the removal of an routine uses Routine#equals(Object) so
- * as to ensure that the routine with exactly the same fields will be removed.
+ * daily calorie entries uses DailyCalorie#isSameDailyCalorie(DailyCalorie) for equality
+ * so as to ensure that the entry being added or updated is unique in terms of identity in the CalorieLog.
+ * However, the removal of an entry uses DailyCalorie#equals(Object) so
+ * as to ensure that the entry with exactly the same fields will be removed.
  *
  * Supports a minimal set of list operations.
  *
@@ -208,7 +208,7 @@ public class CalorieLog implements Iterable<DailyCalorie> {
     }
 
     /**
-     * Returns true if {@code routines} contains only unique routines.
+     * Returns true if {@code entries} contains only unique daily calorie entries.
      */
     private boolean calorieLogsAreUnique(List<DailyCalorie> calorieLogs) {
         for (int i = 0; i < calorieLogs.size() - 1; i++) {
@@ -222,10 +222,10 @@ public class CalorieLog implements Iterable<DailyCalorie> {
     }
 
     /**
-     * Retrieves the Routine object from CalorieLog that the user specified.
+     * Retrieves the DailyCalorie object from CalorieLog that the user specified.
      *
      * @param dc DailyCalorie object that the user wants.
-     * @return Routine object that exists within fitNUS that the user is looking for.
+     * @return DailyCalorie object that exists within fitNUS that the user is looking for.
      */
     public DailyCalorie retrieveDailyCalorie(DailyCalorie dc) {
         for (DailyCalorie dailyCalorie : internalList) {

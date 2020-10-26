@@ -9,13 +9,13 @@ import seedu.address.logic.commands.CalorieMinusCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * Parses input arguments and creates a new AddCommand object
+ * Parses input arguments and creates a new CalorieMinusCommand object
  */
 public class CalorieMinusCommandParser implements Parser<CalorieMinusCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the RoutineCreateCommand
-     * and returns an RoutineCreateCommand object for execution.
+     * Parses the given {@code String} of arguments in the context of the CalorieMinusCommand
+     * and returns an CalorieMinusCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     public CalorieMinusCommand parse(String args) throws ParseException {

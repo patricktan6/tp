@@ -7,7 +7,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 
 /**
- * Adds an Routine to fitNUS.
+ * Adds a DailyCalorie to fitNUS.
  */
 public class CalorieAddCommand extends Command {
 
@@ -25,7 +25,7 @@ public class CalorieAddCommand extends Command {
     private final int toAdd;
 
     /**
-     * Creates an RoutineAddCommand to add the specified {@code Routine}
+     * Creates an CalorieAddCommand to add the specified {@code DailyCalorie}
      */
     public CalorieAddCommand(int calories) {
         toAdd = calories;
