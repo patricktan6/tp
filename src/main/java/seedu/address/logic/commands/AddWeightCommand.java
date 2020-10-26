@@ -22,7 +22,7 @@ public class AddWeightCommand extends Command {
     private final double weight;
 
     /**
-     * Creates an ExerciseAddCommand to add the specified {@code Exercise}
+     * Creates an AddWeightCommand to add the specified weight in kilograms.
      */
     public AddWeightCommand(double weight) {
         requireNonNull(weight);

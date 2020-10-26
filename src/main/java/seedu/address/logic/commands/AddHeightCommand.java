@@ -22,7 +22,7 @@ public class AddHeightCommand extends Command {
     private final double height;
 
     /**
-     * Creates an ExerciseAddCommand to add the specified {@code Exercise}
+     * Creates an AddHeightCommand to add the specified height in centimetres.
      */
     public AddHeightCommand(double height) {
         requireNonNull(height);

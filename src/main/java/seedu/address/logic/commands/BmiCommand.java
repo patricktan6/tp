@@ -8,7 +8,7 @@ import seedu.address.model.Model;
 public class BmiCommand extends Command {
     public static final String COMMAND_WORD = "bmi";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Views the user's bmi. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Views the user's BMI. "
             + "\n"
             + "Example: " + COMMAND_WORD;
 
