@@ -6,25 +6,44 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-<HBox>
-    <children>
-        <HBox prefHeight="200" prefWidth="610" id="calories" alignment="CENTER">
-            <Label text="Calories"/>
-        </HBox>
-        <VBox prefHeight="200" prefWidth="610">
-            <HBox prefHeight="100" prefWidth="610" id="sideBox" alignment="CENTER">
-                <Label text="${'There is no excuse for not trying.\n-Barack Obama'}"/>
-            </HBox>
-            <HBox prefHeight="100" prefWidth="610">
-                <VBox prefHeight="100" prefWidth="305" id="bmi" alignment="CENTER">
-                    <Label wrapText="" text="${'HEIGHT: 170CM\nWEIGHT: 70KG\nBMI: 24.2'}"/>
-                </VBox>
-                <VBox prefHeight="100" prefWidth="305" id = "logo" alignment="CENTER">
-                    <Label text="Logo"/>
-                </VBox>
-            </HBox>
-        </VBox>
-    </children>
-</HBox>
+    <VBox prefHeight="430.0" prefWidth="200.0">
+        <children>
+            <VBox fx:id="mondayList" minWidth="150" prefWidth="340" styleClass="pane-with-border">
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                </padding>
+                <StackPane fx:id="mondayListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+            </VBox>
+
+            <VBox fx:id="tuesdayList" minWidth="150" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                </padding>
+                <StackPane fx:id="tuesdayListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+            </VBox>
+
+            <VBox fx:id="wednesdayList" minWidth="150" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                </padding>
+                <StackPane fx:id="wednesdayListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+            </VBox>
+
+            <VBox fx:id="thursdayList" minWidth="150" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                </padding>
+                <StackPane fx:id="thursdayListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+            </VBox>
+
+            <VBox fx:id="fridayList" minWidth="150" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="10" left="10" right="10" top="10" />
+                </padding>
+                <StackPane fx:id="fridayListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+            </VBox>
+        </children>
+    </VBox>
 </VBox>
