@@ -135,7 +135,7 @@ public class AddressBookTest {
         public ObservableList<DailyCalorie> getDailyCalorieList() {
             return calorieLog;
         }
-      
+        
         @Override
         public double getHeight() {
             return height;
