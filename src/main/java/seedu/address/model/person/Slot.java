@@ -4,7 +4,7 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
-public class Slot {
+public class Slot implements Comparable<Slot> {
 
     private final Activity activity;
 
@@ -101,5 +101,10 @@ public class Slot {
     @Override
     public String toString() {
         return activity.getName() + " on " + day.toString() + " " + duration.toString();
+    }
+
+    @Override
+    public int compareTo(Slot o) {
+        return this.getDuration().getStartTime().compareTo(o.getDuration().getStartTime());
     }
 }
