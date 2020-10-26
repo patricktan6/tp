@@ -49,4 +49,13 @@ public interface ReadOnlyAddressBook {
      */
     ObservableList<DailyCalorie> getDailyCalorieList();
 
+    /**
+     * Returns the user's height.
+     */
+    double getHeight();
+
+    /**
+     * Returns the user's weight.
+     */
+    double getWeight();
 }

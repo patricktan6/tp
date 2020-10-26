@@ -99,6 +99,8 @@ public class AddressBookTest {
         private final ObservableList<Slot> slots = FXCollections.observableArrayList();
         private final ObservableList<DailyCalorie> calorieLog = FXCollections.observableArrayList();
 
+        private final double height = Double.NaN;
+        private final double weight = Double.NaN;
 
         AddressBookStub(Collection<Person> persons) {
             this.persons.setAll(persons);
@@ -132,6 +134,16 @@ public class AddressBookTest {
         @Override
         public ObservableList<DailyCalorie> getDailyCalorieList() {
             return calorieLog;
+        }
+      
+        @Override
+        public double getHeight() {
+            return height;
+        }
+
+        @Override
+        public double getWeight() {
+            return weight;
         }
     }
 

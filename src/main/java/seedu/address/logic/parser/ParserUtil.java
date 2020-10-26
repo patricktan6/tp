@@ -173,19 +173,19 @@ public class ParserUtil {
     /**
      * Parses {@code String height} into a {@code int}.
      */
-    public static int parseHeight(String height) {
+    public static double parseHeight(String height) {
         requireNonNull(height);
         String trimmedHeight = height.trim();
-        return Integer.parseInt(trimmedHeight);
+        return Double.parseDouble(trimmedHeight);
     }
 
     /**
      * Parses {@code String weight} into a {@code int}.
      */
-    public static int parseWeight(String weight) {
+    public static double parseWeight(String weight) {
         requireNonNull(weight);
         String trimmedWeight = weight.trim();
-        return Integer.parseInt(trimmedWeight);
+        return Double.parseDouble(trimmedWeight);
     }
 
     /**
