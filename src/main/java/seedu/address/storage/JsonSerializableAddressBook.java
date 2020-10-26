@@ -131,6 +131,7 @@ class JsonSerializableAddressBook {
             calorieLog.add(dailyCalorie);
         }
         addressBook.addCalorieEntries(calorieLog);
+
         addressBook.addHeight(height);
         addressBook.addWeight(weight);
 
