@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
@@ -41,6 +42,12 @@ public interface ReadOnlyAddressBook {
      * This list will not contain any duplicate slots.
      */
     ObservableList<Slot> getSlotList();
+
+    /**
+     * Returns an unmodifiable view of the daily calorie list.
+     * This list will not contain any duplicate daily calorie entries.
+     */
+    ObservableList<DailyCalorie> getDailyCalorieList();
 
     /**
      * Returns the user's height.

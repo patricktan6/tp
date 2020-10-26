@@ -10,6 +10,8 @@ import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.AddHeightCommand;
 import seedu.address.logic.commands.AddWeightCommand;
 import seedu.address.logic.commands.BmiCommand;
+import seedu.address.logic.commands.CalorieAddCommand;
+import seedu.address.logic.commands.CalorieMinusCommand;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.DeleteCommand;
@@ -166,6 +168,11 @@ public class AddressBookParser {
         case FindRoutinesCommand.COMMAND_WORD:
             return new FindRoutinesCommandParser().parse(arguments);
 
+        case CalorieAddCommand.COMMAND_WORD:
+            return new CalorieAddCommandParser().parse(arguments);
+
+        case CalorieMinusCommand.COMMAND_WORD:
+            return new CalorieMinusCommandParser().parse(arguments);
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }

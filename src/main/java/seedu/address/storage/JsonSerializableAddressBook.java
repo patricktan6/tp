@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
@@ -26,12 +27,15 @@ class JsonSerializableAddressBook {
     public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
     private static final String MESSAGE_DUPLICATE_ROUTINE = "Routines list contains duplicate routine(s).";
     private static final String MESSAGE_DUPLICATE_SLOT = "Slot list contains duplicate slot(s).";
+    private static final String MESSAGE_DUPLICATE_DAILYCALORIE = "Calorie log contains duplicate calorie log(s).";
 
     private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedExercise> exercises = new ArrayList<>();
     private final List<JsonAdaptedLesson> lessons = new ArrayList<>();
     private final List<JsonAdaptedRoutine> routines = new ArrayList<>();
     private final List<JsonAdaptedSlot> slots = new ArrayList<>();
+    private final List<JsonAdaptedDailyCalorie> dailyCalories = new ArrayList<>();
+
     private double height;
     private double weight;
 
@@ -44,6 +48,7 @@ class JsonSerializableAddressBook {
                                        @JsonProperty("lessons") List<JsonAdaptedLesson> lessons,
                                        @JsonProperty("routines") List<JsonAdaptedRoutine> routines,
                                        @JsonProperty("slots") List<JsonAdaptedSlot> slots,
+                                       @JsonProperty("dailyCalories") List<JsonAdaptedDailyCalorie> dailyCalories,
                                        @JsonProperty("height") double height,
                                        @JsonProperty("weight") double weight) {
         this.persons.addAll(persons);
@@ -51,6 +56,7 @@ class JsonSerializableAddressBook {
         this.lessons.addAll(lessons);
         this.routines.addAll(routines);
         this.slots.addAll(slots);
+        this.dailyCalories.addAll(dailyCalories);
         this.height = height;
         this.weight = weight;
     }
@@ -66,6 +72,8 @@ class JsonSerializableAddressBook {
         lessons.addAll(source.getLessonList().stream().map(JsonAdaptedLesson::new).collect(Collectors.toList()));
         routines.addAll(source.getRoutineList().stream().map(JsonAdaptedRoutine::new).collect(Collectors.toList()));
         slots.addAll(source.getSlotList().stream().map(JsonAdaptedSlot::new).collect(Collectors.toList()));
+        dailyCalories.addAll(source.getDailyCalorieList().stream().map(JsonAdaptedDailyCalorie::new)
+                .collect(Collectors.toList()));
         height = source.getHeight();
         weight = source.getWeight();
     }
@@ -112,6 +120,18 @@ class JsonSerializableAddressBook {
             }
             addressBook.addSlotToTimetable(slot);
         }
+
+        List<DailyCalorie> calorieLog = new ArrayList<>();
+
+        for (JsonAdaptedDailyCalorie jsonAdaptedDailyCalorie: dailyCalories) {
+            DailyCalorie dailyCalorie = jsonAdaptedDailyCalorie.toModelType();
+            if (addressBook.hasDailyCalorie(dailyCalorie)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_DAILYCALORIE);
+            }
+            calorieLog.add(dailyCalorie);
+        }
+        addressBook.addCalorieEntries(calorieLog);
+
         addressBook.addHeight(height);
         addressBook.addWeight(weight);
 

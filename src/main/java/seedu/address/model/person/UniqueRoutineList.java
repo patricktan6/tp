@@ -59,19 +59,18 @@ public class UniqueRoutineList implements Iterable<Routine> {
      * @param exercise Existing Exercise.
      */
     public void addExercise(Routine r, Exercise exercise) {
-
         if (!internalList.contains(r)) {
             throw new RoutineNotFoundException();
         } else {
             for (Routine routine : internalList) {
                 if (routine.isSameActivity(r)) {
                     Set<Exercise> routineExercises = routine.getExercises();
-                    internalList.remove(routine);
+                    int index = internalList.indexOf(routine);
                     if (routineExercises.contains(exercise)) {
                         throw new DuplicateExerciseException();
                     }
                     routine.addExercise(exercise);
-                    internalList.add(routine);
+                    internalList.set(index, routine);
                     break;
                 }
             }
