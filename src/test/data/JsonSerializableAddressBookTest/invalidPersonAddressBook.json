@@ -25,5 +25,11 @@
     "duration" : "1600-1800",
     "tagsForLesson" : [  ],
     "exercisesForRoutine" : [ ]
-  } ]
+  } ],
+  "dailyCalories" : [
+    {
+      "date" : "2020-10-26",
+      "calories" : "1000"
+    }
+  ]
 }
