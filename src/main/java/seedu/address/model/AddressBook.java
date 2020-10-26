@@ -64,7 +64,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      * @param height the height of the user.
      */
     public void addHeight(double height) {
-        System.out.println(String.format("add height %.2f", height));
         this.height = height;
     }
 
@@ -74,7 +73,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      * @param weight the weight of the user.
      */
     public void addWeight(double weight) {
-        System.out.println(String.format("add weight %.2f", weight));
         this.weight = weight;
     }
 
