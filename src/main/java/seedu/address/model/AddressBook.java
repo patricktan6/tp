@@ -341,7 +341,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     public ObservableList<DailyCalorie> getDailyCalorieList() {
         return calorieLog.asUnmodifiableObservableList();
     }
-  
+    
     @Override
     public double getHeight() {
         return height;
