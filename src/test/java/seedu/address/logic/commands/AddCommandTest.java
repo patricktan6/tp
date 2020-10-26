@@ -153,12 +153,17 @@ public class AddCommandTest {
         }
 
         @Override
-        public void addHeight(int height) {
+        public void addHeight(double height) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void addWeight(int weight) {
+        public void addWeight(double weight) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public double getBmi() {
             throw new AssertionError("This method should not be called.");
         }
 

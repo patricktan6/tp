@@ -32,6 +32,8 @@ class JsonSerializableAddressBook {
     private final List<JsonAdaptedLesson> lessons = new ArrayList<>();
     private final List<JsonAdaptedRoutine> routines = new ArrayList<>();
     private final List<JsonAdaptedSlot> slots = new ArrayList<>();
+    private double height;
+    private double weight;
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
@@ -41,12 +43,16 @@ class JsonSerializableAddressBook {
                                        @JsonProperty("exercises") List<JsonAdaptedExercise> exercises,
                                        @JsonProperty("lessons") List<JsonAdaptedLesson> lessons,
                                        @JsonProperty("routines") List<JsonAdaptedRoutine> routines,
-                                       @JsonProperty("slots") List<JsonAdaptedSlot> slots) {
+                                       @JsonProperty("slots") List<JsonAdaptedSlot> slots,
+                                       @JsonProperty("height") double height,
+                                       @JsonProperty("weight") double weight) {
         this.persons.addAll(persons);
         this.exercises.addAll(exercises);
         this.lessons.addAll(lessons);
         this.routines.addAll(routines);
         this.slots.addAll(slots);
+        this.height = height;
+        this.weight = weight;
     }
 
     /**
@@ -60,6 +66,8 @@ class JsonSerializableAddressBook {
         lessons.addAll(source.getLessonList().stream().map(JsonAdaptedLesson::new).collect(Collectors.toList()));
         routines.addAll(source.getRoutineList().stream().map(JsonAdaptedRoutine::new).collect(Collectors.toList()));
         slots.addAll(source.getSlotList().stream().map(JsonAdaptedSlot::new).collect(Collectors.toList()));
+        height = source.getHeight();
+        weight = source.getWeight();
     }
 
     /**
@@ -104,6 +112,9 @@ class JsonSerializableAddressBook {
             }
             addressBook.addSlotToTimetable(slot);
         }
+        addressBook.addHeight(height);
+        addressBook.addWeight(weight);
+
         return addressBook;
     }
 

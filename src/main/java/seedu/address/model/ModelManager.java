@@ -202,13 +202,18 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void addHeight(int height) {
+    public void addHeight(double height) {
         addressBook.addHeight(height);
     }
 
     @Override
-    public void addWeight(int weight) {
+    public void addWeight(double weight) {
         addressBook.addWeight(weight);
+    }
+
+    @Override
+    public double getBmi() {
+        return addressBook.getBmi();
     }
 
     /**
@@ -272,6 +277,7 @@ public class ModelManager implements Model {
     }
 
     //=========== Filtered Person List Accessors =============================================================
+
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
      * {@code versionedAddressBook}
@@ -280,6 +286,7 @@ public class ModelManager implements Model {
     public ObservableList<Routine> getFilteredRoutineList() {
         return filteredRoutine;
     }
+
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
      * {@code versionedAddressBook}
@@ -330,6 +337,7 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         filteredRoutine.setPredicate(predicate);
     }
+
     @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
