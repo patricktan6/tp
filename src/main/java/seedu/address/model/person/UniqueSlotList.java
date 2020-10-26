@@ -60,6 +60,7 @@ public class UniqueSlotList implements Iterable<Slot> {
             throw new SlotOverlapDurationException();
         }
         internalList.add(toAdd);
+        FXCollections.sort(internalList);
     }
 
     /**
