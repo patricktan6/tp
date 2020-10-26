@@ -41,4 +41,14 @@ public interface ReadOnlyAddressBook {
      * This list will not contain any duplicate slots.
      */
     ObservableList<Slot> getSlotList();
+
+    /**
+     * Returns the user's height.
+     */
+    double getHeight();
+
+    /**
+     * Returns the user's weight.
+     */
+    double getWeight();
 }

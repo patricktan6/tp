@@ -26,8 +26,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     private final UniqueExerciseList exercises;
     private final UniqueRoutineList routines;
     private final UniqueLessonList lessons;
-    private int height;
-    private int weight;
+    private double height = Double.NaN;
+    private double weight = Double.NaN;
     private final Timetable timetable;
 
     /*
@@ -58,16 +58,26 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     //// user-level operations
 
-    public void addHeight(int height) {
+    /**
+     * Adds the height of the user.
+     *
+     * @param height the height of the user.
+     */
+    public void addHeight(double height) {
         this.height = height;
     }
 
-    public void addWeight(int weight) {
+    /**
+     * Adds the weight of the user.
+     *
+     * @param weight the weight of the user.
+     */
+    public void addWeight(double weight) {
         this.weight = weight;
     }
 
     public double getBmi() {
-        return weight / Math.pow((height / 100.0), 2);
+        return this.weight / Math.pow((this.height / 100.0), 2);
     }
 
     //// list overwrite operations
@@ -123,6 +133,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         setLessons(newData.getLessonList());
         setRoutines(newData.getRoutineList());
         setSlots(newData.getSlotList());
+        addHeight(newData.getHeight());
+        addWeight(newData.getWeight());
     }
 
     //// person-level operations
@@ -161,6 +173,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Returns true if the slot is already occupied in the timetable.
+     *
      * @param slot The slot to be checked.
      * @return true if the slot is already occupied in the timetable.
      */
@@ -171,6 +184,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Returns true if the slot has overlapping duration with another slot in the timetable.
+     *
      * @param slot The slot to be checked.
      * @return true if the slot has overlapping duration with another slot in the timetable.
      */
@@ -319,6 +333,16 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     @Override
+    public double getHeight() {
+        return height;
+    }
+
+    @Override
+    public double getWeight() {
+        return weight;
+    }
+
+    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
@@ -367,6 +391,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Adds a Slot to the Timetable in fitNUS.
+     *
      * @param slot The slot to be added.
      */
     public void addSlotToTimetable(Slot slot) {
@@ -375,6 +400,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Retrieves the Lesson object from UniqueLessonList that the user specified.
+     *
      * @param lesson Lesson object that the user wants.
      * @return Lesson object that exists within fitNUS that the user is looking for.
      */
@@ -384,6 +410,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * Retrieves the Routine object from UniqueRoutineList that the user specified.
+     *
      * @param routine Routine object that the user wants.
      * @return Routine object that exists within fitNUS that the user is looking for.
      */
