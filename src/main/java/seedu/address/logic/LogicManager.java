@@ -90,6 +90,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ObservableList<Slot> getFilteredSlotList(String day) {
+        return model.getFilteredSlotList(day);
+    }
+
+    @Override
     public ObservableList<DailyCalorie> getFilteredDailyCalorie() {
         return model.getFilteredDailyCalorie();
     }

@@ -19,6 +19,7 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.RoutineNameContainsKeywordsPredicate;
 import seedu.address.model.person.Slot;
+import seedu.address.model.person.SlotDayPredicate;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -330,11 +331,6 @@ public class ModelManager implements Model {
         return filteredLessons;
     }
 
-    @Override
-    public ObservableList<Slot> getFilteredSlotList() {
-        return filteredSlots;
-    }
-
     /**
      * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
      * {@code versionedAddressBook}
@@ -342,6 +338,23 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<DailyCalorie> getFilteredDailyCalorieList() {
         return filteredDailyCalories;
+    }
+
+    @Override
+    public ObservableList<Slot> getFilteredSlotList() {
+        return filteredSlots;
+    }
+
+    @Override
+    public ObservableList<Slot> getFilteredSlotList(String day) {
+        SlotDayPredicate predicate = new SlotDayPredicate(Arrays.asList(day));
+
+        ObservableList<Slot> slotObservableList = this.addressBook.getSlotList();
+        FilteredList<Slot> filteredSlotsByDay = new FilteredList<>(slotObservableList);
+
+        requireNonNull(predicate);
+        filteredSlotsByDay.setPredicate(predicate);
+        return filteredSlotsByDay;
     }
 
     @Override

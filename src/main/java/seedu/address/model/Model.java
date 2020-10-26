@@ -130,6 +130,11 @@ public interface Model {
     ObservableList<Slot> getFilteredSlotList();
 
     /**
+     * Returns an unmodifiable view of the filtered slot list, filtered by the chosen day
+     */
+    ObservableList<Slot> getFilteredSlotList(String day);
+
+    /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.
      *
      * @throws NullPointerException if {@code predicate} is null.
