@@ -329,6 +329,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void updateFilteredCalorieLog(Predicate<DailyCalorie> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void updateFilteredExerciseList(Predicate<Exercise> predicate) {
             throw new AssertionError("This method should not be called.");
         }
