@@ -25,7 +25,7 @@ public class AddWeightCommandParser {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddWeightCommand.MESSAGE_USAGE));
         }
 
-        int weight = ParserUtil.parseHeight(argMultimap.getValue(PREFIX_WEIGHT).get());
+        double weight = ParserUtil.parseWeight(argMultimap.getValue(PREFIX_WEIGHT).get());
 
         return new AddWeightCommand(weight);
     }

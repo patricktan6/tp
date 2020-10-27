@@ -19,6 +19,8 @@ public class RoutineListPanel extends UiPart<Region> {
 
     @FXML
     private ListView<Routine> routineListView;
+    @FXML
+    private ListView<Integer> lv;
 
     /**
      * Creates a {@code RoutineListPanel} with the given {@code ObservableList}.

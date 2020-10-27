@@ -173,19 +173,34 @@ public class ParserUtil {
     /**
      * Parses {@code String height} into a {@code int}.
      */
-    public static int parseHeight(String height) {
+    public static double parseHeight(String height) {
         requireNonNull(height);
         String trimmedHeight = height.trim();
-        return Integer.parseInt(trimmedHeight);
+        return Double.parseDouble(trimmedHeight);
     }
 
     /**
      * Parses {@code String weight} into a {@code int}.
      */
-    public static int parseWeight(String weight) {
+    public static double parseWeight(String weight) {
         requireNonNull(weight);
         String trimmedWeight = weight.trim();
-        return Integer.parseInt(trimmedWeight);
+        return Double.parseDouble(trimmedWeight);
+    }
+
+    /**
+     * Parses a {@code String calorie} into an integer.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code calorie} is less than or equal to 0.
+     */
+    public static int parseCalorie(String calorie) throws ParseException {
+        requireNonNull(calorie);
+        int trimmedCalorie = Integer.parseInt(calorie.trim());
+        if (trimmedCalorie <= 0) {
+            throw new ParseException("Calorie input should never be less than or equal to 0!");
+        }
+        return trimmedCalorie;
     }
 
 }

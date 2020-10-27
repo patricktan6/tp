@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
@@ -25,7 +26,9 @@ public interface Model {
      */
     Predicate<Exercise> PREDICATE_SHOW_ALL_EXERCISES = unused -> true;
 
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Routine> PREDICATE_SHOW_ALL_ROUTINES = unused -> true;
 
     Predicate<Lesson> PREDICATE_SHOW_ALL_LESSONS = unused -> true;
@@ -147,6 +150,7 @@ public interface Model {
 
     /**
      * Updates the filter of the filtered lesson list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredLessonList(Predicate<Lesson> predicate);
@@ -206,13 +210,18 @@ public interface Model {
     void deleteRoutine(Routine target);
 
     boolean hasSlot(Slot slot);
+
     boolean hasOverlappingSlot(Slot slot);
+
     void addSlotToTimetable(Slot slot);
+
     void deleteSlotFromTimetable(Slot target);
 
-    void addHeight(int height);
+    void addHeight(double height);
 
-    void addWeight(int weight);
+    void addWeight(double weight);
+
+    double getBmi();
 
     /**
      * Returns true if a lesson with the same details as {@code lesson} exists in timetable.
@@ -239,6 +248,7 @@ public interface Model {
 
     /**
      * Retrieves the Lesson object from UniqueLessonList that the user specified.
+     *
      * @param lesson Lesson object that the user wants.
      * @return Lesson object that exists within fitNUS that the user is looking for.
      */
@@ -246,6 +256,7 @@ public interface Model {
 
     /**
      * Retrieves the Routine object from UniqueRoutineList that the user specified.
+     *
      * @param routine Routine object that the user wants.
      * @return Routine object that exists within fitNUS that the user is looking for.
      */
@@ -259,4 +270,14 @@ public interface Model {
     void deleteExerciseToRoutine(Routine routine, Exercise exercise);
 
     void viewRoutine(Routine routineToView);
+
+    void addCalories(int calories);
+
+    void minusCalories(int calories);
+
+    ObservableList<DailyCalorie> getFilteredDailyCalorie();
+
+    ObservableList<DailyCalorie> getFilteredDailyCalorieList();
+
+    int getCalories();
 }
