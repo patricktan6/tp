@@ -174,6 +174,13 @@ public class ModelManager implements Model {
     @Override
     public void addCalories(int calories) {
         addressBook.addCalories(calories);
+        updateFilteredCalorieLog(PREDICATE_SHOW_ALL_LOGS);
+    }
+
+    @Override
+    public void updateFilteredCalorieLog(Predicate<DailyCalorie> predicate) {
+        requireNonNull(predicate);
+        filteredDailyCalories.setPredicate(predicate);
     }
 
     @Override

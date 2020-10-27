@@ -25,6 +25,7 @@ public class ExerciseListPanel extends UiPart<Region> {
      */
     public ExerciseListPanel(ObservableList<Exercise> exerciseList) {
         super(FXML);
+        System.out.println("Constructor");
         exerciseListView.setItems(exerciseList);
         exerciseListView.setCellFactory(listView -> new ExerciseListViewCell());
     }
@@ -36,7 +37,7 @@ public class ExerciseListPanel extends UiPart<Region> {
         @Override
         protected void updateItem(Exercise exercise, boolean empty) {
             super.updateItem(exercise, empty);
-
+            System.out.println("Exercise ListPanel");
             if (empty || exercise == null) {
                 setGraphic(null);
                 setText(null);

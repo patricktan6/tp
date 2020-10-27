@@ -21,6 +21,8 @@ public class CalorieAddCommand extends Command {
             + PREFIX_CALORIE + "1000 ";
 
     public static final String MESSAGE_SUCCESS = "Calories successfully added: %1$s" + "\nToday's calories are: ";
+    public static final String MESSAGE_FAILURE = "The calories that you are adding is too large! fitNUS is unable to "
+            + "calculate such large values.";
 
     private final int toAdd;
 
@@ -34,9 +36,14 @@ public class CalorieAddCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        int todayCalories = model.getCalories();
+
+        if (todayCalories > Integer.MAX_VALUE - toAdd) {
+            throw new CommandException(MESSAGE_FAILURE);
+        }
 
         model.addCalories(toAdd);
-        int todayCalories = model.getCalories();
+        todayCalories += toAdd;
         return new CommandResult(String.format(MESSAGE_SUCCESS + todayCalories, toAdd));
     }
 

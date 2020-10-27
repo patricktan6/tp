@@ -1,6 +1,7 @@
 package seedu.address.storage;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -130,6 +131,7 @@ class JsonSerializableAddressBook {
             }
             calorieLog.add(dailyCalorie);
         }
+        Collections.sort(calorieLog);
         addressBook.addCalorieEntries(calorieLog);
 
         addressBook.addHeight(height);
