@@ -11,13 +11,13 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Slot;
 
 /**
- * Deletes a Slot from the Timetable in fitNUS.
+ * Deletes a slot from the timetable in fitNUS.
  */
 public class TimetableDeleteSlotCommand extends Command {
 
-    public static final String COMMAND_WORD = "timetable_delete";
+    public static final String COMMAND_WORD = "timetable_delete_slot";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes the slot identified by its day and time.\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes the slot identified by its day and time. "
             + "Parameters: "
             + PREFIX_DAY + "DAY "
             + PREFIX_TIME + "TIME"

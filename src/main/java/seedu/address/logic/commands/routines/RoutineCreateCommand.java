@@ -10,15 +10,15 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Routine;
 
 /**
- * Adds an Routine to fitNUS.
+ * Creates a new routine in fitNUS.
  */
 public class RoutineCreateCommand extends Command {
 
     public static final String COMMAND_WORD = "routine_create";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a routine to fitNUS. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Creates a new routine in fitNUS. "
             + "Parameters: "
-            + PREFIX_ROUTINE + "ROUTINE_NAME "
+            + PREFIX_ROUTINE + "ROUTINE "
             + "\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_ROUTINE + "Leg Day Session ";
@@ -29,7 +29,7 @@ public class RoutineCreateCommand extends Command {
     private final Routine toAdd;
 
     /**
-     * Creates an RoutineAddCommand to add the specified {@code Routine}
+     * Creates a RoutineCreateCommand to create the specified {@code Routine}
      */
     public RoutineCreateCommand(Routine routine) {
         requireNonNull(routine);

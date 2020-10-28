@@ -12,13 +12,14 @@ public class LessonNameContainsKeywordsPredicate implements Predicate<Lesson> {
     private final List<String> keywords;
 
     public LessonNameContainsKeywordsPredicate(List<String> keywords) {
+        assert(keywords != null);
         this.keywords = keywords;
     }
 
     @Override
     public boolean test(Lesson lesson) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(lesson.getName().fullName, keyword));
+                .anyMatch(keyword -> StringUtil.containsCharIgnoreCase(lesson.getName().fullName, keyword));
     }
 
     @Override

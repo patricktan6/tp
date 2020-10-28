@@ -9,21 +9,20 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Lesson;
 
 /**
- * Adds a Lesson to user's timetable.
+ * Adds a lesson to user's timetable.
  */
 public class LessonAddCommand extends Command {
 
     public static final String COMMAND_WORD = "lesson_add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a lesson to your timetable. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a lesson to fitNUS. "
             + "Parameters: "
-            + PREFIX_NAME + "NAME "
+            + PREFIX_NAME + "LESSON "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "CS2103T "
-            + PREFIX_TAG + "webcasted "
-            + PREFIX_TAG + "consult "
-            + PREFIX_TAG + "2hours";
+            + PREFIX_TAG + "lecture "
+            + PREFIX_TAG + "consult";
 
     public static final String MESSAGE_SUCCESS = "New lesson added: %1$s";
     public static final String MESSAGE_DUPLICATE_LESSON = "This lesson already exists in your timetable";

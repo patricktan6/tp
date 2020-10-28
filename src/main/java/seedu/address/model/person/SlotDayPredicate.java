@@ -18,7 +18,7 @@ public class SlotDayPredicate implements Predicate<Slot> {
     @Override
     public boolean test(Slot slot) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(slot.getDay().getDay(), keyword));
+                .anyMatch(keyword -> StringUtil.containsCharIgnoreCase(slot.getDay().getDay(), keyword));
     }
 
     @Override

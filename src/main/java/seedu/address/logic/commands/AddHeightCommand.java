@@ -9,12 +9,11 @@ import seedu.address.model.Model;
 public class AddHeightCommand extends Command {
     public static final String COMMAND_WORD = "height";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds user's height to fitNUS. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds user's height (in cm) to fitNUS. "
             + "Parameters: "
-            + PREFIX_HEIGHT + "HEIGHT "
-            + "...\n"
+            + PREFIX_HEIGHT + "HEIGHT\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_HEIGHT + "170 ";
+            + PREFIX_HEIGHT + "172";
 
     public static final String MESSAGE_SUCCESS = "Height added: %d cm";
     public static final String MESSAGE_INVALID_HEIGHT = "This is not a valid height";

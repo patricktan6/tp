@@ -10,10 +10,9 @@ import seedu.address.model.Model;
  */
 public class LessonListCommand extends Command {
 
-    public static final String COMMAND_WORD = "list_lessons";
+    public static final String COMMAND_WORD = "lesson_list";
 
     public static final String MESSAGE_SUCCESS = "Listed all lessons";
-
 
     @Override
     public CommandResult execute(Model model) {

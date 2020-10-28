@@ -9,12 +9,11 @@ import seedu.address.model.Model;
 public class AddWeightCommand extends Command {
     public static final String COMMAND_WORD = "weight";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds user's weight to fitNUS. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds user's weight (in kg) to fitNUS. "
             + "Parameters: "
-            + PREFIX_WEIGHT + "WEIGHT "
-            + "...\n"
+            + PREFIX_WEIGHT + "WEIGHT\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_WEIGHT + "72 ";
+            + PREFIX_WEIGHT + "68";
 
     public static final String MESSAGE_SUCCESS = "Weight added: %d kg";
     public static final String MESSAGE_INVALID_WEIGHT = "This is not a valid weight";
