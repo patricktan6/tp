@@ -23,6 +23,9 @@ public class RoutineFindCommand extends Command {
 
     private final RoutineNameContainsKeywordsPredicate predicate;
 
+    /**
+     * Creates a RoutineFindCommand to find the specified {@code RoutineNameContainsKeywordsPredicate}
+     */
     public RoutineFindCommand(RoutineNameContainsKeywordsPredicate predicate) {
         assert(predicate != null);
         this.predicate = predicate;

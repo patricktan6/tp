@@ -21,6 +21,9 @@ public class ExerciseFindCommand extends Command {
 
     private final ExerciseNameContainsKeywordsPredicate predicate;
 
+    /**
+     * Creates an ExerciseFindCommand to find the specified {@code ExerciseNameContainsKeywordsPredicate}
+     */
     public ExerciseFindCommand(ExerciseNameContainsKeywordsPredicate predicate) {
         assert(predicate != null);
         this.predicate = predicate;

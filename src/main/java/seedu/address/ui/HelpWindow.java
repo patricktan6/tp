@@ -37,12 +37,6 @@ public class HelpWindow extends UiPart<Stage> {
     @FXML
     private TextArea commandMessage;
 
-    @FXML
-    public void setGuide(String summarizedGuide) {
-        requireNonNull(summarizedGuide);
-        commandMessage.setText(summarizedGuide);
-    }
-
     /**
      * Creates a new HelpWindow.
      *
@@ -59,6 +53,12 @@ public class HelpWindow extends UiPart<Stage> {
      */
     public HelpWindow() {
         this(new Stage());
+    }
+
+    @FXML
+    public void setGuide(String summarizedGuide) {
+        requireNonNull(summarizedGuide);
+        commandMessage.setText(summarizedGuide);
     }
 
     /**

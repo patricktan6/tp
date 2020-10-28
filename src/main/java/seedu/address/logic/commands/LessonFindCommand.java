@@ -21,6 +21,9 @@ public class LessonFindCommand extends Command {
 
     private final LessonNameContainsKeywordsPredicate predicate;
 
+    /**
+     * Creates a LessonFindCommand to find the specified {@code LessonNameContainsKeywordsPredicate}
+     */
     public LessonFindCommand(LessonNameContainsKeywordsPredicate predicate) {
         assert(predicate != null);
         this.predicate = predicate;

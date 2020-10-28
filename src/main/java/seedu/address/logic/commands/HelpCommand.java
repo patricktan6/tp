@@ -151,12 +151,14 @@ public class HelpCommand extends Command {
     private String keyword;
 
     public HelpCommand() {
-        // for testing in HelpCommandTest.java
+        // for testing in HelpCommandTest class
     }
 
+    /**
+     * Creates a HelpCommand to filter out the {@code String}
+     */
     public HelpCommand(String keyword) {
         this.keyword = keyword.trim();
-
         addMessagesToMap();
         privateSet = keySet();
     }

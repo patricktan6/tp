@@ -17,7 +17,7 @@ public class ExerciseAddCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an exercise to fitNUS. "
             + "Parameters: "
-            + PREFIX_EMAIL+ "EXERCISE "
+            + PREFIX_EMAIL + "EXERCISE "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_EMAIL + "Bench Press "

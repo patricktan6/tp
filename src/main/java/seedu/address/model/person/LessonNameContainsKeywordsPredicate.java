@@ -11,6 +11,9 @@ import seedu.address.commons.util.StringUtil;
 public class LessonNameContainsKeywordsPredicate implements Predicate<Lesson> {
     private final List<String> keywords;
 
+    /**
+     * Constructor method that checks if the keywords are found in a lesson.
+     */
     public LessonNameContainsKeywordsPredicate(List<String> keywords) {
         assert(keywords != null);
         this.keywords = keywords;

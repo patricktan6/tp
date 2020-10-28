@@ -13,7 +13,8 @@ public class CalorieMinusCommand extends Command {
 
     public static final String COMMAND_WORD = "calorie_minus";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deducts the specified calorie amount from today's sum. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD
+            + ": Deducts the specified calorie amount from today's sum. "
             + "Parameters: "
             + PREFIX_CALORIE + "CALORIE "
             + "\n"

@@ -28,7 +28,8 @@ public class RoutineViewExerciseCommandParser implements Parser<RoutineViewExerc
             Index index = ParserUtil.parseIndex(args);
             return new RoutineViewExerciseCommand(index);
         } catch (NumberFormatException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RoutineViewExerciseCommand.MESSAGE_USAGE));
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, RoutineViewExerciseCommand.MESSAGE_USAGE));
         }
 
     }
