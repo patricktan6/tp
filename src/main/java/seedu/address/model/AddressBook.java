@@ -250,6 +250,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(editedExercise);
 
         exercises.setExercise(target, editedExercise);
+        routines.setExercise(target, editedExercise);
     }
 
     /**
