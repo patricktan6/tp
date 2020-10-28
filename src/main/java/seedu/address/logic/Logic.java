@@ -8,6 +8,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
@@ -51,6 +52,9 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of slots, filtered by chosen day */
     ObservableList<Slot> getFilteredSlotList(String day);
+
+    /** Returns an unmodifiable view of the filtered list of calorie logs */
+    ObservableList<DailyCalorie> getFilteredDailyCalorie();
 
     /**
      * Returns the user prefs' address book file path.

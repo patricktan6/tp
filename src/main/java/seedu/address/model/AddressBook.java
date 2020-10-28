@@ -5,6 +5,8 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.person.CalorieLog;
+import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
@@ -29,6 +31,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     private double height = Double.NaN;
     private double weight = Double.NaN;
     private final Timetable timetable;
+    private final CalorieLog calorieLog;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -43,6 +46,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         routines = new UniqueRoutineList();
         lessons = new UniqueLessonList();
         timetable = new Timetable();
+        calorieLog = new CalorieLog();
     }
 
     public AddressBook() {
@@ -133,6 +137,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         setLessons(newData.getLessonList());
         setRoutines(newData.getRoutineList());
         setSlots(newData.getSlotList());
+        addCalorieEntries(newData.getDailyCalorieList());
         addHeight(newData.getHeight());
         addWeight(newData.getWeight());
     }
@@ -333,6 +338,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     @Override
+    public ObservableList<DailyCalorie> getDailyCalorieList() {
+        return calorieLog.asUnmodifiableObservableList();
+    }
+
+    @Override
     public double getHeight() {
         return height;
     }
@@ -431,5 +441,47 @@ public class AddressBook implements ReadOnlyAddressBook {
         Exercise retrievedExercise = exercises.retrieveExercise(e);
         Routine retrievedRoutine = routines.retrieveRoutine(r);
         routines.deleteExerciseFromRoutine(retrievedRoutine, retrievedExercise);
+    }
+
+    /**
+     * Adds calories into today's calorie log.
+     * @param calories The amount of calories that the user wants to add.
+     */
+    public void addCalories(int calories) {
+        calorieLog.addCalories(calories);
+    }
+
+    /**
+     * Deducts calories in today's calorie log.
+     * @param calories The amount of calories that the user wants to deduct.
+     */
+    public void minusCalories(int calories) {
+        calorieLog.minusCalories(calories);
+    }
+
+    /**
+     * Retrieves the number of calories for today.
+     * @return Number of calories for today.
+     */
+    public int getCalories() {
+        return calorieLog.getCalories();
+    }
+
+    /**
+     * Checks if calorie log currently contains a certain daily calorie entry.
+     * @param dailyCalorie Specific Daily Calorie object that the user wants to find.
+     * @return True if calorie log contains what the user is looking for.
+     */
+    public boolean hasDailyCalorie(DailyCalorie dailyCalorie) {
+        requireNonNull(dailyCalorie);
+        return calorieLog.contains(dailyCalorie);
+    }
+
+    /**
+     * Adds all the daily calorie entries into the calorie log.
+     * @param entries Collection of all the entries of daily calorie.
+     */
+    public void addCalorieEntries(List<DailyCalorie> entries) {
+        calorieLog.setCalorieLog(entries);
     }
 }

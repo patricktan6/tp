@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
@@ -33,6 +34,7 @@ public class ModelManager implements Model {
     private final FilteredList<Routine> filteredRoutine;
     private final FilteredList<Lesson> filteredLessons;
     private final FilteredList<Slot> filteredSlots;
+    private final FilteredList<DailyCalorie> filteredDailyCalories;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -50,6 +52,7 @@ public class ModelManager implements Model {
         filteredRoutine = new FilteredList<>(this.addressBook.getRoutineList());
         filteredLessons = new FilteredList<>(this.addressBook.getLessonList());
         filteredSlots = new FilteredList<>(this.addressBook.getSlotList());
+        filteredDailyCalories = new FilteredList<>(this.addressBook.getDailyCalorieList());
     }
 
     public ModelManager() {
@@ -166,6 +169,26 @@ public class ModelManager implements Model {
         addressBook.addRoutine(routine);
         updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
         updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
+    }
+
+    @Override
+    public void addCalories(int calories) {
+        addressBook.addCalories(calories);
+    }
+
+    @Override
+    public void minusCalories(int calories) {
+        addressBook.minusCalories(calories);
+    }
+
+    @Override
+    public int getCalories() {
+        return addressBook.getCalories();
+    }
+
+    @Override
+    public ObservableList<DailyCalorie> getFilteredDailyCalorie() {
+        return filteredDailyCalories;
     }
 
     @Override
@@ -313,6 +336,15 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Lesson> getFilteredLessonList() {
         return filteredLessons;
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<DailyCalorie> getFilteredDailyCalorieList() {
+        return filteredDailyCalories;
     }
 
     @Override

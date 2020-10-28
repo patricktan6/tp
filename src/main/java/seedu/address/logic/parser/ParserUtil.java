@@ -188,4 +188,19 @@ public class ParserUtil {
         return Double.parseDouble(trimmedWeight);
     }
 
+    /**
+     * Parses a {@code String calorie} into an integer.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code calorie} is less than or equal to 0.
+     */
+    public static int parseCalorie(String calorie) throws ParseException {
+        requireNonNull(calorie);
+        int trimmedCalorie = Integer.parseInt(calorie.trim());
+        if (trimmedCalorie <= 0) {
+            throw new ParseException("Calorie input should never be less than or equal to 0!");
+        }
+        return trimmedCalorie;
+    }
+
 }
