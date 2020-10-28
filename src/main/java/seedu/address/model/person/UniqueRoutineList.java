@@ -59,19 +59,18 @@ public class UniqueRoutineList implements Iterable<Routine> {
      * @param exercise Existing Exercise.
      */
     public void addExercise(Routine r, Exercise exercise) {
-
         if (!internalList.contains(r)) {
             throw new RoutineNotFoundException();
         } else {
             for (Routine routine : internalList) {
                 if (routine.isSameActivity(r)) {
                     Set<Exercise> routineExercises = routine.getExercises();
-                    internalList.remove(routine);
+                    int index = internalList.indexOf(routine);
                     if (routineExercises.contains(exercise)) {
                         throw new DuplicateExerciseException();
                     }
                     routine.addExercise(exercise);
-                    internalList.add(routine);
+                    internalList.set(index, routine);
                     break;
                 }
             }
@@ -144,6 +143,10 @@ public class UniqueRoutineList implements Iterable<Routine> {
         return this.internalList.size();
     }
 
+    /**
+     * Replaces the existing Routines with Routines from a replacement UniqueRoutineList.
+     * @param replacement UniqueRoutineList to replace this existing one.
+     */
     public void setRoutines(UniqueRoutineList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
@@ -244,6 +247,23 @@ public class UniqueRoutineList implements Iterable<Routine> {
         for (Routine routine : internalList) {
             Set<Exercise> routineExercises = routine.getExercises();
             routineExercises.remove(retrievedExercise);
+        }
+    }
+
+    /**
+     * Replaces the edited Exercise by the user in the Routines that contain it.
+     * @param target Exercise that the user wants to edit.
+     * @param editedExercise Exercise that is the outcome of user's edits.
+     */
+    public void setExercise(Exercise target, Exercise editedExercise) {
+        for (Routine routine : internalList) {
+            Set<Exercise> exercises = routine.getExercises();
+            if (exercises.contains(target)) {
+                int index = internalList.indexOf(routine);
+                exercises.remove(target);
+                exercises.add(editedExercise);
+                internalList.set(index, routine);
+            }
         }
     }
 }

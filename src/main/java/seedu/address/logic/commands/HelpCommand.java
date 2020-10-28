@@ -39,6 +39,15 @@ public class HelpCommand extends Command {
     public static final String ADD_WEIGHT_MESSAGE = "weight:\n"
             + "Adds user's weight (in kg) to fitNUS.\n"
             + "Format: weight w/WEIGHT\n\n";
+    public static final String BMI_MESSAGE = "bmi:\n"
+            + "Views the user's BMI.\n"
+            + "Format: bmi\n\n";
+    public static final String CALORIE_ADD_MESSAGE = "calorie_add:\n"
+            + "Adds the user's caloric intake to today's sum.\n"
+            + "Format: calorie_add c/CALORIE\n\n";
+    public static final String CALORIE_MINUS_MESSAGE = "calorie_minus:\n"
+            + "Deducts the specified calorie amount from today's sum.\n"
+            + "Format: calorie_minus c/CALORIE\n\n";
     public static final String EXERCISE_ADD_MESSAGE = "exercise_add:\n"
             + "Adds an exercise to fitNUS.\n"
             + "Format: exercise_add e/EXERCISE [t/TAG]\n\n";
@@ -110,6 +119,9 @@ public class HelpCommand extends Command {
             + EXIT_MESSAGE
             + ADD_HEIGHT_MESSAGE
             + ADD_WEIGHT_MESSAGE
+            + BMI_MESSAGE
+            + CALORIE_ADD_MESSAGE
+            + CALORIE_MINUS_MESSAGE
             + EXERCISE_ADD_MESSAGE
             + EXERCISE_DELETE_MESSAGE
             + EXERCISE_EDIT_MESSAGE
@@ -162,6 +174,9 @@ public class HelpCommand extends Command {
         privateMap.put("exit", EXIT_MESSAGE);
         privateMap.put("height", ADD_HEIGHT_MESSAGE);
         privateMap.put("weight", ADD_WEIGHT_MESSAGE);
+        privateMap.put("bmi", BMI_MESSAGE);
+        privateMap.put("calorie_add", CALORIE_ADD_MESSAGE);
+        privateMap.put("calorie_minus", CALORIE_MINUS_MESSAGE);
         privateMap.put("exercise_add", EXERCISE_ADD_MESSAGE);
         privateMap.put("exercise_delete", EXERCISE_DELETE_MESSAGE);
         privateMap.put("exercise_edit", EXERCISE_EDIT_MESSAGE);

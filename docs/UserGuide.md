@@ -13,9 +13,11 @@ title: User Guide
 fitNUS is tailored for **NUS students** that are interested in staying healthy and keeping fit. It is suitable for **all
 fitness levels** and is equipped with a **customisable timetable** for you to manage your time wisely and slot in your
 workout routines with ease.
+fitNUS is extremely easy to use, all you have to do is type in your commands in the command box, and the information
+will be reflected in the user interface for ease of viewing.
 
-fitNUS is  **optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User
-Interface (GUI). If you can type fast, fitNUS can get your scheduling tasks done faster than traditional GUI apps.
+This User Guide aims to showcase the features that fitNUS provides, as well as **step-by-step instructions** 
+regarding how to make use of these features.
 
 ![Ui](images/Ui.png)
 

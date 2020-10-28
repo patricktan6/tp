@@ -20,6 +20,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
@@ -153,12 +154,17 @@ public class AddCommandTest {
         }
 
         @Override
-        public void addHeight(int height) {
+        public void addHeight(double height) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void addWeight(int weight) {
+        public void addWeight(double weight) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public double getBmi() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -268,6 +274,31 @@ public class AddCommandTest {
         }
 
         @Override
+        public void addCalories(int calories) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void minusCalories(int calories) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<DailyCalorie> getFilteredDailyCalorie() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<DailyCalorie> getFilteredDailyCalorieList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getCalories() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Person> getFilteredPersonList() {
             throw new AssertionError("This method should not be called.");
         }
@@ -294,6 +325,11 @@ public class AddCommandTest {
 
         @Override
         public void updateFilteredPersonList(Predicate<Person> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredCalorieLog(Predicate<DailyCalorie> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 

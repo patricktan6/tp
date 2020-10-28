@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
@@ -96,6 +97,10 @@ public class AddressBookTest {
         private final ObservableList<Lesson> lessons = FXCollections.observableArrayList();
         private final ObservableList<Routine> routines = FXCollections.observableArrayList();
         private final ObservableList<Slot> slots = FXCollections.observableArrayList();
+        private final ObservableList<DailyCalorie> calorieLog = FXCollections.observableArrayList();
+
+        private final double height = Double.NaN;
+        private final double weight = Double.NaN;
 
         AddressBookStub(Collection<Person> persons) {
             this.persons.setAll(persons);
@@ -124,6 +129,21 @@ public class AddressBookTest {
         @Override
         public ObservableList<Slot> getSlotList() {
             return slots;
+        }
+
+        @Override
+        public ObservableList<DailyCalorie> getDailyCalorieList() {
+            return calorieLog;
+        }
+
+        @Override
+        public double getHeight() {
+            return height;
+        }
+
+        @Override
+        public double getWeight() {
+            return weight;
         }
     }
 

@@ -14,6 +14,7 @@ import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
@@ -91,6 +92,11 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<Slot> getFilteredSlotList(String day) {
         return model.getFilteredSlotList(day);
+    }
+
+    @Override
+    public ObservableList<DailyCalorie> getFilteredDailyCalorie() {
+        return model.getFilteredDailyCalorie();
     }
 
     @Override

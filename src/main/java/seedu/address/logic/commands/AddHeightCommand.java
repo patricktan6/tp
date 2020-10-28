@@ -13,17 +13,17 @@ public class AddHeightCommand extends Command {
             + "Parameters: "
             + PREFIX_HEIGHT + "HEIGHT\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_HEIGHT + "172";
+            + PREFIX_HEIGHT + "172.5";
 
-    public static final String MESSAGE_SUCCESS = "Height added: %d cm";
+    public static final String MESSAGE_SUCCESS = "Height added: %.2f cm";
     public static final String MESSAGE_INVALID_HEIGHT = "This is not a valid height";
 
-    private final int height;
+    private final double height;
 
     /**
-     * Creates an ExerciseAddCommand to add the specified {@code Exercise}
+     * Creates an AddHeightCommand to add the specified height in centimetres.
      */
-    public AddHeightCommand(int height) {
+    public AddHeightCommand(double height) {
         requireNonNull(height);
         this.height = height;
     }

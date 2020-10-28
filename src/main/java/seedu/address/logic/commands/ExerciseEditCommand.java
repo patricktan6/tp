@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_EXERCISES;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ROUTINES;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -73,6 +74,7 @@ public class ExerciseEditCommand extends Command {
         }
 
         model.setExercise(exerciseToEdit, editedExercise);
+        model.updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
         model.updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
         return new CommandResult(String.format(MESSAGE_EDIT_EXERCISE_SUCCESS, editedExercise));
     }
