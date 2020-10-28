@@ -52,13 +52,13 @@ public class RoutineTest {
         // different type -> returns false
         assertFalse(LEG_DAY.equals(5));
 
-        // different person -> returns false
+        // different routine -> returns false
         assertFalse(LEG_DAY.equals(UPPER_BODY));
 
         // different name -> returns false
         assertFalse(UPPER_BODY.equals(copyRoutine));
 
-        // different tags -> returns false
+        // different exercises -> returns false
         Name editedName = new Name("Leg Extensions");
         Exercise typicalExercise = new Exercise(editedName, new HashSet<>());
         copyRoutine.addExercise(typicalExercise);

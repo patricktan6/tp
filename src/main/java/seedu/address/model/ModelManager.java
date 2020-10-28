@@ -159,7 +159,6 @@ public class ModelManager implements Model {
     @Override
     public void setExercise(Exercise target, Exercise editedExercise) {
         requireAllNonNull(target, editedExercise);
-
         addressBook.setExercise(target, editedExercise);
     }
 

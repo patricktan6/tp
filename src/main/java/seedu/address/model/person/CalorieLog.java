@@ -104,32 +104,6 @@ public class CalorieLog implements Iterable<DailyCalorie> {
         }
     }
 
-
-    /**
-     * Returns the toString method of the DailyCalorie that the user wants to view.
-     *
-     * @param index Index of the DailyCalorie that the user wants to view.
-     * @return The toString method of the DailyCalorie that the user wants to see.
-     */
-    public String viewDailyCalorie(int index) {
-        return internalList.get(index - 1).toString();
-    }
-
-    /**
-     * Lists out all the DailyCalorie objects in UniqueDailyCalorieList.
-     *
-     * @return String containing all the DailyCalorie object toString method.
-     */
-    public String listDailyCalories() {
-        String result = "";
-        for (DailyCalorie dailyCalorie : internalList) {
-            result += dailyCalorie.toString();
-            result += "\n";
-        }
-
-        return result;
-    }
-
     /**
      * Replaces the dailyCalorie {@code target} in the list with {@code editedDailyCalorie}.
      * {@code target} must exist in the list.
@@ -149,6 +123,42 @@ public class CalorieLog implements Iterable<DailyCalorie> {
         }
 
         internalList.set(index, editedDailyCalorie);
+    }
+
+    /**
+     * Replaces the existing DailyCalorie with DailyCalorie from a replacement CalorieLog.
+     * @param replacement CalorieLog to replace this existing one.
+     */
+    public void setDailyCalories(CalorieLog replacement) {
+        requireNonNull(replacement);
+        internalList.setAll(replacement.internalList);
+    }
+
+    /**
+     * Replaces the contents of this list with {@code dailyCalories}.
+     * {@code dailyCalories} must not contain duplicate DailyCalorie entries.
+     */
+    public void setDailyCalories(List<DailyCalorie> dailyCalories) {
+        requireAllNonNull(dailyCalories);
+        if (!entriesAreUnique(dailyCalories)) {
+            throw new DuplicateDailyCalorieException();
+        }
+
+        internalList.setAll(dailyCalories);
+    }
+
+    /**
+     * Returns true if {@code dailyCalories} contains only unique Daily Calorie.
+     */
+    private boolean entriesAreUnique(List<DailyCalorie> dailyCalories) {
+        for (int i = 0; i < dailyCalories.size() - 1; i++) {
+            for (int j = i + 1; j < dailyCalories.size(); j++) {
+                if (dailyCalories.get(i).isSameDailyCalorie(dailyCalories.get(j))) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     /**
@@ -229,20 +239,9 @@ public class CalorieLog implements Iterable<DailyCalorie> {
     }
 
     /**
-     * Retrieves the DailyCalorie object from CalorieLog that the user specified.
-     *
-     * @param dc DailyCalorie object that the user wants.
-     * @return DailyCalorie object that exists within fitNUS that the user is looking for.
+     * Retrieves the calories for today.
+     * @return The calorie count for today.
      */
-    public DailyCalorie retrieveDailyCalorie(DailyCalorie dc) {
-        for (DailyCalorie dailyCalorie : internalList) {
-            if (dailyCalorie.isSameDailyCalorie(dailyCalorie)) {
-                return dailyCalorie;
-            }
-        }
-        return dc;
-    }
-
     public int getCalories() {
         for (DailyCalorie entry : internalList) {
             if (entry.getDate().equals(LocalDate.now())) {
