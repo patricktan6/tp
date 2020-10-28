@@ -196,7 +196,13 @@ public class ParserUtil {
      */
     public static int parseCalorie(String calorie) throws ParseException {
         requireNonNull(calorie);
-        int trimmedCalorie = Integer.parseInt(calorie.trim());
+        int trimmedCalorie;
+        try {
+            trimmedCalorie = Integer.parseInt(calorie.trim());
+        } catch (NumberFormatException e) {
+            throw new ParseException("Calorie input is way too large for fitNUS to handle!");
+        }
+
         if (trimmedCalorie <= 0) {
             throw new ParseException("Calorie input should never be less than or equal to 0!");
         }

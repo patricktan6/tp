@@ -10,7 +10,7 @@ import java.util.Objects;
  * Represents a DailyCalorie in fitNUS.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class DailyCalorie {
+public class DailyCalorie implements Comparable<DailyCalorie> {
 
     // Identity fields
     private final LocalDate date;
@@ -104,4 +104,8 @@ public class DailyCalorie {
         return builder.toString();
     }
 
+    @Override
+    public int compareTo(DailyCalorie o) {
+        return this.getDate().compareTo(o.getDate());
+    }
 }

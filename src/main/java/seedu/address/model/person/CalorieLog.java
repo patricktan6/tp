@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -49,6 +50,7 @@ public class CalorieLog implements Iterable<DailyCalorie> {
             throw new DuplicateDailyCalorieException();
         }
         internalList.add(toAdd);
+        Collections.sort(internalList);
     }
 
     /**
@@ -69,9 +71,14 @@ public class CalorieLog implements Iterable<DailyCalorie> {
         }
 
         if (!isContained) {
+
+            if (checkSize() >= 7) {
+                internalList.remove(0);
+            }
             DailyCalorie newDay = new DailyCalorie(LocalDate.now());
             newDay.addCalories(calories);
             internalList.add(newDay);
+            Collections.sort(internalList);
         }
     }
 
@@ -245,7 +252,4 @@ public class CalorieLog implements Iterable<DailyCalorie> {
         return 0;
     }
 
-    public void addEntry(DailyCalorie dailyCalorie) {
-
-    }
 }
