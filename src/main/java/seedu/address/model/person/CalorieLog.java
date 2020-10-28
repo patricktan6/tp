@@ -104,32 +104,6 @@ public class CalorieLog implements Iterable<DailyCalorie> {
         }
     }
 
-//
-//    /**
-//     * Returns the toString method of the DailyCalorie that the user wants to view.
-//     *
-//     * @param index Index of the DailyCalorie that the user wants to view.
-//     * @return The toString method of the DailyCalorie that the user wants to see.
-//     */
-//    public String viewDailyCalorie(int index) {
-//        return internalList.get(index - 1).toString();
-//    }
-//
-//    /**
-//     * Lists out all the DailyCalorie objects in UniqueDailyCalorieList.
-//     *
-//     * @return String containing all the DailyCalorie object toString method.
-//     */
-//    public String listDailyCalories() {
-//        String result = "";
-//        for (DailyCalorie dailyCalorie : internalList) {
-//            result += dailyCalorie.toString();
-//            result += "\n";
-//        }
-//
-//        return result;
-//    }
-
     /**
      * Replaces the dailyCalorie {@code target} in the list with {@code editedDailyCalorie}.
      * {@code target} must exist in the list.
@@ -264,21 +238,10 @@ public class CalorieLog implements Iterable<DailyCalorie> {
         return true;
     }
 
-//    /**
-//     * Retrieves the DailyCalorie object from CalorieLog that the user specified.
-//     *
-//     * @param dc DailyCalorie object that the user wants.
-//     * @return DailyCalorie object that exists within fitNUS that the user is looking for.
-//     */
-//    public DailyCalorie retrieveDailyCalorie(DailyCalorie dc) {
-//        for (DailyCalorie dailyCalorie : internalList) {
-//            if (dailyCalorie.isSameDailyCalorie(dailyCalorie)) {
-//                return dailyCalorie;
-//            }
-//        }
-//        return dc;
-//    }
-
+    /**
+     * Retrieves the calories for today.
+     * @return The calorie count for today.
+     */
     public int getCalories() {
         for (DailyCalorie entry : internalList) {
             if (entry.getDate().equals(LocalDate.now())) {

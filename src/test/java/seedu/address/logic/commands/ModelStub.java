@@ -1,5 +1,8 @@
 package seedu.address.logic.commands;
 
+import java.nio.file.Path;
+import java.util.function.Predicate;
+
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.Model;
@@ -11,9 +14,6 @@ import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
-
-import java.nio.file.Path;
-import java.util.function.Predicate;
 
 public class ModelStub implements Model {
 

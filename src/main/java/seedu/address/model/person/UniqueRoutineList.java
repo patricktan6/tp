@@ -262,7 +262,7 @@ public class UniqueRoutineList implements Iterable<Routine> {
                 int index = internalList.indexOf(routine);
                 exercises.remove(target);
                 exercises.add(editedExercise);
-                internalList.set(index,routine);
+                internalList.set(index, routine);
             }
         }
     }

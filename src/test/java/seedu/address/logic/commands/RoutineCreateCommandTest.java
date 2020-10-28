@@ -1,23 +1,23 @@
 package seedu.address.logic.commands;
 
-import static seedu.address.testutil.TypicalRoutines.LEG_DAY;
-import static seedu.address.testutil.TypicalRoutines.UPPER_BODY;
-
-import org.junit.jupiter.api.Test;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.commands.routines.RoutineCreateCommand;
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.person.Routine;
-
-import java.util.ArrayList;
-import java.util.Collections;
-
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalRoutines.LEG_DAY;
+import static seedu.address.testutil.TypicalRoutines.UPPER_BODY;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.routines.RoutineCreateCommand;
+import seedu.address.model.AddressBook;
+import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.person.Routine;
 
 public class RoutineCreateCommandTest {
     @Test
@@ -27,7 +27,7 @@ public class RoutineCreateCommandTest {
 
     @Test
     public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-       ModelStubAcceptingRoutines modelStub = new ModelStubAcceptingRoutines();
+        ModelStubAcceptingRoutines modelStub = new ModelStubAcceptingRoutines();
 
         CommandResult commandResult = new RoutineCreateCommand(LEG_DAY).execute(modelStub);
 
@@ -40,7 +40,8 @@ public class RoutineCreateCommandTest {
         RoutineCreateCommand command = new RoutineCreateCommand(LEG_DAY);
         ModelStub modelStub = new ModelStubWithRoutine(LEG_DAY);
 
-        assertThrows(CommandException.class, RoutineCreateCommand.MESSAGE_DUPLICATE_ROUTINE, () -> command.execute(modelStub));
+        assertThrows(CommandException.class,
+                RoutineCreateCommand.MESSAGE_DUPLICATE_ROUTINE, () -> command.execute(modelStub));
     }
 
     @Test
