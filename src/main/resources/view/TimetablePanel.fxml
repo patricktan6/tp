@@ -8,13 +8,34 @@
 
 <?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <VBox prefHeight="430.0" prefWidth="200.0">
+    <HBox><children>
+        <VBox prefWidth="50" prefHeight="50">
+            <children>
+                <VBox prefWidth="50" minHeight="50" alignment="BOTTOM_CENTER">
+                    <Label text="Mon" id="headers"/>
+                </VBox>
+                <VBox prefWidth="50" minHeight="85" alignment="BOTTOM_CENTER">
+                    <Label text="Tue" id="headers"/>
+                </VBox>
+                <VBox prefWidth="50" minHeight="85" alignment="BOTTOM_CENTER">
+                    <Label text="Wed" id="headers"/>
+                </VBox>
+                <VBox prefWidth="50" minHeight="85" alignment="BOTTOM_CENTER">
+                    <Label text="Thur" id="headers"/>
+                </VBox>
+                <VBox prefWidth="50" minHeight="85" alignment="BOTTOM_CENTER">
+                    <Label text="Fri" id="headers"/>
+                </VBox>
+            </children>
+        </VBox>
+    <VBox prefHeight="430.0" prefWidth="800.0">
         <children>
             <VBox fx:id="mondayList" minWidth="150" prefWidth="340" styleClass="pane-with-border">
                 <padding>
                     <Insets bottom="10" left="10" right="10" top="10" />
                 </padding>
                 <StackPane fx:id="mondayListPanelPlaceholder" VBox.vgrow="ALWAYS" />
+
             </VBox>
 
             <VBox fx:id="tuesdayList" minWidth="150" prefWidth="340" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
@@ -46,4 +67,5 @@
             </VBox>
         </children>
     </VBox>
+    </children></HBox>
 </VBox>
