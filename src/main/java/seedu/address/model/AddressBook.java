@@ -262,6 +262,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(editedLesson);
 
         lessons.setLesson(target, editedLesson);
+        timetable.setSlot(target, editedLesson);
     }
 
     /**
@@ -374,7 +375,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      * @return False if out of bounds.
      */
     public boolean checkBounds(int index) {
-        requireNonNull(index);
         return index > 0 && index <= routines.checkSize();
     }
 
