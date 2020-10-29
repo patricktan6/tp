@@ -11,7 +11,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Exercise;
 
 /**
- * Deletes a exercise identified using it's displayed index from fitNUS.
+ * Deletes an exercise identified using it's displayed index from fitNUS.
  */
 public class ExerciseDeleteCommand extends Command {
 

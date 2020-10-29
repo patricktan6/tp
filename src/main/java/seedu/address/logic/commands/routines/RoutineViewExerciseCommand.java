@@ -12,18 +12,15 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Routine;
 
 /**
- * Adds an Routine to fitNUS.
+ * Views all exercises for a specified routine in fitNUS.
  */
-public class RoutineViewCommand extends Command {
+public class RoutineViewExerciseCommand extends Command {
 
-    public static final String COMMAND_WORD = "routine_view";
+    public static final String COMMAND_WORD = "routine_view_exercise";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Views a routine in fitNUS. "
-            + "Parameters: "
-            + "INDEX "
-            + "\n"
-            + "Example: " + COMMAND_WORD + " "
-            + "3 ";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Views all exercises contained in a routine in fitNUS. "
+            + "Parameters: INDEX (must be a positive integer)\n"
+            + "Example: " + COMMAND_WORD + " 3";
 
     public static final String MESSAGE_SUCCESS = "Routine requested:";
     public static final String MESSAGE_OUT_OF_BOUNDS_ROUTINE = "This routine index is out of bounds!";
@@ -31,9 +28,9 @@ public class RoutineViewCommand extends Command {
     private final Index toView;
 
     /**
-     * Creates an RoutineAddCommand to add the specified {@code Routine}
+     * Creates a RoutineViewExerciseCommand to view all exercises for the specified {@code Index} of the routine
      */
-    public RoutineViewCommand(Index index) {
+    public RoutineViewExerciseCommand(Index index) {
         requireNonNull(index);
         toView = index;
     }
@@ -55,7 +52,6 @@ public class RoutineViewCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof RoutineViewCommand); // instanceof handles nulls
+                || (other instanceof RoutineViewExerciseCommand); // instanceof handles nulls
     }
 }
-

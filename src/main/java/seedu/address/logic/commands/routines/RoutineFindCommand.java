@@ -12,9 +12,9 @@ import seedu.address.model.person.RoutineNameContainsKeywordsPredicate;
  * Finds and lists all routines in fitNUS whose name contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
-public class FindRoutinesCommand extends Command {
+public class RoutineFindCommand extends Command {
 
-    public static final String COMMAND_WORD = "find_routines";
+    public static final String COMMAND_WORD = "routine_find";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all routines whose names contain any of "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
@@ -23,7 +23,11 @@ public class FindRoutinesCommand extends Command {
 
     private final RoutineNameContainsKeywordsPredicate predicate;
 
-    public FindRoutinesCommand(RoutineNameContainsKeywordsPredicate predicate) {
+    /**
+     * Creates a RoutineFindCommand to find the specified {@code RoutineNameContainsKeywordsPredicate}
+     */
+    public RoutineFindCommand(RoutineNameContainsKeywordsPredicate predicate) {
+        assert(predicate != null);
         this.predicate = predicate;
     }
 
@@ -38,7 +42,7 @@ public class FindRoutinesCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof FindRoutinesCommand // instanceof handles nulls
-                && predicate.equals(((FindRoutinesCommand) other).predicate)); // state check
+                || (other instanceof RoutineFindCommand // instanceof handles nulls
+                && predicate.equals(((RoutineFindCommand) other).predicate)); // state check
     }
 }

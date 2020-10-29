@@ -16,7 +16,7 @@ workout routines with ease.
 fitNUS is extremely easy to use, all you have to do is type in your commands in the command box, and the information
 will be reflected in the user interface for ease of viewing.
 
-This User Guide aims to showcase the features that fitNUS provides, as well as **step-by-step instructions** 
+This User Guide aims to showcase the features that fitNUS provides, as well as **step-by-step instructions**
 regarding how to make use of these features.
 
 ![Ui](images/Ui.png)
@@ -109,7 +109,7 @@ Example:
 
 **Before finding exercises with "bench":**
 
-Note that fitNUS currently displays 3 exercises. 
+Note that fitNUS currently displays 3 exercises.
 
 ![Find Exercises before](./images/exercise_find_before.png)
 
@@ -262,7 +262,7 @@ Example:
 
 ### 3.3 Lesson
 
-fitNUS also boasts a customisable timetable for you to use. You can add Lessons to your timetable to better keep track 
+fitNUS also boasts a customisable timetable for you to use. You can add Lessons to your timetable to better keep track
 of your time and never forget another training session.
 
 #### 3.3.1 Create new lesson : `lesson_add`

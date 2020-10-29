@@ -12,7 +12,7 @@ public class BmiCommand extends Command {
             + "\n"
             + "Example: " + COMMAND_WORD;
 
-    public static final String MESSAGE_SUCCESS = "Your BMI is %.2f.";
+    public static final String MESSAGE_SUCCESS = "Keep grinding! Your BMI is %.2f";
     public static final String MESSAGE_INVALID_BMI = "Your BMI is not available. "
             + "Please make sure that you have updated your height and weight.";
 

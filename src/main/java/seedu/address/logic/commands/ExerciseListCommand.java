@@ -8,12 +8,11 @@ import seedu.address.model.Model;
 /**
  * Lists all exercises in fitNUS to the user.
  */
-public class ListExercisesCommand extends Command {
+public class ExerciseListCommand extends Command {
 
-    public static final String COMMAND_WORD = "list_exercises";
+    public static final String COMMAND_WORD = "exercise_list";
 
     public static final String MESSAGE_SUCCESS = "Listed all exercises";
-
 
     @Override
     public CommandResult execute(Model model) {
