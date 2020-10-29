@@ -21,14 +21,12 @@ import seedu.address.logic.commands.ExerciseEditCommand;
 import seedu.address.logic.commands.ExerciseFindCommand;
 import seedu.address.logic.commands.ExerciseListCommand;
 import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.LessonAddCommand;
 import seedu.address.logic.commands.LessonDeleteCommand;
 import seedu.address.logic.commands.LessonEditCommand;
 import seedu.address.logic.commands.LessonFindCommand;
 import seedu.address.logic.commands.LessonListCommand;
-import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.TimetableAddLessonCommand;
 import seedu.address.logic.commands.TimetableAddRoutineCommand;
 import seedu.address.logic.commands.TimetableDeleteSlotCommand;
@@ -82,12 +80,6 @@ public class AddressBookParser {
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();
-
-        case FindCommand.COMMAND_WORD:
-            return new FindCommandParser().parse(arguments);
-
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
