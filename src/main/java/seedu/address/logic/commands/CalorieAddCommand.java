@@ -13,9 +13,9 @@ public class CalorieAddCommand extends Command {
 
     public static final String COMMAND_WORD = "calorie_add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds your caloric intake to today's sum. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds the user's caloric intake to today's sum. "
             + "Parameters: "
-            + PREFIX_CALORIE + "CALORIE_AMOUNT "
+            + PREFIX_CALORIE + "CALORIE "
             + "\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_CALORIE + "1000 ";

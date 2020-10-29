@@ -11,14 +11,18 @@ import seedu.address.commons.util.StringUtil;
 public class LessonNameContainsKeywordsPredicate implements Predicate<Lesson> {
     private final List<String> keywords;
 
+    /**
+     * Constructor method that checks if the keywords are found in a lesson.
+     */
     public LessonNameContainsKeywordsPredicate(List<String> keywords) {
+        assert(keywords != null);
         this.keywords = keywords;
     }
 
     @Override
     public boolean test(Lesson lesson) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(lesson.getName().fullName, keyword));
+                .anyMatch(keyword -> StringUtil.containsCharIgnoreCase(lesson.getName().fullName, keyword));
     }
 
     @Override

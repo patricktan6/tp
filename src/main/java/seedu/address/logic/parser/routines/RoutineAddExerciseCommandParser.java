@@ -21,13 +21,13 @@ import seedu.address.model.person.Routine;
 import seedu.address.model.tag.Tag;
 
 /**
- * Parses input arguments and creates a new AddCommand object
+ * Parses input arguments and creates a new RoutineAddExerciseCommand object
  */
 public class RoutineAddExerciseCommandParser implements Parser<RoutineAddExerciseCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the RoutineAddExerciseCommand
-     * and returns an RoutineAddExerciseCommand object for execution.
+     * and returns a RoutineAddExerciseCommand object for execution.
      * @throws ParseException if the user input does not conform the expected format
      */
     public RoutineAddExerciseCommand parse(String args) throws ParseException {

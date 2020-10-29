@@ -28,6 +28,9 @@ public class RoutineDeleteCommand extends Command {
 
     private final Index targetIndex;
 
+    /**
+     * Creates a RoutineDeleteCommand to delete the specified {@code Index} of the routine
+     */
     public RoutineDeleteCommand(Index targetIndex) {
         this.targetIndex = targetIndex;
     }

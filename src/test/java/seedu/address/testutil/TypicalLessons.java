@@ -43,7 +43,7 @@ public class TypicalLessons {
     /**
      * Returns an {@code AddressBook} with all the typical lessons.
      */
-    public static AddressBook getTypicalAddressBook() {
+    public static AddressBook getTypicalFitNus() {
         AddressBook ab = new AddressBook();
         for (Lesson lesson : getTypicalLessons()) {
             ab.addLesson(lesson);

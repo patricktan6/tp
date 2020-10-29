@@ -16,9 +16,9 @@ import seedu.address.model.person.Slot;
 public class TimetableAddRoutineCommand extends Command {
     public static final String COMMAND_WORD = "timetable_add_routine";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a Routine to the timetable in fitNUS. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an existing routine to the timetable in fitNUS. "
             + "Parameters: "
-            + PREFIX_ROUTINE + "ROUTINE_NAME "
+            + PREFIX_ROUTINE + "ROUTINE "
             + PREFIX_DAY + "DAY "
             + PREFIX_TIME + "TIME"
             + "\n"
