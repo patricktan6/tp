@@ -287,6 +287,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removeLesson(Lesson key) {
         lessons.remove(key);
+        timetable.deleteSlot(key);
     }
 
     /**
@@ -295,6 +296,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void removeRoutine(Routine key) {
         routines.remove(key);
+        timetable.deleteSlot(key);
     }
 
     /**

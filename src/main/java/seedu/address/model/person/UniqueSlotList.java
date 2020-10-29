@@ -75,6 +75,14 @@ public class UniqueSlotList implements Iterable<Slot> {
         }
     }
 
+    /**
+     * Removes all slots in the list that contains the specified Activity.
+     * @param toRemove The Activity to remove.
+     */
+    public void remove(Activity toRemove) {
+        internalList.removeIf(slot -> slot.getActivity().isSameActivity(toRemove));
+    }
+
     public void setSlots(UniqueSlotList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);

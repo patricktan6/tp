@@ -42,6 +42,10 @@ public class Timetable {
         slots.remove(slot);
     }
 
+    public void deleteSlot(Activity activity) {
+        slots.remove(activity);
+    }
+
     public void setSlots(List<Slot> slots) {
         this.slots.setSlots(slots);
     }
