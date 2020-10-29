@@ -245,8 +245,10 @@ public class UniqueRoutineList implements Iterable<Routine> {
      */
     public void deleteExercise(Exercise retrievedExercise) {
         for (Routine routine : internalList) {
+            int index = internalList.indexOf(routine);
             Set<Exercise> routineExercises = routine.getExercises();
             routineExercises.remove(retrievedExercise);
+            internalList.set(index, routine);
         }
     }
 

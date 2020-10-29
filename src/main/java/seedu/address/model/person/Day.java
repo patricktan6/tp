@@ -9,12 +9,10 @@ public enum Day {
     WEDNESDAY("wednesday"),
     THURSDAY("thursday"),
     FRIDAY("friday"),
-    SATURDAY("saturday"),
-    SUNDAY("sunday"),
     UNKNOWN;
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Day should only be one of the following: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday";
+            "Day should only be one of the following: Monday, Tuesday, Wednesday, Thursday, Friday";
 
     private static final Map<String, Day> MAPPING = new HashMap<>();
 

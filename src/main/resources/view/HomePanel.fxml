@@ -24,7 +24,7 @@
             <HBox fx:id="graph" prefHeight="350" prefWidth="610">
             </HBox>
             <VBox prefHeight="350" prefWidth="610">
-                <Label wrapText="" text="${'HEIGHT: 170CM\nWEIGHT: 70KG\nBMI: 24.2'}"/>
+                <Label wrapText="" text="${'HEIGHT: 170CM\nWEIGHT: 70KG\nBMI: 24.2\nPlaceholder text. TO BE IMPLEMENTED'}"/>
             </VBox>
         </children>
     </HBox>
