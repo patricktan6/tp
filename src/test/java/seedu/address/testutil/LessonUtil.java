@@ -28,8 +28,7 @@ public class LessonUtil {
     public static String getLessonDetails(Lesson lesson) {
         StringBuilder sb = new StringBuilder();
         sb.append(PREFIX_NAME + lesson.getName().fullName + " ");
-        lesson.getTags().stream().forEach(
-                s -> sb.append(PREFIX_TAG + s.tagName + " ")
+        lesson.getTags().stream().forEach(s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
         return sb.toString();
     }

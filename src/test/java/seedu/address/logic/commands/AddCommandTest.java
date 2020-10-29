@@ -52,8 +52,8 @@ public class AddCommandTest {
         LessonAddCommand lessonAddCommand = new LessonAddCommand(validLesson);
         ModelStub modelLessonStub = new ModelStubWithLesson(validLesson);
 
-        assertThrows(CommandException.class, LessonAddCommand.MESSAGE_DUPLICATE_LESSON,
-                () -> lessonAddCommand.execute(modelLessonStub));
+        assertThrows(CommandException.class, LessonAddCommand.MESSAGE_DUPLICATE_LESSON, ()
+                -> lessonAddCommand.execute(modelLessonStub));
     }
 
     @Test
