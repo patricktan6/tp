@@ -88,7 +88,7 @@ Creates a new exercise in fitNUS with the given exercise name.
 Format: `exercise_add e/EXERCISE [t/TAG]`
 
 Example:
-* `exercise_add e/Pull Ups t/Body` Creates a new exercise with the name "Pull Ups" and tag "Body".
+* `exercise_add n/Pull Ups t/Body` Creates a new exercise with the name "Pull Ups" and tag "Body".
 
 **Before adding an exercise:**
 
