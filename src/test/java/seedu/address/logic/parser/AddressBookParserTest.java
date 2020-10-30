@@ -1,25 +1,59 @@
 package seedu.address.logic.parser;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_LESSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.ClearCommand;
+import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
+import seedu.address.logic.commands.LessonAddCommand;
+import seedu.address.logic.commands.LessonEditCommand;
+import seedu.address.logic.commands.LessonEditCommand.EditLessonDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Lesson;
+import seedu.address.testutil.EditLessonDescriptorBuilder;
+import seedu.address.testutil.LessonBuilder;
+import seedu.address.testutil.LessonUtil;
 
 public class AddressBookParserTest {
 
     private final AddressBookParser parser = new AddressBookParser();
 
     @Test
+    public void parseCommand_lessonAdd() throws Exception {
+        Lesson lesson = new LessonBuilder().build();
+        LessonAddCommand command = (LessonAddCommand) parser.parseCommand(LessonUtil.getLessonAddCommand(lesson));
+        assertEquals(new LessonAddCommand(lesson), command);
+    }
+
+    @Test
     public void parseCommand_clear() throws Exception {
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD) instanceof ClearCommand);
         assertTrue(parser.parseCommand(ClearCommand.COMMAND_WORD + " 3") instanceof ClearCommand);
+    }
+
+    @Test
+    public void parseCommand_delete() throws Exception {
+        DeleteCommand command = (DeleteCommand) parser.parseCommand(
+                DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        assertEquals(new DeleteCommand(INDEX_FIRST_PERSON), command);
+    }
+
+    @Test
+    public void parseCommand_lessonEdit() throws Exception {
+        Lesson lesson = new LessonBuilder().build();
+        EditLessonDescriptor descriptor = new EditLessonDescriptorBuilder(lesson).build();
+        LessonEditCommand command = (LessonEditCommand) parser.parseCommand(LessonEditCommand.COMMAND_WORD + " "
+                + INDEX_FIRST_LESSON.getOneBased() + " " + LessonUtil.getEditLessonDescriptorDetails(descriptor));
+        assertEquals(new LessonEditCommand(INDEX_FIRST_LESSON, descriptor), command);
     }
 
     @Test

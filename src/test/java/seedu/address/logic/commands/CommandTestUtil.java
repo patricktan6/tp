@@ -41,6 +41,10 @@ public class CommandTestUtil {
     public static final String VALID_LESSON_TAG_EASY = "easy";
     public static final String VALID_LESSON_TAG_LECTURE = "lecture";
 
+    public static final String LESSON_NAME_DESC_CS2030 = " " + PREFIX_NAME + VALID_LESSON_NAME_CS2030;
+    public static final String LESSON_NAME_DESC_CS2106 = " " + PREFIX_NAME + VALID_LESSON_NAME_CS2106;
+    public static final String LESSON_TAG_DESC_EASY = " " + PREFIX_TAG + VALID_LESSON_TAG_EASY;
+    public static final String LESSON_TAG_DESC_LECTURE = " " + PREFIX_TAG + VALID_LESSON_TAG_LECTURE;
     public static final String NAME_DESC_AMY = " " + PREFIX_NAME + VALID_NAME_AMY;
     public static final String NAME_DESC_BOB = " " + PREFIX_NAME + VALID_NAME_BOB;
     public static final String PHONE_DESC_AMY = " " + PREFIX_PHONE + VALID_PHONE_AMY;
@@ -52,6 +56,8 @@ public class CommandTestUtil {
     public static final String TAG_DESC_FRIEND = " " + PREFIX_TAG + VALID_TAG_FRIEND;
     public static final String TAG_DESC_HUSBAND = " " + PREFIX_TAG + VALID_TAG_HUSBAND;
 
+    public static final String INVALID_LESSON_NAME_DESC = " " + PREFIX_NAME + "CS3230&"; // '&' not allowed in lessons
+    public static final String INVALID_LESSON_TAG_DESC = " " + PREFIX_TAG + "hard*"; // '*' not allowed in tags
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
