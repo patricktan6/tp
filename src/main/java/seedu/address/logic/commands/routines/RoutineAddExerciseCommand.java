@@ -13,16 +13,16 @@ import seedu.address.model.person.Routine;
 import seedu.address.model.person.exceptions.DuplicateExerciseException;
 
 /**
- * Adds an Routine to fitNUS.
+ * Adds an exercise to a routine in fitNUS.
  */
 public class RoutineAddExerciseCommand extends Command {
 
-    public static final String COMMAND_WORD = "routine_add";
+    public static final String COMMAND_WORD = "routine_add_exercise";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an Exercise to a Routine in fitNUS. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an existing exercise to a routine in fitNUS. "
             + "Parameters: "
-            + PREFIX_ROUTINE + "ROUTINE_NAME "
-            + PREFIX_EMAIL + "EXERCISE_NAME"
+            + PREFIX_ROUTINE + "ROUTINE "
+            + PREFIX_EMAIL + "EXERCISE"
             + "\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_ROUTINE + "Leg Day Session "
@@ -31,14 +31,14 @@ public class RoutineAddExerciseCommand extends Command {
     public static final String MESSAGE_SUCCESS = "Exercise added to Routine: %1$s";
     public static final String MESSAGE_MISSING_ROUTINE = "This routine does not exist in fitNUS";
     public static final String MESSAGE_MISSING_EXERCISE = "This exercise does not exist in fitNUS";
-    public static final String MESSAGE_DUPLICATE_EXERCISE = "This exercise already exist in the routine!";
+    public static final String MESSAGE_DUPLICATE_EXERCISE = "This exercise already exists in the routine!";
 
 
     private final Routine routineToAdd;
     private final Exercise exerciseToAdd;
 
     /**
-     * Creates an RoutineAddCommand to add the specified {@code Routine}
+     * Creates a RoutineAddExerciseCommand to add the specified {@code Exercise} to the {@code Routine}
      */
     public RoutineAddExerciseCommand(Routine routine, Exercise exercise) {
         requireNonNull(routine);

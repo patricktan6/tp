@@ -36,7 +36,6 @@ public class ExerciseListPanel extends UiPart<Region> {
         @Override
         protected void updateItem(Exercise exercise, boolean empty) {
             super.updateItem(exercise, empty);
-
             if (empty || exercise == null) {
                 setGraphic(null);
                 setText(null);

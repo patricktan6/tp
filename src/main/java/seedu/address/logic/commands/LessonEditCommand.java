@@ -31,7 +31,7 @@ public class LessonEditCommand extends Command {
             + "by the index number used in the displayed lesson list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_NAME + "LESSON] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_NAME + "CS1231 "

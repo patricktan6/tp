@@ -31,7 +31,15 @@ public interface Model {
      */
     Predicate<Routine> PREDICATE_SHOW_ALL_ROUTINES = unused -> true;
 
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Lesson> PREDICATE_SHOW_ALL_LESSONS = unused -> true;
+
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
+    Predicate<DailyCalorie> PREDICATE_SHOW_ALL_LOGS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -140,6 +148,13 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
+
+    /**
+     * Updates the filter of the filtered calorie log to filter by the given {@code predicate}.
+     *
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredCalorieLog(Predicate<DailyCalorie> predicate);
 
     /**
      * Updates the filter of the filtered exercise list to filter by the given {@code predicate}.

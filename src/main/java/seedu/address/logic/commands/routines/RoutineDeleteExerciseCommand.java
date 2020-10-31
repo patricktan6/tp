@@ -12,17 +12,16 @@ import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Routine;
 
 /**
- * Deletes a routine identified using it's displayed index from fitNUS.
+ * Deletes an exercise from a routine in fitNUS.
  */
 public class RoutineDeleteExerciseCommand extends Command {
 
     public static final String COMMAND_WORD = "routine_delete_exercise";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the mentioned Exercise used in the specified Routine.\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes the exercise from the specified routine. "
             + "Parameters: "
-            + PREFIX_ROUTINE + "ROUTINE_NAME "
-            + PREFIX_EMAIL + "EXERCISE_NAME"
+            + PREFIX_ROUTINE + "ROUTINE "
+            + PREFIX_EMAIL + "EXERCISE"
             + "\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_ROUTINE + "Leg Day Session "
@@ -36,11 +35,10 @@ public class RoutineDeleteExerciseCommand extends Command {
     private final Exercise exercise;
 
     /**
-     * Creates a RoutineDeleteExericseCommand object.
-     * @param routine Specified Routine that the user wants to delete an Exercise from.
-     * @param exercise Specified Exercise that the user wants to delete.
+     * Creates a RoutineDeleteExerciseCommand to delete the specified {@code Exercise} from the {@code Routine}
      */
     public RoutineDeleteExerciseCommand(Routine routine, Exercise exercise) {
+        requireNonNull(routine);
         this.routine = routine;
         this.exercise = exercise;
     }

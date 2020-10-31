@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
@@ -25,6 +26,7 @@ public class HomePanel extends UiPart<Region> {
     private ExerciseListPanel exerciseListPanel;
     private LessonListPanel lessonListPanel;
     private RoutineListPanel routineListPanel;
+    private CalorieGraph lineChart;
 
     @FXML
     private StackPane routineListPanelPlaceholder;
@@ -34,6 +36,9 @@ public class HomePanel extends UiPart<Region> {
 
     @FXML
     private StackPane lessonListPanelPlaceholder;
+
+    @FXML
+    private HBox graph;
 
     /** Constructs HomePanel
      *
@@ -54,5 +59,8 @@ public class HomePanel extends UiPart<Region> {
                 Insets.EMPTY)));
         routineListPanel = new RoutineListPanel(logic.getFilteredRoutineList());
         routineListPanelPlaceholder.getChildren().add(routineListPanel.getRoot());
+
+        lineChart = new CalorieGraph(logic.getFilteredDailyCalorie());
+        graph.getChildren().add(lineChart.getRoot());
     }
 }

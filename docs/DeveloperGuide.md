@@ -11,7 +11,7 @@ title: Developer Guide
 fitNUS is tailored for **NUS students** that are interested in staying healthy and keeping fit. It is suitable for **all
 fitness levels** and is equipped with a **customisable timetable** for you to manage your time wisely and slot in your
 workout routines with ease.
- 
+
 This developer guide is for users who are interested in our design philosophy and for future developers of fitNUS.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -132,7 +132,7 @@ The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
 * can save the fitNUS data in json format and read it back.
 
-### Common classes 
+### Common classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
 

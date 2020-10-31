@@ -1,9 +1,10 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_EXERCISES;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ROUTINES;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -21,7 +22,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.tag.Tag;
 
 /**
- * Edits the details of an existing person in the address book.
+ * Edits the details of an existing exercise in fitNUS.
  */
 public class ExerciseEditCommand extends Command {
 
@@ -31,10 +32,11 @@ public class ExerciseEditCommand extends Command {
             + "by the index number used in the displayed exercise list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_NAME + "NAME] "
+            + "[" + PREFIX_EMAIL + "EXERCISE] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_NAME + "Shoulder Press ";
+            + PREFIX_EMAIL + "Shoulder Press "
+            + PREFIX_TAG + "Deltoids";
 
     public static final String MESSAGE_EDIT_EXERCISE_SUCCESS = "Edited Exercise: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -72,6 +74,7 @@ public class ExerciseEditCommand extends Command {
         }
 
         model.setExercise(exerciseToEdit, editedExercise);
+        model.updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
         model.updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
         return new CommandResult(String.format(MESSAGE_EDIT_EXERCISE_SUCCESS, editedExercise));
     }
