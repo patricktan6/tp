@@ -22,7 +22,7 @@ import seedu.address.model.person.UniqueRoutineList;
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
-public class AddressBook implements ReadOnlyAddressBook {
+public class AddressBook implements ReadOnlyFitNus {
 
     private final UniquePersonList persons;
     private final UniqueExerciseList exercises;
@@ -55,7 +55,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Creates an AddressBook using the Persons in the {@code toBeCopied}
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public AddressBook(ReadOnlyFitNus toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -129,7 +129,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyFitNus newData) {
         requireNonNull(newData);
 
         setPersons(newData.getPersonList());

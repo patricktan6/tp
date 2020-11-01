@@ -2,7 +2,7 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LESSON;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collection;
@@ -29,7 +29,7 @@ public class LessonEditCommandParser implements Parser<LessonEditCommand> {
     public LessonEditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_LESSON, PREFIX_TAG);
 
         Index index;
 
@@ -41,8 +41,8 @@ public class LessonEditCommandParser implements Parser<LessonEditCommand> {
         }
 
         EditLessonDescriptor editLessonDescriptor = new EditLessonDescriptor();
-        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
-            editLessonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
+        if (argMultimap.getValue(PREFIX_LESSON).isPresent()) {
+            editLessonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_LESSON).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editLessonDescriptor::setTags);
 

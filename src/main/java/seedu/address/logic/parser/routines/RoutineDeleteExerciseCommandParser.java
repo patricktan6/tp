@@ -1,7 +1,7 @@
 package seedu.address.logic.parser.routines;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EXERCISE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROUTINE;
 
 import java.util.HashSet;
@@ -32,9 +32,9 @@ public class RoutineDeleteExerciseCommandParser implements Parser<RoutineDeleteE
      */
     public RoutineDeleteExerciseCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_ROUTINE, PREFIX_EMAIL);
+                ArgumentTokenizer.tokenize(args, PREFIX_ROUTINE, PREFIX_EXERCISE);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_ROUTINE, PREFIX_EMAIL)
+        if (!arePrefixesPresent(argMultimap, PREFIX_ROUTINE, PREFIX_EXERCISE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     RoutineDeleteExerciseCommand.MESSAGE_USAGE));
@@ -42,7 +42,7 @@ public class RoutineDeleteExerciseCommandParser implements Parser<RoutineDeleteE
 
         Name routineName = ParserUtil.parseName(argMultimap.getValue(PREFIX_ROUTINE).get());
 
-        Name exerciseName = ParserUtil.parseName(argMultimap.getValue(PREFIX_EMAIL).get());
+        Name exerciseName = ParserUtil.parseName(argMultimap.getValue(PREFIX_EXERCISE).get());
         Routine routine = new Routine(routineName);
         Set<Tag> tagList = new HashSet<>();
         Exercise exercise = new Exercise(exerciseName, tagList);

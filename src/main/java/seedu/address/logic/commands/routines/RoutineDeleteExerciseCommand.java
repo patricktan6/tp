@@ -1,7 +1,7 @@
 package seedu.address.logic.commands.routines;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EXERCISE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROUTINE;
 
 import seedu.address.logic.commands.Command;
@@ -21,11 +21,11 @@ public class RoutineDeleteExerciseCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes the exercise from the specified routine. "
             + "Parameters: "
             + PREFIX_ROUTINE + "ROUTINE "
-            + PREFIX_EMAIL + "EXERCISE"
+            + PREFIX_EXERCISE + "EXERCISE"
             + "\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_ROUTINE + "Leg Day Session "
-            + PREFIX_EMAIL + "Squats ";
+            + PREFIX_EXERCISE + "Squats ";
 
     public static final String MESSAGE_DELETE_EXERCISE_SUCCESS = "Deleted Exercise from Routine: %1$s";
     public static final String MESSAGE_MISSING_ROUTINE = "Deleted Exercise from Routine: %1$s";
