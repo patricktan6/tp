@@ -70,9 +70,12 @@ public class LessonEditCommandParserTest {
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Lesson} being edited,
         // parsing it together with a valid tag results in error
-        assertParseFailure(parser, "1" + LESSON_TAG_DESC_LECTURE + LESSON_TAG_DESC_EASY + TAG_EMPTY, Tag.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + LESSON_TAG_DESC_LECTURE + TAG_EMPTY + LESSON_TAG_DESC_EASY, Tag.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, "1" + TAG_EMPTY + LESSON_TAG_DESC_LECTURE + LESSON_TAG_DESC_EASY, Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + LESSON_TAG_DESC_LECTURE + LESSON_TAG_DESC_EASY + TAG_EMPTY,
+                Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + LESSON_TAG_DESC_LECTURE + TAG_EMPTY + LESSON_TAG_DESC_EASY,
+                Tag.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + TAG_EMPTY + LESSON_TAG_DESC_LECTURE + LESSON_TAG_DESC_EASY,
+                Tag.MESSAGE_CONSTRAINTS);
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, "1" + INVALID_LESSON_NAME_DESC + INVALID_LESSON_TAG_DESC,
