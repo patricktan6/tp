@@ -18,7 +18,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyFitNus;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
@@ -180,12 +180,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public void setAddressBook(ReadOnlyAddressBook newData) {
+        public void setAddressBook(ReadOnlyFitNus newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
+        public ReadOnlyFitNus getAddressBook() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -382,7 +382,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
+        public ReadOnlyFitNus getAddressBook() {
             return new AddressBook();
         }
     }

@@ -25,7 +25,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.LessonBuilder;
 
-public class AddCommandParserTest {
+public class LessonAddCommandParserTest {
     private LessonAddCommandParser parser = new LessonAddCommandParser();
 
     @Test
@@ -74,7 +74,7 @@ public class AddCommandParserTest {
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + LESSON_NAME_DESC_CS2106
-                + LESSON_TAG_DESC_EASY + LESSON_TAG_DESC_LECTURE,
+                        + LESSON_TAG_DESC_EASY + LESSON_TAG_DESC_LECTURE,
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, LessonAddCommand.MESSAGE_USAGE));
     }
 }
