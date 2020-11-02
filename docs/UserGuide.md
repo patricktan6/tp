@@ -319,14 +319,14 @@ Note how "Squats" is no longer found under "Leg Workout" as a tagging, and fitNU
 
 ![Routine Delete Exercise After](./images/routine_delete_exercise_after.png)
 
-#### 4.2.7 View routine details : `routine_view_exercise`
+#### 4.2.7 View routine details : `routine_view`
 
-Views the details of a certain routine in fitNUS.
+Views the a certain routine in fitNUS indicated by the index.
 
-Format: `routine_view_exercise INDEX`
+Format: `routine_view INDEX`
 
 Example:
-* `routine_view_exercise 2` Views the routine at index 2 in the list.
+* `routine_view 2` Views the routine at index 2 in the list.
 
 **Before viewing the second routine:**
 

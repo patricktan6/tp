@@ -18,7 +18,7 @@ public class RoutineNameContainsKeywordsPredicate implements Predicate<Routine> 
     @Override
     public boolean test(Routine routine) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsCharIgnoreCase(routine.getName().fullName, keyword));
+                .allMatch(keyword -> StringUtil.containsCharIgnoreCase(routine.getName().fullName, keyword));
     }
 
     @Override

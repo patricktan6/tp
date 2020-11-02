@@ -200,7 +200,8 @@ public class ParserUtil {
         try {
             trimmedCalorie = Integer.parseInt(calorie.trim());
         } catch (NumberFormatException e) {
-            throw new ParseException("Calorie input is way too large for fitNUS to handle!");
+            throw new ParseException("Calorie input must be a valid integer and not more than the Java's maximum" +
+                    " integer value e.g. calorie_add c/100");
         }
 
         if (trimmedCalorie <= 0) {
