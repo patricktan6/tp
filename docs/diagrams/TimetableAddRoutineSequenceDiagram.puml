@@ -13,10 +13,10 @@ box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("timetable_add_routine r/Leg Workout d/Monday T/1600-1700")
+[-> LogicManager : execute("timetable_add_routine r/Leg Workout D/Monday T/1600-1700")
 activate LogicManager
 
-LogicManager -> FitNusParser : parseCommand("timetable_add_routine r/Leg Workout d/Monday T/1600-1700")
+LogicManager -> FitNusParser : parseCommand("timetable_add_routine r/Leg Workout D/Monday T/1600-1700")
 activate FitNusParser
 
 create TimetableAddRoutineCommandParser
@@ -26,7 +26,7 @@ activate TimetableAddRoutineCommandParser
 TimetableAddRoutineCommandParser --> FitNusParser
 deactivate TimetableAddRoutineCommandParser
 
-FitNusParser -> TimetableAddRoutineCommandParser : parse("r/Leg Workout d/Monday T/1600-1700")
+FitNusParser -> TimetableAddRoutineCommandParser : parse("r/Leg Workout D/Monday T/1600-1700")
 activate TimetableAddRoutineCommandParser
 
 create TimetableAddRoutineCommand
