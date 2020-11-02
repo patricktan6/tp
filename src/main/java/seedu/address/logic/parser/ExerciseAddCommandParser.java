@@ -1,7 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EXERCISE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
@@ -25,14 +25,14 @@ public class ExerciseAddCommandParser implements Parser<ExerciseAddCommand> {
      */
     public ExerciseAddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_EMAIL, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_EXERCISE, PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_EMAIL)
+        if (!arePrefixesPresent(argMultimap, PREFIX_EXERCISE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExerciseAddCommand.MESSAGE_USAGE));
         }
 
-        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_EMAIL).get());
+        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_EXERCISE).get());
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
         Exercise exercise = new Exercise(name, tagList);

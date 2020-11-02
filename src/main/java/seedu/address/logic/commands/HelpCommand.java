@@ -23,96 +23,127 @@ public class HelpCommand extends Command {
     public static final String NO_COMMAND_MESSAGE = "There are no commands containing this keyword. "
             + "A brief description of all possible commands is listed below.\n\n";
 
+    private static final String separator = "-----------------------------------------------------------------------"
+            + "-----------------------------------------------------------------------------------------------------\n";
+
     public static final String HELP_MESSAGE = "help:\n"
             + "Shows program usage instructions and format for all commands.\n"
             + "Additionally, use a keyword to search for a group of commands.\n"
-            + "Format: help OR help [COMMAND_KEYWORD]\n\n";
+            + "Format: help OR help [COMMAND_KEYWORD]\n"
+            + separator;
     public static final String CLEAR_MESSAGE = "clear:\n"
             + "Clears all data entries from fitNUS.\n"
-            + "Format: clear\n\n";
+            + "Format: clear\n"
+            + separator;
     public static final String EXIT_MESSAGE = "exit:\n"
             + "Terminates the program.\n"
-            + "Format: exit\n\n";
+            + "Format: exit\n"
+            + separator;
     public static final String ADD_HEIGHT_MESSAGE = "height:\n"
             + "Adds user's height (in cm) to fitNUS.\n"
-            + "Format: height h/HEIGHT\n\n";
+            + "Format: height h/HEIGHT\n"
+            + separator;
     public static final String ADD_WEIGHT_MESSAGE = "weight:\n"
             + "Adds user's weight (in kg) to fitNUS.\n"
-            + "Format: weight w/WEIGHT\n\n";
+            + "Format: weight w/WEIGHT\n"
+            + separator;
     public static final String BMI_MESSAGE = "bmi:\n"
             + "Views the user's BMI.\n"
-            + "Format: bmi\n\n";
+            + "Format: bmi\n"
+            + separator;
     public static final String CALORIE_ADD_MESSAGE = "calorie_add:\n"
             + "Adds the user's caloric intake to today's sum.\n"
-            + "Format: calorie_add c/CALORIE\n\n";
+            + "Format: calorie_add c/CALORIE\n"
+            + separator;
     public static final String CALORIE_MINUS_MESSAGE = "calorie_minus:\n"
             + "Deducts the specified calorie amount from today's sum.\n"
-            + "Format: calorie_minus c/CALORIE\n\n";
+            + "Format: calorie_minus c/CALORIE\n"
+            + separator;
     public static final String EXERCISE_ADD_MESSAGE = "exercise_add:\n"
             + "Adds an exercise to fitNUS.\n"
-            + "Format: exercise_add e/EXERCISE [t/TAG]\n\n";
+            + "Format: exercise_add e/EXERCISE [t/TAG]...\n"
+            + separator;
     public static final String EXERCISE_DELETE_MESSAGE = "exercise_delete:\n"
             + "Deletes the exercise identified by the index number used in the displayed exercise list.\n"
-            + "Format: exercise_delete INDEX (must be a positive integer)\n\n";
+            + "Format: exercise_delete INDEX (must be a positive integer)\n"
+            + separator;
     public static final String EXERCISE_EDIT_MESSAGE = "exercise_edit:\n"
             + "Edits the details of the exercise identified by the index number used in the displayed exercise list.\n"
             + "Existing values will be overwritten by the input values.\n"
-            + "Format: exercise_edit INDEX (must be a positive integer) [e/EXERCISE] [t/TAG]\n\n";
+            + "Format: exercise_edit INDEX (must be a positive integer) [e/EXERCISE] [t/TAG]...\n"
+            + separator;
     public static final String EXERCISE_FIND_MESSAGE = "exercise_find:\n"
             + "Finds all exercises whose names contain any of the specified keywords (case-insensitive) and displays\n"
             + "them as a list with index numbers.\n"
-            + "Format: exercise_find KEYWORD [MORE_KEYWORDS]\n\n";
+            + "Format: exercise_find KEYWORD [MORE_KEYWORDS]...\n"
+            + separator;
     public static final String EXERCISE_LIST_MESSAGE = "exercise_list:\n"
             + "Displays a list of all exercises in fitNUS.\n"
-            + "Format: exercise_list\n\n";
+            + "Format: exercise_list\n"
+            + separator;
     public static final String ROUTINE_CREATE_MESSAGE = "routine_create:\n"
             + "Creates a new routine in fitNUS.\n"
-            + "Format: routine_create r/ROUTINE\n\n";
+            + "Format: routine_create r/ROUTINE\n"
+            + separator;
     public static final String ROUTINE_DELETE_MESSAGE = "routine_delete:\n"
             + "Deletes the routine identified by the index number used in the displayed routine list.\n"
-            + "Format: routine_delete INDEX (must be a positive integer)\n\n";
+            + "Format: routine_delete INDEX (must be a positive integer)\n"
+            + separator;
     public static final String ROUTINE_FIND_MESSAGE = "routine_find:\n"
             + "Finds all routines whose names contain any of the specified keywords (case-insensitive) and displays\n"
             + "them as a list with index numbers.\n"
-            + "Format: routine_find KEYWORD [MORE_KEYWORDS]\n\n";
+            + "Format: routine_find KEYWORD [MORE_KEYWORDS]...\n"
+            + separator;
     public static final String ROUTINE_LIST_MESSAGE = "routine_list\n"
             + "Displays a list of all routines in fitNUS.\n"
-            + "Format: routine_list\n\n";
+            + "Format: routine_list\n"
+            + separator;
     public static final String ROUTINE_ADD_EXERCISE_MESSAGE = "routine_add_exercise:\n"
             + "Adds an existing exercise to a routine in fitNUS.\n"
-            + "Format: routine_add_exercise r/ROUTINE e/EXERCISE\n\n";
+            + "Format: routine_add_exercise r/ROUTINE e/EXERCISE\n"
+            + separator;
     public static final String ROUTINE_DELETE_EXERCISE_MESSAGE = "routine_delete_exercise:\n"
             + "Deletes the exercise from the specified routine.\n"
-            + "Format: routine_delete_exercise r/ROUTINE e/EXERCISE\n\n";
+            + "Format: routine_delete_exercise r/ROUTINE e/EXERCISE\n"
+            + separator;
     public static final String ROUTINE_VIEW_EXERCISE_MESSAGE = "routine_view_exercise:\n"
             + "Views all exercises contained in a routine in fitNUS.\n"
-            + "Format: routine_view_exercise INDEX (must be a positive integer)\n\n";
+            + "Format: routine_view_exercise INDEX (must be a positive integer)\n"
+            + separator;
     public static final String LESSON_ADD_MESSAGE = "lesson_add:\n"
             + "Adds a lesson to fitNUS.\n"
-            + "Format: lesson_add n/LESSON [t/TAG]\n\n";
+            + "Format: lesson_add n/LESSON [t/TAG]...\n"
+            + separator;
     public static final String LESSON_DELETE_MESSAGE = "lesson_delete:\n"
             + "Deletes the lesson identified by the index number used in the displayed lesson list.\n"
-            + "Format: lesson_delete INDEX (must be a positive integer)\n\n";
+            + "Format: lesson_delete INDEX (must be a positive integer)\n"
+            + separator;
     public static final String LESSON_EDIT_MESSAGE = "lesson_edit:\n"
             + "Edits the details of the lesson identified by the index number used in the displayed lesson list.\n"
             + "Existing values will be overwritten by the input values.\n"
-            + "Format: lesson_edit INDEX (must be a positive integer) [n/LESSON] [t/TAG]\n\n";
+            + "Format: lesson_edit INDEX (must be a positive integer) [n/LESSON] [t/TAG]...\n"
+            + separator;
     public static final String LESSON_FIND_MESSAGE = "lesson_find:\n"
             + "Finds all lessons whose names contain any of the specified keywords (case-insensitive) and displays\n"
             + "them as a list with index numbers.\n"
-            + "Format: lesson_find KEYWORD [MORE_KEYWORDS]\n\n";
+            + "Format: lesson_find KEYWORD [MORE_KEYWORDS]...\n"
+            + separator;
     public static final String LESSON_LIST_MESSAGE = "lesson_list:\n"
             + "Displays a list of all lessons in fitNUS.\n"
-            + "Format: lesson_list\n\n";
+            + "Format: lesson_list\n"
+            + separator;
     public static final String TIMETABLE_ADD_ROUTINE_MESSAGE = "timetable_add_routine:\n"
             + "Adds an existing routine to the timetable in fitNUS.\n"
-            + "Format: timetable_add_routine r/ROUTINE d/DAY T/TIME\n\n";
+            + "Format: timetable_add_routine r/ROUTINE D/DAY T/TIME\n"
+            + separator;
     public static final String TIMETABLE_ADD_LESSON_MESSAGE = "timetable_add_lesson:\n"
             + "Adds an existing lesson to the timetable in fitNUS.\n"
-            + "Format: timetable_add_lesson n/LESSON d/DAY T/TIME\n\n";
+            + "Format: timetable_add_lesson n/LESSON D/DAY T/TIME\n"
+            + separator;
     public static final String TIMETABLE_DELETE_SLOT_MESSAGE = "timetable_delete_slot:\n"
             + "Deletes the slot identified by its day and time.\n"
-            + "Format: timetable_delete_slot d/Day T/TIME\n\n";
+            + "Format: timetable_delete_slot D/Day T/TIME\n"
+            + separator;
 
     public static final String STANDARDIZED_HELP_MESSAGE = HELP_MESSAGE
             + CLEAR_MESSAGE

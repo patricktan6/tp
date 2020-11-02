@@ -1,7 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EXERCISE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -17,10 +17,10 @@ public class ExerciseAddCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an exercise to fitNUS. "
             + "Parameters: "
-            + PREFIX_EMAIL + "EXERCISE "
+            + PREFIX_EXERCISE + "EXERCISE "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_EMAIL + "Bench Press "
+            + PREFIX_EXERCISE + "Bench Press "
             + PREFIX_TAG + "Chest "
             + PREFIX_TAG + "Triceps";
 

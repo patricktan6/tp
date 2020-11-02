@@ -1,7 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EXERCISE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_EXERCISES;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ROUTINES;
@@ -32,10 +32,10 @@ public class ExerciseEditCommand extends Command {
             + "by the index number used in the displayed exercise list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_EMAIL + "EXERCISE] "
+            + "[" + PREFIX_EXERCISE + "EXERCISE] "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_EMAIL + "Shoulder Press "
+            + PREFIX_EXERCISE + "Shoulder Press "
             + PREFIX_TAG + "Deltoids";
 
     public static final String MESSAGE_EDIT_EXERCISE_SUCCESS = "Edited Exercise: %1$s";

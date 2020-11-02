@@ -1,6 +1,6 @@
 package seedu.address.testutil;
 
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LESSON;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Set;
@@ -27,7 +27,7 @@ public class LessonUtil {
      */
     public static String getLessonDetails(Lesson lesson) {
         StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_NAME + lesson.getName().fullName + " ");
+        sb.append(PREFIX_LESSON + lesson.getName().fullName + " ");
         lesson.getTags().stream().forEach(s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
         return sb.toString();
@@ -38,7 +38,7 @@ public class LessonUtil {
      */
     public static String getEditLessonDescriptorDetails(EditLessonDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
-        descriptor.getName().ifPresent(name -> sb.append(PREFIX_NAME).append(name.fullName).append(" "));
+        descriptor.getName().ifPresent(name -> sb.append(PREFIX_LESSON).append(name.fullName).append(" "));
         if (descriptor.getTags().isPresent()) {
             Set<Tag> tags = descriptor.getTags().get();
             if (tags.isEmpty()) {

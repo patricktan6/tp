@@ -1,9 +1,10 @@
 ---
-# fitNUS - User Guide
-
 layout: page
-title: User Guide
+title: fitNUS - User Guide
 ---
+By: `Team T09-2` Since: `September 2020`
+
+**Table of Contents:**
 
 * Table of Contents
 {:toc}
@@ -29,20 +30,23 @@ Please note the following formatting and notations that you will encounter as yo
 
 Formatting | Meaning | Examples
 --------|-------|-----------
-e/EXAMPLE | The character before the slash is a prefix, and the capital letters that comes after the slash is your input | n/Leg Workout
-[ x/X ] | Square brackets signify optional fields that you can consider using| [t/Compound]
-`mark-up` | Grey highlight of a word signifies the actual input that you can use | `exercise_delete 1`
+e/EXAMPLE | The character before the forward slash ("/") is a prefix, and words in **UPPER_CASE** after the slash are the parameters to be supplied by you | In `exercise_add e/EXERCISE`, `EXERCISE` is a parameter which can be used as `exercise_add e/Deadlift`
+[ x/X ] | Square brackets signify optional fields that you can consider using | `exercise_add e/EXERCISE [t/TAG]` can be used as `exercise_add e/Deadlift t/glutes` or `exercise_add e/Deadlift`
+`...` | Fields which are followed by `...` indicate that they can be used more than once | `[t/TAG]...` can be used as `t/first t/important t/form` etc.
+Duplicate parameters | Only the argument of the last occurring duplicate parameter will be considered if the command format does not expect multiple parameters (i.e. fields without `...`) | In `exercise_add e/Deadlift e/Lunges`, an exercise with the name `Lunges` will be added and `e/Deadlift` is ignored
+Order of parameters | Valid parameters can be provided in any order unless one of the parameters is `INDEX`, in which case `INDEX` must be the first parameter | In `exercise_edit INDEX [e/EXERCISE] [t/TAG]...`, `exercise_edit INDEX [t/TAG]... [e/EXERCISE]` is also accepted. However, `exercise_edit [e/EXERCISE] INDEX [t/TAG]...` is not allowed
+`mark-up` | Grey highlight of a word signifies the actual input that you can use | You can type `exercise_delete 1` in the command box and press *Enter* to execute the command
 Call Outs | Red boxes will be drawn up around areas of interest to alert you `[coming in v1.4]` | -
 
 Check out the list below to get started on using this User Guide.
 
-* If this is your first time using fitNUS, refer to the [Quick Start](#quick-start) for step-by-step instructions on how
+* If this is your first time using fitNUS, refer to the [Quick Start](#3.-quick-start) for step-by-step instructions on how
 to download and set up fitNUS on your Computer.
 
-* If you want to explore the different features of fitNUS, go to the [Commands](#commands) section.
+* If you want to explore the different features of fitNUS, go to the [Commands](#4.-commands) section.
 
 * If you are familiar with fitNUS or want to do a quick lookup of all the available commands, go to the
-[Command Summary](#command-summary) section.
+[Command Summary](#5.-command-summary) section.
 
 --------------------------------------------------------------------------------------------------------------------
 ## 3. Quick Start
@@ -53,22 +57,28 @@ to download and set up fitNUS on your Computer.
 
 1. Copy the file to the folder you want to use as the _home folder_ for your fitNUS.
 
-1. Double-click the file to start the app. The GUI similar to the above should appear in a few seconds.
+1. Double-click the file to start the app. The GUI similar to the one [above](#1.-introduction) should appear in a few seconds.
 Note how the app contains some sample data.<br>
 
-1. Type the command in the command box and press Enter to execute it. Here are some sample commands you can try:
+1. Type your desired command in the command box and press *Enter* to execute it. To verify that fitNUS is working for you,
+here are some sample commands you can try:
 
-   * **`exercise_add`**`n/Curls t/Upper` : Creates an Exercise named "Curls" with an "Upper" tag.
+   * **`exercise_add`**`e/Curls t/Upper` : Creates an Exercise named "Curls" with an "Upper" tag.
 
    * **`routine_create`**`r/Upper Body Session` : Creates a Routine named "Upper Body Session".
 
    * **`routine_add_exercise `**`r/Upper Body Session e/Curls` : Adds an Exercise named "Curls"
    to a Routine named "Upper Body Session".
 
-   * **`timetable_add_routine`**`r/Upper Body Session d/Monday T/1600-1800` : Adds the Routine "Upper Body Session"
+   * **`timetable_add_routine`**`r/Upper Body Session D/Monday T/1600-1800` : Adds the Routine "Upper Body Session"
    to your timetable on Monday at 1600HRS - 1800HRS.
 
-1. Refer to the [Commands](#commands) below for details of each command.
+1. Now that fitNUS is running as expected, you can kick-start your fitness journey and achieve your goals!
+Experience first-hand the convenience that fitNUS brings to your life by exploring the various commands yourself.
+
+   * Learn more about the specific details of each command [here](#4.-commands).
+   
+   * A complete summary of all commands is available [here](#5.-command-summary) in table format.
 
 --------------------------------------------------------------------------------------------------------------------
 ## 4. Commands
@@ -88,7 +98,7 @@ Creates a new exercise in fitNUS with the given exercise name.
 Format: `exercise_add e/EXERCISE [t/TAG]`
 
 Example:
-* `exercise_add n/Pull Ups t/Body` Creates a new exercise with the name "Pull Ups" and tag "Body".
+* `exercise_add e/Pull Ups t/Body` Creates a new exercise with the name "Pull Ups" and tag "Body".
 
 **Before adding an exercise:**
 
@@ -448,10 +458,10 @@ reflected automatically on the Timetable.
 
 Adds a complete routine into the timetable in fitNUS.
 
-Format: `timetable_add_routine r/ROUTINE d/DAY T/TIME`
+Format: `timetable_add_routine r/ROUTINE D/DAY T/TIME`
 
 Example:
-* `timetable_add_routine r/Leg Workout d/Monday T/1600-1800`
+* `timetable_add_routine r/Leg Workout D/Monday T/1600-1800`
 Adds routine "Leg Workout" to timetable on Monday, 1600-1800.
 
 **Before adding routine "Leg Workout" to Timetable:** 
@@ -466,10 +476,10 @@ Adds routine "Leg Workout" to timetable on Monday, 1600-1800.
 
 Adds a lesson into the timetable in fitNUS.
 
-Format: `timetable_add_lesson n/LESSON d/DAY T/TIME`
+Format: `timetable_add_lesson n/LESSON D/DAY T/TIME`
 
 Example:
-* `timetable_add_lesson n/CS2103T d/Wednesday T/1200-1400`
+* `timetable_add_lesson n/CS2103T D/Wednesday T/1200-1400`
 Adds lesson "CS2103T" to timetable on Wednesday, 1200-1400.
 
 **Before adding lesson "CS2103T" to Timetable:**
@@ -486,10 +496,10 @@ Note that Leg Workout routine has already been added to the Timetable.
 
 Deletes a routine or lesson from the timetable in fitNUS.
 
-Format: `timetable_delete_slot d/DAY T/TIME`
+Format: `timetable_delete_slot D/DAY T/TIME`
 
 Example:
-* `timetable_delete_slot d/Monday t/1600-1800`
+* `timetable_delete_slot D/Monday T/1600-1800`
 Deletes the routine or lesson scheduled on Monday, 1600-1800.
 
 **Before removing slot from Timetable:**
@@ -672,9 +682,9 @@ Action | Format | Examples
 
 Action | Format | Examples
 --------|-------|-----------
-**Add Routine to Timetable** | `timetable_add_routine r/ROUTINE d/DAY T/TIME` | `timetable_add_routine r/Leg Day Session d/Monday T/1600-1800`
-**Add Lesson to Timetable** | `timetable_add_lesson n/LESSON d/DAY T/TIME` | `timetable_add_lesson n/CS2103T d/Tuesday T/1200-1400`
-**Delete Routine or Lesson from Timetable** | `timetable_delete_slot d/DAY T/TIME` | `timetable_delete_slot d/Monday T/1600-1800`
+**Add Routine to Timetable** | `timetable_add_routine r/ROUTINE D/DAY T/TIME` | `timetable_add_routine r/Leg Day Session D/Monday T/1600-1800`
+**Add Lesson to Timetable** | `timetable_add_lesson n/LESSON D/DAY T/TIME` | `timetable_add_lesson n/CS2103T D/Tuesday T/1200-1400`
+**Delete Routine or Lesson from Timetable** | `timetable_delete_slot D/DAY T/TIME` | `timetable_delete_slot D/Monday T/1600-1800`
 **View timetable** | - | Click on timetable tab at the top left of interface
 
 ### 5.5 BMI

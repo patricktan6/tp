@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LESSON;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -19,12 +19,12 @@ public class TimetableAddLessonCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an existing lesson to the timetable in fitNUS. "
             + "Parameters: "
-            + PREFIX_NAME + "LESSON "
+            + PREFIX_LESSON + "LESSON "
             + PREFIX_DAY + "DAY "
             + PREFIX_TIME + "TIME"
             + "\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "CS2030 "
+            + PREFIX_LESSON + "CS2030 "
             + PREFIX_DAY + "Monday "
             + PREFIX_TIME + "1600-1800";
 

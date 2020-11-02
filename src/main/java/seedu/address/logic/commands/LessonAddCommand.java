@@ -1,7 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LESSON;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -17,10 +17,10 @@ public class LessonAddCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a lesson to fitNUS. "
             + "Parameters: "
-            + PREFIX_NAME + "LESSON "
+            + PREFIX_LESSON + "LESSON "
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_NAME + "CS2103T "
+            + PREFIX_LESSON + "CS2103T "
             + PREFIX_TAG + "lecture "
             + PREFIX_TAG + "consult";
 

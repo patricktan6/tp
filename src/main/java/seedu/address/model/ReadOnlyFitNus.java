@@ -9,9 +9,9 @@ import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
 
 /**
- * Unmodifiable view of an address book
+ * Unmodifiable view of fitNUS
  */
-public interface ReadOnlyAddressBook {
+public interface ReadOnlyFitNus {
 
     /**
      * Returns an unmodifiable view of the persons list.
