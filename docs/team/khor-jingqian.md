@@ -7,7 +7,7 @@ title: Khor Jing Qian's Project Portfolio P{age
 
 ### Overview
 
-fitNUS is a desktop address book application that is targeted at NUS students that are looking to improve their fitness. 
+fitNUS is a desktop address book application that is targeted at NUS students that are looking to improve their fitness.
 The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10
 kLoC.
 
@@ -26,9 +26,9 @@ to their timetable.
 The team has come up with a vast number of user-centric features to make fitNUS well-suited in order to provide both
 convenience and utility in the long-run. Aimed at NUS students who are keen on improving their fitness levels, fitNUS is
 the perfect solution in which the Graphical User Interface is integrated with Command Line Interface to provide a
-wholesome user experience. 
+wholesome user experience.
 
-## Summary of Contributions 
+## Summary of Contributions
 
 * **New Feature**: Added Routine classes and implemented its relevant implementations.
   * What it does: allows the user to store pre-existing Exercises and users are able to add Routine into their timetable.
@@ -36,7 +36,7 @@ wholesome user experience.
   * Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
   * Highlights: Implementing Routine required a deep understanding of how the original AB3 functioned. The implementation was made even more challenging by the fact that
   it was built on Exercise and maintaining low coupling was tough.
- 
+
 * **New Feature**: Added DailyCalorie classes and implemented its relevant implementations.
   * What it does: allows the user to track their daily calorie intake up to 7 days.
   * Justification: Calories is an important part of tracking your fitness and this implementation allows fitNUS to better help their users.
@@ -58,7 +58,7 @@ wholesome user experience.
 * **Enhancements to existing features**:
   * Updated the GUI to fit our vision for fitNUS, adjusting the arrangement and finding icons for fitNUS.
   * Wrote test cases for Routine, UniqueRoutineList, DailyCalorie, CalorieLog, as well as its relevant commands and parser.
-  
+
 ## Contributions to the team-based tasks:
 
 * Release management, handled v1.3(trial) and v1.3.

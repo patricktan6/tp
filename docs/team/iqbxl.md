@@ -25,9 +25,9 @@ to their timetable.
 The team has come up with a vast number of user-centric features to make fitNUS well-suited in order to provide both
 convenience and utility in the long-run. Aimed at NUS students who are keen on improving their fitness levels, fitNUS is
 the perfect solution in which the Graphical User Interface is integrated with Command Line Interface to provide a
-wholesome user experience. 
+wholesome user experience.
 
-## Summary of Contributions 
+## Summary of Contributions
 
 * **New Feature**: Added the ability to undo/redo previous commands.
   * What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
@@ -56,7 +56,7 @@ wholesome user experience.
 
 ## Contributions to the Developer Guide:
     Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation.
-   
+
 [../DeveloperGuide.md](https://github.com/AY2021S1-CS2103T-T09-2/tp/blob/master/docs/DeveloperGuide.md#delete-lesson) (Added implementation details of the `lesson_delete` feature)<br/>
 
 * **Community**:
