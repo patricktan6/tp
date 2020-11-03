@@ -2,11 +2,14 @@ package seedu.address.model.person;
 
 import java.util.Objects;
 
-public class Body{
+public class Body {
 
     private double height;
     private double weight;
 
+    /**
+     * Creates a Body object.
+     */
     public Body() {
         this.height = 160;
         this.weight = 45;

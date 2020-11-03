@@ -130,7 +130,7 @@ class JsonSerializableAddressBook {
         Collections.sort(calorieLog);
         addressBook.addCalorieEntries(calorieLog);
 
-        if (body != null ) {
+        if (body != null) {
             Body newBody = body.toModelType();
             addressBook.addHeight(newBody.getHeight());
             addressBook.addWeight(newBody.getWeight());

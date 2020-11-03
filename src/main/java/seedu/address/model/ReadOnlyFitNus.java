@@ -55,14 +55,4 @@ public interface ReadOnlyFitNus {
      * This list will not contain any duplicate Body.
      */
     ObservableList<Body> getBody();
-
-    /**
-     * Returns the user's height.
-     */
-    double getHeight();
-
-    /**
-     * Returns the user's weight.
-     */
-    double getWeight();
 }

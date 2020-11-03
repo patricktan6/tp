@@ -145,8 +145,9 @@ public class AddressBook implements ReadOnlyFitNus {
         setRoutines(newData.getRoutineList());
         setSlots(newData.getSlotList());
         addCalorieEntries(newData.getDailyCalorieList());
-        addHeight(newData.getHeight());
-        addWeight(newData.getWeight());
+        Body newBody = newData.getBody().get(0);
+        addHeight(newBody.getHeight());
+        addWeight(newBody.getWeight());
     }
 
     //// person-level operations
@@ -359,16 +360,15 @@ public class AddressBook implements ReadOnlyFitNus {
         return calorieLog.asUnmodifiableObservableList();
     }
 
-    @Override
     public double getHeight() {
         Body newBody = this.body.get(0);
         return newBody.getHeight();
     }
 
-    @Override
     public double getWeight() {
         Body newBody = this.body.get(0);
-        return newBody.getWeight();    }
+        return newBody.getWeight();
+    }
 
     @Override
     public boolean equals(Object other) {
