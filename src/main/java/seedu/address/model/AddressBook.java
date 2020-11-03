@@ -138,7 +138,6 @@ public class AddressBook implements ReadOnlyFitNus {
         setRoutines(newData.getRoutineList());
         setSlots(newData.getSlotList());
         addCalorieEntries(newData.getDailyCalorieList());
-        calorieLog.initialiseData();
         addHeight(newData.getHeight());
         addWeight(newData.getWeight());
     }

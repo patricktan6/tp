@@ -93,8 +93,7 @@ public class CalorieLog implements Iterable<DailyCalorie> {
             if (entry.getDate().equals(LocalDate.now())) {
                 int index = internalList.indexOf(entry);
                 entry.minusCalories(calories);
-//                internalList.set(index, entry);
-                internalList.remove(entry);
+                internalList.set(index, entry);
                 isContained = true;
                 break;
             }
@@ -144,7 +143,6 @@ public class CalorieLog implements Iterable<DailyCalorie> {
         if (!entriesAreUnique(dailyCalories)) {
             throw new DuplicateDailyCalorieException();
         }
-
         internalList.setAll(dailyCalories);
     }
 
@@ -181,11 +179,6 @@ public class CalorieLog implements Iterable<DailyCalorie> {
      */
     public int checkSize() {
         return this.internalList.size();
-    }
-
-    public void setCalorieLog(CalorieLog replacement) {
-        requireNonNull(replacement);
-        internalList.setAll(replacement.internalList);
     }
 
     /**
@@ -251,10 +244,4 @@ public class CalorieLog implements Iterable<DailyCalorie> {
         return 0;
     }
 
-    /**
-     * Clears the data of CalorieLog.
-     */
-    public void initialiseData() {
-        internalList.add(new DailyCalorie(LocalDate.now()));
-    }
 }
