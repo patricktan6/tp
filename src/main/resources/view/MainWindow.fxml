@@ -48,7 +48,7 @@
                 <StackPane fx:id="homeContentPlaceholder" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" maxHeight="Infinity" maxWidth="Infinity"/>
               </Tab>
               <Tab text="TIMETABLE">
-                <StackPane fx:id="timetableContentPlaceholder" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS"/>
+                <StackPane fx:id="timetableContentPlaceholder" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS" maxWidth="Infinity" maxHeight="Infinity"/>
               </Tab>
             </TabPane>
           </HBox>
