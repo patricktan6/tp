@@ -143,7 +143,6 @@ public class CalorieLog implements Iterable<DailyCalorie> {
         if (!entriesAreUnique(dailyCalories)) {
             throw new DuplicateDailyCalorieException();
         }
-
         internalList.setAll(dailyCalories);
     }
 
@@ -182,11 +181,6 @@ public class CalorieLog implements Iterable<DailyCalorie> {
         return this.internalList.size();
     }
 
-    public void setCalorieLog(CalorieLog replacement) {
-        requireNonNull(replacement);
-        internalList.setAll(replacement.internalList);
-    }
-
     /**
      * Replaces the contents of this list with {@code calorieLog}.
      * {@code calorieLog} must not contain duplicate dailyCalories.
@@ -196,7 +190,6 @@ public class CalorieLog implements Iterable<DailyCalorie> {
         if (!calorieLogsAreUnique(calorieLog)) {
             throw new DuplicateDailyCalorieException();
         }
-
         internalList.setAll(calorieLog);
     }
 

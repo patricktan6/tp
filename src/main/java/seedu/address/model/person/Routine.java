@@ -39,6 +39,14 @@ public class Routine extends Activity {
     }
 
     /**
+     * Checks if the input Exercise exists within this Routine.
+     * @param exercise the possible Exercise in this particular Routine object.
+     */
+    public boolean hasExercise(Exercise exercise) {
+        return this.exercises.contains(exercise);
+    }
+
+    /**
      * Returns true if both routines of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two routines.
      */
