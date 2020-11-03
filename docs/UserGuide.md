@@ -77,7 +77,7 @@ here are some sample commands you can try:
 Experience first-hand the convenience that fitNUS brings to your life by exploring the various commands yourself.
 
    * Learn more about the specific details of each command [here](#4.-commands).
-   
+
    * A complete summary of all commands is available [here](#5.-command-summary) in table format.
 
 --------------------------------------------------------------------------------------------------------------------
@@ -464,11 +464,11 @@ Example:
 * `timetable_add_routine r/Leg Workout D/Monday T/1600-1800`
 Adds routine "Leg Workout" to timetable on Monday, 1600-1800.
 
-**Before adding routine "Leg Workout" to Timetable:** 
+**Before adding routine "Leg Workout" to Timetable:**
 
 ![Timetable Add Routine Before](./images/timetable_add_routine_before.png)
 
-**After adding routine "Leg Workout" to Timetable:** 
+**After adding routine "Leg Workout" to Timetable:**
 
 ![Timetable Add Routine After](./images/timetable_add_routine_after.png)
 
