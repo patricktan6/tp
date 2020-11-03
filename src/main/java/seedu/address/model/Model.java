@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.person.Body;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
@@ -131,6 +132,11 @@ public interface Model {
      * Returns an unmodifiable view of the filtered lesson list
      */
     ObservableList<Lesson> getFilteredLessonList();
+
+    /**
+     * Returns an unmodifiable view of the filtered body list
+     */
+    ObservableList<Body> getFilteredBody();
 
     /**
      * Returns an unmodifiable view of the filtered slot list

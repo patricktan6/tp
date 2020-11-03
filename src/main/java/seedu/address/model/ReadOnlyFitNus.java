@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.person.Body;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
@@ -48,6 +49,12 @@ public interface ReadOnlyFitNus {
      * This list will not contain any duplicate daily calorie entries.
      */
     ObservableList<DailyCalorie> getDailyCalorieList();
+
+    /**
+     * Returns an unmodifiable view of the Body.
+     * This list will not contain any duplicate Body.
+     */
+    ObservableList<Body> getBody();
 
     /**
      * Returns the user's height.
