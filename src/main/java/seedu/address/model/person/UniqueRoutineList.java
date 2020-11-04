@@ -235,9 +235,9 @@ public class UniqueRoutineList implements Iterable<Routine> {
                 if (!routine.hasExercise(retrievedExercise)) {
                     throw new ExerciseNotFoundException();
                 } else {
-                    internalList.remove(routine);
+                    int index = internalList.indexOf(routine);
                     routine.deleteExercise(retrievedExercise);
-                    internalList.add(routine);
+                    internalList.set(index, routine);
                     break;
                 }
             }

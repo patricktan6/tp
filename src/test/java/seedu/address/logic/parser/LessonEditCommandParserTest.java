@@ -115,7 +115,7 @@ public class LessonEditCommandParserTest {
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
         Index targetIndex = INDEX_FIRST_LESSON;
-        String userInput = targetIndex.getOneBased() + LESSON_NAME_DESC_CS2030 + LESSON_TAG_DESC_LECTURE
+        String userInput = targetIndex.getOneBased() + LESSON_NAME_DESC_CS2030
                 + LESSON_NAME_DESC_CS2030 + LESSON_TAG_DESC_LECTURE + LESSON_NAME_DESC_CS2106 + LESSON_TAG_DESC_EASY;
 
         EditLessonDescriptor descriptor = new EditLessonDescriptorBuilder().withName(VALID_LESSON_NAME_CS2106)

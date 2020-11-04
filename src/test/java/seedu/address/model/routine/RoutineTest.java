@@ -1,7 +1,11 @@
 package seedu.address.model.routine;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.TypicalExercises.BENCH_PRESS;
+import static seedu.address.testutil.TypicalExercises.SQUATS;
 import static seedu.address.testutil.TypicalRoutines.LEG_DAY;
 import static seedu.address.testutil.TypicalRoutines.UPPER_BODY;
 
@@ -13,8 +17,6 @@ import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Routine;
 
-
-
 public class RoutineTest {
 
     @Test
@@ -22,6 +24,11 @@ public class RoutineTest {
         // same object -> returns true
         assertTrue(UPPER_BODY.isSameActivity(UPPER_BODY));
         assertTrue(LEG_DAY.isSameActivity(LEG_DAY));
+        assertEquals(UPPER_BODY.hashCode(), UPPER_BODY.hashCode());
+        assertNotEquals(UPPER_BODY.hashCode(), LEG_DAY.hashCode());
+
+        //different object -> returns false
+        assertFalse(LEG_DAY.isSameActivity(UPPER_BODY));
 
         // null -> returns false
         assertFalse(UPPER_BODY.isSameActivity(null));
@@ -35,6 +42,16 @@ public class RoutineTest {
         assertTrue(LEG_DAY.isSameActivity(editedRoutine));
     }
 
+    @Test
+    public void isSameExercise() {
+        assertFalse(LEG_DAY.hasExercise(SQUATS));
+        LEG_DAY.addExercise(SQUATS);
+        assertTrue(LEG_DAY.hasExercise(SQUATS));
+        assertFalse(LEG_DAY.hasExercise(BENCH_PRESS));
+
+        LEG_DAY.deleteExercise(SQUATS);
+        assertFalse(LEG_DAY.hasExercise(SQUATS));
+    }
     @Test
     public void equals() {
         // same values -> returns true
@@ -63,5 +80,7 @@ public class RoutineTest {
         Exercise typicalExercise = new Exercise(editedName, new HashSet<>());
         copyRoutine.addExercise(typicalExercise);
         assertFalse(LEG_DAY.equals(copyRoutine));
+
+        assertFalse(LEG_DAY.toString().equals(UPPER_BODY.toString()));
     }
 }
