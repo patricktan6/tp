@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_WEIGHT;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Weight;
 
 public class AddWeightCommand extends Command {
     public static final String COMMAND_WORD = "weight";
@@ -15,15 +16,14 @@ public class AddWeightCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_WEIGHT + "70.8";
 
-    public static final String MESSAGE_SUCCESS = "Weight added: %.2f kg";
-    public static final String MESSAGE_INVALID_WEIGHT = "This is not a valid weight";
+    public static final String MESSAGE_SUCCESS = "Weight added: %1$s";
 
-    private final double weight;
+    private final Weight weight;
 
     /**
      * Creates an AddWeightCommand to add the specified weight in kilograms.
      */
-    public AddWeightCommand(double weight) {
+    public AddWeightCommand(Weight weight) {
         requireNonNull(weight);
         this.weight = weight;
     }
@@ -31,10 +31,6 @@ public class AddWeightCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-
-        if (weight < 0) {
-            throw new CommandException(MESSAGE_INVALID_WEIGHT);
-        }
 
         model.addWeight(weight);
         return new CommandResult(String.format(MESSAGE_SUCCESS, weight));

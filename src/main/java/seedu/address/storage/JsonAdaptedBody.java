@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Body;
+import seedu.address.model.person.Height;
+import seedu.address.model.person.Weight;
 
 /**
  * Jackson-friendly version of {@link Body}.
@@ -30,8 +32,8 @@ class JsonAdaptedBody {
      * Converts a given {@code Body} into this class for Jackson use.
      */
     public JsonAdaptedBody(Body source) {
-        this.height = source.getHeight();
-        this.weight = source.getWeight();
+        this.height = source.getHeight().getHeight();
+        this.weight = source.getWeight().getWeight();
     }
 
     /**
@@ -46,8 +48,8 @@ class JsonAdaptedBody {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Integer.class.getSimpleName()));
         }
         Body newBody = new Body();
-        newBody.setHeight(height);
-        newBody.setWeight(weight);
+        newBody.setHeight(new Height(height));
+        newBody.setWeight(new Weight(weight));
         return newBody;
     }
 

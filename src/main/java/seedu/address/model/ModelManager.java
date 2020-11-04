@@ -15,12 +15,14 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Body;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
+import seedu.address.model.person.Height;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.RoutineNameContainsKeywordsPredicate;
 import seedu.address.model.person.Slot;
 import seedu.address.model.person.SlotDayPredicate;
+import seedu.address.model.person.Weight;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -234,12 +236,12 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void addHeight(double height) {
+    public void addHeight(Height height) {
         addressBook.addHeight(height);
     }
 
     @Override
-    public void addWeight(double weight) {
+    public void addWeight(Weight weight) {
         addressBook.addWeight(weight);
     }
 

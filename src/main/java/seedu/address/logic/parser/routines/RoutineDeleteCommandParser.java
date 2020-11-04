@@ -19,13 +19,13 @@ public class RoutineDeleteCommandParser implements Parser<RoutineDeleteCommand> 
      * @throws ParseException if the user input does not conform the expected format
      */
     public RoutineDeleteCommand parse(String args) throws ParseException {
-        try {
-            Index index = ParserUtil.parseIndex(args);
-            return new RoutineDeleteCommand(index);
-        } catch (ParseException pe) {
+        if (args.isEmpty()) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, RoutineDeleteCommand.MESSAGE_USAGE), pe);
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, RoutineDeleteCommand.MESSAGE_USAGE));
         }
+
+        Index index = ParserUtil.parseIndex(args);
+        return new RoutineDeleteCommand(index);
     }
 
 }

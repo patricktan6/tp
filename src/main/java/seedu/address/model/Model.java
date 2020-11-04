@@ -8,10 +8,12 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.person.Body;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
+import seedu.address.model.person.Height;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
+import seedu.address.model.person.Weight;
 
 /**
  * The API of the Model component.
@@ -238,9 +240,9 @@ public interface Model {
 
     void deleteSlotFromTimetable(Slot target);
 
-    void addHeight(double height);
+    void addHeight(Height height);
 
-    void addWeight(double weight);
+    void addWeight(Weight weight);
 
     double getBmi();
 
