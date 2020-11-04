@@ -98,7 +98,7 @@ public class JsonAdaptedSlot {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
         }
         if (!Name.isValidName(activityName)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS_FORMAT);
         }
         if (Day.isUnknownDay(Day.getDayEnum(day))) {
             throw new IllegalValueException(Day.MESSAGE_CONSTRAINTS);
