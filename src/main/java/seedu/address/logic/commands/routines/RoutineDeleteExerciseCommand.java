@@ -55,7 +55,7 @@ public class RoutineDeleteExerciseCommand extends Command {
         }
 
         try {
-            model.deleteExerciseToRoutine(routine, exercise);
+            model.deleteExerciseFromRoutinetine(routine, exercise);
             return new CommandResult(String.format(String.format(MESSAGE_DELETE_EXERCISE_SUCCESS,
                     routine), exercise));
         } catch (ExerciseNotFoundException e) {

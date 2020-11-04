@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LESSON_TAG_EASY;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalLessons.GES1028;
 import static seedu.address.testutil.TypicalLessons.CS2106;
+import static seedu.address.testutil.TypicalLessons.GES1028;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -162,7 +162,7 @@ public class UniqueLessonListTest {
 
     @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, ()
-                -> uniqueLessonList.asUnmodifiableObservableList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () ->
+                uniqueLessonList.asUnmodifiableObservableList().remove(0));
     }
 }

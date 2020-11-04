@@ -187,8 +187,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void deleteExerciseToRoutine(Routine r, Exercise e) {
-        addressBook.deleteExerciseToRoutine(r, e);
+    public void deleteExerciseFromRoutinetine(Routine r, Exercise e) {
+        addressBook.deleteExerciseFromRoutinetine(r, e);
         updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
         updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
     }

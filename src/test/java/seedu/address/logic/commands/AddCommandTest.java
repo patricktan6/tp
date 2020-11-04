@@ -246,7 +246,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void deleteExerciseToRoutine(Routine routine, Exercise exercise) {
+        public void deleteExerciseFromRoutinetine(Routine routine, Exercise exercise) {
             throw new AssertionError("This method should not be called.");
         }
 

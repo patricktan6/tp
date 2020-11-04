@@ -333,7 +333,7 @@ public class AddressBook implements ReadOnlyFitNus {
      * Removes {@code exercise} from {@code routine}.
      * {@code exercise} must exist in {@code routine}.
      */
-    public void deleteExerciseToRoutine(Routine routine, Exercise exercise) {
+    public void deleteExerciseFromRoutinetine(Routine routine, Exercise exercise) {
         requireNonNull(routine);
         requireNonNull(exercise);
 
