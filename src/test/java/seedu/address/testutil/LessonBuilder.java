@@ -13,7 +13,7 @@ import seedu.address.model.util.SampleDataUtil;
  */
 public class LessonBuilder {
 
-    public static final String DEFAULT_NAME = "CS1234"; //"Alice Pauline";
+    public static final String DEFAULT_NAME = "GES1028";
 
     private Name name;
     private Set<Tag> tags;

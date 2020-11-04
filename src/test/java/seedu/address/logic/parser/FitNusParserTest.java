@@ -24,7 +24,7 @@ import seedu.address.testutil.LessonUtil;
 
 public class FitNusParserTest {
 
-    private final AddressBookParser parser = new AddressBookParser();
+    private final FitNusParser parser = new FitNusParser();
 
     @Test
     public void parseCommand_lessonAdd() throws Exception {

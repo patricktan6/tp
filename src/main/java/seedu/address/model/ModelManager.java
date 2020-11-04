@@ -15,21 +15,19 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
-import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.RoutineNameContainsKeywordsPredicate;
 import seedu.address.model.person.Slot;
 import seedu.address.model.person.SlotDayPredicate;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the fitNUS data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
-    private final FilteredList<Person> filteredPersons;
     private final FilteredList<Exercise> filteredExercises;
     private final FilteredList<Routine> filteredRoutine;
     private final FilteredList<Lesson> filteredLessons;
@@ -43,11 +41,10 @@ public class ModelManager implements Model {
         super();
         requireAllNonNull(addressBook, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with fitNUS: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
         filteredExercises = new FilteredList<>(this.addressBook.getExerciseList());
         filteredRoutine = new FilteredList<>(this.addressBook.getRoutineList());
         filteredLessons = new FilteredList<>(this.addressBook.getLessonList());
@@ -84,37 +81,26 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+    public Path getFitNusFilePath() {
+        return userPrefs.getFitNusFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setFitNusFilePath(Path fitNusFilePath) {
+        requireNonNull(fitNusFilePath);
+        userPrefs.setFitNusFilePath(fitNusFilePath);
     }
 
     //=========== AddressBook ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyFitNus addressBook) {
+    public void setFitNus(ReadOnlyFitNus addressBook) {
         this.addressBook.resetData(addressBook);
     }
 
     @Override
-    public ReadOnlyFitNus getAddressBook() {
+    public ReadOnlyFitNus getFitNus() {
         return addressBook;
-    }
-
-    @Override
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return addressBook.hasPerson(person);
-    }
-
-    @Override
-    public void deletePerson(Person target) {
-        addressBook.removePerson(target);
     }
 
     @Override
@@ -135,19 +121,6 @@ public class ModelManager implements Model {
     @Override
     public void deleteSlotFromTimetable(Slot target) {
         addressBook.removeSlotFromTimetable(target);
-    }
-
-    @Override
-    public void addPerson(Person person) {
-        addressBook.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-    }
-
-    @Override
-    public void setPerson(Person target, Person editedPerson) {
-        requireAllNonNull(target, editedPerson);
-
-        addressBook.setPerson(target, editedPerson);
     }
 
     @Override
@@ -283,7 +256,7 @@ public class ModelManager implements Model {
     @Override
     public void addSlotToTimetable(Slot slot) {
         addressBook.addSlotToTimetable(slot);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredCalorieLog(PREDICATE_SHOW_ALL_LOGS);
     }
 
     @Override
@@ -314,15 +287,6 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Routine> getFilteredRoutineList() {
         return filteredRoutine;
-    }
-
-    /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
-     */
-    @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return filteredPersons;
     }
 
     /**
@@ -377,12 +341,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
-        requireNonNull(predicate);
-        filteredPersons.setPredicate(predicate);
-    }
-
-    @Override
     public void updateFilteredExerciseList(Predicate<Exercise> predicate) {
         requireNonNull(predicate);
         filteredExercises.setPredicate(predicate);
@@ -410,7 +368,7 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
                 && userPrefs.equals(other.userPrefs)
-                && filteredPersons.equals(other.filteredPersons);
+                && filteredLessons.equals(other.filteredLessons);
     }
 
 }

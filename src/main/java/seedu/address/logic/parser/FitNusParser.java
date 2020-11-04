@@ -46,7 +46,7 @@ import seedu.address.logic.parser.routines.RoutineViewExerciseCommandParser;
 /**
  * Parses user input.
  */
-public class AddressBookParser {
+public class FitNusParser {
 
     /**
      * Used for initial separation of command word and args.

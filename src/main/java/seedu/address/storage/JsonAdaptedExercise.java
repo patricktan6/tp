@@ -68,5 +68,4 @@ class JsonAdaptedExercise {
         final Set<Tag> modelTags = new HashSet<>(exerciseTags);
         return new Exercise(modelName, modelTags);
     }
-
 }

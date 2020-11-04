@@ -23,7 +23,6 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
-import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
 import seedu.address.testutil.LessonBuilder;
@@ -105,17 +104,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public Path getAddressBookFilePath() {
+        public Path getFitNusFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setAddressBookFilePath(Path addressBookFilePath) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void addPerson(Person person) {
+        public void setFitNusFilePath(Path fitNusFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -180,17 +174,12 @@ public class AddCommandTest {
         }
 
         @Override
-        public void setAddressBook(ReadOnlyFitNus newData) {
+        public void setFitNus(ReadOnlyFitNus newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyFitNus getAddressBook() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public boolean hasPerson(Person person) {
+        public ReadOnlyFitNus getFitNus() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -225,11 +214,6 @@ public class AddCommandTest {
         }
 
         @Override
-        public void deletePerson(Person target) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public void deleteExercise(Exercise target) {
             throw new AssertionError("This method should not be called.");
         }
@@ -239,10 +223,6 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
-        @Override
-        public void setPerson(Person target, Person editedPerson) {
-            throw new AssertionError("This method should not be called.");
-        }
 
         @Override
         public void setExercise(Exercise target, Exercise editedExercise) {
@@ -300,11 +280,6 @@ public class AddCommandTest {
         }
 
         @Override
-        public ObservableList<Person> getFilteredPersonList() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public ObservableList<Exercise> getFilteredExerciseList() {
             throw new AssertionError("This method should not be called.");
         }
@@ -321,11 +296,6 @@ public class AddCommandTest {
 
         @Override
         public ObservableList<Slot> getFilteredSlotList(String day) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void updateFilteredPersonList(Predicate<Person> predicate) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -382,7 +352,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public ReadOnlyFitNus getAddressBook() {
+        public ReadOnlyFitNus getFitNus() {
             return new AddressBook();
         }
     }

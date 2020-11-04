@@ -11,7 +11,6 @@ import seedu.address.model.ReadOnlyFitNus;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
-import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
 
@@ -29,14 +28,11 @@ public interface Logic {
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
     /**
-     * Returns the AddressBook.
+     * Returns the fitNUS.
      *
-     * @see seedu.address.model.Model#getAddressBook()
+     * @see seedu.address.model.Model#getFitNus()
      */
-    ReadOnlyFitNus getAddressBook();
-
-    /** Returns an unmodifiable view of the filtered list of persons */
-    ObservableList<Person> getFilteredPersonList();
+    ReadOnlyFitNus getFitNus();
 
     /** Returns an unmodifiable view of the filtered list of exercises */
     ObservableList<Exercise> getFilteredExerciseList();
@@ -57,9 +53,9 @@ public interface Logic {
     ObservableList<DailyCalorie> getFilteredDailyCalorie();
 
     /**
-     * Returns the user prefs' address book file path.
+     * Returns the user prefs' fitNUS file path.
      */
-    Path getAddressBookFilePath();
+    Path getFitNusFilePath();
 
     /**
      * Returns the user prefs' GUI settings.

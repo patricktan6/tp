@@ -85,8 +85,8 @@ public class LogicManagerTest {
     }
 
     @Test
-    public void getFilteredPersonList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredPersonList().remove(0));
+    public void getFilteredLessonList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredLessonList().remove(0));
     }
 
     /**
@@ -125,7 +125,7 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getFitNus(), new UserPrefs());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -151,7 +151,7 @@ public class LogicManagerTest {
         }
 
         @Override
-        public void saveFitNus(ReadOnlyFitNus addressBook, Path filePath) throws IOException {
+        public void saveFitNus(ReadOnlyFitNus fitNus, Path filePath) throws IOException {
             throw DUMMY_IO_EXCEPTION;
         }
     }

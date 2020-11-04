@@ -90,7 +90,7 @@ public class JsonAdaptedSlot {
     /**
      * Converts this Jackson-friendly adapted slot object into the model's {@code Slot} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted exercise.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted slot.
      */
     public Slot toModelType() throws IllegalValueException {
 

@@ -27,7 +27,7 @@ public class JsonAddressBookStorage implements AddressBookStorage {
         this.filePath = filePath;
     }
 
-    public Path getAddressBookFilePath() {
+    public Path getFitNusFilePath() {
         return filePath;
     }
 
@@ -76,5 +76,4 @@ public class JsonAddressBookStorage implements AddressBookStorage {
         FileUtil.createIfMissing(filePath);
         JsonUtil.saveJsonFile(new JsonSerializableAddressBook(addressBook), filePath);
     }
-
 }

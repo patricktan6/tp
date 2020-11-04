@@ -103,7 +103,7 @@ public class RoutineCreateCommandTest {
         }
 
         @Override
-        public ReadOnlyFitNus getAddressBook() {
+        public ReadOnlyFitNus getFitNus() {
             return new AddressBook();
         }
     }

@@ -4,7 +4,6 @@ import javafx.collections.ObservableList;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
-import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
 
@@ -12,12 +11,6 @@ import seedu.address.model.person.Slot;
  * Unmodifiable view of fitNUS
  */
 public interface ReadOnlyFitNus {
-
-    /**
-     * Returns an unmodifiable view of the persons list.
-     * This list will not contain any duplicate persons.
-     */
-    ObservableList<Person> getPersonList();
 
     /**
      * Returns an unmodifiable view of the exercises list.

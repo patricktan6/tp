@@ -25,7 +25,7 @@ public class TypicalRoutines {
     /**
      * Returns an {@code AddressBook} with all the typical persons.
      */
-    public static AddressBook getTypicalAddressBook() {
+    public static AddressBook getTypicalFitNus() {
         AddressBook ab = new AddressBook();
         for (Routine routine : getTypicalRoutines()) {
             ab.addRoutine(routine);

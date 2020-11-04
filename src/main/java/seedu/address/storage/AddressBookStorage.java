@@ -15,7 +15,7 @@ public interface AddressBookStorage {
     /**
      * Returns the file path of the data file.
      */
-    Path getAddressBookFilePath();
+    Path getFitNusFilePath();
 
     /**
      * Returns AddressBook data as a {@link ReadOnlyFitNus}.
@@ -26,7 +26,7 @@ public interface AddressBookStorage {
     Optional<ReadOnlyFitNus> readFitNus() throws DataConversionException, IOException;
 
     /**
-     * @see #getAddressBookFilePath()
+     * @see #getFitNusFilePath()
      */
     Optional<ReadOnlyFitNus> readFitNus(Path filePath) throws DataConversionException, IOException;
 

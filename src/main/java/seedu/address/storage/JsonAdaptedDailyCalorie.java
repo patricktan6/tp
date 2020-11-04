@@ -8,10 +8,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.DailyCalorie;
-import seedu.address.model.person.Person;
 
 /**
- * Jackson-friendly version of {@link Person}.
+ * Jackson-friendly version of {@link DailyCalorie}.
  */
 class JsonAdaptedDailyCalorie {
 
@@ -21,7 +20,7 @@ class JsonAdaptedDailyCalorie {
     private final String calories;
 
     /**
-     * Constructs a {@code JsonAdaptedPerson} with the given person details.
+     * Constructs a {@code JsonAdaptedDailyCalorie} with the given daily calorie details.
      */
     @JsonCreator
     public JsonAdaptedDailyCalorie(@JsonProperty("date") String date,
@@ -31,7 +30,7 @@ class JsonAdaptedDailyCalorie {
     }
 
     /**
-     * Converts a given {@code Person} into this class for Jackson use.
+     * Converts a given {@code DailyCalorie} into this class for Jackson use.
      */
     public JsonAdaptedDailyCalorie(DailyCalorie source) {
         date = source.getDate().toString();
@@ -39,9 +38,9 @@ class JsonAdaptedDailyCalorie {
     }
 
     /**
-     * Converts this Jackson-friendly adapted person object into the model's {@code Person} object.
+     * Converts this Jackson-friendly adapted daily calorie object into the model's {@code DailyCalorie} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted person.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted daily calorie.
      */
     public DailyCalorie toModelType() throws IllegalValueException {
 
@@ -57,5 +56,4 @@ class JsonAdaptedDailyCalorie {
         modelDailyCalorie.addCalories(modelCalories);
         return modelDailyCalorie;
     }
-
 }

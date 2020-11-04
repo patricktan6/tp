@@ -3,11 +3,10 @@ package seedu.address.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_LESSON_TAG_EASY;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalLessons.GES1028;
+import static seedu.address.testutil.TypicalLessons.getTypicalFitNus;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,11 +20,10 @@ import javafx.collections.ObservableList;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
-import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
-import seedu.address.model.person.exceptions.DuplicatePersonException;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.model.person.exceptions.DuplicateLessonException;
+import seedu.address.testutil.LessonBuilder;
 
 public class AddressBookTest {
 
@@ -33,7 +31,7 @@ public class AddressBookTest {
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), addressBook.getPersonList());
+        assertEquals(Collections.emptyList(), addressBook.getLessonList());
     }
 
     @Test
@@ -43,56 +41,53 @@ public class AddressBookTest {
 
     @Test
     public void resetData_withValidReadOnlyFitNus_replacesData() {
-        AddressBook newData = getTypicalAddressBook();
+        AddressBook newData = getTypicalFitNus();
         addressBook.resetData(newData);
         assertEquals(newData, addressBook);
     }
 
     @Test
-    public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
-        // Two persons with the same identity fields
-        Person editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
-                .build();
-        List<Person> newPersons = Arrays.asList(ALICE, editedAlice);
-        AddressBookStub newData = new AddressBookStub(newPersons);
+    public void resetData_withDuplicateLessons_throwsDuplicateLessonException() {
+        // Two lessons with the same identity fields
+        Lesson editedGes1028 = new LessonBuilder(GES1028).withTags(VALID_LESSON_TAG_EASY).build();
+        List<Lesson> newLessons = Arrays.asList(GES1028, editedGes1028);
+        AddressBookStub newData = new AddressBookStub(newLessons);
 
-        assertThrows(DuplicatePersonException.class, () -> addressBook.resetData(newData));
+        assertThrows(DuplicateLessonException.class, () -> addressBook.resetData(newData));
     }
 
     @Test
-    public void hasPerson_nullPerson_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasPerson(null));
+    public void hasLesson_nullLesson_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasLesson(null));
     }
 
     @Test
-    public void hasPerson_personNotInAddressBook_returnsFalse() {
-        assertFalse(addressBook.hasPerson(ALICE));
+    public void hasLesson_lessonNotInFitNus_returnsFalse() {
+        assertFalse(addressBook.hasLesson(GES1028));
     }
 
     @Test
-    public void hasPerson_personInAddressBook_returnsTrue() {
-        addressBook.addPerson(ALICE);
-        assertTrue(addressBook.hasPerson(ALICE));
+    public void hasLesson_lessonInFitNus_returnsTrue() {
+        addressBook.addLesson(GES1028);
+        assertTrue(addressBook.hasLesson(GES1028));
     }
 
     @Test
-    public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        addressBook.addPerson(ALICE);
-        Person editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
-                .build();
-        assertTrue(addressBook.hasPerson(editedAlice));
+    public void hasLesson_lessonWithSameIdentityFieldsInFitNus_returnsTrue() {
+        addressBook.addLesson(GES1028);
+        Lesson editedGes1028 = new LessonBuilder(GES1028).withTags(VALID_LESSON_TAG_EASY).build();
+        assertTrue(addressBook.hasLesson(editedGes1028));
     }
 
     @Test
-    public void getPersonList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> addressBook.getPersonList().remove(0));
+    public void getLessonList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> addressBook.getLessonList().remove(0));
     }
 
     /**
      * A stub ReadOnlyFitNus whose persons list can violate interface constraints.
      */
     private static class AddressBookStub implements ReadOnlyFitNus {
-        private final ObservableList<Person> persons = FXCollections.observableArrayList();
         private final ObservableList<Exercise> exercises = FXCollections.observableArrayList();
         private final ObservableList<Lesson> lessons = FXCollections.observableArrayList();
         private final ObservableList<Routine> routines = FXCollections.observableArrayList();
@@ -102,13 +97,8 @@ public class AddressBookTest {
         private final double height = Double.NaN;
         private final double weight = Double.NaN;
 
-        AddressBookStub(Collection<Person> persons) {
-            this.persons.setAll(persons);
-        }
-
-        @Override
-        public ObservableList<Person> getPersonList() {
-            return persons;
+        AddressBookStub(Collection<Lesson> lessons) {
+            this.lessons.setAll(lessons);
         }
 
         @Override

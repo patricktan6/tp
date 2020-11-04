@@ -50,13 +50,13 @@ public class StorageManager implements Storage {
     // ================ fitNUS methods ==============================
 
     @Override
-    public Path getAddressBookFilePath() {
-        return addressBookStorage.getAddressBookFilePath();
+    public Path getFitNusFilePath() {
+        return addressBookStorage.getFitNusFilePath();
     }
 
     @Override
     public Optional<ReadOnlyFitNus> readFitNus() throws DataConversionException, IOException {
-        return readFitNus(addressBookStorage.getAddressBookFilePath());
+        return readFitNus(addressBookStorage.getFitNusFilePath());
     }
 
     @Override
@@ -67,7 +67,7 @@ public class StorageManager implements Storage {
 
     @Override
     public void saveFitNus(ReadOnlyFitNus addressBook) throws IOException {
-        saveFitNus(addressBook, addressBookStorage.getAddressBookFilePath());
+        saveFitNus(addressBook, addressBookStorage.getFitNusFilePath());
     }
 
     @Override
@@ -75,5 +75,4 @@ public class StorageManager implements Storage {
         logger.fine("Attempting to write to data file: " + filePath);
         addressBookStorage.saveFitNus(addressBook, filePath);
     }
-
 }

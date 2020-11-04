@@ -21,7 +21,7 @@ public interface Storage extends AddressBookStorage, UserPrefsStorage {
     void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException;
 
     @Override
-    Path getAddressBookFilePath();
+    Path getFitNusFilePath();
 
     @Override
     Optional<ReadOnlyFitNus> readFitNus() throws DataConversionException, IOException;

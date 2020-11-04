@@ -9,7 +9,7 @@ import seedu.address.model.Model;
 import seedu.address.model.person.Lesson;
 
 /**
- * Adds a lesson to user's timetable.
+ * Adds a lesson to fitNUS.
  */
 public class LessonAddCommand extends Command {
 
@@ -25,7 +25,7 @@ public class LessonAddCommand extends Command {
             + PREFIX_TAG + "consult";
 
     public static final String MESSAGE_SUCCESS = "New lesson added: %1$s";
-    public static final String MESSAGE_DUPLICATE_LESSON = "This lesson already exists in your timetable";
+    public static final String MESSAGE_DUPLICATE_LESSON = "This lesson already exists in fitNUS";
 
     private final Lesson toAdd;
 

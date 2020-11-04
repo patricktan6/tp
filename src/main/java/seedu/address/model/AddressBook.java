@@ -9,22 +9,19 @@ import seedu.address.model.person.CalorieLog;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
-import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
 import seedu.address.model.person.Timetable;
 import seedu.address.model.person.UniqueExerciseList;
 import seedu.address.model.person.UniqueLessonList;
-import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.UniqueRoutineList;
 
 /**
- * Wraps all data at the address-book level
- * Duplicates are not allowed (by .isSamePerson comparison)
+ * Wraps all data at the fitNUS level
+ * Duplicates are not allowed (by .isSameExercise comparison)
  */
 public class AddressBook implements ReadOnlyFitNus {
 
-    private final UniquePersonList persons;
     private final UniqueExerciseList exercises;
     private final UniqueRoutineList routines;
     private final UniqueLessonList lessons;
@@ -41,7 +38,6 @@ public class AddressBook implements ReadOnlyFitNus {
      * among constructors.
      */
     {
-        persons = new UniquePersonList();
         exercises = new UniqueExerciseList();
         routines = new UniqueRoutineList();
         lessons = new UniqueLessonList();
@@ -53,7 +49,7 @@ public class AddressBook implements ReadOnlyFitNus {
     }
 
     /**
-     * Creates an AddressBook using the Persons in the {@code toBeCopied}
+     * Creates a fitNUS using the data in the {@code toBeCopied}
      */
     public AddressBook(ReadOnlyFitNus toBeCopied) {
         this();
@@ -63,36 +59,34 @@ public class AddressBook implements ReadOnlyFitNus {
     //// user-level operations
 
     /**
-     * Adds the height of the user.
-     *
-     * @param height the height of the user.
+     * Adds the height of the user to fitNUS.
      */
     public void addHeight(double height) {
         this.height = height;
     }
 
     /**
-     * Adds the weight of the user.
-     *
-     * @param weight the weight of the user.
+     * Adds the weight of the user to fitNUS.
      */
     public void addWeight(double weight) {
         this.weight = weight;
     }
 
+    /**
+     * Returns the BMI of the user.
+     */
     public double getBmi() {
         return this.weight / Math.pow((this.height / 100.0), 2);
     }
 
-    //// list overwrite operations
-
     /**
-     * Replaces the contents of the person list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+     * Retrieves the number of calories for today.
      */
-    public void setPersons(List<Person> persons) {
-        this.persons.setPersons(persons);
+    public int getCalories() {
+        return calorieLog.getCalories();
     }
+
+    //// list overwrite operations
 
     /**
      * Replaces the contents of exercise list with {@code exercises}.
@@ -127,12 +121,11 @@ public class AddressBook implements ReadOnlyFitNus {
     }
 
     /**
-     * Resets the existing data of this {@code AddressBook} with {@code newData}.
+     * Resets the existing data of this {@code fitNUS} with {@code newData}.
      */
     public void resetData(ReadOnlyFitNus newData) {
         requireNonNull(newData);
 
-        setPersons(newData.getPersonList());
         setExercises(newData.getExerciseList());
         setLessons(newData.getLessonList());
         setRoutines(newData.getRoutineList());
@@ -143,14 +136,6 @@ public class AddressBook implements ReadOnlyFitNus {
     }
 
     //// person-level operations
-
-    /**
-     * Returns true if a person with the same identity as {@code person} exists in the address book.
-     */
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return persons.contains(person);
-    }
 
     /**
      * Returns true if an exercise with the same identity as {@code exercise} exists in fitNUS.
@@ -169,7 +154,7 @@ public class AddressBook implements ReadOnlyFitNus {
     }
 
     /**
-     * Returns true if a lesson with the same identity as {@code lesson} exists in the timetable.
+     * Returns true if a lesson with the same identity as {@code lesson} exists in fitNUS.
      */
     public boolean hasLesson(Lesson lesson) {
         requireNonNull(lesson);
@@ -177,10 +162,7 @@ public class AddressBook implements ReadOnlyFitNus {
     }
 
     /**
-     * Returns true if the slot is already occupied in the timetable.
-     *
-     * @param slot The slot to be checked.
-     * @return true if the slot is already occupied in the timetable.
+     * Returns true if a slot with the same identity as {@code slot} exists in the timetable.
      */
     public boolean hasSlot(Slot slot) {
         requireNonNull(slot);
@@ -188,14 +170,19 @@ public class AddressBook implements ReadOnlyFitNus {
     }
 
     /**
-     * Returns true if the slot has overlapping duration with another slot in the timetable.
-     *
-     * @param slot The slot to be checked.
-     * @return true if the slot has overlapping duration with another slot in the timetable.
+     * Returns true if a slot has an overlapping duration with another {@code slot} in the timetable.
      */
     public boolean hasOverlappingDurationInSlot(Slot slot) {
         requireNonNull(slot);
         return timetable.hasOverlapDuration(slot);
+    }
+
+    /**
+     * Returns true if a dailyCalorie entry with the same identity as {@code dailyCalorie} exists in fitNUS.
+     */
+    public boolean hasDailyCalorie(DailyCalorie dailyCalorie) {
+        requireNonNull(dailyCalorie);
+        return calorieLog.contains(dailyCalorie);
     }
 
     /**
@@ -207,38 +194,64 @@ public class AddressBook implements ReadOnlyFitNus {
     }
 
     /**
-     * Adds a lesson to the timetable.
-     * The lesson must not already exist in the timetable.
+     * Adds a routine to fitNUS.
+     * The routine must not already exist in fitNUS.
+     */
+    public void addRoutine(Routine routine) {
+        routines.add(routine);
+    }
+
+    /**
+     * Adds a lesson to fitNUS.
+     * The lesson must not already exist in fitNUS.
      */
     public void addLesson(Lesson e) {
         lessons.add(e);
     }
 
     /**
-     * Adds a person to the address book.
-     * The person must not already exist in the address book.
+     * Adds an exercise in fitNUS to an existing routine.
+     * The exercise must not already exist in the routine.
      */
-    public void addPerson(Person p) {
-        persons.add(p);
-    }
+    public void addExerciseToRoutine(Routine r, Exercise e) {
+        requireNonNull(r);
+        requireNonNull(e);
 
-    public void addRoutine(Routine routine) {
-        routines.add(routine);
-    }
-
-    public String viewRoutine(int index) {
-        return routines.viewRoutine(index);
+        Exercise retrievedExercise = exercises.retrieveExercise(e);
+        Routine retrievedRoutine = routines.retrieveRoutine(r);
+        routines.addExercise(retrievedRoutine, retrievedExercise);
     }
 
     /**
-     * Replaces the given person {@code target} in the list with {@code editedPerson}.
-     * {@code target} must exist in the address book.
-     * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
+     * Adds a slot to the timetable in fitNUS.
+     * The slot must not already exist nor overlap with any of the slots in the timetable.
      */
-    public void setPerson(Person target, Person editedPerson) {
-        requireNonNull(editedPerson);
+    public void addSlotToTimetable(Slot slot) {
+        timetable.addSlot(slot);
+    }
 
-        persons.setPerson(target, editedPerson);
+    /**
+     * Adds all the daily calorie entries into the calorie log.
+     * @param entries Collection of all the entries of daily calorie.
+     */
+    public void addCalorieEntries(List<DailyCalorie> entries) {
+        calorieLog.setCalorieLog(entries);
+    }
+
+    /**
+     * Adds calories into today's calorie log.
+     * @param calories The amount of calories that the user wants to add.
+     */
+    public void addCalories(int calories) {
+        calorieLog.addCalories(calories);
+    }
+
+    /**
+     * Deducts calories from today's calorie log.
+     * @param calories The amount of calories that the user wants to deduct.
+     */
+    public void minusCalories(int calories) {
+        calorieLog.minusCalories(calories);
     }
 
     /**
@@ -266,14 +279,6 @@ public class AddressBook implements ReadOnlyFitNus {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the address book.
-     */
-    public void removePerson(Person key) {
-        persons.remove(key);
-    }
-
-    /**
      * Removes {@code key} from {@code fitNUS}.
      * {@code key} must exist in fitNUS.
      */
@@ -286,8 +291,8 @@ public class AddressBook implements ReadOnlyFitNus {
      * Removes {@code key} from {@code fitNUS}.
      * {@code key} must exist in fitNUS.
      */
-    public void removeLesson(Lesson key) {
-        lessons.remove(key);
+    public void removeRoutine(Routine key) {
+        routines.remove(key);
         timetable.deleteSlot(key);
     }
 
@@ -295,9 +300,22 @@ public class AddressBook implements ReadOnlyFitNus {
      * Removes {@code key} from {@code fitNUS}.
      * {@code key} must exist in fitNUS.
      */
-    public void removeRoutine(Routine key) {
-        routines.remove(key);
+    public void removeLesson(Lesson key) {
+        lessons.remove(key);
         timetable.deleteSlot(key);
+    }
+
+    /**
+     * Removes {@code exercise} from {@code routine}.
+     * {@code exercise} must exist in {@code routine}.
+     */
+    public void deleteExerciseToRoutine(Routine routine, Exercise exercise) {
+        requireNonNull(routine);
+        requireNonNull(exercise);
+
+        Exercise retrievedExercise = exercises.retrieveExercise(exercise);
+        Routine retrievedRoutine = routines.retrieveRoutine(routine);
+        routines.deleteExerciseFromRoutine(retrievedRoutine, retrievedExercise);
     }
 
     /**
@@ -308,27 +326,71 @@ public class AddressBook implements ReadOnlyFitNus {
         timetable.deleteSlot(key);
     }
 
+    /**
+     * Retrieves the routine object from UniqueRoutineList that the user specified.
+     *
+     * @param routine Routine object that the user wants.
+     * @return Routine object that exists within fitNUS that the user is looking for.
+     */
+    public Routine retrieveRoutine(Routine routine) {
+        return routines.retrieveRoutine(routine);
+    }
+
+    /**
+     * Retrieves the lesson object from UniqueLessonList that the user specified.
+     *
+     * @param lesson Lesson object that the user wants.
+     * @return Lesson object that exists within fitNUS that the user is looking for.
+     */
+    public Lesson retrieveLesson(Lesson lesson) {
+        return lessons.retrieveLesson(lesson);
+    }
+
+    /**
+     * Lists out all of the routines that fitNUS has.
+     *
+     * @return String containing all the Routines.
+     */
+    public String listRoutines() {
+        return routines.listRoutines();
+    }
+
+    /**
+     * Views the routine at the specified index.
+     *
+     * @param index Index of the routine that the user wants.
+     * @return String containing the routine at the specified index.
+     */
+    public String viewRoutine(int index) {
+        return routines.viewRoutine(index);
+    }
+
+    /**
+     * Checks the index given is within the bounds of Routine.
+     *
+     * @param index index that is input by user.
+     * @return False if out of bounds.
+     */
+    public boolean checkBounds(int index) {
+        return index > 0 && index <= routines.checkSize();
+    }
+
     //// util methods
 
     @Override
     public String toString() {
-        return persons.asUnmodifiableObservableList().size() + " persons";
+        return lessons.asUnmodifiableObservableList().size() + " lessons";
         // TODO: refine later
-    }
-
-    @Override
-    public ObservableList<Routine> getRoutineList() {
-        return routines.asUnmodifiableObservableList();
-    }
-
-    @Override
-    public ObservableList<Person> getPersonList() {
-        return persons.asUnmodifiableObservableList();
     }
 
     @Override
     public ObservableList<Exercise> getExerciseList() {
         return exercises.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Routine> getRoutineList() {
+        return routines.asUnmodifiableObservableList();
     }
 
     @Override
@@ -347,6 +409,18 @@ public class AddressBook implements ReadOnlyFitNus {
     }
 
     @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof AddressBook // instanceof handles nulls
+                && lessons.equals(((AddressBook) other).lessons));
+    }
+
+    @Override
+    public int hashCode() {
+        return lessons.hashCode();
+    }
+
+    @Override
     public double getHeight() {
         return height;
     }
@@ -354,137 +428,5 @@ public class AddressBook implements ReadOnlyFitNus {
     @Override
     public double getWeight() {
         return weight;
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof AddressBook // instanceof handles nulls
-                && persons.equals(((AddressBook) other).persons));
-    }
-
-    @Override
-    public int hashCode() {
-        return persons.hashCode();
-    }
-
-    /**
-     * Checks the index given is within the bounds of Routine.
-     *
-     * @param index index that is input by user.
-     * @return False if out of bounds.
-     */
-    public boolean checkBounds(int index) {
-        return index > 0 && index <= routines.checkSize();
-    }
-
-    /**
-     * Lists out all of the Routines that fitNUS has.
-     *
-     * @return String containing all the Routines.
-     */
-    public String listRoutines() {
-        return routines.listRoutines();
-    }
-
-    /**
-     * Adds an existing Exercise in fitNUS to an existing Routine.
-     *
-     * @param r Existing Routine.
-     * @param e Existing Exercise.
-     */
-    public void addExerciseToRoutine(Routine r, Exercise e) {
-        requireNonNull(r);
-        requireNonNull(e);
-
-        Exercise retrievedExercise = exercises.retrieveExercise(e);
-        Routine retrievedRoutine = routines.retrieveRoutine(r);
-        routines.addExercise(retrievedRoutine, retrievedExercise);
-    }
-
-    /**
-     * Adds a Slot to the Timetable in fitNUS.
-     *
-     * @param slot The slot to be added.
-     */
-    public void addSlotToTimetable(Slot slot) {
-        timetable.addSlot(slot);
-    }
-
-    /**
-     * Retrieves the Lesson object from UniqueLessonList that the user specified.
-     *
-     * @param lesson Lesson object that the user wants.
-     * @return Lesson object that exists within fitNUS that the user is looking for.
-     */
-    public Lesson retrieveLesson(Lesson lesson) {
-        return lessons.retrieveLesson(lesson);
-    }
-
-    /**
-     * Retrieves the Routine object from UniqueRoutineList that the user specified.
-     *
-     * @param routine Routine object that the user wants.
-     * @return Routine object that exists within fitNUS that the user is looking for.
-     */
-    public Routine retrieveRoutine(Routine routine) {
-        return routines.retrieveRoutine(routine);
-    }
-
-    /**
-     * Deletes an existing Exercise in fitNUS from an existing Routine.
-     *
-     * @param r Existing Routine.
-     * @param e Existing Exercise.
-     */
-    public void deleteExerciseToRoutine(Routine r, Exercise e) {
-        requireNonNull(r);
-        requireNonNull(e);
-
-        Exercise retrievedExercise = exercises.retrieveExercise(e);
-        Routine retrievedRoutine = routines.retrieveRoutine(r);
-        routines.deleteExerciseFromRoutine(retrievedRoutine, retrievedExercise);
-    }
-
-    /**
-     * Adds calories into today's calorie log.
-     * @param calories The amount of calories that the user wants to add.
-     */
-    public void addCalories(int calories) {
-        calorieLog.addCalories(calories);
-    }
-
-    /**
-     * Deducts calories in today's calorie log.
-     * @param calories The amount of calories that the user wants to deduct.
-     */
-    public void minusCalories(int calories) {
-        calorieLog.minusCalories(calories);
-    }
-
-    /**
-     * Retrieves the number of calories for today.
-     * @return Number of calories for today.
-     */
-    public int getCalories() {
-        return calorieLog.getCalories();
-    }
-
-    /**
-     * Checks if calorie log currently contains a certain daily calorie entry.
-     * @param dailyCalorie Specific Daily Calorie object that the user wants to find.
-     * @return True if calorie log contains what the user is looking for.
-     */
-    public boolean hasDailyCalorie(DailyCalorie dailyCalorie) {
-        requireNonNull(dailyCalorie);
-        return calorieLog.contains(dailyCalorie);
-    }
-
-    /**
-     * Adds all the daily calorie entries into the calorie log.
-     * @param entries Collection of all the entries of daily calorie.
-     */
-    public void addCalorieEntries(List<DailyCalorie> entries) {
-        calorieLog.setCalorieLog(entries);
     }
 }

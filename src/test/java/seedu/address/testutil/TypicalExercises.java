@@ -19,7 +19,7 @@ public class TypicalExercises {
     /**
      * Returns an {@code AddressBook} with all the typical exercises.
      */
-    public static AddressBook getTypicalAddressBook() {
+    public static AddressBook getTypicalFitNus() {
         AddressBook ab = new AddressBook();
         for (Exercise exercise : getTypicalExercises()) {
             ab.addExercise(exercise);

@@ -40,7 +40,7 @@ public class ExerciseEditCommand extends Command {
 
     public static final String MESSAGE_EDIT_EXERCISE_SUCCESS = "Edited Exercise: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_EXERCISE = "This exercise already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_EXERCISE = "This exercise already exists in fitNUS";
 
     private final Index index;
     private final EditExerciseDescriptor editExerciseDescriptor;

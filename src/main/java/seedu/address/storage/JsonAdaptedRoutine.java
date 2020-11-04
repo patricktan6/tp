@@ -26,7 +26,7 @@ class JsonAdaptedRoutine {
     private final List<JsonAdaptedExercise> exercisesIncluded = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonAdaptedPerson} with the given person details.
+     * Constructs a {@code JsonAdaptedRoutine} with the given routine details.
      */
     @JsonCreator
     public JsonAdaptedRoutine(@JsonProperty("routineName") String routineName,
@@ -38,7 +38,7 @@ class JsonAdaptedRoutine {
     }
 
     /**
-     * Converts a given {@code Person} into this class for Jackson use.
+     * Converts a given {@code Routine} into this class for Jackson use.
      */
     public JsonAdaptedRoutine(Routine source) {
         routineName = source.getName().fullName;
@@ -48,9 +48,9 @@ class JsonAdaptedRoutine {
     }
 
     /**
-     * Converts this Jackson-friendly adapted person object into the model's {@code Person} object.
+     * Converts this Jackson-friendly adapted routine object into the model's {@code Routine} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted person.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted routine.
      */
     public Routine toModelType() throws IllegalValueException {
         final List<Exercise> routineExercises = new ArrayList<>();
@@ -74,5 +74,4 @@ class JsonAdaptedRoutine {
         }
         return modelRoutine;
     }
-
 }

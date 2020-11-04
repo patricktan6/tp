@@ -6,7 +6,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 
 /**
- * Clears the address book.
+ * Clears fitNUS.
  */
 public class ClearCommand extends Command {
 
@@ -17,7 +17,7 @@ public class ClearCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.setAddressBook(new AddressBook());
+        model.setFitNus(new AddressBook());
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

@@ -15,7 +15,6 @@ import seedu.address.model.ReadOnlyFitNus;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
-import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
 
@@ -25,12 +24,12 @@ import seedu.address.model.person.Slot;
 @JsonRootName(value = "fitnus")
 class JsonSerializableAddressBook {
 
-    public static final String MESSAGE_DUPLICATE_PERSON = "Persons list contains duplicate person(s).";
-    private static final String MESSAGE_DUPLICATE_ROUTINE = "Routines list contains duplicate routine(s).";
+    public static final String MESSAGE_DUPLICATE_LESSON = "Lesson list contains duplicate lesson(s).";
+    private static final String MESSAGE_DUPLICATE_EXERCISE = "Exercise list contains duplicate exercise(s).";
+    private static final String MESSAGE_DUPLICATE_ROUTINE = "Routine list contains duplicate routine(s).";
     private static final String MESSAGE_DUPLICATE_SLOT = "Slot list contains duplicate slot(s).";
     private static final String MESSAGE_DUPLICATE_DAILYCALORIE = "Calorie log contains duplicate calorie log(s).";
 
-    private final List<JsonAdaptedPerson> persons = new ArrayList<>();
     private final List<JsonAdaptedExercise> exercises = new ArrayList<>();
     private final List<JsonAdaptedLesson> lessons = new ArrayList<>();
     private final List<JsonAdaptedRoutine> routines = new ArrayList<>();
@@ -41,18 +40,16 @@ class JsonSerializableAddressBook {
     private double weight;
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given persons.
+     * Constructs a {@code JsonSerializableAddressBook} with the given data entries.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("persons") List<JsonAdaptedPerson> persons,
-                                       @JsonProperty("exercises") List<JsonAdaptedExercise> exercises,
+    public JsonSerializableAddressBook(@JsonProperty("exercises") List<JsonAdaptedExercise> exercises,
                                        @JsonProperty("lessons") List<JsonAdaptedLesson> lessons,
                                        @JsonProperty("routines") List<JsonAdaptedRoutine> routines,
                                        @JsonProperty("slots") List<JsonAdaptedSlot> slots,
                                        @JsonProperty("dailyCalories") List<JsonAdaptedDailyCalorie> dailyCalories,
                                        @JsonProperty("height") double height,
                                        @JsonProperty("weight") double weight) {
-        this.persons.addAll(persons);
         this.exercises.addAll(exercises);
         this.lessons.addAll(lessons);
         this.routines.addAll(routines);
@@ -68,7 +65,6 @@ class JsonSerializableAddressBook {
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
     public JsonSerializableAddressBook(ReadOnlyFitNus source) {
-        persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
         exercises.addAll(source.getExerciseList().stream().map(JsonAdaptedExercise::new).collect(Collectors.toList()));
         lessons.addAll(source.getLessonList().stream().map(JsonAdaptedLesson::new).collect(Collectors.toList()));
         routines.addAll(source.getRoutineList().stream().map(JsonAdaptedRoutine::new).collect(Collectors.toList()));
@@ -86,24 +82,17 @@ class JsonSerializableAddressBook {
      */
     public AddressBook toModelType() throws IllegalValueException {
         AddressBook addressBook = new AddressBook();
-        for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
-            Person person = jsonAdaptedPerson.toModelType();
-            if (addressBook.hasPerson(person)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
-            }
-            addressBook.addPerson(person);
-        }
         for (JsonAdaptedExercise jsonAdaptedExercise : exercises) {
             Exercise exercise = jsonAdaptedExercise.toModelType();
             if (addressBook.hasExercise(exercise)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+                throw new IllegalValueException(MESSAGE_DUPLICATE_EXERCISE);
             }
             addressBook.addExercise(exercise);
         }
         for (JsonAdaptedLesson jsonAdaptedLesson : lessons) {
             Lesson lesson = jsonAdaptedLesson.toModelType();
             if (addressBook.hasLesson(lesson)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
+                throw new IllegalValueException(MESSAGE_DUPLICATE_LESSON);
             }
             addressBook.addLesson(lesson);
         }
@@ -132,12 +121,11 @@ class JsonSerializableAddressBook {
             calorieLog.add(dailyCalorie);
         }
         Collections.sort(calorieLog);
-        addressBook.addCalorieEntries(calorieLog);
 
+        addressBook.addCalorieEntries(calorieLog);
         addressBook.addHeight(height);
         addressBook.addWeight(weight);
 
         return addressBook;
     }
-
 }

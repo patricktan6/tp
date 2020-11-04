@@ -24,7 +24,7 @@ public class ClearCommandTest {
     public void execute_nonEmptyFitNus_success() {
         Model model = new ModelManager(getTypicalFitNus(), new UserPrefs());
         Model expectedModel = new ModelManager(getTypicalFitNus(), new UserPrefs());
-        expectedModel.setAddressBook(new AddressBook());
+        expectedModel.setFitNus(new AddressBook());
 
         assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_SUCCESS, expectedModel);
     }

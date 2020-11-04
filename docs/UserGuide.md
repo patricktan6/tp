@@ -40,13 +40,13 @@ Call Outs | Red boxes will be drawn up around areas of interest to alert you `[c
 
 Check out the list below to get started on using this User Guide.
 
-* If this is your first time using fitNUS, refer to the [Quick Start](#3.-quick-start) for step-by-step instructions on how
+* If this is your first time using fitNUS, refer to the [Quick Start](#3-quick-start) for step-by-step instructions on how
 to download and set up fitNUS on your Computer.
 
-* If you want to explore the different features of fitNUS, go to the [Commands](#4.-commands) section.
+* If you want to explore the different features of fitNUS, go to the [Commands](#4-commands) section.
 
 * If you are familiar with fitNUS or want to do a quick lookup of all the available commands, go to the
-[Command Summary](#5.-command-summary) section.
+[Command Summary](#5-command-summary) section.
 
 --------------------------------------------------------------------------------------------------------------------
 ## 3. Quick Start
@@ -57,7 +57,7 @@ to download and set up fitNUS on your Computer.
 
 1. Copy the file to the folder you want to use as the _home folder_ for your fitNUS.
 
-1. Double-click the file to start the app. The GUI similar to the one [above](#1.-introduction) should appear in a few seconds.
+1. Double-click the file to start the app. The GUI similar to the one [above](#1-introduction) should appear in a few seconds.
 Note how the app contains some sample data.<br>
 
 1. Type your desired command in the command box and press *Enter* to execute it. To verify that fitNUS is working for you,
@@ -76,9 +76,9 @@ here are some sample commands you can try:
 1. Now that fitNUS is running as expected, you can kick-start your fitness journey and achieve your goals!
 Experience first-hand the convenience that fitNUS brings to your life by exploring the various commands yourself.
 
-   * Learn more about the specific details of each command [here](#4.-commands).
+   * Learn more about the specific details of each command [here](#4-commands).
    
-   * A complete summary of all commands is available [here](#5.-command-summary) in table format.
+   * A complete summary of all commands is available [here](#5-command-summary) in table format.
 
 --------------------------------------------------------------------------------------------------------------------
 ## 4. Commands
