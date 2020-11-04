@@ -10,6 +10,7 @@ import seedu.address.model.person.Body;
 import seedu.address.model.person.CalorieLog;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
+import seedu.address.model.person.Height;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
@@ -19,6 +20,7 @@ import seedu.address.model.person.UniqueExerciseList;
 import seedu.address.model.person.UniqueLessonList;
 import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.person.UniqueRoutineList;
+import seedu.address.model.person.Weight;
 
 /**
  * Wraps all data at the address-book level
@@ -69,7 +71,7 @@ public class AddressBook implements ReadOnlyFitNus {
      *
      * @param height the height of the user.
      */
-    public void addHeight(double height) {
+    public void addHeight(Height height) {
         Body newBody = this.body.get(0);
         newBody.setHeight(height);
         body.set(0, newBody);
@@ -80,7 +82,7 @@ public class AddressBook implements ReadOnlyFitNus {
      *
      * @param weight the weight of the user.
      */
-    public void addWeight(double weight) {
+    public void addWeight(Weight weight) {
         Body newBody = this.body.get(0);
         newBody.setWeight(weight);
         body.set(0, newBody);
@@ -360,12 +362,12 @@ public class AddressBook implements ReadOnlyFitNus {
         return calorieLog.asUnmodifiableObservableList();
     }
 
-    public double getHeight() {
+    public Height getHeight() {
         Body newBody = this.body.get(0);
         return newBody.getHeight();
     }
 
-    public double getWeight() {
+    public Weight getWeight() {
         Body newBody = this.body.get(0);
         return newBody.getWeight();
     }
