@@ -338,8 +338,15 @@
     -fx-text-fill: #FFFFFF
 }
 
-#bmi {
+#bmi1 {
     -fx-background-color: #ADD8E6;
+    -fx-background-radius: 30;
+
+}
+
+#bmi2 {
+    -fx-background-color: #ADD8E6;
+    -fx-font-size: 18px;
 }
 
 #logo {

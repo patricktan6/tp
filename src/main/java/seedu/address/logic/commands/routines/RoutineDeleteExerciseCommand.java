@@ -1,7 +1,7 @@
 package seedu.address.logic.commands.routines;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EXERCISE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROUTINE;
 
 import seedu.address.logic.commands.Command;
@@ -10,6 +10,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Routine;
+import seedu.address.model.person.exceptions.ExerciseNotFoundException;
 
 /**
  * Deletes an exercise from a routine in fitNUS.
@@ -21,15 +22,15 @@ public class RoutineDeleteExerciseCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Deletes the exercise from the specified routine. "
             + "Parameters: "
             + PREFIX_ROUTINE + "ROUTINE "
-            + PREFIX_EMAIL + "EXERCISE"
+            + PREFIX_EXERCISE + "EXERCISE"
             + "\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_ROUTINE + "Leg Day Session "
-            + PREFIX_EMAIL + "Squats ";
+            + PREFIX_EXERCISE + "Squats ";
 
     public static final String MESSAGE_DELETE_EXERCISE_SUCCESS = "Deleted Exercise from Routine: %1$s";
-    public static final String MESSAGE_MISSING_ROUTINE = "Deleted Exercise from Routine: %1$s";
-    public static final String MESSAGE_MISSING_EXERCISE = "Deleted Exercise from Routine: %1$s";
+    public static final String MESSAGE_MISSING_ROUTINE = "This routine does not exist in fitNUS!";
+    public static final String MESSAGE_MISSING_EXERCISE = "This exercise does not exist within this routine!";
 
     private final Routine routine;
     private final Exercise exercise;
@@ -53,9 +54,13 @@ public class RoutineDeleteExerciseCommand extends Command {
             throw new CommandException(MESSAGE_MISSING_EXERCISE);
         }
 
-        model.deleteExerciseToRoutine(routine, exercise);
-        return new CommandResult(String.format(String.format(MESSAGE_DELETE_EXERCISE_SUCCESS,
-                routine), exercise));
+        try {
+            model.deleteExerciseToRoutine(routine, exercise);
+            return new CommandResult(String.format(String.format(MESSAGE_DELETE_EXERCISE_SUCCESS,
+                    routine), exercise));
+        } catch (ExerciseNotFoundException e) {
+            throw new CommandException(MESSAGE_MISSING_EXERCISE);
+        }
     }
 
     @Override

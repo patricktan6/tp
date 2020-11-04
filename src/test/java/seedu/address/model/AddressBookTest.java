@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.person.Body;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
@@ -42,7 +43,7 @@ public class AddressBookTest {
     }
 
     @Test
-    public void resetData_withValidReadOnlyAddressBook_replacesData() {
+    public void resetData_withValidReadOnlyFitNus_replacesData() {
         AddressBook newData = getTypicalAddressBook();
         addressBook.resetData(newData);
         assertEquals(newData, addressBook);
@@ -89,18 +90,16 @@ public class AddressBookTest {
     }
 
     /**
-     * A stub ReadOnlyAddressBook whose persons list can violate interface constraints.
+     * A stub ReadOnlyFitNus whose persons list can violate interface constraints.
      */
-    private static class AddressBookStub implements ReadOnlyAddressBook {
+    private static class AddressBookStub implements ReadOnlyFitNus {
         private final ObservableList<Person> persons = FXCollections.observableArrayList();
         private final ObservableList<Exercise> exercises = FXCollections.observableArrayList();
         private final ObservableList<Lesson> lessons = FXCollections.observableArrayList();
         private final ObservableList<Routine> routines = FXCollections.observableArrayList();
         private final ObservableList<Slot> slots = FXCollections.observableArrayList();
         private final ObservableList<DailyCalorie> calorieLog = FXCollections.observableArrayList();
-
-        private final double height = Double.NaN;
-        private final double weight = Double.NaN;
+        private final ObservableList<Body> body = FXCollections.observableArrayList();
 
         AddressBookStub(Collection<Person> persons) {
             this.persons.setAll(persons);
@@ -137,13 +136,8 @@ public class AddressBookTest {
         }
 
         @Override
-        public double getHeight() {
-            return height;
-        }
-
-        @Override
-        public double getWeight() {
-            return weight;
+        public ObservableList<Body> getBody() {
+            return body;
         }
     }
 

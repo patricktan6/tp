@@ -7,28 +7,28 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.geometry.Insets?>
-<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <HBox><children>
-        <VBox prefWidth="50" prefHeight="50">
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" maxHeight="Infinity" maxWidth="Infinity">
+    <HBox VBox.vgrow="ALWAYS"><children>
+        <VBox prefWidth="50" prefHeight="50" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
             <children>
-                <VBox prefWidth="50" minHeight="50" alignment="BOTTOM_CENTER">
+                <VBox prefWidth="50" minHeight="50" alignment="CENTER" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
                     <Label text="Mon" id="headers"/>
                 </VBox>
-                <VBox prefWidth="50" minHeight="85" alignment="BOTTOM_CENTER">
+                <VBox prefWidth="50" minHeight="85" alignment="CENTER" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
                     <Label text="Tue" id="headers"/>
                 </VBox>
-                <VBox prefWidth="50" minHeight="85" alignment="BOTTOM_CENTER">
+                <VBox prefWidth="50" minHeight="85" alignment="CENTER" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
                     <Label text="Wed" id="headers"/>
                 </VBox>
-                <VBox prefWidth="50" minHeight="85" alignment="BOTTOM_CENTER">
+                <VBox prefWidth="50" minHeight="85" alignment="CENTER" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
                     <Label text="Thur" id="headers"/>
                 </VBox>
-                <VBox prefWidth="50" minHeight="85" alignment="BOTTOM_CENTER">
+                <VBox prefWidth="50" minHeight="85" alignment="CENTER" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
                     <Label text="Fri" id="headers"/>
                 </VBox>
             </children>
         </VBox>
-    <VBox prefHeight="430.0" prefWidth="800.0">
+    <VBox prefHeight="430.0" prefWidth="800.0" VBox.vgrow="ALWAYS" HBox.hgrow="ALWAYS">
         <children>
             <VBox fx:id="mondayList" minWidth="150" prefWidth="340" styleClass="pane-with-border">
                 <padding>

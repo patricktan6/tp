@@ -11,7 +11,8 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyFitNus;
+import seedu.address.model.person.Body;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
@@ -36,9 +37,7 @@ class JsonSerializableAddressBook {
     private final List<JsonAdaptedRoutine> routines = new ArrayList<>();
     private final List<JsonAdaptedSlot> slots = new ArrayList<>();
     private final List<JsonAdaptedDailyCalorie> dailyCalories = new ArrayList<>();
-
-    private double height;
-    private double weight;
+    private final JsonAdaptedBody body;
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given persons.
@@ -50,24 +49,22 @@ class JsonSerializableAddressBook {
                                        @JsonProperty("routines") List<JsonAdaptedRoutine> routines,
                                        @JsonProperty("slots") List<JsonAdaptedSlot> slots,
                                        @JsonProperty("dailyCalories") List<JsonAdaptedDailyCalorie> dailyCalories,
-                                       @JsonProperty("height") double height,
-                                       @JsonProperty("weight") double weight) {
+                                       @JsonProperty("body") JsonAdaptedBody body) {
         this.persons.addAll(persons);
         this.exercises.addAll(exercises);
         this.lessons.addAll(lessons);
         this.routines.addAll(routines);
         this.slots.addAll(slots);
         this.dailyCalories.addAll(dailyCalories);
-        this.height = height;
-        this.weight = weight;
+        this.body = body;
     }
 
     /**
-     * Converts a given {@code ReadOnlyAddressBook} into this class for Jackson use.
+     * Converts a given {@code ReadOnlyFitNus} into this class for Jackson use.
      *
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
-    public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
+    public JsonSerializableAddressBook(ReadOnlyFitNus source) {
         persons.addAll(source.getPersonList().stream().map(JsonAdaptedPerson::new).collect(Collectors.toList()));
         exercises.addAll(source.getExerciseList().stream().map(JsonAdaptedExercise::new).collect(Collectors.toList()));
         lessons.addAll(source.getLessonList().stream().map(JsonAdaptedLesson::new).collect(Collectors.toList()));
@@ -75,8 +72,7 @@ class JsonSerializableAddressBook {
         slots.addAll(source.getSlotList().stream().map(JsonAdaptedSlot::new).collect(Collectors.toList()));
         dailyCalories.addAll(source.getDailyCalorieList().stream().map(JsonAdaptedDailyCalorie::new)
                 .collect(Collectors.toList()));
-        height = source.getHeight();
-        weight = source.getWeight();
+        body = source.getBody().stream().map(JsonAdaptedBody::new).collect(Collectors.toList()).get(0);
     }
 
     /**
@@ -134,9 +130,11 @@ class JsonSerializableAddressBook {
         Collections.sort(calorieLog);
         addressBook.addCalorieEntries(calorieLog);
 
-        addressBook.addHeight(height);
-        addressBook.addWeight(weight);
-
+        if (body != null) {
+            Body newBody = body.toModelType();
+            addressBook.addHeight(newBody.getHeight());
+            addressBook.addWeight(newBody.getWeight());
+        }
         return addressBook;
     }
 

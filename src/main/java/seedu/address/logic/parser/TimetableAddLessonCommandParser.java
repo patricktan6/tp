@@ -2,7 +2,7 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LESSON;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 
 import java.util.HashSet;
@@ -26,15 +26,15 @@ public class TimetableAddLessonCommandParser implements Parser<TimetableAddLesso
      */
     public TimetableAddLessonCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_DAY, PREFIX_TIME);
+                ArgumentTokenizer.tokenize(args, PREFIX_LESSON, PREFIX_DAY, PREFIX_TIME);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_DAY, PREFIX_TIME)
+        if (!arePrefixesPresent(argMultimap, PREFIX_LESSON, PREFIX_DAY, PREFIX_TIME)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     TimetableAddLessonCommand.MESSAGE_USAGE));
         }
 
-        Name lessonName = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+        Name lessonName = ParserUtil.parseName(argMultimap.getValue(PREFIX_LESSON).get());
 
         Lesson lesson = new Lesson(lessonName, new HashSet<>());
         Day day = ParserUtil.parseDay(argMultimap.getValue(PREFIX_DAY).get());

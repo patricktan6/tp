@@ -62,10 +62,17 @@ public class CalorieGraph extends UiPart<Region> {
 
     private void update() {
         series.getData().clear();
-        for (DailyCalorie entry : calorieLog) {
-            series.getData().add(
-                    new XYChart.Data<>(entry.getDate().getDayOfWeek().toString(), entry.getCalories())
-            );
+        if (calorieLog.size() != 0) {
+            for (DailyCalorie entry : calorieLog) {
+                series.getData().add(
+                        new XYChart.Data<>(entry.getDate().getDayOfWeek().toString(), entry.getCalories())
+                );
+            }
+            if (!graph.getData().contains(series)) {
+                graph.getData().add(series);
+            }
+        } else {
+            graph.getData().remove(series);
         }
     }
 }

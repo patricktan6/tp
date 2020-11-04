@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Developer Guide
+title: fitNUS - Developer Guide
 ---
 * Table of Contents
 {:toc}
@@ -197,7 +197,7 @@ Given below is an example usage scenario and how the mechanism behaves at each s
 
 **Step 1:**
 
-The user types into fitNUS `timetable_add_routine r/Leg workout d/Monday T/1600-1800`.
+The user types into fitNUS `timetable_add_routine r/Leg workout D/Monday T/1600-1800`.
 
 **Step 2:**
 
@@ -225,7 +225,7 @@ Note that the `execute` method retrieves the actual Routine object in fitNUS bef
 `LogicManager` then saves the updated fitNUS data to the storage.
 
 Given below is the Sequence Diagram for interactions within the Logic component for the
-execute("timetable_add_routine r/Leg Workout d/Monday T/1600-1700") API call.
+execute("timetable_add_routine r/Leg Workout D/Monday T/1600-1700") API call.
 
 ![TimetableAddRoutineSequenceDiagram](images/TimetableAddRoutineSequenceDiagram.png)
 

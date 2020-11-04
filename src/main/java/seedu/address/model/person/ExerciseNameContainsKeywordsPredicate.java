@@ -18,7 +18,7 @@ public class ExerciseNameContainsKeywordsPredicate implements Predicate<Exercise
     @Override
     public boolean test(Exercise exercise) {
         return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsCharIgnoreCase(exercise.getName().fullName, keyword));
+                .allMatch(keyword -> StringUtil.containsCharIgnoreCase(exercise.getName().fullName, keyword));
     }
 
     @Override

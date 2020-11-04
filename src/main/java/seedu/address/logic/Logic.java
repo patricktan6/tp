@@ -7,7 +7,8 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyFitNus;
+import seedu.address.model.person.Body;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
@@ -33,7 +34,7 @@ public interface Logic {
      *
      * @see seedu.address.model.Model#getAddressBook()
      */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyFitNus getAddressBook();
 
     /** Returns an unmodifiable view of the filtered list of persons */
     ObservableList<Person> getFilteredPersonList();
@@ -55,6 +56,9 @@ public interface Logic {
 
     /** Returns an unmodifiable view of the filtered list of calorie logs */
     ObservableList<DailyCalorie> getFilteredDailyCalorie();
+
+    /** Returns an unmodifiable view of the filtered list of body */
+    ObservableList<Body> getFilteredBody();
 
     /**
      * Returns the user prefs' address book file path.

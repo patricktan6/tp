@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.exceptions.DuplicateExerciseException;
 import seedu.address.model.person.exceptions.DuplicateRoutineException;
+import seedu.address.model.person.exceptions.ExerciseNotFoundException;
 import seedu.address.model.person.exceptions.RoutineNotFoundException;
 
 /**
@@ -227,9 +228,13 @@ public class UniqueRoutineList implements Iterable<Routine> {
     public void deleteExerciseFromRoutine(Routine retrievedRoutine, Exercise retrievedExercise) {
         if (!internalList.contains(retrievedRoutine)) {
             throw new RoutineNotFoundException();
-        } else {
-            for (Routine routine : internalList) {
-                if (routine.isSameActivity(retrievedRoutine)) {
+        }
+
+        for (Routine routine : internalList) {
+            if (routine.isSameActivity(retrievedRoutine)) {
+                if (!routine.hasExercise(retrievedExercise)) {
+                    throw new ExerciseNotFoundException();
+                } else {
                     internalList.remove(routine);
                     routine.deleteExercise(retrievedExercise);
                     internalList.add(routine);

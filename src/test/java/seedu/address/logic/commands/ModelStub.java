@@ -6,8 +6,9 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyFitNus;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.person.Body;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
@@ -113,12 +114,12 @@ public class ModelStub implements Model {
     }
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook newData) {
+    public void setAddressBook(ReadOnlyFitNus newData) {
         throw new AssertionError("This method should not be called.");
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
+    public ReadOnlyFitNus getAddressBook() {
         throw new AssertionError("This method should not be called.");
     }
 
@@ -245,6 +246,12 @@ public class ModelStub implements Model {
     @Override
     public ObservableList<Lesson> getFilteredLessonList() {
         throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public ObservableList<Body> getFilteredBody() {
+        throw new AssertionError("This method should not be called.");
+
     }
 
     @Override

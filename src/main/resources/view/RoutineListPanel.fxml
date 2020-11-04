@@ -3,6 +3,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox id="routineListPanel" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-    <ListView fx:id="routineListView" VBox.vgrow="ALWAYS" />
+<?import javafx.scene.control.Label?>
+<VBox id="routineListPanel" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" maxWidth="Infinity" maxHeight="Infinity">
+    <ListView fx:id="routineListView" VBox.vgrow="ALWAYS"/>
 </VBox>

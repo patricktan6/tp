@@ -4,7 +4,9 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.person.Body;
 import seedu.address.model.person.CalorieLog;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
@@ -22,16 +24,15 @@ import seedu.address.model.person.UniqueRoutineList;
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
-public class AddressBook implements ReadOnlyAddressBook {
+public class AddressBook implements ReadOnlyFitNus {
 
     private final UniquePersonList persons;
     private final UniqueExerciseList exercises;
     private final UniqueRoutineList routines;
     private final UniqueLessonList lessons;
-    private double height = Double.NaN;
-    private double weight = Double.NaN;
     private final Timetable timetable;
     private final CalorieLog calorieLog;
+    private final ObservableList<Body> body;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -47,6 +48,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         lessons = new UniqueLessonList();
         timetable = new Timetable();
         calorieLog = new CalorieLog();
+        body = FXCollections.observableArrayList(new Body());
     }
 
     public AddressBook() {
@@ -55,7 +57,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Creates an AddressBook using the Persons in the {@code toBeCopied}
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public AddressBook(ReadOnlyFitNus toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -68,7 +70,9 @@ public class AddressBook implements ReadOnlyAddressBook {
      * @param height the height of the user.
      */
     public void addHeight(double height) {
-        this.height = height;
+        Body newBody = this.body.get(0);
+        newBody.setHeight(height);
+        body.set(0, newBody);
     }
 
     /**
@@ -77,11 +81,14 @@ public class AddressBook implements ReadOnlyAddressBook {
      * @param weight the weight of the user.
      */
     public void addWeight(double weight) {
-        this.weight = weight;
+        Body newBody = this.body.get(0);
+        newBody.setWeight(weight);
+        body.set(0, newBody);
     }
 
     public double getBmi() {
-        return this.weight / Math.pow((this.height / 100.0), 2);
+        Body newBody = body.get(0);
+        return newBody.getBmi();
     }
 
     //// list overwrite operations
@@ -129,7 +136,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyFitNus newData) {
         requireNonNull(newData);
 
         setPersons(newData.getPersonList());
@@ -138,8 +145,9 @@ public class AddressBook implements ReadOnlyAddressBook {
         setRoutines(newData.getRoutineList());
         setSlots(newData.getSlotList());
         addCalorieEntries(newData.getDailyCalorieList());
-        addHeight(newData.getHeight());
-        addWeight(newData.getWeight());
+        Body newBody = newData.getBody().get(0);
+        addHeight(newBody.getHeight());
+        addWeight(newBody.getWeight());
     }
 
     //// person-level operations
@@ -322,6 +330,12 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     @Override
+    public ObservableList<Body> getBody() {
+        ObservableList<Body> unmodifiableBody = FXCollections.unmodifiableObservableList(body);
+        return unmodifiableBody;
+    }
+
+    @Override
     public ObservableList<Person> getPersonList() {
         return persons.asUnmodifiableObservableList();
     }
@@ -346,14 +360,14 @@ public class AddressBook implements ReadOnlyAddressBook {
         return calorieLog.asUnmodifiableObservableList();
     }
 
-    @Override
     public double getHeight() {
-        return height;
+        Body newBody = this.body.get(0);
+        return newBody.getHeight();
     }
 
-    @Override
     public double getWeight() {
-        return weight;
+        Body newBody = this.body.get(0);
+        return newBody.getWeight();
     }
 
     @Override
