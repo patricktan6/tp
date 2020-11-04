@@ -32,7 +32,7 @@ public class JsonAdaptedLessonTest {
     @Test
     public void toModelType_invalidLessonName_throwsIllegalValueException() {
         JsonAdaptedLesson lesson = new JsonAdaptedLesson(INVALID_NAME, VALID_TAGS);
-        String expectedMessage = Name.MESSAGE_CONSTRAINTS;
+        String expectedMessage = Name.MESSAGE_CONSTRAINTS_FORMAT;
         assertThrows(IllegalValueException.class, expectedMessage, lesson::toModelType);
     }
 

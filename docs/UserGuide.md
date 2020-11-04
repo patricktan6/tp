@@ -352,7 +352,7 @@ Creates a new lesson in fitNUS with the given lesson name.
 Format: `lesson_add n/LESSON [t/TAG]`
 
 Example:
-* `lesson_add n/CS2100 t/lab t/homework` Creates a new lesson with the name "CS2100"
+* `lesson_add n/CS2100 t/priority t/homework` Creates a new lesson with the name "CS2100"
 and tags "lab" and "homework".
 
 **Before adding a lesson:**
@@ -392,7 +392,7 @@ Existing values will be overwritten by the input values.
 Format: `lesson_edit INDEX [n/LESSON] [t/TAG]`
 
 Example:
-* `lesson_edit 3 n/GEQ1000 t/tutorial` Edits the lesson at index 3 in the list to the name "GEQ1000" and tag "tutorial".
+* `lesson_edit 3 n/GEQ1000 t/consultation` Edits the lesson at index 3 in the list to the name "GEQ1000" and tag "tutorial".
 
 **Before editing the third lesson:**
 
@@ -672,10 +672,10 @@ Action | Format | Examples
 
 Action | Format | Examples
 --------|-------|-----------
-**Create Lesson** | `lesson_add n/LESSON [t/TAG]` | `lesson_add n/CS2100 t/lecture t/consult`
+**Create Lesson** | `lesson_add n/LESSON [t/TAG]` | `lesson_add n/CS2100 t/priority t/homework`
 **Delete Lesson** | `lesson_delete INDEX` | `lesson_delete 1`
-**Edit Lesson** | `lesson_edit INDEX [n/LESSON] [t/TAG]` | `lesson_edit 3 n/CS2103T t/webcasted`
-**Find Lesson** | `lesson_find KEYWORD [MORE_KEYWORDS]` | `lesson_find CS21`
+**Edit Lesson** | `lesson_edit INDEX [n/LESSON] [t/TAG]` | `lesson_edit 3 n/CS2103T t/core`
+**Find Lesson** | `lesson_find KEYWORD [MORE_KEYWORDS]` | `lesson_find CS GE`
 **List Lesson** | `lesson_list` | `lesson_list`
 
 ### 5.4 Timetable

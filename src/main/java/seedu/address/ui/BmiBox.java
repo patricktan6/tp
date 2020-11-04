@@ -32,12 +32,11 @@ public class BmiBox extends UiPart<Region> {
         super(FXML);
         this.body = body;
         Body observedBody = body.get(0);
-        bmi2.setText("BMI Metrics: \n\nHeight: "
-                + String.format("%.2f", observedBody.getHeight())
-                + "m\n\nWeight: "
-                + String.format("%.2f", observedBody.getWeight())
-                + "kg\n\nBMI: "
-                + String.format("%.2f", observedBody.getBmi()));
+        String text = "BMI Metrics: \n\n"
+                + "Height: " + observedBody.getHeight().toString() + "\n\n"
+                + "Weight: " + observedBody.getWeight().toString() + "\n\n"
+                + "BMI: " + String.format("%.2f", observedBody.getBmi());
+        bmi2.setText(text);
 
         body.addListener((ListChangeListener<Body>) change -> {
             update();
@@ -46,11 +45,10 @@ public class BmiBox extends UiPart<Region> {
 
     private void update() {
         Body observedBody = body.get(0);
-        bmi2.setText("BMI Metrics: \n\nHeight: "
-                + String.format("%.2f", observedBody.getHeight())
-                + "m\n\nWeight: "
-                + String.format("%.2f", observedBody.getWeight())
-                + "kg\n\nBMI: "
-                + String.format("%.2f", observedBody.getBmi()));
+        String text = "BMI Metrics: \n\n"
+                + "Height: " + observedBody.getHeight().toString() + "\n\n"
+                + "Weight: " + observedBody.getWeight().toString() + "\n\n"
+                + "BMI: " + String.format("%.2f", observedBody.getBmi());
+        bmi2.setText(text);
     }
 }

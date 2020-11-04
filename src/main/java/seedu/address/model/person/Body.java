@@ -1,35 +1,37 @@
 package seedu.address.model.person;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.Objects;
 
 public class Body {
 
-    private double height;
-    private double weight;
+    private Height height;
+    private Weight weight;
 
     /**
      * Creates a Body object.
      */
     public Body() {
-        this.height = 160;
-        this.weight = 45;
+        this.height = new Height(160);
+        this.weight = new Weight(45);
     }
 
-    public void setHeight(double h) {
-        assert(h > 0);
+    public void setHeight(Height h) {
+        requireNonNull(h);
         this.height = h;
     }
 
-    public void setWeight(double w) {
-        assert(w > 0);
+    public void setWeight(Weight w) {
+        requireNonNull(w);
         this.weight = w;
     }
 
-    public double getHeight() {
+    public Height getHeight() {
         return this.height;
     }
 
-    public double getWeight() {
+    public Weight getWeight() {
         return this.weight;
     }
 
@@ -47,7 +49,7 @@ public class Body {
         }
 
         Body otherBody = (Body) other;
-        return otherBody.getHeight() == getHeight() && otherBody.getWeight() == getWeight();
+        return height.equals(otherBody.getHeight()) && weight.equals(otherBody.getWeight());
     }
 
     @Override
@@ -58,14 +60,12 @@ public class Body {
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("Body measurements: ");
-        builder.append("\nHeight: " + this.height + "m\n");
-        builder.append("Weight: " + this.weight + "kg\n");
-        return builder.toString();
+        return "Body measurements: \n"
+                + "Height: " + height + "\n"
+                + "Weight: " + weight + "\n";
     }
 
     public double getBmi() {
-        return this.weight / Math.pow((this.height / 100.0), 2);
+        return weight.getWeight() / Math.pow((height.getHeight() / 100.0), 2);
     }
 }

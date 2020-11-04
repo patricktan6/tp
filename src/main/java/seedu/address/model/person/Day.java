@@ -64,6 +64,8 @@ public enum Day {
 
     @Override
     public String toString() {
-        return day;
+        assert day != null;
+        char firstLetterToUpperCase = day.substring(0, 1).toUpperCase().charAt(0);
+        return day.replace(day.charAt(0), firstLetterToUpperCase);
     }
 }

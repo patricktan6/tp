@@ -15,11 +15,13 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.person.Body;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
+import seedu.address.model.person.Height;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.RoutineNameContainsKeywordsPredicate;
 import seedu.address.model.person.Slot;
 import seedu.address.model.person.SlotDayPredicate;
+import seedu.address.model.person.Weight;
 
 /**
  * Represents the in-memory model of the fitNUS data.
@@ -187,8 +189,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void deleteExerciseFromRoutinetine(Routine r, Exercise e) {
-        addressBook.deleteExerciseFromRoutinetine(r, e);
+    public void deleteExerciseFromRoutine(Routine r, Exercise e) {
+        addressBook.deleteExerciseFromRoutine(r, e);
         updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
         updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
     }
@@ -207,12 +209,12 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void addHeight(double height) {
+    public void addHeight(Height height) {
         addressBook.addHeight(height);
     }
 
     @Override
-    public void addWeight(double weight) {
+    public void addWeight(Weight weight) {
         addressBook.addWeight(weight);
     }
 

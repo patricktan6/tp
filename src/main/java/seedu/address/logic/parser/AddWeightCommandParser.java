@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddWeightCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.Weight;
 
 public class AddWeightCommandParser {
 
@@ -25,7 +26,7 @@ public class AddWeightCommandParser {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddWeightCommand.MESSAGE_USAGE));
         }
 
-        double weight = ParserUtil.parseWeight(argMultimap.getValue(PREFIX_WEIGHT).get());
+        Weight weight = ParserUtil.parseWeight(argMultimap.getValue(PREFIX_WEIGHT).get());
 
         return new AddWeightCommand(weight);
     }

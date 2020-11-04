@@ -21,8 +21,8 @@ public class LessonAddCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_LESSON + "CS2103T "
-            + PREFIX_TAG + "lecture "
-            + PREFIX_TAG + "consult";
+            + PREFIX_TAG + "core "
+            + PREFIX_TAG + "priority";
 
     public static final String MESSAGE_SUCCESS = "New lesson added: %1$s";
     public static final String MESSAGE_DUPLICATE_LESSON = "This lesson already exists in fitNUS";
