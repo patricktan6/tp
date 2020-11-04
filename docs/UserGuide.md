@@ -319,14 +319,14 @@ Note how "Squats" is no longer found under "Leg Workout" as a tagging, and fitNU
 
 ![Routine Delete Exercise After](./images/routine_delete_exercise_after.png)
 
-#### 4.2.7 View routine details : `routine_view_exercise`
+#### 4.2.7 View routine details : `routine_view`
 
-Views the details of a certain routine in fitNUS.
+Views the a certain routine in fitNUS indicated by the index.
 
-Format: `routine_view_exercise INDEX`
+Format: `routine_view INDEX`
 
 Example:
-* `routine_view_exercise 2` Views the routine at index 2 in the list.
+* `routine_view 2` Views the routine at index 2 in the list.
 
 **Before viewing the second routine:**
 
@@ -464,11 +464,11 @@ Example:
 * `timetable_add_routine r/Leg Workout D/Monday T/1600-1800`
 Adds routine "Leg Workout" to timetable on Monday, 1600-1800.
 
-**Before adding routine "Leg Workout" to Timetable:** 
+**Before adding routine "Leg Workout" to Timetable:**
 
 ![Timetable Add Routine Before](./images/timetable_add_routine_before.png)
 
-**After adding routine "Leg Workout" to Timetable:** 
+**After adding routine "Leg Workout" to Timetable:**
 
 ![Timetable Add Routine After](./images/timetable_add_routine_after.png)
 
@@ -666,7 +666,7 @@ Action | Format | Examples
 **List Routine** | `routine list` | `routine_list`
 **Add Exercise to Routine** | `routine_add_exercise r/ROUTINE e/EXERCISE` | `routine_add_exercise r/Leg Day Session e/Squats`
 **Delete Exercise from Routine** | `routine_delete_exercise r/ROUTINE e/EXERCISE` | `routine_delete_exercise r/Leg Day Session e/Squats`
-**View Routine details** | `routine_view_exercise INDEX` | `routine_view_exercise 2`
+**View Routine details** | `routine_view INDEX` | `routine_view 2`
 
 ### 5.3 Lesson
 

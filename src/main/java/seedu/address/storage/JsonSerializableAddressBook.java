@@ -12,6 +12,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyFitNus;
+import seedu.address.model.person.Body;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
@@ -35,9 +36,7 @@ class JsonSerializableAddressBook {
     private final List<JsonAdaptedRoutine> routines = new ArrayList<>();
     private final List<JsonAdaptedSlot> slots = new ArrayList<>();
     private final List<JsonAdaptedDailyCalorie> dailyCalories = new ArrayList<>();
-
-    private double height;
-    private double weight;
+    private final JsonAdaptedBody body;
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given data entries.
@@ -48,15 +47,13 @@ class JsonSerializableAddressBook {
                                        @JsonProperty("routines") List<JsonAdaptedRoutine> routines,
                                        @JsonProperty("slots") List<JsonAdaptedSlot> slots,
                                        @JsonProperty("dailyCalories") List<JsonAdaptedDailyCalorie> dailyCalories,
-                                       @JsonProperty("height") double height,
-                                       @JsonProperty("weight") double weight) {
+                                       @JsonProperty("body") JsonAdaptedBody body) {
         this.exercises.addAll(exercises);
         this.lessons.addAll(lessons);
         this.routines.addAll(routines);
         this.slots.addAll(slots);
         this.dailyCalories.addAll(dailyCalories);
-        this.height = height;
-        this.weight = weight;
+        this.body = body;
     }
 
     /**
@@ -71,8 +68,7 @@ class JsonSerializableAddressBook {
         slots.addAll(source.getSlotList().stream().map(JsonAdaptedSlot::new).collect(Collectors.toList()));
         dailyCalories.addAll(source.getDailyCalorieList().stream().map(JsonAdaptedDailyCalorie::new)
                 .collect(Collectors.toList()));
-        height = source.getHeight();
-        weight = source.getWeight();
+        body = source.getBody().stream().map(JsonAdaptedBody::new).collect(Collectors.toList()).get(0);
     }
 
     /**
@@ -110,7 +106,6 @@ class JsonSerializableAddressBook {
             }
             addressBook.addSlotToTimetable(slot);
         }
-
         List<DailyCalorie> calorieLog = new ArrayList<>();
 
         for (JsonAdaptedDailyCalorie jsonAdaptedDailyCalorie: dailyCalories) {
@@ -121,11 +116,13 @@ class JsonSerializableAddressBook {
             calorieLog.add(dailyCalorie);
         }
         Collections.sort(calorieLog);
-
         addressBook.addCalorieEntries(calorieLog);
-        addressBook.addHeight(height);
-        addressBook.addWeight(weight);
 
+        if (body != null) {
+            Body newBody = body.toModelType();
+            addressBook.addHeight(newBody.getHeight());
+            addressBook.addWeight(newBody.getWeight());
+        }
         return addressBook;
     }
 }

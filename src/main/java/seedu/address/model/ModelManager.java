@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.person.Body;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
@@ -33,6 +34,7 @@ public class ModelManager implements Model {
     private final FilteredList<Lesson> filteredLessons;
     private final FilteredList<Slot> filteredSlots;
     private final FilteredList<DailyCalorie> filteredDailyCalories;
+    private final FilteredList<Body> filteredBody;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -50,6 +52,7 @@ public class ModelManager implements Model {
         filteredLessons = new FilteredList<>(this.addressBook.getLessonList());
         filteredSlots = new FilteredList<>(this.addressBook.getSlotList());
         filteredDailyCalories = new FilteredList<>(this.addressBook.getDailyCalorieList());
+        filteredBody = new FilteredList<>(this.addressBook.getBody());
     }
 
     public ModelManager() {
@@ -296,6 +299,15 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Exercise> getFilteredExerciseList() {
         return filteredExercises;
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Body} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Body> getFilteredBody() {
+        return filteredBody;
     }
 
 

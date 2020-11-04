@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.person.Body;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
@@ -98,7 +99,7 @@ public interface Model {
     ObservableList<Lesson> getFilteredLessonList();
 
     /**
-     * Returns an unmodifiable view of the filtered slot list.
+     * Returns an unmodifiable view of the filtered slot list
      */
     ObservableList<Slot> getFilteredSlotList();
 
@@ -106,6 +107,11 @@ public interface Model {
      * Returns an unmodifiable view of the filtered slot list, filtered by the chosen day.
      */
     ObservableList<Slot> getFilteredSlotList(String day);
+
+    /**
+     * Returns an unmodifiable view of the filtered body list
+     */
+    ObservableList<Body> getFilteredBody();
 
     /**
      * Updates the filter of the filtered calorie log to filter by the given {@code predicate}.

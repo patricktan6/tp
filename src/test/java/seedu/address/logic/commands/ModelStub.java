@@ -8,6 +8,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyFitNus;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.person.Body;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
@@ -224,6 +225,11 @@ public class ModelStub implements Model {
 
     @Override
     public ObservableList<DailyCalorie> getFilteredDailyCalorieList() {
+        throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public ObservableList<Body> getFilteredBody() {
         throw new AssertionError("This method should not be called.");
     }
 

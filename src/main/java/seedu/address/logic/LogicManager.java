@@ -14,6 +14,7 @@ import seedu.address.logic.parser.FitNusParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyFitNus;
+import seedu.address.model.person.Body;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Lesson;
@@ -64,6 +65,21 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public Path getFitNusFilePath() {
+        return model.getFitNusFilePath();
+    }
+
+    @Override
+    public GuiSettings getGuiSettings() {
+        return model.getGuiSettings();
+    }
+
+    @Override
+    public void setGuiSettings(GuiSettings guiSettings) {
+        model.setGuiSettings(guiSettings);
+    }
+
+    @Override
     public ObservableList<Exercise> getFilteredExerciseList() {
         return model.getFilteredExerciseList();
     }
@@ -94,17 +110,7 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public Path getFitNusFilePath() {
-        return model.getFitNusFilePath();
-    }
-
-    @Override
-    public GuiSettings getGuiSettings() {
-        return model.getGuiSettings();
-    }
-
-    @Override
-    public void setGuiSettings(GuiSettings guiSettings) {
-        model.setGuiSettings(guiSettings);
+    public ObservableList<Body> getFilteredBody() {
+        return model.getFilteredBody();
     }
 }
