@@ -77,7 +77,7 @@ here are some sample commands you can try:
 Experience first-hand the convenience that fitNUS brings to your life by exploring the various commands yourself.
 
    * Learn more about the specific details of each command [here](#4-commands).
-   
+
    * A complete summary of all commands is available [here](#5-command-summary) in table format.
 
 --------------------------------------------------------------------------------------------------------------------
