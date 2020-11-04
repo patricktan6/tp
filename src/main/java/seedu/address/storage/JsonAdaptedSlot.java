@@ -70,7 +70,7 @@ public class JsonAdaptedSlot {
         type = source.getActivity() instanceof Routine
                 ? TYPE_ROUTINE
                 : TYPE_LESSON;
-        day = source.getDay().toString();
+        day = source.getDay().toString().toLowerCase();
         duration = source.getDuration().toString();
         if (type.equals(TYPE_LESSON)) {
             Lesson lesson = (Lesson) source.getActivity();
