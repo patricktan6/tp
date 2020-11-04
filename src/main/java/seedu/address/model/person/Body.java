@@ -60,9 +60,9 @@ public class Body {
 
     @Override
     public String toString() {
-        return "Body measurements: \n" +
-                "Height: " + height + "\n" +
-                "Weight: " + weight + "\n";
+        return "Body measurements: \n"
+                + "Height: " + height + "\n"
+                + "Weight: " + weight + "\n";
     }
 
     public double getBmi() {
