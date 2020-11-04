@@ -14,6 +14,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_LESSON_TAG_LECT
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_LESSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_LESSON;
 import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_LESSON;
@@ -39,7 +40,7 @@ public class LessonEditCommandParserTest {
     @Test
     public void parse_missingParts_failure() {
         // no index specified
-        assertParseFailure(parser, VALID_LESSON_NAME_CS2030, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, VALID_LESSON_NAME_CS2030, MESSAGE_INVALID_INDEX);
 
         // no field specified
         assertParseFailure(parser, "1", LessonEditCommand.MESSAGE_NOT_EDITED);
@@ -51,21 +52,21 @@ public class LessonEditCommandParserTest {
     @Test
     public void parse_invalidPreamble_failure() {
         // negative index
-        assertParseFailure(parser, "-5" + LESSON_NAME_DESC_CS2030, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "-5" + LESSON_NAME_DESC_CS2030, MESSAGE_INVALID_INDEX);
 
         // zero index
-        assertParseFailure(parser, "0" + LESSON_NAME_DESC_CS2030, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "0" + LESSON_NAME_DESC_CS2030, MESSAGE_INVALID_INDEX);
 
         // invalid arguments being parsed as preamble
-        assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_INDEX);
 
         // invalid prefix being parsed as preamble
-        assertParseFailure(parser, "1 i/ string", MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "1 i/ string", MESSAGE_INVALID_INDEX);
     }
 
     @Test
     public void parse_invalidValue_failure() {
-        assertParseFailure(parser, "1" + INVALID_LESSON_NAME_DESC, Name.MESSAGE_CONSTRAINTS); // invalid lesson
+        assertParseFailure(parser, "1" + INVALID_LESSON_NAME_DESC, Name.MESSAGE_CONSTRAINTS_FORMAT); // invalid lesson
         assertParseFailure(parser, "1" + INVALID_LESSON_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
 
         // while parsing {@code PREFIX_TAG} alone will reset the tags of the {@code Lesson} being edited,
@@ -79,7 +80,7 @@ public class LessonEditCommandParserTest {
 
         // multiple invalid values, but only the first invalid value is captured
         assertParseFailure(parser, "1" + INVALID_LESSON_NAME_DESC + INVALID_LESSON_TAG_DESC,
-                Name.MESSAGE_CONSTRAINTS);
+                Name.MESSAGE_CONSTRAINTS_FORMAT);
     }
 
     @Test
