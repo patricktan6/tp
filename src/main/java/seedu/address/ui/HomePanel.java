@@ -10,6 +10,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.Logic;
@@ -27,6 +28,7 @@ public class HomePanel extends UiPart<Region> {
     private LessonListPanel lessonListPanel;
     private RoutineListPanel routineListPanel;
     private CalorieGraph lineChart;
+    private BmiBox bmiBox;
 
     @FXML
     private StackPane routineListPanelPlaceholder;
@@ -39,6 +41,9 @@ public class HomePanel extends UiPart<Region> {
 
     @FXML
     private HBox graph;
+
+    @FXML
+    private VBox bmi1;
 
     /** Constructs HomePanel
      *
@@ -62,5 +67,9 @@ public class HomePanel extends UiPart<Region> {
 
         lineChart = new CalorieGraph(logic.getFilteredDailyCalorie());
         graph.getChildren().add(lineChart.getRoot());
+
+        bmiBox = new BmiBox(logic.getFilteredBody());
+        bmi1.getChildren().add(bmiBox.getRoot());
+
     }
 }

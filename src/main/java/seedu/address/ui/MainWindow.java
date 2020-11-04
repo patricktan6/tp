@@ -140,6 +140,7 @@ public class MainWindow extends UiPart<Stage> {
         tabPanePlaceHolder.setMinWidth(530);
         tabPanePlaceHolder.setMinHeight(50);
 
+
         VBox.setVgrow(tabPanePlaceHolder, Priority.ALWAYS);
 
     }
