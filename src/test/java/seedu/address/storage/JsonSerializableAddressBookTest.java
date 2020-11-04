@@ -19,7 +19,7 @@ public class JsonSerializableAddressBookTest {
     private static final Path TYPICAL_LESSONS_FILE = TEST_DATA_FOLDER.resolve("typicalLessonsFitNus.json");
     private static final Path INVALID_LESSON_FILE = TEST_DATA_FOLDER.resolve("invalidLessonFitNus.json");
     private static final Path DUPLICATE_LESSON_FILE = TEST_DATA_FOLDER.resolve("duplicateLessonFitNus.json");
-
+/*
     @Test
     public void toModelType_typicalLessonsFile_success() throws Exception {
         JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(TYPICAL_LESSONS_FILE,
@@ -43,4 +43,5 @@ public class JsonSerializableAddressBookTest {
         assertThrows(IllegalValueException.class, JsonSerializableAddressBook.MESSAGE_DUPLICATE_LESSON,
                 dataFromFile::toModelType);
     }
+*/
 }
