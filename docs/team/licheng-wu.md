@@ -38,7 +38,7 @@ wholesome user experience.
    and storage functioned in the original AB3. Understanding of how fitNUS retrieves data from the data file is also 
    needed in order to ensure that commands work as intended.
   
-* **New Feature**: Added the feature users can switch between the home screen and timetable screen
+* **New Feature**: Added the feature allowing users to switch between the home screen and timetable screen
   * What it does: Allows the user view his timetable on a separate screen from his exercises, routines, lessons, calorie and
   BMI tracker.
   * Justification: This user-centric feature greatly improves user experience by providing more space to display the timetable. 
