@@ -178,9 +178,10 @@ public class UniqueRoutineListTest {
     @Test
     public void addExercise() {
         UniqueRoutineList uniqueRoutineList = new UniqueRoutineList();
+        Routine legDay = new Routine(new Name("Leg Day"));
         assertThrows(RoutineNotFoundException.class, () -> uniqueRoutineList.addExercise(LEG_DAY, SQUATS));
-        uniqueRoutineList.add(LEG_DAY);
-        uniqueRoutineList.addExercise(LEG_DAY, SQUATS);
+        uniqueRoutineList.add(legDay);
+        uniqueRoutineList.addExercise(legDay, SQUATS);
 
         Iterator<Routine> iterator = uniqueRoutineList.iterator();
 
