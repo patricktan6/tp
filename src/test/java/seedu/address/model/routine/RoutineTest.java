@@ -44,20 +44,24 @@ public class RoutineTest {
 
     @Test
     public void isSameExercise() {
-        assertFalse(LEG_DAY.hasExercise(SQUATS));
-        LEG_DAY.addExercise(SQUATS);
-        assertTrue(LEG_DAY.hasExercise(SQUATS));
-        assertFalse(LEG_DAY.hasExercise(BENCH_PRESS));
+        Routine newRoutine = new Routine(new Name("Abs"));
+        assertFalse(newRoutine.hasExercise(SQUATS));
+        newRoutine.addExercise(SQUATS);
+        assertTrue(newRoutine.hasExercise(SQUATS));
+        assertFalse(newRoutine.hasExercise(BENCH_PRESS));
 
-        LEG_DAY.deleteExercise(SQUATS);
-        assertFalse(LEG_DAY.hasExercise(SQUATS));
+        newRoutine.deleteExercise(SQUATS);
+        assertFalse(newRoutine.hasExercise(SQUATS));
     }
     @Test
     public void equals() {
+
+        Routine newRoutine = new Routine(new Name("Leg Day"));
+
         // same values -> returns true
         Name copyName = new Name("Leg Day");
         Routine copyRoutine = new Routine(copyName);
-        assertTrue(LEG_DAY.equals(copyRoutine));
+        assertTrue(newRoutine.equals(copyRoutine));
 
         // same object -> returns true
         assertTrue(LEG_DAY.equals(LEG_DAY));
