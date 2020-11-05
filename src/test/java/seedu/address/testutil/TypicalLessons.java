@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.AddressBook;
+import seedu.address.model.FitNus;
 import seedu.address.model.person.Lesson;
 
 /**
@@ -41,10 +41,10 @@ public class TypicalLessons {
     private TypicalLessons() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical lessons.
+     * Returns an {@code FitNus} with all the typical lessons.
      */
-    public static AddressBook getTypicalFitNus() {
-        AddressBook ab = new AddressBook();
+    public static FitNus getTypicalFitNus() {
+        FitNus ab = new FitNus();
         for (Lesson lesson : getTypicalLessons()) {
             ab.addLesson(lesson);
         }

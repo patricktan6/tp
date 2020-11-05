@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.LessonEditCommand.EditLessonDescriptor;
-import seedu.address.model.AddressBook;
+import seedu.address.model.FitNus;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -42,7 +42,7 @@ public class LessonEditCommandTest {
 
         String expectedMessage = String.format(LessonEditCommand.MESSAGE_EDIT_LESSON_SUCCESS, editedLesson);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new FitNus(model.getFitNus()), new UserPrefs());
         expectedModel.setLesson(model.getFilteredLessonList().get(0), editedLesson);
 
         assertCommandSuccess(lessonEditCommand, model, expectedMessage, expectedModel);
@@ -62,7 +62,7 @@ public class LessonEditCommandTest {
 
         String expectedMessage = String.format(LessonEditCommand.MESSAGE_EDIT_LESSON_SUCCESS, editedLesson);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new FitNus(model.getFitNus()), new UserPrefs());
         expectedModel.setLesson(lastLesson, editedLesson);
 
         assertCommandSuccess(lessonEditCommand, model, expectedMessage, expectedModel);
@@ -75,7 +75,7 @@ public class LessonEditCommandTest {
 
         String expectedMessage = String.format(LessonEditCommand.MESSAGE_EDIT_LESSON_SUCCESS, editedLesson);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new FitNus(model.getFitNus()), new UserPrefs());
 
         assertCommandSuccess(lessonEditCommand, model, expectedMessage, expectedModel);
     }
@@ -91,7 +91,7 @@ public class LessonEditCommandTest {
 
         String expectedMessage = String.format(LessonEditCommand.MESSAGE_EDIT_LESSON_SUCCESS, editedLesson);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
+        Model expectedModel = new ModelManager(new FitNus(model.getFitNus()), new UserPrefs());
         expectedModel.setLesson(model.getFilteredLessonList().get(0), editedLesson);
 
         assertCommandSuccess(lessonEditCommand, model, expectedMessage, expectedModel);
@@ -111,7 +111,7 @@ public class LessonEditCommandTest {
         showLessonAtIndex(model, INDEX_FIRST_LESSON);
 
         // edit lesson in filtered list into a duplicate in fitNUS
-        Lesson lessonInList = model.getAddressBook().getLessonList().get(INDEX_SECOND_LESSON.getZeroBased());
+        Lesson lessonInList = model.getFitNus().getLessonList().get(INDEX_SECOND_LESSON.getZeroBased());
         LessonEditCommand lessonEditCommand = new LessonEditCommand(INDEX_FIRST_LESSON,
                 new EditLessonDescriptorBuilder(lessonInList).build());
 
@@ -136,7 +136,7 @@ public class LessonEditCommandTest {
         showLessonAtIndex(model, INDEX_FIRST_LESSON);
         Index outOfBoundIndex = INDEX_SECOND_LESSON;
         // ensures that outOfBoundIndex is still in bounds of fitNUS list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getLessonList().size());
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getFitNus().getLessonList().size());
 
         LessonEditCommand lessonEditCommand = new LessonEditCommand(outOfBoundIndex,
                 new EditLessonDescriptorBuilder().withName(VALID_LESSON_NAME_CS2106).build());

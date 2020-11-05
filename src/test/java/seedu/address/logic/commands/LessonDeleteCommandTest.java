@@ -33,7 +33,7 @@ public class LessonDeleteCommandTest {
 
         String expectedMessage = String.format(LessonDeleteCommand.MESSAGE_DELETE_LESSON_SUCCESS, lessonToDelete);
 
-        ModelManager expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        ModelManager expectedModel = new ModelManager(model.getFitNus(), new UserPrefs());
         expectedModel.deleteLesson(lessonToDelete);
 
         assertCommandSuccess(lessonDeleteCommand, model, expectedMessage, expectedModel);
@@ -56,7 +56,7 @@ public class LessonDeleteCommandTest {
 
         String expectedMessage = String.format(LessonDeleteCommand.MESSAGE_DELETE_LESSON_SUCCESS, lessonToDelete);
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getFitNus(), new UserPrefs());
         expectedModel.deleteLesson(lessonToDelete);
         showNoLesson(expectedModel);
 
@@ -69,7 +69,7 @@ public class LessonDeleteCommandTest {
 
         Index outOfBoundIndex = INDEX_SECOND_LESSON;
         // ensures that outOfBoundIndex is still in bounds of fitNUS list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getLessonList().size());
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getFitNus().getLessonList().size());
 
         LessonDeleteCommand lessonDeleteCommand = new LessonDeleteCommand(outOfBoundIndex);
 

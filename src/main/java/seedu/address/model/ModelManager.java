@@ -30,7 +30,7 @@ import seedu.address.model.person.Weight;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final FitNus fitNus;
     private final UserPrefs userPrefs;
     private final FilteredList<Person> filteredPersons;
     private final FilteredList<Exercise> filteredExercises;
@@ -41,7 +41,7 @@ public class ModelManager implements Model {
     private final FilteredList<Body> filteredBody;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given fitNus and userPrefs.
      */
     public ModelManager(ReadOnlyFitNus addressBook, ReadOnlyUserPrefs userPrefs) {
         super();
@@ -49,19 +49,19 @@ public class ModelManager implements Model {
 
         logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.fitNus = new FitNus(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
-        filteredExercises = new FilteredList<>(this.addressBook.getExerciseList());
-        filteredRoutine = new FilteredList<>(this.addressBook.getRoutineList());
-        filteredLessons = new FilteredList<>(this.addressBook.getLessonList());
-        filteredSlots = new FilteredList<>(this.addressBook.getSlotList());
-        filteredDailyCalories = new FilteredList<>(this.addressBook.getDailyCalorieList());
-        filteredBody = new FilteredList<>(this.addressBook.getBody());
+        filteredPersons = new FilteredList<>(this.fitNus.getPersonList());
+        filteredExercises = new FilteredList<>(this.fitNus.getExerciseList());
+        filteredRoutine = new FilteredList<>(this.fitNus.getRoutineList());
+        filteredLessons = new FilteredList<>(this.fitNus.getLessonList());
+        filteredSlots = new FilteredList<>(this.fitNus.getSlotList());
+        filteredDailyCalories = new FilteredList<>(this.fitNus.getDailyCalorieList());
+        filteredBody = new FilteredList<>(this.fitNus.getBody());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new FitNus(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -99,52 +99,52 @@ public class ModelManager implements Model {
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== FitNus ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyFitNus addressBook) {
-        this.addressBook.resetData(addressBook);
+    public void setFitNus(ReadOnlyFitNus fitNus) {
+        this.fitNus.resetData(fitNus);
     }
 
     @Override
-    public ReadOnlyFitNus getAddressBook() {
-        return addressBook;
+    public ReadOnlyFitNus getFitNus() {
+        return fitNus;
     }
 
     @Override
     public boolean hasPerson(Person person) {
         requireNonNull(person);
-        return addressBook.hasPerson(person);
+        return fitNus.hasPerson(person);
     }
 
     @Override
     public void deletePerson(Person target) {
-        addressBook.removePerson(target);
+        fitNus.removePerson(target);
     }
 
     @Override
     public void deleteExercise(Exercise target) {
-        addressBook.removeExercise(target);
+        fitNus.removeExercise(target);
     }
 
     @Override
     public void deleteLesson(Lesson target) {
-        addressBook.removeLesson(target);
+        fitNus.removeLesson(target);
     }
 
     @Override
     public void deleteRoutine(Routine target) {
-        addressBook.removeRoutine(target);
+        fitNus.removeRoutine(target);
     }
 
     @Override
     public void deleteSlotFromTimetable(Slot target) {
-        addressBook.removeSlotFromTimetable(target);
+        fitNus.removeSlotFromTimetable(target);
     }
 
     @Override
     public void addPerson(Person person) {
-        addressBook.addPerson(person);
+        fitNus.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
@@ -152,32 +152,32 @@ public class ModelManager implements Model {
     public void setPerson(Person target, Person editedPerson) {
         requireAllNonNull(target, editedPerson);
 
-        addressBook.setPerson(target, editedPerson);
+        fitNus.setPerson(target, editedPerson);
     }
 
     @Override
     public void addExercise(Exercise exercise) {
-        addressBook.addExercise(exercise);
+        fitNus.addExercise(exercise);
         updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
     }
 
     @Override
     public void setExercise(Exercise target, Exercise editedExercise) {
         requireAllNonNull(target, editedExercise);
-        addressBook.setExercise(target, editedExercise);
+        fitNus.setExercise(target, editedExercise);
     }
 
 
     @Override
     public void addRoutine(Routine routine) {
-        addressBook.addRoutine(routine);
+        fitNus.addRoutine(routine);
         updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
         updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
     }
 
     @Override
     public void addCalories(int calories) {
-        addressBook.addCalories(calories);
+        fitNus.addCalories(calories);
         updateFilteredCalorieLog(PREDICATE_SHOW_ALL_LOGS);
     }
 
@@ -189,12 +189,12 @@ public class ModelManager implements Model {
 
     @Override
     public void minusCalories(int calories) {
-        addressBook.minusCalories(calories);
+        fitNus.minusCalories(calories);
     }
 
     @Override
     public int getCalories() {
-        return addressBook.getCalories();
+        return fitNus.getCalories();
     }
 
     @Override
@@ -205,19 +205,19 @@ public class ModelManager implements Model {
     @Override
     public boolean hasRoutine(Routine r) {
         requireNonNull(r);
-        return addressBook.hasRoutine(r);
+        return fitNus.hasRoutine(r);
     }
 
     @Override
     public void addExerciseToRoutine(Routine r, Exercise e) {
-        addressBook.addExerciseToRoutine(r, e);
+        fitNus.addExerciseToRoutine(r, e);
         updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
         updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
     }
 
     @Override
     public void deleteExerciseToRoutine(Routine r, Exercise e) {
-        addressBook.deleteExerciseToRoutine(r, e);
+        fitNus.deleteExerciseToRoutine(r, e);
         updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
         updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
     }
@@ -225,22 +225,22 @@ public class ModelManager implements Model {
     @Override
     public boolean hasExercise(Exercise exercise) {
         requireNonNull(exercise);
-        return addressBook.hasExercise(exercise);
+        return fitNus.hasExercise(exercise);
     }
 
     @Override
     public void addHeight(Height height) {
-        addressBook.addHeight(height);
+        fitNus.addHeight(height);
     }
 
     @Override
     public void addWeight(Weight weight) {
-        addressBook.addWeight(weight);
+        fitNus.addWeight(weight);
     }
 
     @Override
     public double getBmi() {
-        return addressBook.getBmi();
+        return fitNus.getBmi();
     }
 
     /**
@@ -249,7 +249,7 @@ public class ModelManager implements Model {
      * @param lesson Lesson object that is to be added to fitNUS.
      */
     public void addLesson(Lesson lesson) {
-        addressBook.addLesson(lesson);
+        fitNus.addLesson(lesson);
         updateFilteredLessonList(PREDICATE_SHOW_ALL_LESSONS);
     }
 
@@ -257,41 +257,41 @@ public class ModelManager implements Model {
     public void setLesson(Lesson target, Lesson editedLesson) {
         requireAllNonNull(target, editedLesson);
 
-        addressBook.setLesson(target, editedLesson);
+        fitNus.setLesson(target, editedLesson);
     }
 
     @Override
     public boolean hasLesson(Lesson lesson) {
         requireNonNull(lesson);
-        return addressBook.hasLesson(lesson);
+        return fitNus.hasLesson(lesson);
     }
 
     @Override
     public boolean hasSlot(Slot slot) {
         requireNonNull(slot);
-        return addressBook.hasSlot(slot);
+        return fitNus.hasSlot(slot);
     }
 
     @Override
     public boolean hasOverlappingSlot(Slot slot) {
         requireNonNull(slot);
-        return addressBook.hasOverlappingDurationInSlot(slot);
+        return fitNus.hasOverlappingDurationInSlot(slot);
     }
 
     @Override
     public void addSlotToTimetable(Slot slot) {
-        addressBook.addSlotToTimetable(slot);
+        fitNus.addSlotToTimetable(slot);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
     @Override
     public Lesson retrieveLesson(Lesson lesson) {
-        return addressBook.retrieveLesson(lesson);
+        return fitNus.retrieveLesson(lesson);
     }
 
     @Override
     public Routine retrieveRoutine(Routine routine) {
-        return addressBook.retrieveRoutine(routine);
+        return fitNus.retrieveRoutine(routine);
     }
 
     @Override
@@ -369,7 +369,7 @@ public class ModelManager implements Model {
     public ObservableList<Slot> getFilteredSlotList(String day) {
         SlotDayPredicate predicate = new SlotDayPredicate(Arrays.asList(day));
 
-        ObservableList<Slot> slotObservableList = this.addressBook.getSlotList();
+        ObservableList<Slot> slotObservableList = this.fitNus.getSlotList();
         FilteredList<Slot> filteredSlotsByDay = new FilteredList<>(slotObservableList);
 
         requireNonNull(predicate);
@@ -415,7 +415,7 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
+        return fitNus.equals(other.fitNus)
                 && userPrefs.equals(other.userPrefs)
                 && filteredPersons.equals(other.filteredPersons);
     }

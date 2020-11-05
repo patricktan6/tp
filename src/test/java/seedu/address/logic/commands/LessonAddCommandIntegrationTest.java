@@ -29,7 +29,7 @@ public class LessonAddCommandIntegrationTest {
     public void execute_newLesson_success() {
         Lesson validLesson = new LessonBuilder().build();
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getFitNus(), new UserPrefs());
         expectedModel.addLesson(validLesson);
 
         assertCommandSuccess(new LessonAddCommand(validLesson), model,
@@ -38,7 +38,7 @@ public class LessonAddCommandIntegrationTest {
 
     @Test
     public void execute_duplicateLesson_throwsCommandException() {
-        Lesson lessonInList = model.getAddressBook().getLessonList().get(0);
+        Lesson lessonInList = model.getFitNus().getLessonList().get(0);
         assertCommandFailure(new LessonAddCommand(lessonInList), model, LessonAddCommand.MESSAGE_DUPLICATE_LESSON);
     }
 

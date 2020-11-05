@@ -111,12 +111,12 @@ public class ModelStub implements Model {
     }
 
     @Override
-    public void setAddressBook(ReadOnlyFitNus newData) {
+    public void setFitNus(ReadOnlyFitNus newData) {
         throw new AssertionError("This method should not be called.");
     }
 
     @Override
-    public ReadOnlyFitNus getAddressBook() {
+    public ReadOnlyFitNus getFitNus() {
         throw new AssertionError("This method should not be called.");
     }
 
