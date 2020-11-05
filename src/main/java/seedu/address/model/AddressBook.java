@@ -236,10 +236,6 @@ public class AddressBook implements ReadOnlyFitNus {
         routines.add(routine);
     }
 
-    public String viewRoutine(int index) {
-        return routines.viewRoutine(index);
-    }
-
     /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
      * {@code target} must exist in the address book.
@@ -392,15 +388,6 @@ public class AddressBook implements ReadOnlyFitNus {
      */
     public boolean checkBounds(int index) {
         return index > 0 && index <= routines.checkSize();
-    }
-
-    /**
-     * Lists out all of the Routines that fitNUS has.
-     *
-     * @return String containing all the Routines.
-     */
-    public String listRoutines() {
-        return routines.listRoutines();
     }
 
     /**

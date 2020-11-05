@@ -76,11 +76,6 @@ public class ModelStub implements Model {
     }
 
     @Override
-    public String listRoutines() {
-        throw new AssertionError("This method should not be called.");
-    }
-
-    @Override
     public void updateFilteredRoutineList(Predicate<Routine> predicate) {
         throw new AssertionError("This method should not be called.");
     }

@@ -1,7 +1,11 @@
 package seedu.address.model.routine;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.TypicalExercises.BENCH_PRESS;
+import static seedu.address.testutil.TypicalExercises.SQUATS;
 import static seedu.address.testutil.TypicalRoutines.LEG_DAY;
 import static seedu.address.testutil.TypicalRoutines.UPPER_BODY;
 
@@ -13,8 +17,6 @@ import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Routine;
 
-
-
 public class RoutineTest {
 
     @Test
@@ -22,6 +24,11 @@ public class RoutineTest {
         // same object -> returns true
         assertTrue(UPPER_BODY.isSameActivity(UPPER_BODY));
         assertTrue(LEG_DAY.isSameActivity(LEG_DAY));
+        assertEquals(UPPER_BODY.hashCode(), UPPER_BODY.hashCode());
+        assertNotEquals(UPPER_BODY.hashCode(), LEG_DAY.hashCode());
+
+        //different object -> returns false
+        assertFalse(LEG_DAY.isSameActivity(UPPER_BODY));
 
         // null -> returns false
         assertFalse(UPPER_BODY.isSameActivity(null));
@@ -36,11 +43,25 @@ public class RoutineTest {
     }
 
     @Test
+    public void isSameExercise() {
+        Routine newRoutine = new Routine(new Name("Abs"));
+        assertFalse(newRoutine.hasExercise(SQUATS));
+        newRoutine.addExercise(SQUATS);
+        assertTrue(newRoutine.hasExercise(SQUATS));
+        assertFalse(newRoutine.hasExercise(BENCH_PRESS));
+
+        newRoutine.deleteExercise(SQUATS);
+        assertFalse(newRoutine.hasExercise(SQUATS));
+    }
+    @Test
     public void equals() {
+
+        Routine newRoutine = new Routine(new Name("Leg Day"));
+
         // same values -> returns true
         Name copyName = new Name("Leg Day");
         Routine copyRoutine = new Routine(copyName);
-        assertTrue(LEG_DAY.equals(copyRoutine));
+        assertTrue(newRoutine.equals(copyRoutine));
 
         // same object -> returns true
         assertTrue(LEG_DAY.equals(LEG_DAY));
@@ -63,5 +84,7 @@ public class RoutineTest {
         Exercise typicalExercise = new Exercise(editedName, new HashSet<>());
         copyRoutine.addExercise(typicalExercise);
         assertFalse(LEG_DAY.equals(copyRoutine));
+
+        assertFalse(LEG_DAY.toString().equals(UPPER_BODY.toString()));
     }
 }

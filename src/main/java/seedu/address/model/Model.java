@@ -215,11 +215,6 @@ public interface Model {
     void addExerciseToRoutine(Routine r, Exercise e);
 
     /**
-     * List out all the routines in fitNUS.
-     */
-    String listRoutines();
-
-    /**
      * Updates the filter of the filtered routine list to filter by the given {@code predicate}.
      *
      * @throws NullPointerException if {@code predicate} is null.

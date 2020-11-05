@@ -229,13 +229,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public String listRoutines() {
-        updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
-        updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
-        return addressBook.listRoutines();
-    }
-
-    @Override
     public void addHeight(Height height) {
         addressBook.addHeight(height);
     }
