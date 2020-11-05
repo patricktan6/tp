@@ -14,23 +14,23 @@ import seedu.address.model.person.Routine;
 /**
  * Views all exercises for a specified routine in fitNUS.
  */
-public class RoutineViewExerciseCommand extends Command {
+public class RoutineViewCommand extends Command {
 
-    public static final String COMMAND_WORD = "routine_view_exercise";
+    public static final String COMMAND_WORD = "routine_view";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Views all exercises contained in a routine in fitNUS. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Views a certain routine by index "
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 3";
 
-    public static final String MESSAGE_SUCCESS = "Routine requested:";
+    public static final String MESSAGE_SUCCESS = "Routine shown above:";
     public static final String MESSAGE_OUT_OF_BOUNDS_ROUTINE = "This routine index is out of bounds!";
 
     private final Index toView;
 
     /**
-     * Creates a RoutineViewExerciseCommand to view all exercises for the specified {@code Index} of the routine
+     * Creates a RoutineViewCommand to view all exercises for the specified {@code Index} of the routine
      */
-    public RoutineViewExerciseCommand(Index index) {
+    public RoutineViewCommand(Index index) {
         requireNonNull(index);
         toView = index;
     }
@@ -52,6 +52,6 @@ public class RoutineViewExerciseCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof RoutineViewExerciseCommand); // instanceof handles nulls
+                || (other instanceof RoutineViewCommand); // instanceof handles nulls
     }
 }

@@ -66,7 +66,7 @@ public class LessonAddCommandParserTest {
     public void parse_invalidLessonValue_failure() {
         // invalid lesson
         assertParseFailure(parser, INVALID_LESSON_NAME_DESC
-                + LESSON_TAG_DESC_EASY + LESSON_TAG_DESC_LECTURE, Name.MESSAGE_CONSTRAINTS);
+                + LESSON_TAG_DESC_EASY + LESSON_TAG_DESC_LECTURE, Name.MESSAGE_CONSTRAINTS_FORMAT);
 
         // invalid tag
         assertParseFailure(parser, LESSON_NAME_DESC_CS2106

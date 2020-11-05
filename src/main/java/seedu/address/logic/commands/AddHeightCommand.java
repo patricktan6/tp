@@ -5,6 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_HEIGHT;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.person.Height;
 
 public class AddHeightCommand extends Command {
     public static final String COMMAND_WORD = "height";
@@ -15,15 +16,14 @@ public class AddHeightCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_HEIGHT + "172.5";
 
-    public static final String MESSAGE_SUCCESS = "Height added: %.2f cm";
-    public static final String MESSAGE_INVALID_HEIGHT = "This is not a valid height";
+    public static final String MESSAGE_SUCCESS = "Height added: %1$s";
 
-    private final double height;
+    private final Height height;
 
     /**
      * Creates an AddHeightCommand to add the specified height in centimetres.
      */
-    public AddHeightCommand(double height) {
+    public AddHeightCommand(Height height) {
         requireNonNull(height);
         this.height = height;
     }
@@ -31,10 +31,6 @@ public class AddHeightCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-
-        if (height < 0) {
-            throw new CommandException(MESSAGE_INVALID_HEIGHT);
-        }
 
         model.addHeight(height);
         return new CommandResult(String.format(MESSAGE_SUCCESS, height));

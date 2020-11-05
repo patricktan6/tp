@@ -14,8 +14,10 @@ import seedu.address.model.person.Address;
 import seedu.address.model.person.Day;
 import seedu.address.model.person.Duration;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Height;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Weight;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -48,7 +50,10 @@ public class ParserUtil {
         requireNonNull(name);
         String trimmedName = name.trim();
         if (!Name.isValidName(trimmedName)) {
-            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Name.MESSAGE_CONSTRAINTS_FORMAT);
+        }
+        if (!Name.isValidLength(trimmedName)) {
+            throw new ParseException(Name.MESSAGE_CONSTRAINTS_LIMIT);
         }
         return new Name(trimmedName);
     }
@@ -171,21 +176,38 @@ public class ParserUtil {
     }
 
     /**
-     * Parses {@code String height} into a {@code int}.
+     * Parses {@code String height} into a {@code Height}.
      */
-    public static double parseHeight(String height) {
+    public static Height parseHeight(String height) throws ParseException {
         requireNonNull(height);
         String trimmedHeight = height.trim();
-        return Double.parseDouble(trimmedHeight);
+        if (!Height.isValidHeight(trimmedHeight)) {
+            throw new ParseException(Height.MESSAGE_CONSTRAINTS_FORMAT);
+        }
+
+        double parsedHeight = Double.parseDouble(trimmedHeight);
+        if (!Height.isValidHeight(parsedHeight)) {
+            throw new ParseException(Height.MESSAGE_CONSTRAINTS_LIMIT);
+        }
+
+        return new Height(parsedHeight);
     }
 
     /**
-     * Parses {@code String weight} into a {@code int}.
+     * Parses {@code String weight} into a {@code Weight}.
      */
-    public static double parseWeight(String weight) {
+    public static Weight parseWeight(String weight) throws ParseException {
         requireNonNull(weight);
         String trimmedWeight = weight.trim();
-        return Double.parseDouble(trimmedWeight);
+        if (!Weight.isValidWeight(trimmedWeight)) {
+            throw new ParseException(Weight.MESSAGE_CONSTRAINTS_FORMAT);
+        }
+
+        double parsedWeight = Double.parseDouble(trimmedWeight);
+        if (!Weight.isValidWeight(parsedWeight)) {
+            throw new ParseException(Weight.MESSAGE_CONSTRAINTS_LIMIT);
+        }
+        return new Weight(parsedWeight);
     }
 
     /**
@@ -200,7 +222,8 @@ public class ParserUtil {
         try {
             trimmedCalorie = Integer.parseInt(calorie.trim());
         } catch (NumberFormatException e) {
-            throw new ParseException("Calorie input is way too large for fitNUS to handle!");
+            throw new ParseException("Calorie input must be a valid integer and not more than the Java's maximum"
+                    + " integer value e.g. calorie_add c/100");
         }
 
         if (trimmedCalorie <= 0) {

@@ -8,12 +8,15 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyFitNus;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.person.Body;
 import seedu.address.model.person.DailyCalorie;
 import seedu.address.model.person.Exercise;
+import seedu.address.model.person.Height;
 import seedu.address.model.person.Lesson;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
+import seedu.address.model.person.Weight;
 
 public class ModelStub implements Model {
 
@@ -88,12 +91,12 @@ public class ModelStub implements Model {
     }
 
     @Override
-    public void addHeight(double height) {
+    public void addHeight(Height height) {
         throw new AssertionError("This method should not be called.");
     }
 
     @Override
-    public void addWeight(double weight) {
+    public void addWeight(Weight weight) {
         throw new AssertionError("This method should not be called.");
     }
 
@@ -245,6 +248,12 @@ public class ModelStub implements Model {
     @Override
     public ObservableList<Lesson> getFilteredLessonList() {
         throw new AssertionError("This method should not be called.");
+    }
+
+    @Override
+    public ObservableList<Body> getFilteredBody() {
+        throw new AssertionError("This method should not be called.");
+
     }
 
     @Override
