@@ -15,7 +15,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.person.LessonNameContainsKeywordsPredicate;
+import seedu.address.model.lesson.LessonNameContainsKeywordsPredicate;
 import seedu.address.testutil.FitNusBuilder;
 
 public class ModelManagerTest {
@@ -26,7 +26,7 @@ public class ModelManagerTest {
     public void constructor() {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
-        assertEquals(new AddressBook(), new AddressBook(modelManager.getFitNus()));
+        assertEquals(new FitNus(), new FitNus(modelManager.getFitNus()));
     }
 
     @Test
@@ -95,13 +95,13 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        AddressBook addressBook = new FitNusBuilder().withLesson(GES1028).withLesson(GEH1030).build();
-        AddressBook differentAddressBook = new AddressBook();
+        FitNus fitNus = new FitNusBuilder().withLesson(GES1028).withLesson(GEH1030).build();
+        FitNus differentFitNus = new FitNus();
         UserPrefs userPrefs = new UserPrefs();
 
         // same values -> returns true
-        modelManager = new ModelManager(addressBook, userPrefs);
-        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs);
+        modelManager = new ModelManager(fitNus, userPrefs);
+        ModelManager modelManagerCopy = new ModelManager(fitNus, userPrefs);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -113,13 +113,13 @@ public class ModelManagerTest {
         // different types -> returns false
         assertFalse(modelManager.equals(5));
 
-        // different addressBook -> returns false
-        assertFalse(modelManager.equals(new ModelManager(differentAddressBook, userPrefs)));
+        // different fitNus -> returns false
+        assertFalse(modelManager.equals(new ModelManager(differentFitNus, userPrefs)));
 
         // different filteredLessonList -> returns false
         String[] keywords = GES1028.getName().fullName.split("\\s+");
         modelManager.updateFilteredLessonList(new LessonNameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(fitNus, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredLessonList(PREDICATE_SHOW_ALL_LESSONS);
@@ -127,6 +127,6 @@ public class ModelManagerTest {
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setFitNusFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, differentUserPrefs)));
+        assertFalse(modelManager.equals(new ModelManager(fitNus, differentUserPrefs)));
     }
 }

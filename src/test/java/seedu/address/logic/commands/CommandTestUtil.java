@@ -12,10 +12,10 @@ import java.util.List;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.AddressBook;
+import seedu.address.model.FitNus;
 import seedu.address.model.Model;
-import seedu.address.model.person.Lesson;
-import seedu.address.model.person.LessonNameContainsKeywordsPredicate;
+import seedu.address.model.lesson.Lesson;
+import seedu.address.model.lesson.LessonNameContainsKeywordsPredicate;
 import seedu.address.testutil.EditLessonDescriptorBuilder;
 
 /**
@@ -84,7 +84,7 @@ public class CommandTestUtil {
     public static void assertCommandFailure(Command command, Model actualModel, String expectedMessage) {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
-        AddressBook expectedFitNus = new AddressBook(actualModel.getFitNus());
+        FitNus expectedFitNus = new FitNus(actualModel.getFitNus());
         List<Lesson> expectedFilteredLessonList = new ArrayList<>(actualModel.getFilteredLessonList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));

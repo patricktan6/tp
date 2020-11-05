@@ -9,10 +9,10 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.TimetableAddRoutineCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Day;
-import seedu.address.model.person.Duration;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Routine;
+import seedu.address.model.routine.Routine;
+import seedu.address.model.timetable.Day;
+import seedu.address.model.timetable.Duration;
 
 /**
  * Parses input arguments and creates a new TimetableAddRoutineCommand object

@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.model.Model;
-import seedu.address.model.person.LessonNameContainsKeywordsPredicate;
+import seedu.address.model.lesson.LessonNameContainsKeywordsPredicate;
 
 /**
  * Finds and lists all lessons in fitNUS whose name contains any of the argument keywords.

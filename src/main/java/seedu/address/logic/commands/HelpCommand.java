@@ -73,7 +73,7 @@ public class HelpCommand extends Command {
             + "Format: exercise_edit INDEX (must be a positive integer) [e/EXERCISE] [t/TAG]...\n"
             + separator;
     public static final String EXERCISE_FIND_MESSAGE = "exercise_find:\n"
-            + "Finds all exercises whose names contain any of the specified keywords (case-insensitive) and displays\n"
+            + "Finds all exercises whose names contain all of the specified keywords (case-insensitive) and displays\n"
             + "them as a list with index numbers.\n"
             + "Format: exercise_find KEYWORD [MORE_KEYWORDS]...\n"
             + separator;
@@ -90,7 +90,7 @@ public class HelpCommand extends Command {
             + "Format: routine_delete INDEX (must be a positive integer)\n"
             + separator;
     public static final String ROUTINE_FIND_MESSAGE = "routine_find:\n"
-            + "Finds all routines whose names contain any of the specified keywords (case-insensitive) and displays\n"
+            + "Finds all routines whose names contain all of the specified keywords (case-insensitive) and displays\n"
             + "them as a list with index numbers.\n"
             + "Format: routine_find KEYWORD [MORE_KEYWORDS]...\n"
             + separator;

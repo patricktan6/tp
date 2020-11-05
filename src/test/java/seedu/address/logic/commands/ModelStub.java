@@ -8,14 +8,14 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyFitNus;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.calorie.DailyCalorie;
+import seedu.address.model.exercise.Exercise;
+import seedu.address.model.lesson.Lesson;
 import seedu.address.model.person.Body;
-import seedu.address.model.person.DailyCalorie;
-import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Height;
-import seedu.address.model.person.Lesson;
-import seedu.address.model.person.Routine;
-import seedu.address.model.person.Slot;
 import seedu.address.model.person.Weight;
+import seedu.address.model.routine.Routine;
+import seedu.address.model.slot.Slot;
 
 public class ModelStub implements Model {
 

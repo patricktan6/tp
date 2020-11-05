@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
-import seedu.address.model.person.Lesson;
+import seedu.address.model.lesson.Lesson;
 
 /**
  * A utility class for test cases.

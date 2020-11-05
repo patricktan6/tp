@@ -6,14 +6,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.person.Exercise;
+import seedu.address.model.FitNus;
+import seedu.address.model.exercise.Exercise;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Routine;
+import seedu.address.model.routine.Routine;
 import seedu.address.model.tag.Tag;
 
 /**
- * A utility class containing a list of {@code Person} objects to be used in tests.
+ * A utility class containing a list of {@code Routine} objects to be used in tests.
  */
 public class TypicalRoutines {
 
@@ -23,25 +23,25 @@ public class TypicalRoutines {
     private TypicalRoutines() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical persons.
+     * Returns an {@code FitNus} with all the typical routines.
      */
-    public static AddressBook getTypicalFitNus() {
-        AddressBook ab = new AddressBook();
+    public static FitNus getTypicalFitNus() {
+        FitNus fn = new FitNus();
         for (Routine routine : getTypicalRoutines()) {
-            ab.addRoutine(routine);
+            fn.addRoutine(routine);
         }
-        return ab;
+        return fn;
     }
 
     /**
-     * Returns an {@code AddressBook} with all the typical persons.
+     * Returns an {@code FitNus} with all the typical routines.
      */
-    public static AddressBook getPopulatedAddressBook() {
-        AddressBook ab = new AddressBook();
+    public static FitNus getPopulatedFitNus() {
+        FitNus fn = new FitNus();
         for (Routine routine : getRoutinesWithExercise()) {
-            ab.addRoutine(routine);
+            fn.addRoutine(routine);
         }
-        return ab;
+        return fn;
     }
     public static List<Routine> getTypicalRoutines() {
         return new ArrayList<Routine>(Arrays.asList(LEG_DAY, UPPER_BODY));

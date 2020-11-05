@@ -20,7 +20,7 @@ import static seedu.address.testutil.TypicalLessons.CS2106;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.LessonAddCommand;
-import seedu.address.model.person.Lesson;
+import seedu.address.model.lesson.Lesson;
 import seedu.address.model.person.Name;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.LessonBuilder;

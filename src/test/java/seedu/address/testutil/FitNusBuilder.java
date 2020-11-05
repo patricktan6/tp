@@ -1,7 +1,7 @@
 package seedu.address.testutil;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.person.Lesson;
+import seedu.address.model.FitNus;
+import seedu.address.model.lesson.Lesson;
 
 /**
  * A utility class to help with building fitNUS objects.
@@ -10,25 +10,25 @@ import seedu.address.model.person.Lesson;
  */
 public class FitNusBuilder {
 
-    private AddressBook addressBook;
+    private FitNus fitNus;
 
     public FitNusBuilder() {
-        addressBook = new AddressBook();
+        fitNus = new FitNus();
     }
 
-    public FitNusBuilder(AddressBook addressBook) {
-        this.addressBook = addressBook;
+    public FitNusBuilder(FitNus fitNus) {
+        this.fitNus = fitNus;
     }
 
     /**
      * Adds a new {@code Lesson} to the {@code fitNUS} that we are building.
      */
     public FitNusBuilder withLesson(Lesson lesson) {
-        addressBook.addLesson(lesson);
+        fitNus.addLesson(lesson);
         return this;
     }
 
-    public AddressBook build() {
-        return addressBook;
+    public FitNus build() {
+        return fitNus;
     }
 }

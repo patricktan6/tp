@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.DailyCalorie;
+import seedu.address.model.calorie.DailyCalorie;
 
 /**
  * Jackson-friendly version of {@link DailyCalorie}.

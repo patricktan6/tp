@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 import seedu.address.logic.commands.LessonFindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.LessonNameContainsKeywordsPredicate;
+import seedu.address.model.lesson.LessonNameContainsKeywordsPredicate;
 
 /**
  * Parses input arguments and creates a new LessonFindCommand object

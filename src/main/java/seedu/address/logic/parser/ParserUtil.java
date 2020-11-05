@@ -10,12 +10,12 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Day;
-import seedu.address.model.person.Duration;
 import seedu.address.model.person.Height;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Weight;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.timetable.Day;
+import seedu.address.model.timetable.Duration;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.

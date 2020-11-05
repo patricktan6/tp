@@ -18,11 +18,11 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.LessonEditCommand.EditLessonDescriptor;
-import seedu.address.model.AddressBook;
+import seedu.address.model.FitNus;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.Lesson;
+import seedu.address.model.lesson.Lesson;
 import seedu.address.testutil.EditLessonDescriptorBuilder;
 import seedu.address.testutil.LessonBuilder;
 
@@ -42,7 +42,7 @@ public class LessonEditCommandTest {
 
         String expectedMessage = String.format(LessonEditCommand.MESSAGE_EDIT_LESSON_SUCCESS, editedLesson);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getFitNus()), new UserPrefs());
+        Model expectedModel = new ModelManager(new FitNus(model.getFitNus()), new UserPrefs());
         expectedModel.setLesson(model.getFilteredLessonList().get(0), editedLesson);
 
         assertCommandSuccess(lessonEditCommand, model, expectedMessage, expectedModel);
@@ -62,7 +62,7 @@ public class LessonEditCommandTest {
 
         String expectedMessage = String.format(LessonEditCommand.MESSAGE_EDIT_LESSON_SUCCESS, editedLesson);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getFitNus()), new UserPrefs());
+        Model expectedModel = new ModelManager(new FitNus(model.getFitNus()), new UserPrefs());
         expectedModel.setLesson(lastLesson, editedLesson);
 
         assertCommandSuccess(lessonEditCommand, model, expectedMessage, expectedModel);
@@ -75,7 +75,7 @@ public class LessonEditCommandTest {
 
         String expectedMessage = String.format(LessonEditCommand.MESSAGE_EDIT_LESSON_SUCCESS, editedLesson);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getFitNus()), new UserPrefs());
+        Model expectedModel = new ModelManager(new FitNus(model.getFitNus()), new UserPrefs());
 
         assertCommandSuccess(lessonEditCommand, model, expectedMessage, expectedModel);
     }
@@ -91,7 +91,7 @@ public class LessonEditCommandTest {
 
         String expectedMessage = String.format(LessonEditCommand.MESSAGE_EDIT_LESSON_SUCCESS, editedLesson);
 
-        Model expectedModel = new ModelManager(new AddressBook(model.getFitNus()), new UserPrefs());
+        Model expectedModel = new ModelManager(new FitNus(model.getFitNus()), new UserPrefs());
         expectedModel.setLesson(model.getFilteredLessonList().get(0), editedLesson);
 
         assertCommandSuccess(lessonEditCommand, model, expectedMessage, expectedModel);

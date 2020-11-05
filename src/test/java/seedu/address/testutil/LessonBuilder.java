@@ -3,7 +3,7 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.address.model.person.Lesson;
+import seedu.address.model.lesson.Lesson;
 import seedu.address.model.person.Name;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
@@ -13,7 +13,7 @@ import seedu.address.model.util.SampleDataUtil;
  */
 public class LessonBuilder {
 
-    public static final String DEFAULT_NAME = "GES1028";
+    public static final String DEFAULT_NAME = "GES1011";
 
     private Name name;
     private Set<Tag> tags;

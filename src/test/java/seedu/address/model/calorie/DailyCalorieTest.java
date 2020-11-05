@@ -7,8 +7,6 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.person.DailyCalorie;
-
 public class DailyCalorieTest {
 
     private final LocalDate testDate1 = LocalDate.of(2020, 10, 28);

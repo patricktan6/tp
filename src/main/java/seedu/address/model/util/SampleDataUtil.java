@@ -4,9 +4,9 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.address.model.AddressBook;
+import seedu.address.model.FitNus;
 import seedu.address.model.ReadOnlyFitNus;
-import seedu.address.model.person.Lesson;
+import seedu.address.model.lesson.Lesson;
 import seedu.address.model.person.Name;
 import seedu.address.model.tag.Tag;
 
@@ -25,8 +25,8 @@ public class SampleDataUtil {
         };
     }
 
-    public static ReadOnlyFitNus getSampleAddressBook() {
-        AddressBook sampleFitNus = new AddressBook();
+    public static ReadOnlyFitNus getSampleFitNus() {
+        FitNus sampleFitNus = new FitNus();
         for (Lesson sampleLesson : getSampleLessons()) {
             sampleFitNus.addLesson(sampleLesson);
         }
