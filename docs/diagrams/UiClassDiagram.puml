@@ -19,6 +19,12 @@ Class ExerciseCard
 Class LessonCard
 Class StatusBarFooter
 Class CommandBox
+Class HomePanel
+Class TimetablePanel
+Class SlotCard
+Class SlotListPanel
+Class CalorieGraph
+Class BmiBox
 }
 
 package Model <<Rectangle>> {
@@ -37,15 +43,19 @@ UiManager -down-> MainWindow
 MainWindow --> HelpWindow
 MainWindow *-down-> CommandBox
 MainWindow *-down-> ResultDisplay
-MainWindow *-down-> ExerciseListPanel
-MainWindow *-down-> RoutineListPanel
-MainWindow *-down-> LessonListPanel
 MainWindow *-down-> StatusBarFooter
-
+MainWindow *-down-> HomePanel
+MainWindow *-down-> TimetablePanel
+MainWindow *-down-> CalorieGraph
+MainWindow *-down-> BmiBox
+HomePanel *-down-> ExerciseListPanel
+HomePanel *-down-> RoutineListPanel
+HomePanel *-down-> LessonListPanel
+TimetablePanel *-down-> SlotListPanel
 ExerciseListPanel -down-> ExerciseCard
 RoutineListPanel -down-> RoutineCard
 LessonListPanel -down-> LessonCard
-
+SlotListPanel -down-> SlotCard
 
 MainWindow -left-|> UiPart
 

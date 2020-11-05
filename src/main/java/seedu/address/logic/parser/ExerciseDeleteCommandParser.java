@@ -17,13 +17,13 @@ public class ExerciseDeleteCommandParser implements Parser<ExerciseDeleteCommand
      * @throws ParseException if the user input does not conform the expected format
      */
     public ExerciseDeleteCommand parse(String args) throws ParseException {
-        try {
-            Index index = ParserUtil.parseIndex(args);
-            return new ExerciseDeleteCommand(index);
-        } catch (ParseException pe) {
+        if (args.isEmpty()) {
             throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExerciseDeleteCommand.MESSAGE_USAGE), pe);
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExerciseDeleteCommand.MESSAGE_USAGE));
         }
+
+        Index index = ParserUtil.parseIndex(args);
+        return new ExerciseDeleteCommand(index);
     }
 
 }
