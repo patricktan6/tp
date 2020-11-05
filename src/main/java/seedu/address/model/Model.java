@@ -75,14 +75,14 @@ public interface Model {
     void setAddressBookFilePath(Path addressBookFilePath);
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces address book data with the data in {@code fitNus}.
      */
-    void setAddressBook(ReadOnlyFitNus addressBook);
+    void setFitNus(ReadOnlyFitNus fitNus);
 
     /**
-     * Returns the AddressBook
+     * Returns the FitNus
      */
-    ReadOnlyFitNus getAddressBook();
+    ReadOnlyFitNus getFitNus();
 
     /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.

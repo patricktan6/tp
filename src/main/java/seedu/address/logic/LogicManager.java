@@ -52,7 +52,7 @@ public class LogicManager implements Logic {
         commandResult = command.execute(model);
 
         try {
-            storage.saveFitNus(model.getAddressBook());
+            storage.saveFitNus(model.getFitNus());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
@@ -62,7 +62,7 @@ public class LogicManager implements Logic {
 
     @Override
     public ReadOnlyFitNus getAddressBook() {
-        return model.getAddressBook();
+        return model.getFitNus();
     }
 
     @Override

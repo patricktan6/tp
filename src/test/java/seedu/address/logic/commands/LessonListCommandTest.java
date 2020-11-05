@@ -23,7 +23,7 @@ public class LessonListCommandTest {
     @BeforeEach
     public void setUp() {
         model = new ModelManager(getTypicalFitNus(), new UserPrefs());
-        expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        expectedModel = new ModelManager(model.getFitNus(), new UserPrefs());
     }
 
     @Test

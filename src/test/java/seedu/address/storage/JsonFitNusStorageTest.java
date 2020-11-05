@@ -16,11 +16,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.AddressBook;
+import seedu.address.model.FitNus;
 import seedu.address.model.ReadOnlyFitNus;
 
-public class JsonAddressBookStorageTest {
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
+public class JsonFitNusStorageTest {
+    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonFitNusStorageTest");
 
     @TempDir
     public Path testFolder;
@@ -63,26 +63,26 @@ public class JsonAddressBookStorageTest {
     @Test
     public void readAndSaveFitNus_allInOrder_success() throws Exception {
         Path filePath = testFolder.resolve("TempfitNUS.json");
-        AddressBook original = getTypicalFitNus();
+        FitNus original = getTypicalFitNus();
         JsonAddressBookStorage jsonAddressBookStorage = new JsonAddressBookStorage(filePath);
 
         // Save in new file and read back
         jsonAddressBookStorage.saveFitNus(original, filePath);
         ReadOnlyFitNus readBack = jsonAddressBookStorage.readFitNus(filePath).get();
-        assertEquals(original, new AddressBook(readBack));
+        assertEquals(original, new FitNus(readBack));
 
         // Modify data, overwrite exiting file, and read back
         original.addLesson(MA1101R);
         original.removeLesson(GES1028);
         jsonAddressBookStorage.saveFitNus(original, filePath);
         readBack = jsonAddressBookStorage.readFitNus(filePath).get();
-        assertEquals(original, new AddressBook(readBack));
+        assertEquals(original, new FitNus(readBack));
 
         // Save and read without specifying file path
         original.addLesson(MA1521);
         jsonAddressBookStorage.saveFitNus(original); // file path not specified
         readBack = jsonAddressBookStorage.readFitNus().get(); // file path not specified
-        assertEquals(original, new AddressBook(readBack));
+        assertEquals(original, new FitNus(readBack));
 
     }
 
@@ -105,6 +105,6 @@ public class JsonAddressBookStorageTest {
 
     @Test
     public void saveFitNus_nullFilePath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> saveFitNus(new AddressBook(), null));
+        assertThrows(NullPointerException.class, () -> saveFitNus(new FitNus(), null));
     }
 }

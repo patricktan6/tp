@@ -26,7 +26,7 @@ import seedu.address.model.person.Weight;
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSamePerson comparison)
  */
-public class AddressBook implements ReadOnlyFitNus {
+public class FitNus implements ReadOnlyFitNus {
 
     private final UniquePersonList persons;
     private final UniqueExerciseList exercises;
@@ -53,13 +53,13 @@ public class AddressBook implements ReadOnlyFitNus {
         body = FXCollections.observableArrayList(new Body());
     }
 
-    public AddressBook() {
+    public FitNus() {
     }
 
     /**
-     * Creates an AddressBook using the Persons in the {@code toBeCopied}
+     * Creates an FitNus using the Persons in the {@code toBeCopied}
      */
-    public AddressBook(ReadOnlyFitNus toBeCopied) {
+    public FitNus(ReadOnlyFitNus toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -136,7 +136,7 @@ public class AddressBook implements ReadOnlyFitNus {
     }
 
     /**
-     * Resets the existing data of this {@code AddressBook} with {@code newData}.
+     * Resets the existing data of this {@code FitNus} with {@code newData}.
      */
     public void resetData(ReadOnlyFitNus newData) {
         requireNonNull(newData);
@@ -272,7 +272,7 @@ public class AddressBook implements ReadOnlyFitNus {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
+     * Removes {@code key} from this {@code FitNus}.
      * {@code key} must exist in the address book.
      */
     public void removePerson(Person key) {
@@ -371,8 +371,8 @@ public class AddressBook implements ReadOnlyFitNus {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddressBook // instanceof handles nulls
-                && persons.equals(((AddressBook) other).persons));
+                || (other instanceof FitNus // instanceof handles nulls
+                && persons.equals(((FitNus) other).persons));
     }
 
     @Override

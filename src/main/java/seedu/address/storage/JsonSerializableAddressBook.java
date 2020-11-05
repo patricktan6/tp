@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.AddressBook;
+import seedu.address.model.FitNus;
 import seedu.address.model.ReadOnlyFitNus;
 import seedu.address.model.person.Body;
 import seedu.address.model.person.DailyCalorie;
@@ -21,7 +21,7 @@ import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
 
 /**
- * An Immutable AddressBook that is serializable to JSON format.
+ * An Immutable FitNus that is serializable to JSON format.
  */
 @JsonRootName(value = "fitnus")
 class JsonSerializableAddressBook {
@@ -76,66 +76,66 @@ class JsonSerializableAddressBook {
     }
 
     /**
-     * Converts this address book into the model's {@code AddressBook} object.
+     * Converts this address book into the model's {@code FitNus} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
-    public AddressBook toModelType() throws IllegalValueException {
-        AddressBook addressBook = new AddressBook();
+    public FitNus toModelType() throws IllegalValueException {
+        FitNus fitNus = new FitNus();
         for (JsonAdaptedPerson jsonAdaptedPerson : persons) {
             Person person = jsonAdaptedPerson.toModelType();
-            if (addressBook.hasPerson(person)) {
+            if (fitNus.hasPerson(person)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             }
-            addressBook.addPerson(person);
+            fitNus.addPerson(person);
         }
         for (JsonAdaptedExercise jsonAdaptedExercise : exercises) {
             Exercise exercise = jsonAdaptedExercise.toModelType();
-            if (addressBook.hasExercise(exercise)) {
+            if (fitNus.hasExercise(exercise)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             }
-            addressBook.addExercise(exercise);
+            fitNus.addExercise(exercise);
         }
         for (JsonAdaptedLesson jsonAdaptedLesson : lessons) {
             Lesson lesson = jsonAdaptedLesson.toModelType();
-            if (addressBook.hasLesson(lesson)) {
+            if (fitNus.hasLesson(lesson)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_PERSON);
             }
-            addressBook.addLesson(lesson);
+            fitNus.addLesson(lesson);
         }
         for (JsonAdaptedRoutine jsonAdaptedRoutine : routines) {
             Routine routine = jsonAdaptedRoutine.toModelType();
-            if (addressBook.hasRoutine(routine)) {
+            if (fitNus.hasRoutine(routine)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_ROUTINE);
             }
-            addressBook.addRoutine(routine);
+            fitNus.addRoutine(routine);
         }
         for (JsonAdaptedSlot jsonAdaptedSlot : slots) {
             Slot slot = jsonAdaptedSlot.toModelType();
-            if (addressBook.hasSlot(slot)) {
+            if (fitNus.hasSlot(slot)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_SLOT);
             }
-            addressBook.addSlotToTimetable(slot);
+            fitNus.addSlotToTimetable(slot);
         }
 
         List<DailyCalorie> calorieLog = new ArrayList<>();
 
         for (JsonAdaptedDailyCalorie jsonAdaptedDailyCalorie: dailyCalories) {
             DailyCalorie dailyCalorie = jsonAdaptedDailyCalorie.toModelType();
-            if (addressBook.hasDailyCalorie(dailyCalorie)) {
+            if (fitNus.hasDailyCalorie(dailyCalorie)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_DAILYCALORIE);
             }
             calorieLog.add(dailyCalorie);
         }
         Collections.sort(calorieLog);
-        addressBook.addCalorieEntries(calorieLog);
+        fitNus.addCalorieEntries(calorieLog);
 
         if (body != null) {
             Body newBody = body.toModelType();
-            addressBook.addHeight(newBody.getHeight());
-            addressBook.addWeight(newBody.getWeight());
+            fitNus.addHeight(newBody.getHeight());
+            fitNus.addWeight(newBody.getWeight());
         }
-        return addressBook;
+        return fitNus;
     }
 
 }
