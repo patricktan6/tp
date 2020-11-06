@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LESSON_TAG_EASY;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -25,7 +26,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.calorie.DailyCalorie;
 import seedu.address.model.exercise.Exercise;
-import seedu.address.model.exercise.exceptions.ExerciseNotFoundException;
 import seedu.address.model.lesson.Lesson;
 import seedu.address.model.lesson.exceptions.DuplicateLessonException;
 import seedu.address.model.person.Body;
@@ -153,11 +153,13 @@ public class FitNusTest {
 
     @Test
     public void addExerciseToRoutine_success() {
+        FitNus fitNus = new FitNus();
         fitNus.addExercise(BENCH_PRESS);
         fitNus.addRoutine(LEG_DAY);
-        fitNus.addExerciseToRoutine(LEG_DAY, BENCH_PRESS);
+        Exercise newExercise = new Exercise(new Name("Amazing"), new HashSet<>());
+        fitNus.addExerciseToRoutine(LEG_DAY, newExercise);
 
-        assertTrue(fitNus.getRoutineList().get(0).hasExercise(BENCH_PRESS));
+        assertTrue(fitNus.getRoutineList().get(0).hasExercise(newExercise));
     }
 
     @Test
@@ -172,6 +174,60 @@ public class FitNusTest {
         assertTrue(fitNus.getRoutineList().get(0).hasExercise(copyExercise));
     }
 
+    @Test
+    public void deleteExercise_successForRoutine() {
+        FitNus fitNus = new FitNus();
+        fitNus.addExercise(BENCH_PRESS);
+        fitNus.addRoutine(LEG_DAY);
+        assertTrue(fitNus.getRoutineList().get(0).hasExercise(BENCH_PRESS));
+
+        fitNus.removeExercise(BENCH_PRESS);
+
+        assertFalse(fitNus.getRoutineList().get(0).hasExercise(BENCH_PRESS));
+        assertFalse(fitNus.hasExercise(BENCH_PRESS));
+
+    }
+
+    @Test
+    public void removeRoutine_successForRoutine() {
+        fitNus.addExercise(BENCH_PRESS);
+        LEG_DAY.addExercise(BENCH_PRESS);
+        fitNus.addRoutine(LEG_DAY);
+        assertTrue(fitNus.hasExercise(BENCH_PRESS));
+        assertTrue(fitNus.hasRoutine(LEG_DAY));
+
+        fitNus.removeRoutine(LEG_DAY);
+
+        assertTrue(fitNus.hasExercise(BENCH_PRESS));
+        assertFalse(fitNus.hasRoutine(LEG_DAY));
+    }
+
+    @Test
+    public void deleteExerciseFromRoutine_successForRoutine() {
+        fitNus.addExercise(BENCH_PRESS);
+        LEG_DAY.addExercise(BENCH_PRESS);
+        fitNus.addRoutine(LEG_DAY);
+        assertTrue(fitNus.getRoutineList().get(0).hasExercise(BENCH_PRESS));
+
+        fitNus.deleteExerciseFromRoutine(LEG_DAY, BENCH_PRESS);
+
+        assertFalse(fitNus.getRoutineList().get(0).hasExercise(BENCH_PRESS));
+        assertTrue(fitNus.hasExercise(BENCH_PRESS));
+    }
+
+    @Test
+    public void retrieveRoutine_sucess() {
+        fitNus.addRoutine(LEG_DAY);
+
+        assertEquals(fitNus.retrieveRoutine(LEG_DAY), LEG_DAY);
+    }
+
+    @Test
+    public void retrieveRoutine_invalidRoutine() {
+        fitNus.addRoutine(LEG_DAY);
+
+        assertNotEquals(fitNus.retrieveRoutine(LEG_DAY), UPPER_BODY);
+    }
 
     /**
      * A stub ReadOnlyFitNus whose lesson list can violate interface constraints.
