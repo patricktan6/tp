@@ -1,11 +1,13 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EXERCISE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_HEIGHT;
 
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddHeightCommand;
+import seedu.address.logic.commands.routines.RoutineDeleteExerciseCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Height;
 
@@ -24,6 +26,10 @@ public class AddHeightCommandParser implements Parser<AddHeightCommand> {
         if (!arePrefixesPresent(argMultimap, PREFIX_HEIGHT)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHeightCommand.MESSAGE_USAGE));
+        } else if (argMultimap.getAllValues(PREFIX_HEIGHT).size() != 1) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddHeightCommand.MESSAGE_USAGE)
+            );
         }
 
         Height height = ParserUtil.parseHeight(argMultimap.getValue(PREFIX_HEIGHT).get());

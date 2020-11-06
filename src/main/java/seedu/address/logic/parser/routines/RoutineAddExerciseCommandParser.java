@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.routines.RoutineAddExerciseCommand;
+import seedu.address.logic.commands.routines.RoutineCreateCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
@@ -38,6 +39,14 @@ public class RoutineAddExerciseCommandParser implements Parser<RoutineAddExercis
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     RoutineAddExerciseCommand.MESSAGE_USAGE));
+        } else if (argMultimap.getAllValues(PREFIX_ROUTINE).size() != 1) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, RoutineAddExerciseCommand.MESSAGE_USAGE)
+            );
+        } else if (argMultimap.getAllValues(PREFIX_EXERCISE).size() != 1) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, RoutineAddExerciseCommand.MESSAGE_USAGE)
+            );
         }
 
         Name routineName = ParserUtil.parseName(argMultimap.getValue(PREFIX_ROUTINE).get());

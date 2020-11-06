@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CALORIE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EXERCISE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
@@ -8,6 +9,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.ExerciseAddCommand;
+import seedu.address.logic.commands.routines.RoutineDeleteExerciseCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.exercise.Exercise;
 import seedu.address.model.person.Name;
@@ -30,6 +32,10 @@ public class ExerciseAddCommandParser implements Parser<ExerciseAddCommand> {
         if (!arePrefixesPresent(argMultimap, PREFIX_EXERCISE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExerciseAddCommand.MESSAGE_USAGE));
+        } else if (argMultimap.getAllValues(PREFIX_EXERCISE).size() != 1) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExerciseAddCommand.MESSAGE_USAGE)
+            );
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_EXERCISE).get());

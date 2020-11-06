@@ -1,11 +1,13 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_EXERCISE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WEIGHT;
 
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddWeightCommand;
+import seedu.address.logic.commands.routines.RoutineDeleteExerciseCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Weight;
 
@@ -24,6 +26,10 @@ public class AddWeightCommandParser {
         if (!arePrefixesPresent(argMultimap, PREFIX_WEIGHT)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddWeightCommand.MESSAGE_USAGE));
+        } else if (argMultimap.getAllValues(PREFIX_WEIGHT).size() != 1) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddWeightCommand.MESSAGE_USAGE)
+            );
         }
 
         Weight weight = ParserUtil.parseWeight(argMultimap.getValue(PREFIX_WEIGHT).get());

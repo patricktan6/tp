@@ -2,6 +2,7 @@ package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DAY;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_LESSON;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ROUTINE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 
@@ -32,6 +33,19 @@ public class TimetableAddRoutineCommandParser implements Parser<TimetableAddRout
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     TimetableAddRoutineCommand.MESSAGE_USAGE));
+        }  else if (argMultimap.getAllValues(PREFIX_ROUTINE).size() != 1) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, TimetableAddRoutineCommand.MESSAGE_USAGE)
+            );
+        }  else if (argMultimap.getAllValues(PREFIX_DAY).size() != 1) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, TimetableAddRoutineCommand.MESSAGE_USAGE)
+            );
+        }
+        else if (argMultimap.getAllValues(PREFIX_TIME).size() != 1) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, TimetableAddRoutineCommand.MESSAGE_USAGE)
+            );
         }
 
         Name routineName = ParserUtil.parseName(argMultimap.getValue(PREFIX_ROUTINE).get());
