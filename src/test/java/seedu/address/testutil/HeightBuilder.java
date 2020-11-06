@@ -3,9 +3,9 @@ package seedu.address.testutil;
 import seedu.address.model.person.Height;
 
 public class HeightBuilder {
-    
+
     public static final double DEFAULT_HEIGHT = 170.0;
-    
+
     private double height;
 
     /**
@@ -29,7 +29,7 @@ public class HeightBuilder {
         this.height = height;
         return this;
     }
-    
+
     public Height build() {
         return new Height(height);
     }

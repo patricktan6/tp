@@ -4,6 +4,11 @@ import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.testutil.Assert.assertThrows;
 
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.function.Predicate;
+
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
@@ -23,25 +28,20 @@ import seedu.address.model.person.Slot;
 import seedu.address.model.person.Weight;
 import seedu.address.testutil.HeightBuilder;
 
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.function.Predicate;
-
 public class AddHeightCommandTest {
-    
+
     @Test
     public void constructor_nullHeight_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new AddHeightCommand(null));
     }
-    
+
     @Test
     public void execute_heightAcceptedByModel_addSuccessful() throws Exception {
         ModelStubAcceptingHeightAdded modelHeightStub = new ModelStubAcceptingHeightAdded();
         Height validHeight = new HeightBuilder().build();
-        
+
         CommandResult commandResult = new AddHeightCommand(validHeight).execute(modelHeightStub);
-        
+
         assertEquals(String.format(AddHeightCommand.MESSAGE_SUCCESS, validHeight), commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validHeight), modelHeightStub.heightAdded);
     }
@@ -333,5 +333,5 @@ public class AddHeightCommandTest {
             return new AddressBook();
         }
     }
-    
+
 }

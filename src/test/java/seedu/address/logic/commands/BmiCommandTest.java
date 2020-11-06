@@ -3,6 +3,9 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.testutil.Assert.assertThrows;
 
+import java.nio.file.Path;
+import java.util.function.Predicate;
+
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
@@ -22,25 +25,23 @@ import seedu.address.model.person.Routine;
 import seedu.address.model.person.Slot;
 import seedu.address.model.person.Weight;
 
-import java.nio.file.Path;
-import java.util.function.Predicate;
-
 public class BmiCommandTest {
-    
+
     @Test
     public void execute_bmiViewedSuccessful() throws Exception {
         ModelStubWithBmi modelBmiStub = new ModelStubWithBmi();
-        
+
         CommandResult commandResult = new BmiCommand().execute(modelBmiStub);
-        
-        assertEquals(String.format(BmiCommand.MESSAGE_SUCCESS, modelBmiStub.getBmi()), commandResult.getFeedbackToUser());
-        
+
+        assertEquals(String.format(BmiCommand.MESSAGE_SUCCESS, modelBmiStub.getBmi()),
+                commandResult.getFeedbackToUser());
+
     }
-    
+
     @Test
     public void execute_bmiNotAvailable_throwCommandException() throws Exception {
         ModelStubWithInvalidBmi modelInvalidBmiStub = new ModelStubWithInvalidBmi();
-        
+
         BmiCommand bmiCommand = new BmiCommand();
 
         assertThrows(CommandException.class, BmiCommand.MESSAGE_INVALID_BMI, () ->
@@ -350,5 +351,5 @@ public class BmiCommandTest {
             return new AddressBook();
         }
     }
-    
+
 }
