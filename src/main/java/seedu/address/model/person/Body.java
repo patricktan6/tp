@@ -17,20 +17,34 @@ public class Body {
         this.weight = new Weight(45);
     }
 
+    /**
+     * Sets Height of this Body.
+     */
     public void setHeight(Height h) {
         requireNonNull(h);
         this.height = h;
     }
 
+    /**
+     * Sets Weight of this Body.
+     */
     public void setWeight(Weight w) {
         requireNonNull(w);
         this.weight = w;
     }
 
+    /**
+     * Returns Height of this Body.
+     * @return Height of this Body.
+     */
     public Height getHeight() {
         return this.height;
     }
 
+    /**
+     * Returns Weight of this Body.
+     * @return Weight of this Body.
+     */
     public Weight getWeight() {
         return this.weight;
     }
@@ -65,7 +79,12 @@ public class Body {
                 + "Weight: " + weight + "\n";
     }
 
+    /**
+     * Calculates the BMI of this Body.
+     * @return Double representing the BMI.
+     */
     public double getBmi() {
         return weight.getWeight() / Math.pow((height.getHeight() / 100.0), 2);
     }
+
 }

@@ -10,9 +10,9 @@ public class Height {
             "Height should only contain positive numbers up to 2 decimal places, and it should not be blank.";
 
     public static final String MESSAGE_CONSTRAINTS_LIMIT =
-            "Height should be greater than 0 and smaller than 250cm.";
+            "Height should be greater than 100cm and smaller than 250cm.";
 
-    public static final double HEIGHT_LOWER_LIMIT = 0;
+    public static final double HEIGHT_LOWER_LIMIT = 100;
 
     public static final double HEIGHT_UPPER_LIMIT = 250;
 

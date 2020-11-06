@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.ExerciseAddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Exercise;
+import seedu.address.model.exercise.Exercise;
 import seedu.address.model.person.Name;
 import seedu.address.model.tag.Tag;
 
@@ -30,6 +30,10 @@ public class ExerciseAddCommandParser implements Parser<ExerciseAddCommand> {
         if (!arePrefixesPresent(argMultimap, PREFIX_EXERCISE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExerciseAddCommand.MESSAGE_USAGE));
+        } else if (argMultimap.getAllValues(PREFIX_EXERCISE).size() != 1) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, ExerciseAddCommand.MESSAGE_USAGE)
+            );
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_EXERCISE).get());

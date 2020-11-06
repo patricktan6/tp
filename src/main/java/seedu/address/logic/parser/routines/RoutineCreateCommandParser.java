@@ -13,7 +13,7 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Routine;
+import seedu.address.model.routine.Routine;
 
 /**
  * Parses input arguments and creates a new RoutineCreateCommand object
@@ -32,6 +32,10 @@ public class RoutineCreateCommandParser implements Parser<RoutineCreateCommand> 
         if (!arePrefixesPresent(argMultimap, PREFIX_ROUTINE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RoutineCreateCommand.MESSAGE_USAGE));
+        } else if (argMultimap.getAllValues(PREFIX_ROUTINE).size() != 1) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, RoutineCreateCommand.MESSAGE_USAGE)
+            );
         }
 
         Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_ROUTINE).get());

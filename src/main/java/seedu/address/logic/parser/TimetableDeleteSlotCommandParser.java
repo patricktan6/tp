@@ -8,9 +8,9 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.TimetableDeleteSlotCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Day;
-import seedu.address.model.person.Duration;
-import seedu.address.model.person.Slot;
+import seedu.address.model.slot.Slot;
+import seedu.address.model.timetable.Day;
+import seedu.address.model.timetable.Duration;
 
 /**
  * Parses input arguments and creates a new TimetableDeleteSlotCommand object
@@ -30,6 +30,14 @@ public class TimetableDeleteSlotCommandParser implements Parser<TimetableDeleteS
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     TimetableDeleteSlotCommand.MESSAGE_USAGE));
+        } else if (argMultimap.getAllValues(PREFIX_DAY).size() != 1) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, TimetableDeleteSlotCommand.MESSAGE_USAGE)
+            );
+        } else if (argMultimap.getAllValues(PREFIX_TIME).size() != 1) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, TimetableDeleteSlotCommand.MESSAGE_USAGE)
+            );
         }
 
         Day day = ParserUtil.parseDay(argMultimap.getValue(PREFIX_DAY).get());

@@ -10,10 +10,10 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.TimetableAddLessonCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Day;
-import seedu.address.model.person.Duration;
-import seedu.address.model.person.Lesson;
+import seedu.address.model.lesson.Lesson;
 import seedu.address.model.person.Name;
+import seedu.address.model.timetable.Day;
+import seedu.address.model.timetable.Duration;
 
 /**
  * Parses input arguments and creates a new TimetableAddLessonCommand object
@@ -32,6 +32,18 @@ public class TimetableAddLessonCommandParser implements Parser<TimetableAddLesso
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                     TimetableAddLessonCommand.MESSAGE_USAGE));
+        } else if (argMultimap.getAllValues(PREFIX_LESSON).size() != 1) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, TimetableAddLessonCommand.MESSAGE_USAGE)
+            );
+        } else if (argMultimap.getAllValues(PREFIX_DAY).size() != 1) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, TimetableAddLessonCommand.MESSAGE_USAGE)
+            );
+        } else if (argMultimap.getAllValues(PREFIX_TIME).size() != 1) {
+            throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, TimetableAddLessonCommand.MESSAGE_USAGE)
+            );
         }
 
         Name lessonName = ParserUtil.parseName(argMultimap.getValue(PREFIX_LESSON).get());

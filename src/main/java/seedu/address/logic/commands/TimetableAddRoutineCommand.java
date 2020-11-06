@@ -8,10 +8,10 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TIME;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Day;
-import seedu.address.model.person.Duration;
-import seedu.address.model.person.Routine;
-import seedu.address.model.person.Slot;
+import seedu.address.model.routine.Routine;
+import seedu.address.model.slot.Slot;
+import seedu.address.model.timetable.Day;
+import seedu.address.model.timetable.Duration;
 
 public class TimetableAddRoutineCommand extends Command {
     public static final String COMMAND_WORD = "timetable_add_routine";
