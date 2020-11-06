@@ -9,7 +9,6 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.lessons.LessonFindCommand;
-import seedu.address.logic.parser.lessons.LessonFindCommandParser;
 import seedu.address.model.lesson.LessonNameContainsKeywordsPredicate;
 
 public class LessonFindCommandParserTest {

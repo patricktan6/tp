@@ -7,7 +7,6 @@ import static seedu.address.testutil.TypicalLessons.getTypicalFitNus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.lessons.LessonAddCommand;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
