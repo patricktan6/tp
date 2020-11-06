@@ -7,11 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_LESSON_TAG_EASY;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalExercises.BENCH_PRESS;
-import static seedu.address.testutil.TypicalExercises.SQUATS;
 import static seedu.address.testutil.TypicalLessons.GES1028;
 import static seedu.address.testutil.TypicalLessons.getTypicalFitNus;
-import static seedu.address.testutil.TypicalRoutines.UPPER_BODY;
 import static seedu.address.testutil.TypicalRoutines.LEG_DAY;
+import static seedu.address.testutil.TypicalRoutines.UPPER_BODY;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -129,7 +128,7 @@ public class FitNusTest {
     }
 
     @Test
-    public void hasRoutine_nullRoutine_throwsNullPointerException_routineNotInFitNus_returnsFalse() {
+    public void hasRoutine_missingRoutine_throwsNullPointerException() {
         assertFalse(fitNus.hasRoutine(LEG_DAY));
     }
 

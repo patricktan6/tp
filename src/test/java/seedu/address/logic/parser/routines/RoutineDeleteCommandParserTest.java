@@ -3,7 +3,6 @@ package seedu.address.logic.parser.routines;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,6 +16,8 @@ import seedu.address.logic.commands.routines.RoutineDeleteCommand;
  */
 public class RoutineDeleteCommandParserTest {
     private final RoutineDeleteCommandParser parser = new RoutineDeleteCommandParser();
+    private final String expectedMessage =
+            String.format(MESSAGE_INVALID_COMMAND_FORMAT, RoutineDeleteCommand.MESSAGE_USAGE);
 
     @Test
     public void parse_validArgs_returnsRoutineDeleteCommand() {
@@ -25,13 +26,13 @@ public class RoutineDeleteCommandParserTest {
 
     @Test
     public void parse_invalidArgs_throwsParseException() {
+        String expectedMessage =
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, RoutineDeleteCommand.MESSAGE_USAGE);
         assertParseFailure(
-                parser, "a", MESSAGE_INVALID_INDEX);
+                parser, "a", expectedMessage);
     }
     @Test
     public void parse_missingArgs_throwsParseException() {
-        String expectedMessage =
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, RoutineDeleteCommand.MESSAGE_USAGE);
         assertParseFailure(
                 parser, "", expectedMessage);
     }

@@ -9,7 +9,6 @@ import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 import static seedu.address.testutil.TypicalExercises.SQUATS;
-import static seedu.address.testutil.TypicalRoutines.LEG_DAY;
 
 import org.junit.jupiter.api.Test;
 
@@ -19,16 +18,18 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.FitNus;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.Name;
 import seedu.address.model.routine.Routine;
 
 public class RoutineAddExerciseCommandParserTest {
     private final RoutineAddExerciseCommandParser parser = new RoutineAddExerciseCommandParser();
+    private final Routine legDay = new Routine(new Name("Leg Day"));
 
     @Test
     public void parse_allRoutineFieldsPresent_success() {
 
         // whitespace only preamble
-        assertParseSuccess(parser, " r/Leg Day e/Squats", new RoutineAddExerciseCommand(LEG_DAY, SQUATS));
+        assertParseSuccess(parser, " r/Leg Day e/Squats", new RoutineAddExerciseCommand(legDay, SQUATS));
     }
 
     @Test
@@ -55,10 +56,10 @@ public class RoutineAddExerciseCommandParserTest {
         assertParseFailure(parser, " Leg Day Squats", expectedMessage);
 
         // invalid Routine
-        assertParseFailure(parser, PREAMBLE_WHITESPACE + LEG_DAY + "&" + " e/Squats", expectedMessage);
+        assertParseFailure(parser, PREAMBLE_WHITESPACE + legDay + "&" + " e/Squats", expectedMessage);
 
         //invalid Exercise
-        assertParseFailure(parser, PREAMBLE_WHITESPACE + LEG_DAY  + " e/Squats" + "&", expectedMessage);
+        assertParseFailure(parser, PREAMBLE_WHITESPACE + legDay + " e/Squats" + "&", expectedMessage);
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + "Leg Day", expectedMessage);
@@ -75,7 +76,7 @@ public class RoutineAddExerciseCommandParserTest {
     public void routineAndExerciseProduced() {
         try {
             FitNus fitNus = new FitNus();
-            fitNus.addRoutine(LEG_DAY);
+            fitNus.addRoutine(legDay);
             fitNus.addExercise(SQUATS);
             assertFalse(fitNus.getRoutineList().get(0).hasExercise(SQUATS));
             RoutineAddExerciseCommand command = parser.parse(" r/Leg Day e/Squats");

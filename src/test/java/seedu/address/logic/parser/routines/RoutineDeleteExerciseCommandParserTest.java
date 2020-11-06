@@ -20,20 +20,24 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.FitNus;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.person.Name;
+import seedu.address.model.routine.Routine;
 
 public class RoutineDeleteExerciseCommandParserTest {
     private final RoutineDeleteExerciseCommandParser parser = new RoutineDeleteExerciseCommandParser();
 
     @Test
     public void parse_allRoutineFieldsPresent_success() {
+        Routine legDay = new Routine(new Name("Leg Day"));
 
         // whitespace only preamble
-        assertParseSuccess(parser, " r/Leg Day e/Squats", new RoutineDeleteExerciseCommand(LEG_DAY, SQUATS));
+        assertParseSuccess(parser, " r/Leg Day e/Squats", new RoutineDeleteExerciseCommand(legDay, SQUATS));
     }
 
     @Test
     public void parse_compulsoryRoutineFieldMissing_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, RoutineDeleteExerciseCommand.MESSAGE_USAGE);
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                RoutineDeleteExerciseCommand.MESSAGE_USAGE);
 
         // missing routine prefix
         assertParseFailure(parser, " Leg Day e/Squats", expectedMessage);
@@ -41,7 +45,8 @@ public class RoutineDeleteExerciseCommandParserTest {
 
     @Test
     public void parse_compulsoryExerciseFieldMissing_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, RoutineDeleteExerciseCommand.MESSAGE_USAGE);
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                RoutineDeleteExerciseCommand.MESSAGE_USAGE);
 
         // missing exercise prefix
         assertParseFailure(parser, " r/Leg Day Squats", expectedMessage);
@@ -49,7 +54,8 @@ public class RoutineDeleteExerciseCommandParserTest {
 
     @Test
     public void parse_invalidRoutineAndExerciseValue_failure() {
-        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT, RoutineDeleteExerciseCommand.MESSAGE_USAGE);
+        String expectedMessage = String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                RoutineDeleteExerciseCommand.MESSAGE_USAGE);
 
         //invalid Routine and Exercise
         assertParseFailure(parser, " Leg Day Squats", expectedMessage);
@@ -58,7 +64,7 @@ public class RoutineDeleteExerciseCommandParserTest {
         assertParseFailure(parser, PREAMBLE_WHITESPACE + LEG_DAY + "&" + " e/Squats", expectedMessage);
 
         //invalid Exercise
-        assertParseFailure(parser, PREAMBLE_WHITESPACE + LEG_DAY  + " e/Squats" + "&", expectedMessage);
+        assertParseFailure(parser, PREAMBLE_WHITESPACE + LEG_DAY + " e/Squats" + "&", expectedMessage);
 
         // non-empty preamble
         assertParseFailure(parser, PREAMBLE_NON_EMPTY + "Leg Day", expectedMessage);

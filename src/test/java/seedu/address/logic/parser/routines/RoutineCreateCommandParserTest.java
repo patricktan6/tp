@@ -10,6 +10,8 @@ import static seedu.address.testutil.TypicalRoutines.LEG_DAY;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.routines.RoutineCreateCommand;
+import seedu.address.model.person.Name;
+import seedu.address.model.routine.Routine;
 
 public class RoutineCreateCommandParserTest {
     private final RoutineCreateCommandParser parser = new RoutineCreateCommandParser();
@@ -17,8 +19,9 @@ public class RoutineCreateCommandParserTest {
     @Test
     public void parse_allRoutineFieldsPresent_success() {
 
+        Routine legDay = new Routine(new Name("Leg Day"));
         // whitespace only preamble
-        assertParseSuccess(parser, " r/Leg Day", new RoutineCreateCommand(LEG_DAY));
+        assertParseSuccess(parser, " r/Leg Day", new RoutineCreateCommand(legDay));
     }
 
     @Test
