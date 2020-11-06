@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 import seedu.address.logic.commands.ExerciseFindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.ExerciseNameContainsKeywordsPredicate;
+import seedu.address.model.exercise.ExerciseNameContainsKeywordsPredicate;
 
 /**
  * Parses input arguments and creates a new ExerciseFindCommand object

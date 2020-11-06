@@ -8,7 +8,7 @@ import java.util.List;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Slot;
+import seedu.address.model.slot.Slot;
 
 /**
  * Deletes a slot from the timetable in fitNUS.

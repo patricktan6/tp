@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.person.Exercise;
+import seedu.address.model.FitNus;
+import seedu.address.model.exercise.Exercise;
 import seedu.address.model.person.Name;
 
 public class TypicalExercises {
@@ -17,14 +17,14 @@ public class TypicalExercises {
     private TypicalExercises() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical exercises.
+     * Returns an {@code FitNus} with all the typical exercises.
      */
-    public static AddressBook getTypicalAddressBook() {
-        AddressBook ab = new AddressBook();
+    public static FitNus getTypicalFitNus() {
+        FitNus fn = new FitNus();
         for (Exercise exercise : getTypicalExercises()) {
-            ab.addExercise(exercise);
+            fn.addExercise(exercise);
         }
-        return ab;
+        return fn;
     }
 
     public static List<Exercise> getTypicalExercises() {

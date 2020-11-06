@@ -15,9 +15,9 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.commands.routines.RoutineCreateCommand;
-import seedu.address.model.AddressBook;
+import seedu.address.model.FitNus;
 import seedu.address.model.ReadOnlyFitNus;
-import seedu.address.model.person.Routine;
+import seedu.address.model.routine.Routine;
 
 public class RoutineCreateCommandTest {
     @Test
@@ -103,8 +103,8 @@ public class RoutineCreateCommandTest {
         }
 
         @Override
-        public ReadOnlyFitNus getAddressBook() {
-            return new AddressBook();
+        public ReadOnlyFitNus getFitNus() {
+            return new FitNus();
         }
     }
 

@@ -12,19 +12,19 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.LessonAddCommand;
-import seedu.address.logic.commands.LessonDeleteCommand;
-import seedu.address.logic.commands.LessonEditCommand;
-import seedu.address.logic.commands.LessonEditCommand.EditLessonDescriptor;
+import seedu.address.logic.commands.lessons.LessonAddCommand;
+import seedu.address.logic.commands.lessons.LessonDeleteCommand;
+import seedu.address.logic.commands.lessons.LessonEditCommand;
+import seedu.address.logic.commands.lessons.LessonEditCommand.EditLessonDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Lesson;
+import seedu.address.model.lesson.Lesson;
 import seedu.address.testutil.EditLessonDescriptorBuilder;
 import seedu.address.testutil.LessonBuilder;
 import seedu.address.testutil.LessonUtil;
 
 public class FitNusParserTest {
 
-    private final AddressBookParser parser = new AddressBookParser();
+    private final FitNusParser parser = new FitNusParser();
 
     @Test
     public void parseCommand_lessonAdd() throws Exception {
