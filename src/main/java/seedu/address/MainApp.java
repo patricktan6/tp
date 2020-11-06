@@ -22,8 +22,8 @@ import seedu.address.model.ReadOnlyFitNus;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.util.SampleDataUtil;
-import seedu.address.storage.AddressBookStorage;
-import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.FitNusStorage;
+import seedu.address.storage.JsonFitNusStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
@@ -48,7 +48,7 @@ public class MainApp extends Application {
 
     @Override
     public void init() throws Exception {
-        logger.info("=============================[ Initializing FitNus ]===========================");
+        logger.info("=============================[ Initializing fitNUS ]===========================");
         super.init();
 
         AppParameters appParameters = AppParameters.parse(getParameters());
@@ -56,8 +56,8 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
-        storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        FitNusStorage fitNusStorage = new JsonFitNusStorage(userPrefs.getFitNusFilePath());
+        storage = new StorageManager(fitNusStorage, userPrefsStorage);
 
         initLogging(config);
 
@@ -69,24 +69,24 @@ public class MainApp extends Application {
     }
 
     /**
-     * Returns a {@code ModelManager} with the data from {@code storage}'s address book and {@code userPrefs}. <br>
-     * The data from the sample address book will be used instead if {@code storage}'s address book is not found,
-     * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
+     * Returns a {@code ModelManager} with the data from {@code storage}'s fitNUS and {@code userPrefs}. <br>
+     * The data from the sample fitNUS will be used instead if {@code storage}'s fitNUS is not found,
+     * or an empty fitNUS will be used instead if errors occur when reading {@code storage}'s fitNUS.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        Optional<ReadOnlyFitNus> addressBookOptional;
+        Optional<ReadOnlyFitNus> fitNusOptional;
         ReadOnlyFitNus initialData;
         try {
-            addressBookOptional = storage.readFitNus();
-            if (!addressBookOptional.isPresent()) {
-                logger.info("Data file not found. Will be starting with a sample FitNus");
+            fitNusOptional = storage.readFitNus();
+            if (!fitNusOptional.isPresent()) {
+                logger.info("Data file not found. Will be starting with a sample fitNUS");
             }
-            initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
+            initialData = fitNusOptional.orElseGet(SampleDataUtil::getSampleFitNus);
         } catch (DataConversionException e) {
-            logger.warning("Data file not in the correct format. Will be starting with an empty FitNus");
+            logger.warning("Data file not in the correct format. Will be starting with an empty fitNUS");
             initialData = new FitNus();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty FitNus");
+            logger.warning("Problem while reading from the file. Will be starting with an empty fitNUS");
             initialData = new FitNus();
         }
 
@@ -151,7 +151,7 @@ public class MainApp extends Application {
                     + "Using default user prefs");
             initializedPrefs = new UserPrefs();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty FitNus");
+            logger.warning("Problem while reading from the file. Will be starting with an empty fitNUS");
             initializedPrefs = new UserPrefs();
         }
 
@@ -167,13 +167,13 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        logger.info("Starting FitNus " + MainApp.VERSION);
+        logger.info("Starting fitNUS " + MainApp.VERSION);
         ui.start(primaryStage);
     }
 
     @Override
     public void stop() {
-        logger.info("============================ [ Stopping Address Book ] =============================");
+        logger.info("============================ [ Stopping fitNUS ] =============================");
         try {
             storage.saveUserPrefs(model.getUserPrefs());
         } catch (IOException e) {

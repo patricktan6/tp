@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.testutil.TypicalExercises.BENCH_PRESS;
 import static seedu.address.testutil.TypicalExercises.SQUATS;
-import static seedu.address.testutil.TypicalExercises.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalExercises.getTypicalFitNus;
 import static seedu.address.testutil.TypicalRoutines.UPPER_BODY;
 import static seedu.address.testutil.TypicalRoutines.getPopulatedFitNus;
 
@@ -19,7 +19,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Routine;
+import seedu.address.model.routine.Routine;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
@@ -30,7 +30,7 @@ public class RoutineAddExerciseCommandTest {
     public static final String MESSAGE_SUCCESS = "Exercise added to Routine: %1$s";
     private static final String MESSAGE_MISSING_ROUTINE = "This routine does not exist in fitNUS";
     private static final String MESSAGE_MISSING_EXERCISE_FITNUS = "This exercise does not exist in fitNUS";
-    private static final Model typicalModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private static final Model typicalModel = new ModelManager(getTypicalFitNus(), new UserPrefs());
     private static final Model populatedModel = new ModelManager(getPopulatedFitNus(), new UserPrefs());
 
 

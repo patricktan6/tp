@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.testutil.TypicalExercises.BENCH_PRESS;
 import static seedu.address.testutil.TypicalExercises.SQUATS;
-import static seedu.address.testutil.TypicalExercises.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalExercises.getTypicalFitNus;
 import static seedu.address.testutil.TypicalRoutines.LEG_DAY;
 import static seedu.address.testutil.TypicalRoutines.getPopulatedFitNus;
 
@@ -19,7 +19,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Routine;
+import seedu.address.model.routine.Routine;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for
@@ -31,7 +31,7 @@ public class RoutineDeleteExerciseCommandTest {
     private static final String MESSAGE_MISSING_EXERCISE = "This exercise does not exist within this routine!";
     private static final String MESSAGE_DELETE_EXERCISE_SUCCESS = "Deleted Exercise from Routine: %1$s";
 
-    private Model typicalModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private Model typicalModel = new ModelManager(getTypicalFitNus(), new UserPrefs());
     private Model populatedModel = new ModelManager(getPopulatedFitNus(), new UserPrefs());
 
     @Test

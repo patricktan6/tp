@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.model.FitNus;
-import seedu.address.model.person.Lesson;
+import seedu.address.model.lesson.Lesson;
 
 /**
  * A utility class containing a list of {@code Lesson} objects to be used in tests.
@@ -44,11 +44,11 @@ public class TypicalLessons {
      * Returns an {@code FitNus} with all the typical lessons.
      */
     public static FitNus getTypicalFitNus() {
-        FitNus ab = new FitNus();
+        FitNus fn = new FitNus();
         for (Lesson lesson : getTypicalLessons()) {
-            ab.addLesson(lesson);
+            fn.addLesson(lesson);
         }
-        return ab;
+        return fn;
     }
 
     public static List<Lesson> getTypicalLessons() {

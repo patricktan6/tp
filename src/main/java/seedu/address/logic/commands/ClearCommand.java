@@ -6,7 +6,7 @@ import seedu.address.model.FitNus;
 import seedu.address.model.Model;
 
 /**
- * Clears the address book.
+ * Clears fitNUS.
  */
 public class ClearCommand extends Command {
 

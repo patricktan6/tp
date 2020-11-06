@@ -31,7 +31,7 @@ public class JsonFitNusStorageTest {
     }
 
     private java.util.Optional<ReadOnlyFitNus> readFitNus(String filePath) throws Exception {
-        return new JsonAddressBookStorage(Paths.get(filePath)).readFitNus(addToTestDataPathIfNotNull(filePath));
+        return new JsonFitNusStorage(Paths.get(filePath)).readFitNus(addToTestDataPathIfNotNull(filePath));
     }
 
     private Path addToTestDataPathIfNotNull(String prefsFileInTestDataFolder) {
@@ -47,41 +47,41 @@ public class JsonFitNusStorageTest {
 
     @Test
     public void read_notJsonFormat_exceptionThrown() {
-        assertThrows(DataConversionException.class, () -> readFitNus("notJsonFormatAddressBook.json"));
+        assertThrows(DataConversionException.class, () -> readFitNus("notJsonFormatFitNus.json"));
     }
 
     @Test
     public void readFitNus_invalidLessonFitNus_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readFitNus("invalidPersonAddressBook.json"));
+        assertThrows(DataConversionException.class, () -> readFitNus("invalidLessonFitNus.json"));
     }
 
     @Test
     public void readFitNus_invalidAndValidLessonFitNus_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readFitNus("invalidAndValidPersonAddressBook.json"));
+        assertThrows(DataConversionException.class, () -> readFitNus("invalidAndValidLessonFitNus.json"));
     }
 
     @Test
     public void readAndSaveFitNus_allInOrder_success() throws Exception {
-        Path filePath = testFolder.resolve("TempfitNUS.json");
+        Path filePath = testFolder.resolve("TempFitNus.json");
         FitNus original = getTypicalFitNus();
-        JsonAddressBookStorage jsonAddressBookStorage = new JsonAddressBookStorage(filePath);
+        JsonFitNusStorage jsonFitNusStorage = new JsonFitNusStorage(filePath);
 
         // Save in new file and read back
-        jsonAddressBookStorage.saveFitNus(original, filePath);
-        ReadOnlyFitNus readBack = jsonAddressBookStorage.readFitNus(filePath).get();
+        jsonFitNusStorage.saveFitNus(original, filePath);
+        ReadOnlyFitNus readBack = jsonFitNusStorage.readFitNus(filePath).get();
         assertEquals(original, new FitNus(readBack));
 
         // Modify data, overwrite exiting file, and read back
         original.addLesson(MA1101R);
         original.removeLesson(GES1028);
-        jsonAddressBookStorage.saveFitNus(original, filePath);
-        readBack = jsonAddressBookStorage.readFitNus(filePath).get();
+        jsonFitNusStorage.saveFitNus(original, filePath);
+        readBack = jsonFitNusStorage.readFitNus(filePath).get();
         assertEquals(original, new FitNus(readBack));
 
         // Save and read without specifying file path
         original.addLesson(MA1521);
-        jsonAddressBookStorage.saveFitNus(original); // file path not specified
-        readBack = jsonAddressBookStorage.readFitNus().get(); // file path not specified
+        jsonFitNusStorage.saveFitNus(original); // file path not specified
+        readBack = jsonFitNusStorage.readFitNus().get(); // file path not specified
         assertEquals(original, new FitNus(readBack));
 
     }
@@ -96,7 +96,7 @@ public class JsonFitNusStorageTest {
      */
     private void saveFitNus(ReadOnlyFitNus fitNus, String filePath) {
         try {
-            new JsonAddressBookStorage(Paths.get(filePath))
+            new JsonFitNusStorage(Paths.get(filePath))
                     .saveFitNus(fitNus, addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);

@@ -12,27 +12,25 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.calorie.DailyCalorie;
+import seedu.address.model.exercise.Exercise;
+import seedu.address.model.lesson.Lesson;
 import seedu.address.model.person.Body;
-import seedu.address.model.person.DailyCalorie;
-import seedu.address.model.person.Exercise;
 import seedu.address.model.person.Height;
-import seedu.address.model.person.Lesson;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.Routine;
-import seedu.address.model.person.RoutineNameContainsKeywordsPredicate;
-import seedu.address.model.person.Slot;
-import seedu.address.model.person.SlotDayPredicate;
 import seedu.address.model.person.Weight;
+import seedu.address.model.routine.Routine;
+import seedu.address.model.routine.RoutineNameContainsKeywordsPredicate;
+import seedu.address.model.slot.Slot;
+import seedu.address.model.slot.SlotDayPredicate;
 
 /**
- * Represents the in-memory model of the address book data.
+ * Represents the in-memory model of the fitNUS data.
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final FitNus fitNus;
     private final UserPrefs userPrefs;
-    private final FilteredList<Person> filteredPersons;
     private final FilteredList<Exercise> filteredExercises;
     private final FilteredList<Routine> filteredRoutine;
     private final FilteredList<Lesson> filteredLessons;
@@ -43,15 +41,14 @@ public class ModelManager implements Model {
     /**
      * Initializes a ModelManager with the given fitNus and userPrefs.
      */
-    public ModelManager(ReadOnlyFitNus addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyFitNus fitNus, ReadOnlyUserPrefs userPrefs) {
         super();
-        requireAllNonNull(addressBook, userPrefs);
+        requireAllNonNull(fitNus, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with fitNUS: " + fitNus + " and user prefs " + userPrefs);
 
-        this.fitNus = new FitNus(addressBook);
+        this.fitNus = new FitNus(fitNus);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredPersons = new FilteredList<>(this.fitNus.getPersonList());
         filteredExercises = new FilteredList<>(this.fitNus.getExerciseList());
         filteredRoutine = new FilteredList<>(this.fitNus.getRoutineList());
         filteredLessons = new FilteredList<>(this.fitNus.getLessonList());
@@ -89,14 +86,14 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+    public Path getFitNusFilePath() {
+        return userPrefs.getFitNusFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setFitNusFilePath(Path fitNusFilePath) {
+        requireNonNull(fitNusFilePath);
+        userPrefs.setFitNusFilePath(fitNusFilePath);
     }
 
     //=========== FitNus ================================================================================
@@ -109,17 +106,6 @@ public class ModelManager implements Model {
     @Override
     public ReadOnlyFitNus getFitNus() {
         return fitNus;
-    }
-
-    @Override
-    public boolean hasPerson(Person person) {
-        requireNonNull(person);
-        return fitNus.hasPerson(person);
-    }
-
-    @Override
-    public void deletePerson(Person target) {
-        fitNus.removePerson(target);
     }
 
     @Override
@@ -140,19 +126,6 @@ public class ModelManager implements Model {
     @Override
     public void deleteSlotFromTimetable(Slot target) {
         fitNus.removeSlotFromTimetable(target);
-    }
-
-    @Override
-    public void addPerson(Person person) {
-        fitNus.addPerson(person);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
-    }
-
-    @Override
-    public void setPerson(Person target, Person editedPerson) {
-        requireAllNonNull(target, editedPerson);
-
-        fitNus.setPerson(target, editedPerson);
     }
 
     @Override
@@ -216,8 +189,8 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void deleteExerciseToRoutine(Routine r, Exercise e) {
-        fitNus.deleteExerciseToRoutine(r, e);
+    public void deleteExerciseFromRoutine(Routine r, Exercise e) {
+        fitNus.deleteExerciseFromRoutine(r, e);
         updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
         updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
     }
@@ -281,7 +254,7 @@ public class ModelManager implements Model {
     @Override
     public void addSlotToTimetable(Slot slot) {
         fitNus.addSlotToTimetable(slot);
-        updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        updateFilteredCalorieLog(PREDICATE_SHOW_ALL_LOGS);
     }
 
     @Override
@@ -306,8 +279,8 @@ public class ModelManager implements Model {
     //=========== Filtered Person List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
+     * Returns an unmodifiable view of the list of {@code Routine} backed by the internal list of
+     * {@code versionedFitNus}
      */
     @Override
     public ObservableList<Routine> getFilteredRoutineList() {
@@ -315,17 +288,8 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
-     */
-    @Override
-    public ObservableList<Person> getFilteredPersonList() {
-        return filteredPersons;
-    }
-
-    /**
      * Returns an unmodifiable view of the list of {@code Exercise} backed by the internal list of
-     * {@code versionedAddressBook}
+     * {@code versionedFitNus}
      */
     @Override
     public ObservableList<Exercise> getFilteredExerciseList() {
@@ -334,7 +298,7 @@ public class ModelManager implements Model {
 
     /**
      * Returns an unmodifiable view of the list of {@code Body} backed by the internal list of
-     * {@code versionedAddressBook}
+     * {@code versionedFitNus}
      */
     @Override
     public ObservableList<Body> getFilteredBody() {
@@ -344,7 +308,7 @@ public class ModelManager implements Model {
 
     /**
      * Returns an unmodifiable view of the list of {@code Lesson} backed by the internal list of
-     * {@code versionedAddressBook}
+     * {@code versionedFitNus}
      */
     @Override
     public ObservableList<Lesson> getFilteredLessonList() {
@@ -352,8 +316,8 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
+     * Returns an unmodifiable view of the list of {@code DailyCalorie} backed by the internal list of
+     * {@code versionedFitNus}
      */
     @Override
     public ObservableList<DailyCalorie> getFilteredDailyCalorieList() {
@@ -384,12 +348,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
-        requireNonNull(predicate);
-        filteredPersons.setPredicate(predicate);
-    }
-
-    @Override
     public void updateFilteredExerciseList(Predicate<Exercise> predicate) {
         requireNonNull(predicate);
         filteredExercises.setPredicate(predicate);
@@ -417,7 +375,7 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return fitNus.equals(other.fitNus)
                 && userPrefs.equals(other.userPrefs)
-                && filteredPersons.equals(other.filteredPersons);
+                && filteredLessons.equals(other.filteredLessons);
     }
 
 }

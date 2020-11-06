@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Set;
 
 import seedu.address.model.FitNus;
-import seedu.address.model.person.Exercise;
+import seedu.address.model.exercise.Exercise;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Routine;
+import seedu.address.model.routine.Routine;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -24,23 +24,23 @@ public class TypicalRoutines {
     } // prevents instantiation
 
     /**
-     * Returns an {@code FitNus} with all the typical persons.
+     * Returns an {@code FitNus} with all the typical routines.
      */
     public static FitNus getTypicalFitNus() {
-        FitNus ab = new FitNus();
+        FitNus fn = new FitNus();
         for (Routine routine : getTypicalRoutines()) {
-            ab.addRoutine(routine);
+            fn.addRoutine(routine);
         }
-        return ab;
+        return fn;
     }
 
 
     /**
-     * Returns an {@code FitNus} with all the typical persons.
+     * Returns an {@code FitNus} with all the typical routines.
      */
     public static FitNus getPopulatedFitNus() {
-        FitNus ab = new FitNus();
-        Set<Tag> typicalTags = new HashSet<Tag>();
+        FitNus fn = new FitNus();
+        Set<Tag> typicalTags = new HashSet<>();
         typicalTags.add(new Tag("Dumbbell"));
         Exercise squats = new Exercise(new Name("Squats"), new HashSet<>());
         Exercise bicep = new Exercise(new Name("Bicep Curls"), typicalTags);
@@ -53,12 +53,11 @@ public class TypicalRoutines {
             UPPER_BODY.addExercise(bicep);
         }
 
-        ab.addRoutine(LEG_DAY);
-        ab.addRoutine(UPPER_BODY);
-        return ab;
+        fn.addRoutine(LEG_DAY);
+        fn.addRoutine(UPPER_BODY);
+        return fn;
     }
     public static List<Routine> getTypicalRoutines() {
-        return new ArrayList<Routine>(Arrays.asList(LEG_DAY, UPPER_BODY));
+        return new ArrayList<>(Arrays.asList(LEG_DAY, UPPER_BODY));
     }
-
 }

@@ -15,10 +15,8 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.person.CalorieLog;
-import seedu.address.model.person.DailyCalorie;
-import seedu.address.model.person.exceptions.DailyCalorieNotFoundException;
-import seedu.address.model.person.exceptions.DuplicateDailyCalorieException;
+import seedu.address.model.calorie.exceptions.DailyCalorieNotFoundException;
+import seedu.address.model.calorie.exceptions.DuplicateDailyCalorieException;
 
 public class CalorieLogTest {
 

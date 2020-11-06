@@ -18,13 +18,11 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.person.Exercise;
+import seedu.address.model.exercise.Exercise;
+import seedu.address.model.exercise.exceptions.ExerciseNotFoundException;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Routine;
-import seedu.address.model.person.UniqueRoutineList;
-import seedu.address.model.person.exceptions.DuplicateRoutineException;
-import seedu.address.model.person.exceptions.ExerciseNotFoundException;
-import seedu.address.model.person.exceptions.RoutineNotFoundException;
+import seedu.address.model.routine.exceptions.DuplicateRoutineException;
+import seedu.address.model.routine.exceptions.RoutineNotFoundException;
 
 public class UniqueRoutineListTest {
 

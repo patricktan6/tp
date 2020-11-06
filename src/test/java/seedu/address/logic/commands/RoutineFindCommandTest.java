@@ -16,8 +16,8 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.person.Name;
-import seedu.address.model.person.Routine;
-import seedu.address.model.person.RoutineNameContainsKeywordsPredicate;
+import seedu.address.model.routine.Routine;
+import seedu.address.model.routine.RoutineNameContainsKeywordsPredicate;
 import seedu.address.testutil.TypicalRoutines;
 
 public class RoutineFindCommandTest {

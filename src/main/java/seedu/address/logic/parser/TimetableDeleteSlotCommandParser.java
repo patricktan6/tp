@@ -8,9 +8,9 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.TimetableDeleteSlotCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Day;
-import seedu.address.model.person.Duration;
-import seedu.address.model.person.Slot;
+import seedu.address.model.slot.Slot;
+import seedu.address.model.timetable.Day;
+import seedu.address.model.timetable.Duration;
 
 /**
  * Parses input arguments and creates a new TimetableDeleteSlotCommand object
