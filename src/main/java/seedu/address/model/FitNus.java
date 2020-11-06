@@ -146,7 +146,7 @@ public class FitNus implements ReadOnlyFitNus {
     }
 
     /**
-     * Resets the existing data of this {@code fitNUS} with {@code newData}.
+     * Resets the existing data of this {@code FitNus} with {@code newData}.
      */
     public void resetData(ReadOnlyFitNus newData) {
         requireNonNull(newData);
@@ -370,25 +370,6 @@ public class FitNus implements ReadOnlyFitNus {
      */
     public Lesson retrieveLesson(Lesson lesson) {
         return lessons.retrieveLesson(lesson);
-    }
-
-    /**
-     * Lists out all of the routines that fitNUS has.
-     *
-     * @return String containing all the Routines.
-     */
-    public String listRoutines() {
-        return routines.listRoutines();
-    }
-
-    /**
-     * Views the routine at the specified index.
-     *
-     * @param index Index of the routine that the user wants.
-     * @return String containing the routine at the specified index.
-     */
-    public String viewRoutine(int index) {
-        return routines.viewRoutine(index);
     }
 
     /**

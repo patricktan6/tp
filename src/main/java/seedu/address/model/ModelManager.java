@@ -202,13 +202,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public String listRoutines() {
-        updateFilteredRoutineList(PREDICATE_SHOW_ALL_ROUTINES);
-        updateFilteredExerciseList(PREDICATE_SHOW_ALL_EXERCISES);
-        return fitNus.listRoutines();
-    }
-
-    @Override
     public void addHeight(Height height) {
         fitNus.addHeight(height);
     }

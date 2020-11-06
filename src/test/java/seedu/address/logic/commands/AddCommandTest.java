@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.logic.commands.lessons.LessonAddCommand;
 import seedu.address.model.FitNus;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyFitNus;
@@ -133,11 +134,6 @@ public class AddCommandTest {
 
         @Override
         public void addExerciseToRoutine(Routine r, Exercise e) {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public String listRoutines() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -364,5 +360,4 @@ public class AddCommandTest {
             return new FitNus();
         }
     }
-
 }

@@ -11,7 +11,7 @@ import seedu.address.model.person.Name;
 import seedu.address.model.tag.Tag;
 
 /**
- * Contains utility methods for populating {@code fitNUS} with sample data.
+ * Contains utility methods for populating {@code FitNus} with sample data.
  */
 public class SampleDataUtil {
     public static Lesson[] getSampleLessons() {

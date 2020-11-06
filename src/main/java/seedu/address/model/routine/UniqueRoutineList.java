@@ -81,31 +81,6 @@ public class UniqueRoutineList implements Iterable<Routine> {
     }
 
     /**
-     * Returns the toString method of the Routine that the user wants to view.
-     *
-     * @param index Index of the Routine that the user wants to view.
-     * @return The toString method of the Routine that the user wants to see.
-     */
-    public String viewRoutine(int index) {
-        return internalList.get(index - 1).toString();
-    }
-
-    /**
-     * Lists out all the Routine objects in UniqueRoutineList.
-     *
-     * @return String containing all the Routine object toString method.
-     */
-    public String listRoutines() {
-        String result = "";
-        for (Routine routine : internalList) {
-            result += routine.toString();
-            result += "\n";
-        }
-
-        return result;
-    }
-
-    /**
      * Replaces the routine {@code target} in the list with {@code editedRoutine}.
      * {@code target} must exist in the list.
      * The Routine identity of {@code editedRoutine} must not be the same as another existing routine in the list.
@@ -237,9 +212,9 @@ public class UniqueRoutineList implements Iterable<Routine> {
                 if (!routine.hasExercise(retrievedExercise)) {
                     throw new ExerciseNotFoundException();
                 } else {
-                    internalList.remove(routine);
+                    int index = internalList.indexOf(routine);
                     routine.deleteExercise(retrievedExercise);
-                    internalList.add(routine);
+                    internalList.set(index, routine);
                     break;
                 }
             }

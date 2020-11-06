@@ -332,13 +332,13 @@ Example:
 
 Note that fitNUS currently displays 2 routines.
 
-![Routine View Exercise Before](./images/routine_view_exercise_before.png)
+![Routine View Before](./images/routine_view_before.png)
 
 **After viewing the second routine:**
 
 Note how you can only see the routine that was at the second index which is "Leg Workout".
 
-![Routine View Exercise_After](./images/routine_view_exercise_after.png)
+![Routine View After](./images/routine_view_after.png)
 
 ### 4.3 Lesson
 

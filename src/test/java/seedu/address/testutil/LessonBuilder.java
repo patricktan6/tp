@@ -53,5 +53,4 @@ public class LessonBuilder {
     public Lesson build() {
         return new Lesson(name, tags);
     }
-
 }

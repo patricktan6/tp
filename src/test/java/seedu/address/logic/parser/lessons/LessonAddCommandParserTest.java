@@ -1,4 +1,4 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.lessons;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_LESSON_NAME_DESC;
@@ -19,7 +19,8 @@ import static seedu.address.testutil.TypicalLessons.CS2106;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.LessonAddCommand;
+import seedu.address.logic.commands.lessons.LessonAddCommand;
+import seedu.address.logic.parser.lessons.LessonAddCommandParser;
 import seedu.address.model.lesson.Lesson;
 import seedu.address.model.person.Name;
 import seedu.address.model.tag.Tag;

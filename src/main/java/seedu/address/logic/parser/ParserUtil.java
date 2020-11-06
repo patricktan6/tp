@@ -121,8 +121,14 @@ public class ParserUtil {
     public static Set<Tag> parseTags(Collection<String> tags) throws ParseException {
         requireNonNull(tags);
         final Set<Tag> tagSet = new HashSet<>();
+        final Set<String> lowerCaseTagSet = new HashSet<>();
         for (String tagName : tags) {
             tagSet.add(parseTag(tagName));
+            String lowerCaseTagName = tagName.toLowerCase();
+            if (lowerCaseTagSet.contains(lowerCaseTagName)) {
+                throw new ParseException("Tags are case-sensitive! Please refrain from adding duplicates.");
+            }
+            lowerCaseTagSet.add(lowerCaseTagName);
         }
         return tagSet;
     }

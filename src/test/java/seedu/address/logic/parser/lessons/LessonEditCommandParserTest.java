@@ -1,4 +1,4 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.lessons;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_LESSON_NAME_DESC;
@@ -22,8 +22,9 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_LESSON;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.LessonEditCommand;
-import seedu.address.logic.commands.LessonEditCommand.EditLessonDescriptor;
+import seedu.address.logic.commands.lessons.LessonEditCommand;
+import seedu.address.logic.commands.lessons.LessonEditCommand.EditLessonDescriptor;
+import seedu.address.logic.parser.lessons.LessonEditCommandParser;
 import seedu.address.model.person.Name;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.EditLessonDescriptorBuilder;
@@ -115,7 +116,7 @@ public class LessonEditCommandParserTest {
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
         Index targetIndex = INDEX_FIRST_LESSON;
-        String userInput = targetIndex.getOneBased() + LESSON_NAME_DESC_CS2030 + LESSON_TAG_DESC_LECTURE
+        String userInput = targetIndex.getOneBased() + LESSON_NAME_DESC_CS2030
                 + LESSON_NAME_DESC_CS2030 + LESSON_TAG_DESC_LECTURE + LESSON_NAME_DESC_CS2106 + LESSON_TAG_DESC_EASY;
 
         EditLessonDescriptor descriptor = new EditLessonDescriptorBuilder().withName(VALID_LESSON_NAME_CS2106)

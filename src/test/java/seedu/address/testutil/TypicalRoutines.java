@@ -20,7 +20,8 @@ public class TypicalRoutines {
     public static final Routine LEG_DAY = new Routine(new Name("Leg Day"));
     public static final Routine UPPER_BODY = new Routine(new Name("Upper Body"));
 
-    private TypicalRoutines() {} // prevents instantiation
+    private TypicalRoutines() {
+    } // prevents instantiation
 
     /**
      * Returns an {@code FitNus} with all the typical routines.
@@ -33,24 +34,30 @@ public class TypicalRoutines {
         return fn;
     }
 
+
     /**
      * Returns an {@code FitNus} with all the typical routines.
      */
     public static FitNus getPopulatedFitNus() {
         FitNus fn = new FitNus();
-        for (Routine routine : getRoutinesWithExercise()) {
-            fn.addRoutine(routine);
+        Set<Tag> typicalTags = new HashSet<>();
+        typicalTags.add(new Tag("Dumbbell"));
+        Exercise squats = new Exercise(new Name("Squats"), new HashSet<>());
+        Exercise bicep = new Exercise(new Name("Bicep Curls"), typicalTags);
+
+        if (!LEG_DAY.hasExercise(squats)) {
+            LEG_DAY.addExercise(squats);
         }
+
+        if (!UPPER_BODY.hasExercise(bicep)) {
+            UPPER_BODY.addExercise(bicep);
+        }
+
+        fn.addRoutine(LEG_DAY);
+        fn.addRoutine(UPPER_BODY);
         return fn;
     }
     public static List<Routine> getTypicalRoutines() {
-        return new ArrayList<Routine>(Arrays.asList(LEG_DAY, UPPER_BODY));
-    }
-    public static List<Routine> getRoutinesWithExercise() {
-        LEG_DAY.addExercise(new Exercise(new Name("Squats"), new HashSet<>()));
-        Set<Tag> typicalTags = new HashSet<Tag>();
-        typicalTags.add(new Tag("Dumbbell exercise"));
-        UPPER_BODY.addExercise(new Exercise(new Name("Bicep Curls"), typicalTags));
-        return new ArrayList<Routine>(Arrays.asList(LEG_DAY, UPPER_BODY));
+        return new ArrayList<>(Arrays.asList(LEG_DAY, UPPER_BODY));
     }
 }

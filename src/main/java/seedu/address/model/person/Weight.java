@@ -10,9 +10,9 @@ public class Weight {
             "Weight should only contain positive numbers up to 2 decimal places, and it should not be blank";
 
     public static final String MESSAGE_CONSTRAINTS_LIMIT =
-            "Weight should be greater than 0 and smaller than 200kg.";
+            "Weight should be greater than 30kg and smaller than 200kg.";
 
-    public static final double WEIGHT_LOWER_LIMIT = 0;
+    public static final double WEIGHT_LOWER_LIMIT = 30;
 
     public static final double WEIGHT_UPPER_LIMIT = 200;
 

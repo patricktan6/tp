@@ -1,4 +1,4 @@
-package seedu.address.logic.parser;
+package seedu.address.logic.parser.lessons;
 
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -7,7 +7,8 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_LESSON;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.LessonDeleteCommand;
+import seedu.address.logic.commands.lessons.LessonDeleteCommand;
+import seedu.address.logic.parser.lessons.LessonDeleteCommandParser;
 
 /**
  * As we are only doing white-box testing, our test cases do not cover path variations

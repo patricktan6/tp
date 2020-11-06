@@ -20,10 +20,10 @@ import javafx.collections.ObservableList;
 import seedu.address.model.calorie.DailyCalorie;
 import seedu.address.model.exercise.Exercise;
 import seedu.address.model.lesson.Lesson;
-import seedu.address.model.lesson.exceptions.DuplicateLessonException;
 import seedu.address.model.person.Body;
 import seedu.address.model.routine.Routine;
 import seedu.address.model.slot.Slot;
+import seedu.address.model.lesson.exceptions.DuplicateLessonException;
 import seedu.address.testutil.LessonBuilder;
 
 public class FitNusTest {
@@ -76,7 +76,8 @@ public class FitNusTest {
     @Test
     public void hasLesson_lessonWithSameIdentityFieldsInFitNus_returnsTrue() {
         fitNus.addLesson(GES1028);
-        Lesson editedGes1028 = new LessonBuilder(GES1028).withTags(VALID_LESSON_TAG_EASY).build();
+        Lesson editedGes1028 = new LessonBuilder(GES1028).withTags(VALID_LESSON_TAG_EASY)
+                .build();
         assertTrue(fitNus.hasLesson(editedGes1028));
     }
 
@@ -99,6 +100,7 @@ public class FitNusTest {
         FitNusStub(Collection<Lesson> lessons) {
             this.lessons.setAll(lessons);
         }
+
 
         @Override
         public ObservableList<Exercise> getExerciseList() {
@@ -130,5 +132,4 @@ public class FitNusTest {
             return body;
         }
     }
-
 }
